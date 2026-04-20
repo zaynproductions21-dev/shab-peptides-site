@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
@@ -34,6 +35,8 @@ const products = [
     description:
       "A novel triple incretin receptor agonist targeting GIP, GLP-1, and glucagon receptors. Available in 5mg and 10mg research-grade vials.",
     cas: "2381089-83-2",
+    image: "https://images.pexels.com/photos/9259962/pexels-photo-9259962.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Research peptide vials arranged in a laboratory rack",
   },
   {
     name: "Semaglutide",
@@ -43,6 +46,8 @@ const products = [
     description:
       "Selective GLP-1 receptor agonist for metabolic research applications. Supplied lyophilised with full analytical documentation.",
     cas: "910463-68-2",
+    image: "https://images.pexels.com/photos/6129873/pexels-photo-6129873.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Close-up of laboratory vials containing research compounds",
   },
   {
     name: "Tirzepatide",
@@ -52,6 +57,8 @@ const products = [
     description:
       "Dual GIP and GLP-1 receptor agonist for advanced metabolic pathway research. High-purity lyophilised powder.",
     cas: "2023788-19-2",
+    image: null,
+    imageAlt: null,
   },
   {
     name: "BPC-157",
@@ -61,6 +68,8 @@ const products = [
     description:
       "Pentadecapeptide for tissue repair and regeneration research. Available in multiple quantities for laboratory use.",
     cas: "137525-51-0",
+    image: null,
+    imageAlt: null,
   },
   {
     name: "Survodutide",
@@ -70,6 +79,8 @@ const products = [
     description:
       "Glucagon and GLP-1 dual receptor agonist for metabolic disease research. Synthesised to order with guaranteed specifications.",
     cas: "2375568-58-4",
+    image: null,
+    imageAlt: null,
   },
   {
     name: "Custom Synthesis",
@@ -79,6 +90,8 @@ const products = [
     description:
       "Tailored peptide synthesis to your exact specifications. Discuss your requirements with our research team for a custom quotation.",
     cas: "—",
+    image: null,
+    imageAlt: null,
   },
 ];
 
@@ -169,21 +182,15 @@ export default function HomePage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/5 via-secondary/5 to-lab-green/5 border border-gray-200 flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-primary" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                    </svg>
-                  </div>
-                  <p className="text-sm font-medium text-charcoal">Laboratory Imagery</p>
-                  <p className="mt-1 text-xs text-gray-500">High-resolution research facility photography</p>
-                  <div className="mt-6 grid grid-cols-3 gap-3">
-                    <div className="h-2 rounded-full bg-primary/20" />
-                    <div className="h-2 rounded-full bg-secondary/20" />
-                    <div className="h-2 rounded-full bg-lab-green/20" />
-                  </div>
-                </div>
+              <div className="aspect-[4/3] rounded-2xl border border-gray-200 overflow-hidden relative">
+                <Image
+                  src="https://images.pexels.com/photos/9259964/pexels-photo-9259964.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                  alt="Research peptide vials in a laboratory setting"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
               <div className="absolute -bottom-4 -left-4 rounded-xl bg-white shadow-lg border border-gray-100 p-4">
                 <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Purity Rating</p>
@@ -275,43 +282,56 @@ export default function HomePage() {
             {products.map((product) => (
               <div
                 key={product.name}
-                className="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-md transition-shadow"
+                className="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                      {product.category}
-                    </span>
-                    <h3 className="mt-1 text-lg font-semibold text-charcoal">
-                      {product.name}
-                    </h3>
+                {product.image && (
+                  <div className="relative h-40 w-full">
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt || product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
-                  <span
-                    className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                      product.availability === "In Stock"
-                        ? "bg-lab-green/10 text-lab-green"
-                        : product.availability === "Made to Order"
-                          ? "bg-gold/10 text-gold"
-                          : "bg-primary/10 text-primary"
-                    }`}
-                  >
-                    {product.availability}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                  {product.description}
-                </p>
-                <div className="mt-4 flex items-center gap-4 text-xs">
-                  <span className="flex items-center gap-1.5">
-                    <span className="inline-flex items-center rounded bg-gold/10 px-1.5 py-0.5 font-medium text-gold">
-                      {product.purity}
+                )}
+                <div className="p-6">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                        {product.category}
+                      </span>
+                      <h3 className="mt-1 text-lg font-semibold text-charcoal">
+                        {product.name}
+                      </h3>
+                    </div>
+                    <span
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        product.availability === "In Stock"
+                          ? "bg-lab-green/10 text-lab-green"
+                          : product.availability === "Made to Order"
+                            ? "bg-gold/10 text-gold"
+                            : "bg-primary/10 text-primary"
+                      }`}
+                    >
+                      {product.availability}
                     </span>
-                    <span className="text-gray-500">Purity</span>
-                  </span>
-                  <span className="text-gray-400">|</span>
-                  <span className="font-mono text-gray-500">
-                    CAS: {product.cas}
-                  </span>
+                  </div>
+                  <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+                    {product.description}
+                  </p>
+                  <div className="mt-4 flex items-center gap-4 text-xs">
+                    <span className="flex items-center gap-1.5">
+                      <span className="inline-flex items-center rounded bg-gold/10 px-1.5 py-0.5 font-medium text-gold">
+                        {product.purity}
+                      </span>
+                      <span className="text-gray-500">Purity</span>
+                    </span>
+                    <span className="text-gray-400">|</span>
+                    <span className="font-mono text-gray-500">
+                      CAS: {product.cas}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -365,19 +385,30 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-gray-200 p-8">
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { value: "99.9%", label: "Minimum Purity" },
-                  { value: "100%", label: "Batch Tested" },
-                  { value: "<0.1%", label: "Impurity Threshold" },
-                  { value: "24h", label: "Certificate Turnaround" },
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-3xl font-bold text-primary font-mono">{stat.value}</p>
-                    <p className="mt-1 text-sm text-gray-600">{stat.label}</p>
-                  </div>
-                ))}
+            <div className="space-y-6">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="https://images.pexels.com/photos/8532848/pexels-photo-8532848.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Scientist conducting laboratory research and quality analysis"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-gray-200 p-8">
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { value: "99.9%", label: "Minimum Purity" },
+                    { value: "100%", label: "Batch Tested" },
+                    { value: "<0.1%", label: "Impurity Threshold" },
+                    { value: "24h", label: "Certificate Turnaround" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <p className="text-3xl font-bold text-primary font-mono">{stat.value}</p>
+                      <p className="mt-1 text-sm text-gray-600">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

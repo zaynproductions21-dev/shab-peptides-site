@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
@@ -18,6 +19,8 @@ const products = [
     description: "Novel triple incretin receptor agonist targeting GIP, GLP-1, and glucagon receptors.",
     cas: "2381089-83-2",
     large: true,
+    image: "https://images.pexels.com/photos/32532049/pexels-photo-32532049.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Medical injection pen used in peptide research",
   },
   {
     name: "Semaglutide",
@@ -27,6 +30,8 @@ const products = [
     description: "Selective GLP-1 receptor agonist for metabolic research applications.",
     cas: "910463-68-2",
     large: true,
+    image: "https://images.pexels.com/photos/7581586/pexels-photo-7581586.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Medical syringe and pharmaceutical equipment",
   },
   {
     name: "Tirzepatide",
@@ -106,12 +111,22 @@ export default function V2Page() {
 
       {/* Hero — Full Bleed Dark */}
       <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+        {/* Hero Background Image */}
+        <Image
+          src="https://images.pexels.com/photos/8863039/pexels-photo-8863039.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          alt="Laboratory research environment"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-zinc-950/80" />
         {/* Scientific Grid Background */}
         <div className="absolute inset-0 opacity-[0.04]" style={{
           backgroundImage: `linear-gradient(rgba(99,102,241,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.5) 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
         }} />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-8">
@@ -215,42 +230,56 @@ export default function V2Page() {
             {products.map((product) => (
               <div
                 key={product.name}
-                className={`rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-primary/30 transition-colors ${
+                className={`rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden hover:border-primary/30 transition-colors ${
                   product.large ? "lg:col-span-2 lg:row-span-1" : ""
                 }`}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-xs font-mono text-primary-light uppercase tracking-wider">
-                    {product.category}
-                  </span>
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                    product.availability === "In Stock"
-                      ? "bg-lab-green/10 text-lab-green-light border border-lab-green/20"
-                      : product.availability === "Made to Order"
-                        ? "bg-gold/10 text-gold-light border border-gold/20"
-                        : "bg-primary/10 text-primary-light border border-primary/20"
-                  }`}>
-                    {product.availability}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white">{product.name}</h3>
-                <p className="mt-2 text-sm text-zinc-500 leading-relaxed">{product.description}</p>
-
-                {/* Purity Bar */}
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="text-zinc-500">Purity</span>
-                    <span className="font-mono text-primary-light">{product.purity === 100 ? "Spec" : `${product.purity}%`}</span>
-                  </div>
-                  <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
-                    <div
-                      className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000"
-                      style={{ width: `${product.purity}%` }}
+                {product.large && "image" in product && product.image && (
+                  <div className="relative h-48 w-full">
+                    <Image
+                      src={product.image}
+                      alt={(product as { imageAlt?: string }).imageAlt || product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/80 to-transparent" />
                   </div>
-                </div>
+                )}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="text-xs font-mono text-primary-light uppercase tracking-wider">
+                      {product.category}
+                    </span>
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                      product.availability === "In Stock"
+                        ? "bg-lab-green/10 text-lab-green-light border border-lab-green/20"
+                        : product.availability === "Made to Order"
+                          ? "bg-gold/10 text-gold-light border border-gold/20"
+                          : "bg-primary/10 text-primary-light border border-primary/20"
+                    }`}>
+                      {product.availability}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{product.name}</h3>
+                  <p className="mt-2 text-sm text-zinc-500 leading-relaxed">{product.description}</p>
 
-                <p className="mt-3 text-xs font-mono text-zinc-600">CAS: {product.cas}</p>
+                  {/* Purity Bar */}
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between text-xs mb-1.5">
+                      <span className="text-zinc-500">Purity</span>
+                      <span className="font-mono text-primary-light">{product.purity === 100 ? "Spec" : `${product.purity}%`}</span>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-1000"
+                        style={{ width: `${product.purity}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <p className="mt-3 text-xs font-mono text-zinc-600">CAS: {product.cas}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -294,19 +323,31 @@ export default function V2Page() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-8">
-              <div className="grid grid-cols-2 gap-8">
-                {[
-                  { value: "99.9%", label: "Minimum Purity", glow: "text-primary-light" },
-                  { value: "100%", label: "Batch Tested", glow: "text-secondary-light" },
-                  { value: "<0.1%", label: "Impurity Threshold", glow: "text-lab-green-light" },
-                  { value: "24h", label: "Certificate Turnaround", glow: "text-gold-light" },
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className={`text-3xl font-bold font-mono ${stat.glow}`}>{stat.value}</p>
-                    <p className="mt-1 text-sm text-zinc-500">{stat.label}</p>
-                  </div>
-                ))}
+            <div className="space-y-6">
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-zinc-800">
+                <Image
+                  src="https://images.pexels.com/photos/9259977/pexels-photo-9259977.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  alt="Laboratory vial held with precision clamp during quality testing"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-8">
+                <div className="grid grid-cols-2 gap-8">
+                  {[
+                    { value: "99.9%", label: "Minimum Purity", glow: "text-primary-light" },
+                    { value: "100%", label: "Batch Tested", glow: "text-secondary-light" },
+                    { value: "<0.1%", label: "Impurity Threshold", glow: "text-lab-green-light" },
+                    { value: "24h", label: "Certificate Turnaround", glow: "text-gold-light" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <p className={`text-3xl font-bold font-mono ${stat.glow}`}>{stat.value}</p>
+                      <p className="mt-1 text-sm text-zinc-500">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

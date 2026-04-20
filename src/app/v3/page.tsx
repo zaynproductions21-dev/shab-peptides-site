@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 const products = [
-  { name: "Retatrutide", category: "Triple Agonist", purity: "99.9%", cas: "2381089-83-2", availability: "In Stock", mol: "4813.45" },
-  { name: "Semaglutide", category: "GLP-1 Agonist", purity: "99.8%", cas: "910463-68-2", availability: "In Stock", mol: "4113.58" },
-  { name: "Tirzepatide", category: "Dual Agonist", purity: "99.9%", cas: "2023788-19-2", availability: "In Stock", mol: "4813.45" },
-  { name: "BPC-157", category: "Metabolic Compound", purity: "99.7%", cas: "137525-51-0", availability: "In Stock", mol: "1419.54" },
-  { name: "Survodutide", category: "Dual Agonist", purity: "99.8%", cas: "2375568-58-4", availability: "Made to Order", mol: "3949.42" },
-  { name: "Custom Synthesis", category: "Bespoke", purity: "To Spec", cas: "—", availability: "Enquire", mol: "—" },
+  { name: "Retatrutide", category: "Triple Agonist", purity: "99.9%", cas: "2381089-83-2", availability: "In Stock", mol: "4813.45", thumb: "https://images.pexels.com/photos/9259962/pexels-photo-9259962.jpeg?auto=compress&cs=tinysrgb&w=800", thumbAlt: "Peptide vials in a laboratory rack" },
+  { name: "Semaglutide", category: "GLP-1 Agonist", purity: "99.8%", cas: "910463-68-2", availability: "In Stock", mol: "4113.58", thumb: "https://images.pexels.com/photos/6129873/pexels-photo-6129873.jpeg?auto=compress&cs=tinysrgb&w=800", thumbAlt: "Close-up of laboratory research vials" },
+  { name: "Tirzepatide", category: "Dual Agonist", purity: "99.9%", cas: "2023788-19-2", availability: "In Stock", mol: "4813.45", thumb: "https://images.pexels.com/photos/32532049/pexels-photo-32532049.jpeg?auto=compress&cs=tinysrgb&w=800", thumbAlt: "Medical injection pen for peptide research" },
+  { name: "BPC-157", category: "Metabolic Compound", purity: "99.7%", cas: "137525-51-0", availability: "In Stock", mol: "1419.54", thumb: "https://images.pexels.com/photos/7581586/pexels-photo-7581586.jpeg?auto=compress&cs=tinysrgb&w=800", thumbAlt: "Medical syringe and pharmaceutical supplies" },
+  { name: "Survodutide", category: "Dual Agonist", purity: "99.8%", cas: "2375568-58-4", availability: "Made to Order", mol: "3949.42", thumb: "https://images.pexels.com/photos/8851791/pexels-photo-8851791.jpeg?auto=compress&cs=tinysrgb&w=800", thumbAlt: "Pharmaceutical compound in laboratory" },
+  { name: "Custom Synthesis", category: "Bespoke", purity: "To Spec", cas: "—", availability: "Enquire", mol: "—", thumb: null, thumbAlt: null },
 ];
 
 const qualityStages = [
@@ -97,6 +98,18 @@ export default function V3Page() {
         </div>
       </section>
 
+      {/* Full-Width Lab Image Strip */}
+      <div className="relative h-64 md:h-80 lg:h-96 w-full">
+        <Image
+          src="https://images.pexels.com/photos/10514991/pexels-photo-10514991.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Laboratory equipment and instruments used in peptide research"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
+      </div>
+
       {/* Compounds — Scientific Table */}
       <section id="compounds" className="py-20 lg:py-28 border-t border-gray-100">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -111,6 +124,7 @@ export default function V3Page() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-200">
+                  <th className="text-left py-3 pr-4 text-xs font-medium text-gray-400 uppercase tracking-wider w-10"></th>
                   <th className="text-left py-3 pr-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Compound</th>
                   <th className="text-left py-3 pr-4 text-xs font-medium text-gray-400 uppercase tracking-wider">Classification</th>
                   <th className="text-left py-3 pr-4 text-xs font-medium text-gray-400 uppercase tracking-wider font-mono">CAS No.</th>
@@ -122,6 +136,21 @@ export default function V3Page() {
               <tbody>
                 {products.map((product) => (
                   <tr key={product.name} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
+                    <td className="py-3 pr-3">
+                      {product.thumb ? (
+                        <div className="relative h-8 w-8 rounded overflow-hidden shrink-0">
+                          <Image
+                            src={product.thumb}
+                            alt={product.thumbAlt || product.name}
+                            fill
+                            className="object-cover"
+                            sizes="32px"
+                          />
+                        </div>
+                      ) : (
+                        <div className="h-8 w-8 rounded bg-gray-100" />
+                      )}
+                    </td>
                     <td className="py-4 pr-4 font-medium text-charcoal">{product.name}</td>
                     <td className="py-4 pr-4 text-gray-500">{product.category}</td>
                     <td className="py-4 pr-4 font-mono text-gray-400 text-xs">{product.cas}</td>
