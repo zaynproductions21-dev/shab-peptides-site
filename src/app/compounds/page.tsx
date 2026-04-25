@@ -18,11 +18,33 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE_URL = "https://shab-peptides-site.vercel.app";
+
 export default async function CompoundsPage() {
   const compounds = await getCompounds();
 
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Research Peptides Catalogue",
+    description: "Research-grade peptide catalogue from Bio Peptides UK.",
+    url: `${SITE_URL}/compounds`,
+    isPartOf: { "@type": "WebSite", name: "Bio Peptides", url: SITE_URL },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: compounds.length,
+      itemListElement: compounds.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/compounds/${c.slug}`,
+        name: c.name,
+      })),
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <Navigation variant="editorial" />
 
       <section className="pt-24 pb-8 lg:pt-32 lg:pb-12 bg-editorial-surface">

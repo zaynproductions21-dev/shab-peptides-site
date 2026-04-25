@@ -107,7 +107,7 @@ export default async function V1Editorial() {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  UK-Based Lab
+                  Ships From UK
                 </span>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default async function V1Editorial() {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-editorial-border">
                 <Image
                   src="/generated/hero-0.webp"
-                  alt="Bio Peptides laboratory with research-grade peptide vials"
+                  alt="Research-grade peptide vials held in UK stock by Bio Peptides"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -152,7 +152,7 @@ export default async function V1Editorial() {
               { icon: "🔬", title: "HPLC & MS Tested", sub: "Every single batch" },
               { icon: "🚚", title: "Same-Day Dispatch", sub: "Order before 14:00 GMT" },
               { icon: "📋", title: "CoA Included", sub: "Full certificates with every order" },
-              { icon: "🇬🇧", title: "UK Laboratory", sub: "No import delays or customs" },
+              { icon: "🇬🇧", title: "UK Stock", sub: "Held in the UK, no import delays" },
             ].map((item) => (
               <div key={item.title} className="flex items-center gap-3">
                 <span className="text-2xl">{item.icon}</span>
@@ -264,8 +264,7 @@ export default async function V1Editorial() {
                 Every Vial Third-Party Tested
               </h2>
               <p className="mt-4 text-editorial-muted leading-relaxed">
-                Our analytical laboratory employs the same instrumentation used by pharmaceutical
-                companies. Every batch is tested before it reaches you.
+                Every batch we hold has been independently analysed by a third-party laboratory using the same instrumentation that pharmaceutical companies rely on. We don&rsquo;t accept manufacturer-supplied data alone &mdash; the certificate that ships with your order is issued by an accredited testing partner, not by us.
               </p>
               <div className="mt-8 space-y-4">
                 {[
@@ -290,7 +289,7 @@ export default async function V1Editorial() {
             </div>
             <div className="space-y-5">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
-                <Image src="/generated/section-3.webp" alt="HPLC equipment in Bio Peptides quality control laboratory" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src="/generated/section-3.webp" alt="HPLC equipment used by the third-party laboratory that tests Bio Peptides stock" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {[

@@ -111,7 +111,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
                   </div>
                   <div className="p-5">
                     <span className="text-[10px] font-semibold text-editorial-accent uppercase tracking-widest">{compound.category}</span>
-                    <h2 className="mt-1 font-serif text-xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">{compound.name}</h2>
+                    <h3 className="mt-1 font-serif text-xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">{compound.name}</h3>
                     <p className="mt-2 text-sm text-editorial-muted leading-relaxed line-clamp-2">{compound.shortDescription}</p>
                     <div className="mt-3 flex items-center gap-3 text-xs">
                       <span className="inline-flex items-center gap-1 rounded bg-editorial-accent/10 px-2 py-0.5 font-semibold text-editorial-accent">{compound.purity} Pure</span>
