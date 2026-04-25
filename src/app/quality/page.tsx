@@ -111,7 +111,7 @@ export default function QualityPage() {
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
               <Image
-                src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=800&q=80"
+                src="/generated/section-3.webp"
                 alt="HPLC and mass spectrometry equipment in Bio Peptides quality control laboratory"
                 fill
                 className="object-cover"
