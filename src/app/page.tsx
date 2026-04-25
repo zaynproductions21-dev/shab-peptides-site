@@ -1,617 +1,443 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
+import { getFeaturedCompounds } from "@/data/compounds";
 
-const differentiators = [
-  {
-    title: "Specialised Expertise",
-    description:
-      "Our team of research scientists brings decades of combined experience in peptide chemistry, ensuring every compound meets the exacting standards your research demands.",
+export const metadata: Metadata = {
+  title: "Best Peptide Supplier UK | Research Grade | Bio Peptides",
+  description:
+    "UK's fastest research peptide supplier. Order by 2pm, ships today. Third-party tested compounds with certificates of analysis. 99%+ purity verified.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Best Peptide Supplier UK | Research Grade | Bio Peptides",
+    description: "UK's fastest research peptide supplier. 99%+ purity. Same-day dispatch. Third-party CoA included.",
+    url: "/",
+    type: "website",
   },
-  {
-    title: "Same-Day Dispatch",
-    description:
-      "Orders placed before 14:00 GMT are dispatched the same working day. Temperature-controlled packaging ensures compound integrity throughout transit.",
-  },
-  {
-    title: "Guaranteed Purity",
-    description:
-      "Every batch undergoes rigorous HPLC and mass spectrometry analysis. We guarantee a minimum 99.9% purity with full certificates of analysis provided.",
-  },
-  {
-    title: "UK-Based Reliability",
-    description:
-      "Headquartered in the United Kingdom with full regulatory compliance. Shorter delivery times, reduced import complexity, and dedicated UK-based support.",
-  },
+};
+
+const faqs = [
+  { question: "What makes Bio Peptides the best peptide supplier in the UK?", answer: "Bio Peptides combines 99%+ guaranteed purity, same-day dispatch for orders before 14:00 GMT, comprehensive certificates of analysis with every order, and dedicated UK-based technical support. Every batch is independently verified via HPLC and mass spectrometry before release." },
+  { question: "How do you ensure research peptide purity and quality?", answer: "Every compound undergoes a rigorous multi-stage quality control process including HPLC analysis, ESI-MS verification of molecular weight, quantitative amino acid analysis, and LAL endotoxin testing. We guarantee a minimum 99%+ purity with full certificates of analysis provided." },
+  { question: "Do you offer same-day dispatch for peptide orders?", answer: "Yes. All orders placed before 14:00 GMT are dispatched the same working day in temperature-controlled packaging. Next-day delivery is available across the United Kingdom, eliminating the delays associated with international suppliers." },
+  { question: "What certificates and documentation do you provide?", answer: "Every order includes a comprehensive certificate of analysis featuring HPLC chromatograms, mass spectrometry data, amino acid analysis results, and endotoxin testing results. Additional technical documentation and handling guides are available upon request." },
+  { question: "Can I order custom peptide synthesis?", answer: "Absolutely. We offer bespoke peptide synthesis tailored to your precise research requirements, from novel sequences to modified analogues. Contact our research team to discuss your specifications and receive a custom quotation." },
+  { question: "Are your peptides suitable for research purposes?", answer: "All Bio Peptides products are supplied strictly for research purposes only and are not intended for human consumption. We supply to university research laboratories, pharmaceutical R&D departments, biotechnology firms, clinical research organisations, and government laboratories across the UK." },
 ];
 
-const products = [
-  {
-    name: "Retatrutide",
-    category: "Triple Agonist",
-    purity: "99.9%",
-    availability: "In Stock",
-    description:
-      "A novel triple incretin receptor agonist targeting GIP, GLP-1, and glucagon receptors. Available in 5mg and 10mg research-grade vials.",
-    cas: "2381089-83-2",
-    image: "https://images.pexels.com/photos/9259962/pexels-photo-9259962.jpeg?auto=compress&cs=tinysrgb&w=800",
-    imageAlt: "Research peptide vials arranged in a laboratory rack",
-  },
-  {
-    name: "Semaglutide",
-    category: "GLP-1 Agonist",
-    purity: "99.8%",
-    availability: "In Stock",
-    description:
-      "Selective GLP-1 receptor agonist for metabolic research applications. Supplied lyophilised with full analytical documentation.",
-    cas: "910463-68-2",
-    image: "https://images.pexels.com/photos/6129873/pexels-photo-6129873.jpeg?auto=compress&cs=tinysrgb&w=800",
-    imageAlt: "Close-up of laboratory vials containing research compounds",
-  },
-  {
-    name: "Tirzepatide",
-    category: "Dual Agonist",
-    purity: "99.9%",
-    availability: "In Stock",
-    description:
-      "Dual GIP and GLP-1 receptor agonist for advanced metabolic pathway research. High-purity lyophilised powder.",
-    cas: "2023788-19-2",
-    image: null,
-    imageAlt: null,
-  },
-  {
-    name: "BPC-157",
-    category: "Metabolic Compound",
-    purity: "99.7%",
-    availability: "In Stock",
-    description:
-      "Pentadecapeptide for tissue repair and regeneration research. Available in multiple quantities for laboratory use.",
-    cas: "137525-51-0",
-    image: null,
-    imageAlt: null,
-  },
-  {
-    name: "Survodutide",
-    category: "Dual Agonist",
-    purity: "99.8%",
-    availability: "Made to Order",
-    description:
-      "Glucagon and GLP-1 dual receptor agonist for metabolic disease research. Synthesised to order with guaranteed specifications.",
-    cas: "2375568-58-4",
-    image: null,
-    imageAlt: null,
-  },
-  {
-    name: "Custom Synthesis",
-    category: "Bespoke",
-    purity: "To Specification",
-    availability: "Enquire",
-    description:
-      "Tailored peptide synthesis to your exact specifications. Discuss your requirements with our research team for a custom quotation.",
-    cas: "—",
-    image: null,
-    imageAlt: null,
-  },
-];
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
 
-const services = [
-  {
-    step: "01",
-    title: "High-Purity Peptide Supply",
-    description:
-      "Research-grade peptides synthesised to the highest standards, with minimum 99% purity guaranteed across our entire catalogue.",
-  },
-  {
-    step: "02",
-    title: "Custom Synthesis",
-    description:
-      "Bespoke peptide synthesis tailored to your precise research requirements, from novel sequences to modified analogues.",
-  },
-  {
-    step: "03",
-    title: "Quality Certification",
-    description:
-      "Comprehensive certificates of analysis including HPLC chromatograms, mass spectrometry data, and amino acid analysis.",
-  },
-  {
-    step: "04",
-    title: "Express Delivery",
-    description:
-      "Temperature-controlled same-day dispatch for orders placed before 14:00 GMT, with next-day delivery across the United Kingdom.",
-  },
-  {
-    step: "05",
-    title: "Technical Consultation",
-    description:
-      "Direct access to our research scientists for guidance on compound selection, solubility, storage, and experimental design.",
-  },
-  {
-    step: "06",
-    title: "Bulk Research Programmes",
-    description:
-      "Preferential pricing and dedicated account management for ongoing research programmes and institutional supply agreements.",
-  },
-];
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Bio Peptides",
+  url: "https://www.biopeptides.co.uk",
+  description: "UK's leading research peptide supplier with 99%+ purity guarantee and same-day dispatch.",
+  address: { "@type": "PostalAddress", addressCountry: "GB" },
+  contactPoint: { "@type": "ContactPoint", email: "info@biopeptides.co.uk", contactType: "customer service", availableLanguage: "English" },
+};
 
-export default function HomePage() {
+export default async function V1Editorial() {
+  const products = await getFeaturedCompounds(6);
+  const heroProduct = products[0];
+  const heroNames = products.slice(0, 3).map((p) => p.name).join(", ");
   return (
     <>
-      <Navigation variant="light" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
 
-      {/* Hero Section — Editorial Split */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <Navigation variant="editorial" />
+
+      {/* Shipping Banner */}
+      <div className="bg-editorial-accent text-white text-center py-2.5 text-sm font-medium tracking-wide pt-[4.5rem]">
+        <span className="hidden sm:inline">🚚 </span>
+        Free UK Delivery on Orders Over £75 &nbsp;·&nbsp; Order Before 14:00 for Same-Day Dispatch &nbsp;·&nbsp; Certificate of Analysis Included
+      </div>
+
+      {/* Hero — MediCenter-inspired clean medical with product showcase */}
+      <section className="relative bg-editorial-surface">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  UK-Based
+              <div className="flex items-center gap-2 mb-5">
+                <span className="inline-flex items-center rounded-md bg-editorial-accent/10 border border-editorial-accent/20 px-3 py-1 text-xs font-semibold text-editorial-accent uppercase tracking-wider">
+                  UK&rsquo;s #1 Supplier
                 </span>
-                <span className="inline-flex items-center rounded-full bg-lab-green/10 px-3 py-1 text-xs font-medium text-lab-green">
+                <span className="inline-flex items-center rounded-md bg-editorial-green/10 border border-editorial-green/20 px-3 py-1 text-xs font-semibold text-editorial-green uppercase tracking-wider">
+                  In Stock
+                </span>
+              </div>
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-[3.5rem] font-bold tracking-tight text-editorial-text leading-[1.1]">
+                Research-Grade{" "}
+                <span className="text-editorial-accent">Peptides</span>{" "}
+                Delivered Next Day
+              </h1>
+              <p className="mt-5 text-lg text-editorial-muted leading-relaxed max-w-lg">
+                Premium {heroNames || "research peptides"} and 20+ research compounds.
+                99%+ purity. HPLC verified. Ships from the UK.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <a href="/compounds" className="inline-flex items-center justify-center rounded-lg bg-editorial-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md shadow-editorial-accent/20">
+                  Shop All Peptides
+                </a>
+                <a href="#quality" className="inline-flex items-center justify-center rounded-lg border border-editorial-border px-7 py-3.5 text-sm font-medium text-editorial-text hover:bg-white transition-colors">
+                  View Lab Certificates
+                </a>
+              </div>
+              {/* Trust row */}
+              <div className="mt-8 flex flex-wrap items-center gap-4 text-xs text-editorial-muted">
+                <span className="flex items-center gap-1.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                  99%+ Purity
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                   Same-Day Dispatch
                 </span>
-                <span className="inline-flex items-center rounded-full bg-gold/10 px-3 py-1 text-xs font-medium text-gold">
-                  99.9% Purity
+                <span className="flex items-center gap-1.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  UK-Based Lab
                 </span>
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal leading-[1.1]">
-                The UK&rsquo;s Most Reliable Source for{" "}
-                <span className="text-primary">Research Peptides</span>
-              </h1>
-              <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-xl">
-                Premium retatrutide, GLP-1 agonists and metabolic research compounds
-                with guaranteed purity and same-day dispatch.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
-                >
-                  Request Research Quote
-                </a>
-                <a
-                  href="#quality"
-                  className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-6 py-3.5 text-sm font-medium text-charcoal hover:bg-gray-50 transition-colors"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mr-2" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
-                  </svg>
-                  Download Quality Certificates
-                </a>
-              </div>
             </div>
+
+            {/* Hero product showcase */}
             <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl border border-gray-200 overflow-hidden relative">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-editorial-border">
                 <Image
-                  src="https://images.pexels.com/photos/9259964/pexels-photo-9259964.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Research peptide vials in a laboratory setting"
+                  src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1200&q=80"
+                  alt="Bio Peptides laboratory with research-grade peptide vials"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-editorial-text/30 to-transparent" />
               </div>
-              <div className="absolute -bottom-4 -left-4 rounded-xl bg-white shadow-lg border border-gray-100 p-4">
-                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Purity Rating</p>
-                <p className="text-2xl font-bold text-primary font-mono">99.9%</p>
+              {/* Floating product card */}
+              {heroProduct && (
+                <Link href={`/compounds/${heroProduct.slug}`} className="absolute -bottom-6 -left-4 rounded-xl bg-white shadow-xl border border-editorial-border p-4 max-w-[220px] hover:shadow-2xl transition-shadow block">
+                  <p className="text-[10px] font-semibold text-editorial-accent uppercase tracking-widest">{heroProduct.badge ?? "Best Seller"}</p>
+                  <p className="text-sm font-bold text-editorial-text mt-1">{heroProduct.name} {heroProduct.sizes[0]?.size}</p>
+                  <p className="text-xl font-bold text-editorial-accent mt-1">{heroProduct.sizes[0]?.price}</p>
+                  <p className="text-[10px] text-editorial-muted mt-0.5">HPLC Verified · CoA Included</p>
+                </Link>
+              )}
+              {/* Floating purity badge */}
+              <div className="absolute -top-3 -right-3 rounded-lg bg-editorial-accent text-white px-4 py-2 shadow-lg">
+                <p className="text-xs font-semibold">99%+ Purity</p>
+                <p className="text-[10px] opacity-80">Third-Party Tested</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="border-y border-gray-200 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-gray-600">
-            <span className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
-                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              UK-Based
-            </span>
-            <span className="text-gray-300">|</span>
-            <span className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-secondary">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              Same-Day Dispatch
-            </span>
-            <span className="text-gray-300">|</span>
-            <span className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-lab-green">
-                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              99.9% Purity Guaranteed
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* UVP — 4 Differentiators */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-              Why Researchers Choose Shab Peptides
-            </h2>
-            <p className="mt-4 text-gray-600">
-              Four pillars that distinguish us as the UK&rsquo;s preferred peptide supplier
-              for academic and pharmaceutical research.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {differentiators.map((item) => (
-              <div
-                key={item.title}
-                className="relative rounded-xl border border-gray-200 bg-white p-6 hover:border-primary/30 hover:shadow-md transition-all"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+      {/* Trust credentials strip — MediCenter style */}
+      <section className="border-y border-editorial-border bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: "🔬", title: "HPLC & MS Tested", sub: "Every single batch" },
+              { icon: "🚚", title: "Same-Day Dispatch", sub: "Order before 14:00 GMT" },
+              { icon: "📋", title: "CoA Included", sub: "Full certificates with every order" },
+              { icon: "🇬🇧", title: "UK Laboratory", sub: "No import delays or customs" },
+            ].map((item) => (
+              <div key={item.title} className="flex items-center gap-3">
+                <span className="text-2xl">{item.icon}</span>
+                <div>
+                  <p className="text-sm font-semibold text-editorial-text">{item.title}</p>
+                  <p className="text-xs text-editorial-muted">{item.sub}</p>
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-charcoal">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Compounds */}
-      <section id="compounds" className="py-16 lg:py-24 bg-gray-50">
+      {/* Product Grid — E-commerce Cards */}
+      <section id="compounds" className="py-16 lg:py-24 bg-editorial-surface">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-              Featured Research Compounds
-            </h2>
-            <p className="mt-4 text-gray-600">
-              Our catalogue of high-purity peptides, each accompanied by comprehensive
-              certificates of analysis and technical documentation.
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div>
+              <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Shop Peptides</p>
+              <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
+                Research Compounds
+              </h2>
+            </div>
+            <p className="text-sm text-editorial-muted">
+              All prices include CoA &middot; Free delivery over £75
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <div
-                key={product.name}
-                className="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-md transition-shadow"
+              <Link
+                key={product.slug}
+                href={`/compounds/${product.slug}`}
+                className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-xl hover:border-editorial-accent/20 transition-all flex flex-col"
               >
-                {product.image && (
-                  <div className="relative h-40 w-full">
+                {/* Product Image */}
+                <div className="relative h-52 w-full overflow-hidden">
+                  {product.image && (
                     <Image
                       src={product.image}
-                      alt={product.imageAlt || product.name}
+                      alt={product.imageAlt}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                  </div>
-                )}
-                <div className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                        {product.category}
+                  )}
+                  {/* Function labels — primary benefits */}
+                  <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5 max-w-[80%]">
+                    {(product.tags.length > 0 ? product.tags.slice(0, 2) : [product.category]).map((t) => (
+                      <span key={t} className="rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-editorial-accent shadow-sm">
+                        {t}
                       </span>
-                      <h3 className="mt-1 text-lg font-semibold text-charcoal">
-                        {product.name}
-                      </h3>
-                    </div>
-                    <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                        product.availability === "In Stock"
-                          ? "bg-lab-green/10 text-lab-green"
-                          : product.availability === "Made to Order"
-                            ? "bg-gold/10 text-gold"
-                            : "bg-primary/10 text-primary"
-                      }`}
-                    >
-                      {product.availability}
-                    </span>
+                    ))}
                   </div>
-                  <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-                    {product.description}
-                  </p>
-                  <div className="mt-4 flex items-center gap-4 text-xs">
-                    <span className="flex items-center gap-1.5">
-                      <span className="inline-flex items-center rounded bg-gold/10 px-1.5 py-0.5 font-medium text-gold">
-                        {product.purity}
-                      </span>
-                      <span className="text-gray-500">Purity</span>
+                  {product.badge && (
+                    <span className={`absolute top-3 left-3 rounded-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm ${
+                      product.badge === "Best Seller" ? "bg-editorial-accent" :
+                      product.badge === "Popular" ? "bg-editorial-green" :
+                      "bg-editorial-warm"
+                    }`}>
+                      {product.badge}
                     </span>
-                    <span className="text-gray-400">|</span>
-                    <span className="font-mono text-gray-500">
-                      CAS: {product.cas}
+                  )}
+                  <span className={`absolute top-3 right-3 rounded-md px-2 py-0.5 text-[10px] font-semibold ${
+                    product.availability === "In Stock"
+                      ? "bg-editorial-green/90 text-white"
+                      : product.availability === "Made to Order"
+                        ? "bg-editorial-warm/90 text-white"
+                        : "bg-editorial-accent/90 text-white"
+                  }`}>
+                    {product.availability}
+                  </span>
+                </div>
+
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-serif text-xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">{product.name}</h3>
+                  <p className="mt-2 text-sm text-editorial-muted leading-relaxed line-clamp-2">{product.shortDescription}</p>
+
+                  {/* Purity & CAS */}
+                  <div className="mt-3 flex items-center gap-3 text-xs">
+                    <span className="inline-flex items-center gap-1 rounded bg-editorial-accent/10 px-2 py-0.5 font-semibold text-editorial-accent">
+                      {product.purity} Pure
+                    </span>
+                    {product.cas && <span className="font-mono text-editorial-muted truncate">CAS: {product.cas}</span>}
+                  </div>
+
+                  {/* Pricing */}
+                  <div className="mt-auto pt-4 border-t border-editorial-border flex items-center justify-between">
+                    <p className="text-2xl font-bold text-editorial-accent">{product.sizes[0]?.price}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-editorial-accent group-hover:translate-x-1 transition-transform">
+                      View Details
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Quality Assurance */}
+      {/* Quality Assurance — Lab-focused */}
       <section id="quality" className="py-16 lg:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-                Uncompromising Quality Assurance
+              <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Laboratory Quality</p>
+              <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
+                Every Vial Third-Party Tested
               </h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                Every peptide we supply undergoes a rigorous multi-stage quality control
-                process. Our analytical laboratory employs industry-leading instrumentation
-                to verify identity, purity, and stability before release.
+              <p className="mt-4 text-editorial-muted leading-relaxed">
+                Our analytical laboratory employs the same instrumentation used by pharmaceutical
+                companies. Every batch is tested before it reaches you.
               </p>
               <div className="mt-8 space-y-4">
                 {[
-                  {
-                    title: "HPLC Analysis",
-                    description: "High-performance liquid chromatography confirms purity exceeding 99% for all standard compounds.",
-                  },
-                  {
-                    title: "Mass Spectrometry",
-                    description: "ESI-MS verification of molecular weight and structural identity for every batch produced.",
-                  },
-                  {
-                    title: "Amino Acid Analysis",
-                    description: "Quantitative amino acid composition analysis ensures correct sequence and stoichiometry.",
-                  },
-                  {
-                    title: "Endotoxin Testing",
-                    description: "LAL testing confirms endotoxin levels below detectable limits for sensitive research applications.",
-                  },
+                  { title: "HPLC Analysis", description: "Purity exceeding 99% confirmed for all compounds.", icon: "📊" },
+                  { title: "Mass Spectrometry", description: "ESI-MS molecular weight and identity verification.", icon: "🔬" },
+                  { title: "Amino Acid Analysis", description: "Correct sequence and stoichiometry confirmed.", icon: "🧬" },
+                  { title: "Endotoxin Testing", description: "LAL testing below detectable limits.", icon: "✅" },
                 ].map((item) => (
-                  <div key={item.title} className="flex gap-3">
-                    <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-lab-green/10">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-lab-green">
-                        <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                  <div key={item.title} className="flex gap-3 items-start">
+                    <span className="text-lg mt-0.5">{item.icon}</span>
+                    <div>
+                      <h3 className="text-sm font-bold text-editorial-text">{item.title}</h3>
+                      <p className="text-sm text-editorial-muted">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 inline-flex items-center text-sm font-semibold text-editorial-muted">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mr-1.5 text-editorial-accent"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                Batch-specific CoA included with every order
+              </p>
+            </div>
+            <div className="space-y-5">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
+                <Image src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=800&q=80" alt="HPLC equipment in Bio Peptides quality control laboratory" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+              </div>
+              <div className="grid grid-cols-4 gap-3">
+                {[
+                  { value: "99%+", label: "Min Purity" },
+                  { value: "100%", label: "Batch Tested" },
+                  { value: "<0.1%", label: "Impurities" },
+                  { value: "24h", label: "CoA Turnaround" },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center rounded-xl border border-editorial-border bg-editorial-surface p-3">
+                    <p className="text-xl font-bold text-editorial-accent">{stat.value}</p>
+                    <p className="text-[10px] text-editorial-muted mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* For Research Purposes — Trust Section */}
+      <section className="py-16 lg:py-24 bg-editorial-surface">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl bg-white border border-editorial-border p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+              <div className="lg:col-span-2">
+                <div className="inline-flex items-center rounded-md bg-editorial-accent/10 border border-editorial-accent/20 px-3 py-1 text-xs font-semibold text-editorial-accent uppercase tracking-wider mb-4">
+                  Research Compliance
+                </div>
+                <h2 className="font-serif text-3xl font-bold tracking-tight text-editorial-text">
+                  For Research Purposes Only
+                </h2>
+                <p className="mt-4 text-editorial-muted leading-relaxed">
+                  Bio Peptides is committed to responsible supply. All compounds
+                  are supplied exclusively for legitimate scientific research and are not
+                  intended for human consumption, veterinary use, or any therapeutic application.
+                </p>
+              </div>
+              <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Institutional Verification", description: "All purchasers verified against legitimate research institutions, universities, or pharmaceutical organisations before processing." },
+                  { title: "Regulatory Compliance", description: "Full UK regulatory compliance with complete documentation and traceability for every transaction." },
+                  { title: "Third-Party Testing", description: "Independent analytical verification ensures compounds meet published specifications." },
+                  { title: "Auditable Supply Chain", description: "Fully traceable from synthesis through temperature-controlled delivery." },
+                ].map((item) => (
+                  <div key={item.title} className="rounded-xl bg-editorial-surface border border-editorial-border p-5">
+                    <h3 className="text-sm font-bold text-editorial-text">{item.title}</h3>
+                    <p className="mt-2 text-xs text-editorial-muted leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-8 pt-6 border-t border-editorial-border">
+              <p className="text-[10px] text-editorial-muted text-center max-w-3xl mx-auto leading-relaxed">
+                Bio Peptides Ltd supplies research compounds exclusively for in-vitro laboratory research.
+                Products are not medicines, supplements, or food products. Not approved for human or animal use.
+                Purchasers assume full responsibility for compliance with all applicable regulations in their jurisdiction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us — MediCenter-style icon boxes */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
+              Why 500+ UK Researchers Choose Us
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Next-Day UK Delivery", description: "Same-day dispatch before 14:00 GMT. Temperature-controlled packaging. No customs delays.", icon: "🚚" },
+              { title: "Guaranteed 99%+ Purity", description: "Every batch HPLC and MS verified. Full certificate of analysis included free.", icon: "🔬" },
+              { title: "Competitive Pricing", description: "Research-grade quality at fair prices. Bulk discounts and institutional accounts available.", icon: "💰" },
+              { title: "Custom Synthesis", description: "Bespoke peptide synthesis from novel sequences to modified analogues.", icon: "⚗️" },
+              { title: "Technical Support", description: "Direct access to our research scientists for compound selection and experimental guidance.", icon: "👩‍🔬" },
+              { title: "Secure Checkout", description: "Encrypted payments. Discreet packaging. Full order tracking from lab to your door.", icon: "🔒" },
+            ].map((item) => (
+              <div key={item.title} className="rounded-xl border border-editorial-border p-6 hover:shadow-md hover:border-editorial-accent/20 transition-all">
+                <span className="text-2xl">{item.icon}</span>
+                <h3 className="mt-3 text-base font-bold text-editorial-text">{item.title}</h3>
+                <p className="mt-2 text-sm text-editorial-muted leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 lg:py-24 bg-editorial-surface">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-3xl font-bold tracking-tight text-editorial-text">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-xl border border-editorial-border bg-white p-6">
+                <h3 className="font-serif text-base font-bold text-editorial-text">{faq.question}</h3>
+                <p className="mt-3 text-sm text-editorial-muted leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16 lg:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Get in Touch</p>
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-editorial-text">
+                Bulk Orders &amp; Custom Quotes
+              </h2>
+              <p className="mt-4 text-editorial-muted leading-relaxed">
+                Need bulk quantities, custom synthesis, or institutional pricing?
+                Submit your requirements and we&rsquo;ll respond within one working day.
+              </p>
+              <div className="mt-8 space-y-3">
+                {[
+                  { label: "info@biopeptides.co.uk", detail: "Email us anytime" },
+                  { label: "1 working day response", detail: "Guaranteed turnaround" },
+                  { label: "United Kingdom", detail: "Ships from UK lab" },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-3 rounded-lg border border-editorial-border bg-editorial-surface p-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-editorial-accent/10">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-charcoal">{item.title}</h3>
-                      <p className="text-sm text-gray-600">{item.description}</p>
+                      <p className="text-sm font-semibold text-editorial-text">{item.label}</p>
+                      <p className="text-xs text-editorial-muted">{item.detail}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="space-y-6">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.pexels.com/photos/8532848/pexels-photo-8532848.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Scientist conducting laboratory research and quality analysis"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-gray-200 p-8">
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { value: "99.9%", label: "Minimum Purity" },
-                    { value: "100%", label: "Batch Tested" },
-                    { value: "<0.1%", label: "Impurity Threshold" },
-                    { value: "24h", label: "Certificate Turnaround" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="text-center">
-                      <p className="text-3xl font-bold text-primary font-mono">{stat.value}</p>
-                      <p className="mt-1 text-sm text-gray-600">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trusted by Research Institutions */}
-      <section className="py-12 bg-gray-50 border-y border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-wider">
-            Trusted by Leading Research Institutions
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-            {[
-              "University Research Labs",
-              "Pharmaceutical R&D",
-              "Biotechnology Firms",
-              "Clinical Research Organisations",
-              "Government Laboratories",
-            ].map((name) => (
-              <span
-                key={name}
-                className="text-sm font-medium text-gray-400"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pain Point Solutions */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-              Solutions for Common Research Challenges
-            </h2>
-            <p className="mt-4 text-gray-600">
-              We understand the frustrations researchers face when sourcing peptides.
-              Our service is designed to eliminate these obstacles.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                problem: "Inconsistent purity between batches",
-                solution:
-                  "Rigorous batch-to-batch consistency testing with full analytical data provided for every order.",
-              },
-              {
-                problem: "Lengthy international shipping delays",
-                solution:
-                  "UK-based fulfilment with same-day dispatch and next-day delivery, eliminating customs delays entirely.",
-              },
-              {
-                problem: "Inadequate technical documentation",
-                solution:
-                  "Comprehensive certificates of analysis, handling guides, and direct access to our research scientists.",
-              },
-            ].map((item) => (
-              <div
-                key={item.problem}
-                className="rounded-xl border border-gray-200 p-6"
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-red-400" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="15" y1="9" x2="9" y2="15" />
-                    <line x1="9" y1="9" x2="15" y2="15" />
-                  </svg>
-                  <p className="text-sm font-medium text-gray-500">
-                    {item.problem}
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0 text-lab-green" stroke="currentColor" strokeWidth="2">
-                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    {item.solution}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services — Numbered Steps */}
-      <section id="services" className="py-16 lg:py-24 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-              Our Research Services
-            </h2>
-            <p className="mt-4 text-gray-600">
-              A comprehensive suite of services designed to support every stage of your
-              peptide research programme.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.step} className="flex gap-4">
-                <span className="text-3xl font-bold text-primary/20 font-mono leading-none">
-                  {service.step}
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold text-charcoal">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Competitive Advantages */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-primary/5 border border-primary/10 p-8 lg:p-12">
-            <div className="text-center max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-                The Shab Peptides Advantage
-              </h2>
-              <p className="mt-4 text-gray-600">
-                What sets us apart from international peptide suppliers.
-              </p>
-            </div>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { stat: "0", suffix: " Days", label: "Import Delays", detail: "UK-based means no customs hold-ups" },
-                { stat: "100", suffix: "%", label: "Batch Testing", detail: "Every single batch fully analysed" },
-                { stat: "<24", suffix: "h", label: "Delivery Time", detail: "Next-day UK delivery as standard" },
-                { stat: "1", suffix: "", label: "Point of Contact", detail: "Dedicated account manager for your institution" },
-              ].map((item) => (
-                <div key={item.label} className="text-center">
-                  <p className="text-4xl font-bold text-primary font-mono">
-                    {item.stat}<span className="text-2xl">{item.suffix}</span>
-                  </p>
-                  <p className="mt-1 text-sm font-semibold text-charcoal">{item.label}</p>
-                  <p className="mt-1 text-xs text-gray-600">{item.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / Quote Form */}
-      <section id="contact" className="py-16 lg:py-24 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-charcoal">
-                Request a Research Quote
-              </h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                Submit your requirements and our research team will prepare a
-                detailed quotation within one working day. For urgent enquiries,
-                contact us directly.
-              </p>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary" stroke="currentColor" strokeWidth="2">
-                      <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <span className="text-sm text-gray-600">info@shabpeptides.co.uk</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                  </div>
-                  <span className="text-sm text-gray-600">Response within 1 working day</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-primary" stroke="currentColor" strokeWidth="2">
-                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <span className="text-sm text-gray-600">United Kingdom</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <QuoteForm variant="light" />
+              <QuoteForm variant="editorial" />
             </div>
           </div>
         </div>
       </section>
 
-      <Footer variant="light" />
+      <Footer variant="editorial" />
     </>
   );
 }

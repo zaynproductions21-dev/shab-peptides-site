@@ -3,6 +3,8 @@
 @theme inline {
   --color-background: #ffffff;
   --color-foreground: #1f2937;
+
+  /* Shared accent palette */
   --color-primary: #6366f1;
   --color-primary-light: #818cf8;
   --color-primary-dark: #4f46e5;
@@ -14,7 +16,45 @@
   --color-gold-light: #fbbf24;
   --color-charcoal: #1f2937;
   --color-charcoal-light: #374151;
+
+  /* V1 Editorial — MediCenter-inspired medical teal + cream premium */
+  --color-cream: #FAFAF8;
+  --color-cream-dark: #F0EFEB;
+  --color-editorial-text: #1A2332;
+  --color-editorial-accent: #0097A7;
+  --color-editorial-accent-light: #00BCD4;
+  --color-editorial-accent-dark: #00838F;
+  --color-editorial-muted: #6B7A8D;
+  --color-editorial-border: #E2E8F0;
+  --color-editorial-warm: #FF8A65;
+  --color-editorial-green: #43A047;
+  --color-editorial-surface: #F7FAFB;
+
+  /* V2 Bold — Dark lab e-commerce */
+  --color-bold-bg: #08090E;
+  --color-bold-surface: #111218;
+  --color-bold-border: #1C1D28;
+  --color-bold-accent: #6C5CE7;
+  --color-bold-accent-light: #A29BFE;
+  --color-bold-cyan: #00E5FF;
+  --color-bold-green: #00E676;
+  --color-bold-muted: #6B6B80;
+  --color-bold-price: #00E5FF;
+
+  /* V3 Warm — Friendly e-commerce */
+  --color-warm-bg: #FFFBF7;
+  --color-warm-surface: #FFF5ED;
+  --color-warm-border: #F0E4D8;
+  --color-warm-accent: #D4633A;
+  --color-warm-accent-light: #E87E5A;
+  --color-warm-teal: #2A9D8F;
+  --color-warm-text: #3D3833;
+  --color-warm-muted: #9A8E82;
+  --color-warm-price: #D4633A;
+
+  /* Font stacks */
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -24,7 +64,6 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }

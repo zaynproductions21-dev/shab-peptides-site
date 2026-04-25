@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import CartProvider from "@/components/CartProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,26 +13,45 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+});
+
 export const metadata: Metadata = {
-  title: "Research Peptides UK — 99.9% Purity | Shab Peptides",
+  metadataBase: new URL("https://shab-peptides-site.vercel.app"),
+  title: {
+    default: "Best Peptide Supplier UK | Research Grade | Bio Peptides",
+    template: "%s | Bio Peptides",
+  },
   description:
-    "The UK's most reliable source for research peptides. Premium retatrutide, GLP-1 agonists and metabolic research compounds with guaranteed purity and same-day dispatch.",
+    "UK's fastest research peptide supplier. Order by 2pm, ships today. Third-party tested compounds with certificates of analysis. 99%+ purity verified.",
   keywords: [
     "research peptides UK",
-    "retatrutide",
-    "GLP-1 agonists",
+    "peptide supplier",
+    "buy peptides UK",
+    "BPC-157 UK",
+    "TB-500 UK",
+    "GHK-Cu UK",
     "metabolic research compounds",
-    "peptide synthesis",
     "high purity peptides",
-    "Shab Peptides",
+    "Bio Peptides",
   ],
   openGraph: {
-    title: "Research Peptides UK — 99.9% Purity | Shab Peptides",
+    title: "Best Peptide Supplier UK | Research Grade | Bio Peptides",
     description:
-      "Premium research peptides with guaranteed purity and same-day dispatch from the UK.",
+      "UK's fastest research peptide supplier. Third-party tested compounds with certificates of analysis and same-day dispatch.",
     type: "website",
     locale: "en_GB",
+    url: "/",
+    siteName: "Bio Peptides",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Peptide Supplier UK | Research Grade | Bio Peptides",
+    description: "UK's fastest research peptide supplier. 99%+ purity. Same-day dispatch.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -42,9 +62,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CartProvider>
+          {children}
+        </CartProvider>
+      </body>
     </html>
   );
 }
