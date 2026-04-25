@@ -71,12 +71,22 @@ export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
     warm: "bg-warm-accent hover:bg-warm-accent-light",
   };
 
+  // Logo-colour border on the form wrapper, per variant
+  const wrapperStyles: Record<Variant, string> = {
+    light: "border-2 border-primary/60 bg-white",
+    dark: "border-2 border-primary/60 bg-zinc-950/40",
+    minimal: "border-2 border-primary/60 bg-white",
+    editorial: "border-2 border-editorial-accent/70 bg-white",
+    bold: "border-2 border-bold-accent/70 bg-bold-bg/40",
+    warm: "border-2 border-warm-accent/70 bg-warm-bg/40",
+  };
+
   const s = styles[variant];
   const inputBase = "w-full rounded-lg border px-4 py-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50";
 
   if (submitted) {
     return (
-      <div className={`rounded-xl p-8 text-center border ${s.success}`}>
+      <div className={`rounded-2xl p-8 text-center ${wrapperStyles[variant]}`}>
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-lab-green/10">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-lab-green">
             <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -92,7 +102,7 @@ export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className="space-y-5">
+    <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className={`rounded-2xl p-6 sm:p-8 space-y-5 ${wrapperStyles[variant]}`}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className={`block text-sm font-medium mb-1.5 ${s.label}`}>
