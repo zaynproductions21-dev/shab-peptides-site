@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Compound } from "@/data/compounds";
+import QuickAddButton from "./QuickAddButton";
 
 interface CompoundGridProps {
   compounds: Compound[];
@@ -117,12 +118,15 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
                       <span className="inline-flex items-center gap-1 rounded bg-editorial-accent/10 px-2 py-0.5 font-semibold text-editorial-accent">{compound.purity} Pure</span>
                       <span className="font-mono text-editorial-muted">CAS: {compound.cas}</span>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-editorial-border flex items-center justify-between">
+                    <div className="mt-4 pt-3 border-t border-editorial-border flex items-center justify-between gap-3">
                       <p className="text-xl font-bold text-editorial-accent">{compound.sizes[0]?.price}</p>
-                      <span className="inline-flex items-center text-sm font-semibold text-editorial-accent group-hover:translate-x-1 transition-transform">
-                        View Details
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                      </span>
+                      <QuickAddButton
+                        slug={compound.slug}
+                        name={compound.name}
+                        size={compound.sizes[0]?.size || ""}
+                        price={compound.sizes[0]?.price || ""}
+                        image={compound.image}
+                      />
                     </div>
                   </div>
                 </Link>

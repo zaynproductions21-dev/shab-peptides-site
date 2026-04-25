@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
+import QuickAddButton from "@/components/QuickAddButton";
 import { getFeaturedCompounds } from "@/data/compounds";
 
 export const metadata: Metadata = {
@@ -239,13 +240,16 @@ export default async function V1Editorial() {
                     {product.cas && <span className="font-mono text-editorial-muted truncate">CAS: {product.cas}</span>}
                   </div>
 
-                  {/* Pricing */}
-                  <div className="mt-auto pt-4 border-t border-editorial-border flex items-center justify-between">
+                  {/* Pricing + Quick Add */}
+                  <div className="mt-auto pt-4 border-t border-editorial-border flex items-center justify-between gap-3">
                     <p className="text-2xl font-bold text-editorial-accent">{product.sizes[0]?.price}</p>
-                    <span className="inline-flex items-center text-sm font-semibold text-editorial-accent group-hover:translate-x-1 transition-transform">
-                      View Details
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-1"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                    </span>
+                    <QuickAddButton
+                      slug={product.slug}
+                      name={product.name}
+                      size={product.sizes[0]?.size || ""}
+                      price={product.sizes[0]?.price || ""}
+                      image={product.image}
+                    />
                   </div>
                 </div>
               </Link>
