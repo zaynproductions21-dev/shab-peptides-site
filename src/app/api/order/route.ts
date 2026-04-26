@@ -34,7 +34,7 @@ async function sendBrevoEmail(to: string, subject: string, htmlContent: string) 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      sender: { name: "Bio Peptides", email: "info@biopeptides.co.uk" },
+      sender: { name: "Bell Peptides", email: "info@bellpeptides.co.uk" },
       to: [{ email: to }],
       subject,
       htmlContent,
@@ -76,7 +76,7 @@ function buildCustomerEmail(order: OrderPayload): string {
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333">
       <div style="background:#0097A7;padding:24px;text-align:center">
-        <h1 style="color:#fff;margin:0;font-size:22px">Bio Peptides</h1>
+        <h1 style="color:#fff;margin:0;font-size:22px">Bell Peptides</h1>
       </div>
       <div style="padding:24px">
         <h2 style="color:#0097A7;margin-top:0">Thank you for your order, ${order.customer.name}!</h2>
@@ -103,7 +103,7 @@ function buildCustomerEmail(order: OrderPayload): string {
         <p style="margin:4px 0;font-size:14px"><strong>Organisation:</strong> ${order.customer.organisation}</p>
         <p style="margin:4px 0;font-size:14px"><strong>Research Purpose:</strong> ${order.customer.researchPurpose}</p>
         <hr style="border:none;border-top:1px solid #eee;margin:24px 0" />
-        <p style="font-size:11px;color:#999">All compounds are supplied strictly for in vitro research use only. Not for human or veterinary use. BELL RED LIMITED (trading as Bio Peptides), Company No. 12841067, 16 Neptune Street, Tipton, England, DY4 8JF.</p>
+        <p style="font-size:11px;color:#999">All compounds are supplied strictly for in vitro research use only. Not for human or veterinary use. BELL RED LIMITED (trading as Bell Peptides), Company No. 12841067, 16 Neptune Street, Tipton, England, DY4 8JF.</p>
       </div>
     </div>
   `;
@@ -148,7 +148,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const businessEmail = process.env.BUSINESS_EMAIL || "info@biopeptides.co.uk";
+    const businessEmail = process.env.BUSINESS_EMAIL || "info@bellpeptides.co.uk";
     const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+447000000000"
 
     // Send emails and SMS in parallel
@@ -156,7 +156,7 @@ export async function POST(request: Request) {
       // Customer confirmation email
       sendBrevoEmail(
         order.customer.email,
-        `Order Received — Bio Peptides #${Date.now().toString(36).toUpperCase()}`,
+        `Order Received — Bell Peptides #${Date.now().toString(36).toUpperCase()}`,
         buildCustomerEmail(order)
       ),
 
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
       order.customer.phone && process.env.TWILIO_ACCOUNT_SID
         ? sendTwilioSms(
             order.customer.phone,
-            `Hi ${order.customer.name}, thanks for your Bio Peptides order (£${order.total}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: research@biopeptides.co.uk`
+            `Hi ${order.customer.name}, thanks for your Bell Peptides order (£${order.total}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: research@bellpeptides.co.uk`
           )
         : Promise.resolve(),
     ]);

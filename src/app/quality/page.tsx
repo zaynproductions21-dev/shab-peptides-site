@@ -4,12 +4,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Research Peptides Certificate of Analysis | Bio Peptides UK",
+  title: "Research Peptides Certificate of Analysis | Bell Peptides UK",
   description:
-    "Every Bio Peptides compound ships with third-party HPLC and mass spectrometry data. UK-stocked, same-day dispatch by 2pm. Research use only.",
+    "Every Bell Peptides compound ships with third-party HPLC and mass spectrometry data. UK-stocked, same-day dispatch by 2pm. Research use only.",
   alternates: { canonical: "/quality" },
   openGraph: {
-    title: "Research Peptides Certificate of Analysis | Bio Peptides UK",
+    title: "Research Peptides Certificate of Analysis | Bell Peptides UK",
     description: "Every compound ships with third-party HPLC and mass spectrometry data.",
     url: "/quality",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "What does a certificate of analysis from Bio Peptides include?",
+    question: "What does a certificate of analysis from Bell Peptides include?",
     answer:
       "Each CoA includes the compound name and CAS number, the specific batch reference, HPLC purity percentage with chromatogram, mass spectrometry confirmation data, the name and accreditation details of the testing laboratory, and the date of analysis. The document is batch-specific, not a generic product-level certificate — the data on your CoA corresponds directly to the physical stock you receive.",
   },
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "Are your certificates of analysis produced by independent laboratories?",
     answer:
-      "Yes. All analytical testing is commissioned from third-party laboratories that operate independently of Bio Peptides and have no commercial interest in the result. Our testing partners run ISO-accredited facilities and issue documentation under their own laboratory reference. We do not issue self-certified CoAs or rely solely on documentation provided by peptide manufacturers.",
+      "Yes. All analytical testing is commissioned from third-party laboratories that operate independently of Bell Peptides and have no commercial interest in the result. Our testing partners run ISO-accredited facilities and issue documentation under their own laboratory reference. We do not issue self-certified CoAs or rely solely on documentation provided by peptide manufacturers.",
   },
   {
     question: "Can I request a certificate of analysis before placing an order?",
@@ -40,10 +40,10 @@ const faqs = [
   {
     question: "How do I match my order to its certificate of analysis?",
     answer:
-      "Every order dispatched by Bio Peptides includes a batch reference number on the accompanying documentation. That batch reference corresponds directly to the certificate of analysis for that specific lot. If you need to retrieve your CoA after dispatch, contact our support team with your order number and batch reference. We maintain archived analytical records for all batches supplied and can reissue documentation on request.",
+      "Every order dispatched by Bell Peptides includes a batch reference number on the accompanying documentation. That batch reference corresponds directly to the certificate of analysis for that specific lot. If you need to retrieve your CoA after dispatch, contact our support team with your order number and batch reference. We maintain archived analytical records for all batches supplied and can reissue documentation on request.",
   },
   {
-    question: "Are Bio Peptides compounds suitable for use in human subjects?",
+    question: "Are Bell Peptides compounds suitable for use in human subjects?",
     answer:
       "No. All compounds are intended strictly for laboratory and in vitro research purposes only. They are not approved, licensed, or supplied for administration to humans or animals, and must not be used outside a controlled research environment. Researchers are responsible for ensuring that use of any compound complies with applicable institutional, ethical, and regulatory requirements in their jurisdiction.",
   },
@@ -112,7 +112,7 @@ export default function QualityPage() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
               <Image
                 src="/generated/section-3.webp"
-                alt="HPLC and mass spectrometry equipment in Bio Peptides quality control laboratory"
+                alt="HPLC and mass spectrometry equipment in Bell Peptides quality control laboratory"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -143,7 +143,7 @@ export default function QualityPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Batch Tracking and Chain of Custody</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              Every compound dispatched by Bio Peptides carries a batch reference number linked directly to its certificate of analysis. That number appears on your order documentation. Any researcher can request the corresponding CoA at any point after purchase — traceability does not end at the point of dispatch.
+              Every compound dispatched by Bell Peptides carries a batch reference number linked directly to its certificate of analysis. That number appears on your order documentation. Any researcher can request the corresponding CoA at any point after purchase — traceability does not end at the point of dispatch.
             </p>
             <p>
               We maintain archived analytical records for all batches we have supplied. Research teams running longitudinal studies or requiring compound consistency across multiple orders can request stock from a specific previously verified batch, subject to availability.
@@ -158,7 +158,7 @@ export default function QualityPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Sample Certificate of Analysis</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              A representative certificate of analysis is available to download below. It illustrates the format and content of the documentation that accompanies every Bio Peptides order: compound name and CAS number, batch reference, HPLC chromatogram, purity percentage, MS confirmation data, laboratory details, and date of analysis.
+              A representative certificate of analysis is available to download below. It illustrates the format and content of the documentation that accompanies every Bell Peptides order: compound name and CAS number, batch reference, HPLC chromatogram, purity percentage, MS confirmation data, laboratory details, and date of analysis.
             </p>
             <p>
               Every order ships with a batch-specific Certificate of Analysis. If you need to confirm the documentation satisfies your institution, ethics committee, or research protocol before purchase, our support team can email a sample CoA on request.
@@ -183,10 +183,10 @@ export default function QualityPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Purity Guarantee and Research-Use Commitment</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              All compounds supplied by Bio Peptides carry a minimum documented purity of 98%, confirmed by third-party HPLC analysis. Where analytical data shows purity above this threshold, the exact figure is reported on the certificate — not a rounded or minimum-quoted value.
+              All compounds supplied by Bell Peptides carry a minimum documented purity of 98%, confirmed by third-party HPLC analysis. Where analytical data shows purity above this threshold, the exact figure is reported on the certificate — not a rounded or minimum-quoted value.
             </p>
             <p>
-              All compounds are supplied strictly for in vitro and laboratory research purposes only. They are not intended for human or veterinary administration, clinical use, or any application outside a controlled research setting. Bio Peptides does not supply to members of the public for personal use. Orders are accepted from research institutions, universities, biotechnology companies, and qualified research professionals.
+              All compounds are supplied strictly for in vitro and laboratory research purposes only. They are not intended for human or veterinary administration, clinical use, or any application outside a controlled research setting. Bell Peptides does not supply to members of the public for personal use. Orders are accepted from research institutions, universities, biotechnology companies, and qualified research professionals.
             </p>
           </div>
         </div>

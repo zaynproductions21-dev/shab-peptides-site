@@ -5,7 +5,7 @@ const WHATSAPP_NUMBER = "447000000000";
 
 export default function WhatsAppButton() {
   const message = encodeURIComponent(
-    "Hi Bio Peptides, I'd like to place an order. Can you help?"
+    "Hi Bell Peptides, I'd like to place an order. Can you help?"
   );
 
   return (

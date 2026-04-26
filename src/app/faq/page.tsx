@@ -3,12 +3,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Bio Peptides UK",
+  title: "Frequently Asked Questions | Bell Peptides UK",
   description:
-    "Answers to common questions about ordering research peptides from Bio Peptides. Purity, dispatch, certificates of analysis, returns, institutional accounts, and more.",
+    "Answers to common questions about ordering research peptides from Bell Peptides. Purity, dispatch, certificates of analysis, returns, institutional accounts, and more.",
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "Frequently Asked Questions | Bio Peptides UK",
+    title: "Frequently Asked Questions | Bell Peptides UK",
     description: "Common questions about purity, dispatch, CoAs, returns, institutional accounts and more.",
     url: "/faq",
     type: "website",
@@ -37,10 +37,10 @@ const faqCategories = [
   {
     category: "Research Use & Compliance",
     faqs: [
-      { question: "Are your peptides legal in the UK?", answer: "Most synthetic peptides are not controlled substances under UK law and are not classified as licensed medicines, provided they are not marketed or used for medicinal purposes. All Bio Peptides products are supplied strictly for research use. Buyers are responsible for satisfying themselves on legality in their jurisdiction." },
+      { question: "Are your peptides legal in the UK?", answer: "Most synthetic peptides are not controlled substances under UK law and are not classified as licensed medicines, provided they are not marketed or used for medicinal purposes. All Bell Peptides products are supplied strictly for research use. Buyers are responsible for satisfying themselves on legality in their jurisdiction." },
       { question: "Can I use these compounds on humans or animals?", answer: "No. All products are for in vitro laboratory research only. They are not approved for clinical, veterinary, or human use, and must not be administered to any living organism outside a formally approved research protocol." },
-      { question: "Does Bio Peptides have MHRA approval?", answer: "No. Our products are not licensed medicinal products and we do not hold MHRA approval. MHRA approval applies to medicines intended for human or veterinary use. Our compounds are research chemicals supplied for laboratory use only." },
-      { question: "Who can buy from Bio Peptides?", answer: "Researchers, scientists, and academics conducting legitimate laboratory or scientific research. Buyers should be affiliated with a suitable research context — a university, private laboratory, or commercial R&D organisation. We cannot supply individuals unable to confirm a lawful research purpose." },
+      { question: "Does Bell Peptides have MHRA approval?", answer: "No. Our products are not licensed medicinal products and we do not hold MHRA approval. MHRA approval applies to medicines intended for human or veterinary use. Our compounds are research chemicals supplied for laboratory use only." },
+      { question: "Who can buy from Bell Peptides?", answer: "Researchers, scientists, and academics conducting legitimate laboratory or scientific research. Buyers should be affiliated with a suitable research context — a university, private laboratory, or commercial R&D organisation. We cannot supply individuals unable to confirm a lawful research purpose." },
     ],
   },
   {
@@ -57,7 +57,7 @@ const faqCategories = [
     faqs: [
       { question: "What is your returns policy?", answer: "Due to the nature of research compounds and chain-of-custody requirements, we cannot accept returns of opened products. We will replace or refund products that arrive damaged, are incorrectly dispatched, or do not match their CoA. Contact us within 7 days of delivery." },
       { question: "How quickly do you respond to enquiries?", answer: "Within 2 to 4 business hours during working hours (Monday to Friday, 9am to 5pm). Enquiries sent outside these hours are handled the next working day." },
-      { question: "How do I contact you about an existing order?", answer: "Email research@biopeptides.co.uk with your order reference number. For same-day dispatch issues, contact us before 1:30pm to allow time before the 2pm cut-off." },
+      { question: "How do I contact you about an existing order?", answer: "Email research@bellpeptides.co.uk with your order reference number. For same-day dispatch issues, contact us before 1:30pm to allow time before the 2pm cut-off." },
       { question: "Can you help with technical questions?", answer: "Yes. Our team can advise on purity grades, sequence confirmation, reconstitution, storage, and CoA documentation. Include the product name or code and what you need when you get in touch." },
     ],
   },

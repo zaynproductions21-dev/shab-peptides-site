@@ -19,7 +19,7 @@ export default function CartPage() {
 
   function buildWhatsAppMessage() {
     if (items.length === 0) return "";
-    let msg = `Hi Bio Peptides, I'd like to place an order.\n\nName: ${form.name}\nOrganisation: ${form.organisation}\nResearch Purpose: ${form.researchPurpose}\n\nItems:\n`;
+    let msg = `Hi Bell Peptides, I'd like to place an order.\n\nName: ${form.name}\nOrganisation: ${form.organisation}\nResearch Purpose: ${form.researchPurpose}\n\nItems:\n`;
     items.forEach((item, i) => {
       msg += `${i + 1}. ${item.name} (${item.size}) × ${item.quantity} — ${item.price}\n`;
     });

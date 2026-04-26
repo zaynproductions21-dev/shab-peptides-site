@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Peptide Research Guidelines | Bio Peptides UK",
+  title: "Peptide Research Guidelines | Bell Peptides UK",
   description:
-    "Essential handling, storage, reconstitution and safety guidelines for research peptides. Bio Peptides supplies UK researchers with third-party verified peptides for laboratory use only.",
+    "Essential handling, storage, reconstitution and safety guidelines for research peptides. Bell Peptides supplies UK researchers with third-party verified peptides for laboratory use only.",
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "How do I calculate the molar concentration of my reconstituted peptide?",
     answer:
-      "Divide the peptide mass in milligrams by its molecular weight in g/mol to get millimoles, then divide by the reconstitution volume in millilitres to get millimolar (mM) concentration. Molecular weight is on the Bio Peptides Certificate of Analysis. If purity is below 98%, adjust the effective mass to get a corrected figure.",
+      "Divide the peptide mass in milligrams by its molecular weight in g/mol to get millimoles, then divide by the reconstitution volume in millilitres to get millimolar (mM) concentration. Molecular weight is on the Bell Peptides Certificate of Analysis. If purity is below 98%, adjust the effective mass to get a corrected figure.",
   },
   {
     question: "How long is a reconstituted peptide solution stable at -20\u00B0C?",
@@ -35,7 +35,7 @@ const faqs = [
       "Stability depends on sequence, but 30 days is a reasonable working limit for reconstituted aqueous solutions. Peptides in acidic or basic buffers may degrade faster than those in neutral PBS. For sequences with known susceptibility to hydrolysis or oxidation, use within 7\u201314 days and verify integrity by HPLC if quantitative accuracy is critical.",
   },
   {
-    question: "Are Bio Peptides products suitable for in vivo or clinical use?",
+    question: "Are Bell Peptides products suitable for in vivo or clinical use?",
     answer:
       "No. All peptides are manufactured and sold strictly for in vitro laboratory research. They are not sterile pharmaceutical preparations, are not approved for clinical, veterinary, or human use, and must not be administered to any living organism outside a formally approved, institutionally governed research protocol.",
   },
@@ -143,7 +143,7 @@ export default function GuidelinesPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Safety and Personal Protective Equipment</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              All peptides supplied by Bio Peptides are for in vitro research use only. They must not be administered to humans or animals outside of formally approved research protocols. Treat every research peptide as a potentially hazardous compound.
+              All peptides supplied by Bell Peptides are for in vitro research use only. They must not be administered to humans or animals outside of formally approved research protocols. Treat every research peptide as a potentially hazardous compound.
             </p>
             <p>
               Minimum PPE during weighing and reconstitution: nitrile gloves, lab coat, safety spectacles. Where aerosolisation is possible — weighing lyophilised powder being the obvious case — use a half-face respirator with a P3 filter, or work inside a fume hood.
@@ -164,7 +164,7 @@ export default function GuidelinesPage() {
               Good documentation is not optional. It underpins reproducible, publishable research — and it protects you.
             </p>
             <p>
-              For every peptide used, record: supplier name and product code, lot number, date of receipt, storage location, date of reconstitution, solvent system, final concentration, and the date of each aliquot use. Retain all Certificates of Analysis — Bio Peptides provides third-party HPLC and mass spectrometry CoAs with every order — and attach copies to the relevant experiment records.
+              For every peptide used, record: supplier name and product code, lot number, date of receipt, storage location, date of reconstitution, solvent system, final concentration, and the date of each aliquot use. Retain all Certificates of Analysis — Bell Peptides provides third-party HPLC and mass spectrometry CoAs with every order — and attach copies to the relevant experiment records.
             </p>
             <p>
               If you use an electronic laboratory notebook, tag entries with the peptide lot number for rapid cross-referencing. Records should be kept for a minimum of ten years, in line with good laboratory practice (GLP) principles and UK Research Integrity Office (UKRIO) guidance.
@@ -192,7 +192,7 @@ export default function GuidelinesPage() {
       <section className="py-16 lg:py-20 bg-editorial-surface">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-editorial-muted leading-relaxed mb-6">
-            All Bio Peptides orders placed before 2pm, Monday to Friday, are dispatched the same day. Every order includes third-party HPLC and mass spectrometry Certificates of Analysis.
+            All Bell Peptides orders placed before 2pm, Monday to Friday, are dispatched the same day. Every order includes third-party HPLC and mass spectrometry Certificates of Analysis.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="/compounds" className="inline-flex items-center justify-center rounded-lg bg-editorial-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-sm">

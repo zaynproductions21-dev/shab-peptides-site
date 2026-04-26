@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const release = await getPressReleaseBySlug(slug);
   if (!release) return {};
   return {
-    title: `${release.title} | Bio Peptides Press`,
+    title: `${release.title} | Bell Peptides Press`,
     description: release.subtitle || release.body.slice(0, 155),
     alternates: { canonical: `/press/${release.slug}` },
     openGraph: {

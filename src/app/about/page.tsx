@@ -4,9 +4,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Bio Peptides | UK Research Peptide Supplier",
+  title: "About Bell Peptides | UK Research Peptide Supplier",
   description:
-    "Bio Peptides is a trading name of BELL RED LIMITED. UK-based supplier of research-grade peptides with third-party testing, same-day dispatch, and dedicated institutional support.",
+    "Bell Peptides is a trading name of BELL RED LIMITED. UK-based supplier of research-grade peptides with third-party testing, same-day dispatch, and dedicated institutional support.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">About Us</p>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-editorial-text leading-[1.15]">
-            About Bio Peptides
+            About Bell Peptides
           </h1>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function AboutPage() {
               <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Who We Are</h2>
               <div className="text-editorial-muted leading-relaxed space-y-4">
                 <p>
-                  Bio Peptides is a UK-based supplier of research-grade peptides, serving universities, pharmaceutical companies, biotechnology firms, contract research organisations, and government laboratories. We operate under <strong className="text-editorial-text">BELL RED LIMITED</strong>, a company registered in England and Wales (Company Number 12841067).
+                  Bell Peptides is a UK-based supplier of research-grade peptides, serving universities, pharmaceutical companies, biotechnology firms, contract research organisations, and government laboratories. We operate under <strong className="text-editorial-text">BELL RED LIMITED</strong>, a company registered in England and Wales (Company Number 12841067).
                 </p>
                 <p>
                   Our focus is straightforward: supply high-purity research compounds, backed by independent third-party analytical data, dispatched from UK stock the same day you order. Every product we sell comes with a batch-specific certificate of analysis produced by an accredited independent laboratory. No exceptions.
@@ -44,7 +44,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
               <Image
                 src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80"
-                alt="Bio Peptides laboratory facility"
+                alt="Bell Peptides laboratory facility"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -82,7 +82,7 @@ export default function AboutPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Our Commitment</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              We built Bio Peptides because the UK research community deserved a domestic supplier that met three basic requirements: verifiable quality, fast dispatch, and transparent compliance. Too many researchers were relying on international suppliers with long lead times, inconsistent documentation, and uncertain regulatory positioning.
+              We built Bell Peptides because the UK research community deserved a domestic supplier that met three basic requirements: verifiable quality, fast dispatch, and transparent compliance. Too many researchers were relying on international suppliers with long lead times, inconsistent documentation, and uncertain regulatory positioning.
             </p>
             <p>
               Our approach is not complicated. We stock research-grade compounds in the UK. We test every batch through independent third-party laboratories. We dispatch the same day. And we are transparent about what our products are and are not intended for.
@@ -106,7 +106,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-editorial-muted">Trading As</p>
-                <p className="font-semibold text-editorial-text">Bio Peptides</p>
+                <p className="font-semibold text-editorial-text">Bell Peptides</p>
               </div>
               <div>
                 <p className="text-editorial-muted">Company Number</p>
@@ -122,7 +122,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-editorial-muted">Email</p>
-                <p className="font-semibold text-editorial-accent">research@biopeptides.co.uk</p>
+                <p className="font-semibold text-editorial-accent">research@bellpeptides.co.uk</p>
               </div>
             </div>
           </div>

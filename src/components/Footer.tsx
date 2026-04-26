@@ -35,7 +35,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
                 <line x1="10" y1="20" x2="22" y2="20" stroke="currentColor" strokeWidth="1.5" />
               </svg>
               <span className={`text-lg tracking-tight ${isSerif ? "font-serif font-semibold" : "font-semibold"}`}>
-                Bio Peptides
+                Bell Peptides
               </span>
             </Link>
             <p className={`mt-4 text-sm leading-relaxed ${s.text}`}>
@@ -95,8 +95,8 @@ export default function Footer({ variant = "light" }: FooterProps) {
             <ul className="mt-4 space-y-3">
               <li className={`text-sm ${s.text}`}>United Kingdom</li>
               <li>
-                <a href="mailto:research@biopeptides.co.uk" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
-                  research@biopeptides.co.uk
+                <a href="mailto:research@bellpeptides.co.uk" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
+                  research@bellpeptides.co.uk
                 </a>
               </li>
               <li>
@@ -116,7 +116,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
         <div className={`mt-12 pt-8 border-t ${s.border}`}>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className={`text-xs ${s.text}`}>
-              &copy; {new Date().getFullYear()} BELL RED LIMITED (trading as Bio Peptides). Company No. 12841067. All rights reserved.
+              &copy; {new Date().getFullYear()} BELL RED LIMITED (trading as Bell Peptides). Company No. 12841067. All rights reserved.
             </p>
             <div className={`flex flex-wrap gap-4 sm:gap-6 text-xs ${s.text}`}>
               <Link href="/privacy" className={`${s.hover} transition-colors`}>Privacy Policy</Link>

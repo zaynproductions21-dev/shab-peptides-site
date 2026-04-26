@@ -75,7 +75,7 @@ export default function InstitutionalPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Who We Work With</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              Bio Peptides supplies research-grade peptides to institutional clients across the UK and Europe. That includes Russell Group universities, independent research institutes, CROs, pharmaceutical and biotech companies, and NHS-affiliated research facilities. All products are for in vitro and laboratory research use only — not for clinical, veterinary or human administration.
+              Bell Peptides supplies research-grade peptides to institutional clients across the UK and Europe. That includes Russell Group universities, independent research institutes, CROs, pharmaceutical and biotech companies, and NHS-affiliated research facilities. All products are for in vitro and laboratory research use only — not for clinical, veterinary or human administration.
             </p>
             <p>
               If your organisation needs consistent, high-purity peptide supply backed by documented quality assurance, we work directly with your procurement team from first enquiry through to ongoing replenishment.
