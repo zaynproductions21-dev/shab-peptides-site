@@ -44,7 +44,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
     name: compound.name,
     description: compound.shortDescription,
     image: compound.image,
-    brand: { "@type": "Brand", name: "Bell Peptides" },
+    brand: { "@type": "Brand", name: "Premio Peptides" },
     offers: compound.sizes.map((s) => ({
       "@type": "Offer",
       price: s.price.replace("£", "").replace("From ", ""),
@@ -52,7 +52,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
       availability: compound.availability === "In Stock"
         ? "https://schema.org/InStock"
         : "https://schema.org/PreOrder",
-      seller: { "@type": "Organization", name: "Bell Peptides" },
+      seller: { "@type": "Organization", name: "Premio Peptides" },
     })),
   };
 
@@ -70,9 +70,9 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://shab-peptides-site.vercel.app/" },
-      { "@type": "ListItem", position: 2, name: "Compounds", item: "https://shab-peptides-site.vercel.app/compounds" },
-      { "@type": "ListItem", position: 3, name: compound.name, item: `https://shab-peptides-site.vercel.app/compounds/${compound.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://premiopeptides.com/" },
+      { "@type": "ListItem", position: 2, name: "Compounds", item: "https://premiopeptides.com/compounds" },
+      { "@type": "ListItem", position: 3, name: compound.name, item: `https://premiopeptides.com/compounds/${compound.slug}` },
     ],
   };
 
@@ -261,7 +261,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
       <section className="py-8 bg-white border-y border-editorial-border">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <p className="text-[10px] text-editorial-muted text-center leading-relaxed">
-            {compound.name} is supplied by Bell Peptides (BELL RED LIMITED) exclusively for in vitro laboratory research. It is not a licensed medicine, is not approved for human or veterinary use, and must not be administered to any living organism outside a formally approved research protocol. Purchasers assume full responsibility for compliance with applicable regulations.
+            {compound.name} is supplied by Premio Peptides (BELL RED LIMITED) exclusively for in vitro laboratory research. It is not a licensed medicine, is not approved for human or veterinary use, and must not be administered to any living organism outside a formally approved research protocol. Purchasers assume full responsibility for compliance with applicable regulations.
           </p>
         </div>
       </section>

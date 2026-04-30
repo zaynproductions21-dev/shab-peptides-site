@@ -43,7 +43,7 @@ export default function OrderConfirmedPage() {
 
           <div className="mt-6 rounded-lg bg-editorial-accent/5 border border-editorial-accent/15 p-3">
             <p className="text-[11px] text-editorial-accent leading-relaxed">
-              All compounds are supplied strictly for in vitro research use only. Orders are subject to research verification. BELL RED LIMITED (trading as Bell Peptides), Company No. 12841067.
+              All compounds are supplied strictly for in vitro research use only. Orders are subject to research verification. BELL RED LIMITED (trading as Premio Peptides), Company No. 12841067.
             </p>
           </div>
 

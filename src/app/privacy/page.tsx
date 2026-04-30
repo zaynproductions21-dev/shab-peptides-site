@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Bell Peptides",
+  title: "Privacy Policy | Premio Peptides",
   description:
-    "Privacy policy for Bell Peptides, a trading name of BELL RED LIMITED. How we collect, use, and protect your personal data under UK GDPR.",
+    "Privacy policy for Premio Peptides, a trading name of BELL RED LIMITED. How we collect, use, and protect your personal data under UK GDPR.",
 };
 
 export default function PrivacyPage() {
@@ -29,8 +29,8 @@ export default function PrivacyPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">1. Who We Are</h2>
-              <p>Bell Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, a company registered in England and Wales (Company Number 12841067). Our registered address is 16 Neptune Street, Tipton, England, DY4 8JF.</p>
-              <p className="mt-2">For the purposes of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, BELL RED LIMITED is the data controller. If you have any questions about this policy or how we handle your data, contact us at <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">research@bellpeptides.co.uk</a>.</p>
+              <p>Premio Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, a company registered in England and Wales (Company Number 12841067). Our registered address is 16 Neptune Street, Tipton, England, DY4 8JF.</p>
+              <p className="mt-2">For the purposes of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, BELL RED LIMITED is the data controller. If you have any questions about this policy or how we handle your data, contact us at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">info@premiopeptides.com</a>.</p>
             </div>
 
             <div>
@@ -101,7 +101,7 @@ export default function PrivacyPage() {
                 <li>Data portability</li>
                 <li>Withdraw consent at any time (where consent is the lawful basis)</li>
               </ul>
-              <p className="mt-2">To exercise any of these rights, contact us at <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">research@bellpeptides.co.uk</a>. We will respond within one month. You also have the right to lodge a complaint with the Information Commissioner&rsquo;s Office (ICO) at <a href="https://ico.org.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.</p>
+              <p className="mt-2">To exercise any of these rights, contact us at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">info@premiopeptides.com</a>. We will respond within one month. You also have the right to lodge a complaint with the Information Commissioner&rsquo;s Office (ICO) at <a href="https://ico.org.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.</p>
             </div>
 
             <div>
@@ -118,10 +118,10 @@ export default function PrivacyPage() {
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">10. Contact Us</h2>
               <p>If you have any questions about this privacy policy or our data practices, contact us:</p>
               <div className="mt-3 space-y-1 text-sm">
-                <p><strong className="text-editorial-text">BELL RED LIMITED</strong> (trading as Bell Peptides)</p>
+                <p><strong className="text-editorial-text">BELL RED LIMITED</strong> (trading as Premio Peptides)</p>
                 <p>16 Neptune Street, Tipton, England, DY4 8JF</p>
                 <p>Company Number: 12841067</p>
-                <p>Email: <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent">research@bellpeptides.co.uk</a></p>
+                <p>Email: <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a></p>
               </div>
             </div>
 

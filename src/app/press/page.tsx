@@ -5,13 +5,13 @@ import Footer from "@/components/Footer";
 import { getPressReleases } from "@/data/press";
 
 export const metadata: Metadata = {
-  title: "Press Releases | Bell Peptides UK",
+  title: "Press Releases | Premio Peptides UK",
   description:
-    "Official press releases and company announcements from Bell Peptides — UK's research peptide supplier. Distribution-ready statements for journalists and partners.",
+    "Official press releases and company announcements from Premio Peptides — UK's research peptide supplier. Distribution-ready statements for journalists and partners.",
   alternates: { canonical: "/press" },
   openGraph: {
-    title: "Press Releases | Bell Peptides UK",
-    description: "Official press releases and company announcements from Bell Peptides.",
+    title: "Press Releases | Premio Peptides UK",
+    description: "Official press releases and company announcements from Premio Peptides.",
     url: "/press",
     type: "website",
   },

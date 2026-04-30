@@ -6,19 +6,19 @@ import CompoundGrid from "@/components/CompoundGrid";
 import { getCompounds } from "@/data/compounds";
 
 export const metadata: Metadata = {
-  title: "Research Peptides | Buy Peptides UK | Bell Peptides",
+  title: "Research Peptides | Buy Peptides UK | Premio Peptides",
   description:
     "Browse our full catalogue of research-grade peptides. 99%+ purity, third-party CoA, same-day UK dispatch. BPC-157, TB-500, GHK-Cu, Tesamorelin and more.",
   alternates: { canonical: "/compounds" },
   openGraph: {
-    title: "Research Peptides Catalogue | Bell Peptides UK",
+    title: "Research Peptides Catalogue | Premio Peptides UK",
     description: "23 research-grade peptides. 99%+ purity. Third-party CoA. Same-day UK dispatch.",
     url: "/compounds",
     type: "website",
   },
 };
 
-const SITE_URL = "https://shab-peptides-site.vercel.app";
+const SITE_URL = "https://premiopeptides.com";
 
 export default async function CompoundsPage() {
   const compounds = await getCompounds();
@@ -27,9 +27,9 @@ export default async function CompoundsPage() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Research Peptides Catalogue",
-    description: "Research-grade peptide catalogue from Bell Peptides UK.",
+    description: "Research-grade peptide catalogue from Premio Peptides UK.",
     url: `${SITE_URL}/compounds`,
-    isPartOf: { "@type": "WebSite", name: "Bell Peptides", url: SITE_URL },
+    isPartOf: { "@type": "WebSite", name: "Premio Peptides", url: SITE_URL },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: compounds.length,

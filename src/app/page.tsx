@@ -8,12 +8,12 @@ import QuickAddButton from "@/components/QuickAddButton";
 import { getFeaturedCompounds } from "@/data/compounds";
 
 export const metadata: Metadata = {
-  title: "Best Peptide Supplier UK | Research Grade | Bell Peptides",
+  title: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
   description:
     "UK's fastest research peptide supplier. Order by 2pm, ships today. Third-party tested compounds with certificates of analysis. 99%+ purity verified.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Best Peptide Supplier UK | Research Grade | Bell Peptides",
+    title: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
     description: "UK's fastest research peptide supplier. 99%+ purity. Same-day dispatch. Third-party CoA included.",
     url: "/",
     type: "website",
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  { question: "What makes Bell Peptides the best peptide supplier in the UK?", answer: "Bell Peptides combines 99%+ guaranteed purity, same-day dispatch for orders before 14:00 GMT, comprehensive certificates of analysis with every order, and dedicated UK-based technical support. Every batch is independently verified via HPLC and mass spectrometry before release." },
+  { question: "What makes Premio Peptides the best peptide supplier in the UK?", answer: "Premio Peptides combines 99%+ guaranteed purity, same-day dispatch for orders before 14:00 GMT, comprehensive certificates of analysis with every order, and dedicated UK-based technical support. Every batch is independently verified via HPLC and mass spectrometry before release." },
   { question: "How do you ensure research peptide purity and quality?", answer: "Every compound undergoes a rigorous multi-stage quality control process including HPLC analysis, ESI-MS verification of molecular weight, quantitative amino acid analysis, and LAL endotoxin testing. We guarantee a minimum 99%+ purity with full certificates of analysis provided." },
   { question: "Do you offer same-day dispatch for peptide orders?", answer: "Yes. All orders placed before 14:00 GMT are dispatched the same working day in temperature-controlled packaging. Next-day delivery is available across the United Kingdom, eliminating the delays associated with international suppliers." },
   { question: "What certificates and documentation do you provide?", answer: "Every order includes a comprehensive certificate of analysis featuring HPLC chromatograms, mass spectrometry data, amino acid analysis results, and endotoxin testing results. Additional technical documentation and handling guides are available upon request." },
   { question: "Can I order custom peptide synthesis?", answer: "Absolutely. We offer bespoke peptide synthesis tailored to your precise research requirements, from novel sequences to modified analogues. Contact our research team to discuss your specifications and receive a custom quotation." },
-  { question: "Are your peptides suitable for research purposes?", answer: "All Bell Peptides products are supplied strictly for research purposes only and are not intended for human consumption. We supply to university research laboratories, pharmaceutical R&D departments, biotechnology firms, clinical research organisations, and government laboratories across the UK." },
+  { question: "Are your peptides suitable for research purposes?", answer: "All Premio Peptides products are supplied strictly for research purposes only and are not intended for human consumption. We supply to university research laboratories, pharmaceutical R&D departments, biotechnology firms, clinical research organisations, and government laboratories across the UK." },
 ];
 
 const faqSchema = {
@@ -42,11 +42,11 @@ const faqSchema = {
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Bell Peptides",
-  url: "https://www.bellpeptides.co.uk",
+  name: "Premio Peptides",
+  url: "https://www.premiopeptides.com",
   description: "UK's leading research peptide supplier with 99%+ purity guarantee and same-day dispatch.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
-  contactPoint: { "@type": "ContactPoint", email: "info@bellpeptides.co.uk", contactType: "customer service", availableLanguage: "English" },
+  contactPoint: { "@type": "ContactPoint", email: "info@premiopeptides.com", contactType: "customer service", availableLanguage: "English" },
 };
 
 export default async function V1Editorial() {
@@ -118,7 +118,7 @@ export default async function V1Editorial() {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-editorial-border">
                 <Image
                   src="/generated/hero-0.webp"
-                  alt="Research-grade peptide vials held in UK stock by Bell Peptides"
+                  alt="Research-grade peptide vials held in UK stock by Premio Peptides"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -293,7 +293,7 @@ export default async function V1Editorial() {
             </div>
             <div className="space-y-5">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
-                <Image src="/generated/section-3.webp" alt="HPLC equipment used by the third-party laboratory that tests Bell Peptides stock" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src="/generated/section-3.webp" alt="HPLC equipment used by the third-party laboratory that tests Premio Peptides stock" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {[
@@ -326,7 +326,7 @@ export default async function V1Editorial() {
                   For Research Purposes Only
                 </h2>
                 <p className="mt-4 text-editorial-muted leading-relaxed">
-                  Bell Peptides is committed to responsible supply. All compounds
+                  Premio Peptides is committed to responsible supply. All compounds
                   are supplied exclusively for legitimate scientific research and are not
                   intended for human consumption, veterinary use, or any therapeutic application.
                 </p>
@@ -347,7 +347,7 @@ export default async function V1Editorial() {
             </div>
             <div className="mt-8 pt-6 border-t border-editorial-border">
               <p className="text-[10px] text-editorial-muted text-center max-w-3xl mx-auto leading-relaxed">
-                Bell Peptides Ltd supplies research compounds exclusively for in-vitro laboratory research.
+                Premio Peptides Ltd supplies research compounds exclusively for in-vitro laboratory research.
                 Products are not medicines, supplements, or food products. Not approved for human or animal use.
                 Purchasers assume full responsibility for compliance with all applicable regulations in their jurisdiction.
               </p>
@@ -417,7 +417,7 @@ export default async function V1Editorial() {
               </p>
               <div className="mt-8 space-y-3">
                 {[
-                  { label: "info@bellpeptides.co.uk", detail: "Email us anytime" },
+                  { label: "info@premiopeptides.com", detail: "Email us anytime" },
                   { label: "1 working day response", detail: "Guaranteed turnaround" },
                   { label: "United Kingdom", detail: "Ships from UK lab" },
                 ].map((item) => (

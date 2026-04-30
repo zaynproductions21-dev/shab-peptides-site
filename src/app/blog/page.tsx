@@ -5,12 +5,12 @@ import Footer from "@/components/Footer";
 import { getBlogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
-  title: "Research Peptide Blog | Bell Peptides UK",
+  title: "Research Peptide Blog | Premio Peptides UK",
   description:
-    "Latest research, protocols, and product information from Bell Peptides. Long-form articles on peptide chemistry, storage, reconstitution, and emerging compounds.",
+    "Latest research, protocols, and product information from Premio Peptides. Long-form articles on peptide chemistry, storage, reconstitution, and emerging compounds.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Research Peptide Blog | Bell Peptides UK",
+    title: "Research Peptide Blog | Premio Peptides UK",
     description: "Long-form articles on peptide chemistry, storage, reconstitution, and emerging compounds.",
     url: "/blog",
     type: "website",

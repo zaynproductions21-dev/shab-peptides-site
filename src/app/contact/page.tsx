@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
 
 export const metadata: Metadata = {
-  title: "Contact Bell Peptides | UK Research Peptide Supplier",
+  title: "Contact Premio Peptides | UK Research Peptide Supplier",
   description:
-    "Contact Bell Peptides — the UK's fastest research peptide supplier. Same-day dispatch by 2pm. Get in touch for order support, technical queries, and CoA requests.",
+    "Contact Premio Peptides — the UK's fastest research peptide supplier. Same-day dispatch by 2pm. Get in touch for order support, technical queries, and CoA requests.",
 };
 
 const faqs = [
@@ -18,12 +18,12 @@ const faqs = [
   {
     question: "I've placed an order — who do I contact for support?",
     answer:
-      "Email research@bellpeptides.co.uk with your order reference number and a brief description of the issue. If it's related to same-day dispatch, get in touch before 1:30pm — that gives us time to sort it before the 2pm cut-off.",
+      "Email info@premiopeptides.com with your order reference number and a brief description of the issue. If it's related to same-day dispatch, get in touch before 1:30pm — that gives us time to sort it before the 2pm cut-off.",
   },
   {
     question: "Can you help with technical questions about peptide specs or CoAs?",
     answer:
-      "Yes. Our team can advise on purity grades, sequence confirmation, and CoA documentation. All Bell Peptides products come with third-party CoAs as standard. Include the product name or code and what you need when you get in touch.",
+      "Yes. Our team can advise on purity grades, sequence confirmation, and CoA documentation. All Premio Peptides products come with third-party CoAs as standard. Include the product name or code and what you need when you get in touch.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Get in Touch</p>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-editorial-text leading-[1.15]">
-            Contact Bell Peptides — UK Research Peptide Supplier
+            Contact Premio Peptides — UK Research Peptide Supplier
           </h1>
         </div>
       </section>
@@ -70,8 +70,8 @@ export default function ContactPage() {
                 <h3 className="font-serif text-base font-bold text-editorial-text mb-3">Email and Response Times</h3>
                 <p className="text-sm text-editorial-muted leading-relaxed">
                   <span className="font-semibold text-editorial-text">Email:</span>{" "}
-                  <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">
-                    research@bellpeptides.co.uk
+                  <a href="mailto:info@premiopeptides.com" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">
+                    info@premiopeptides.com
                   </a>
                 </p>
                 <p className="mt-2 text-sm text-editorial-muted leading-relaxed">
@@ -117,7 +117,7 @@ export default function ContactPage() {
               <div className="mt-6">
                 <h3 className="font-serif text-base font-bold text-editorial-text mb-3">Location and Shipping</h3>
                 <p className="text-sm text-editorial-muted leading-relaxed">
-                  Bell Peptides operates from the UK and ships exclusively within the UK. All orders leave our UK fulfilment facility, which keeps lead times short and delivery reliable via tracked courier. We don&rsquo;t currently ship internationally. For bulk or institutional orders that need bespoke logistics, contact us before placing your order so we can talk through the options.
+                  Premio Peptides operates from the UK and ships exclusively within the UK. All orders leave our UK fulfilment facility, which keeps lead times short and delivery reliable via tracked courier. We don&rsquo;t currently ship internationally. For bulk or institutional orders that need bespoke logistics, contact us before placing your order so we can talk through the options.
                 </p>
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function ContactPage() {
       <section className="py-16 lg:py-20 bg-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-editorial-muted leading-relaxed mb-6">
-            Ready to order, or want to talk it through first? Contact the Bell Peptides team today — same-day dispatch on orders placed before 2pm.
+            Ready to order, or want to talk it through first? Contact the Premio Peptides team today — same-day dispatch on orders placed before 2pm.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="/compounds" className="inline-flex items-center justify-center rounded-lg bg-editorial-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-sm">

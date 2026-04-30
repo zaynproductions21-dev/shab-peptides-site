@@ -69,7 +69,7 @@ function mapApiProduct(p: Record<string, unknown>): Compound {
     sizes,
     image: (p.imageUrl as string) || (p.image as string) || "",
     imageAlt: (p.imageAlt as string) || `${p.name} research peptide`,
-    metaTitle: (p.metaTitle as string) || `${p.name} UK | Bell Peptides`,
+    metaTitle: (p.metaTitle as string) || `${p.name} UK | Premio Peptides`,
     metaDescription: (p.metaDescription as string) || `Buy ${p.name} research peptide. ${p.purity || "99%+"} purity. Third-party CoA. Same-day UK dispatch.`,
     faqs: Array.isArray(p.faqs) ? p.faqs as CompoundFaq[] : Array.isArray(p.faq) ? p.faq as CompoundFaq[] : [],
   };

@@ -3,9 +3,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Bell Peptides",
+  title: "Terms of Service | Premio Peptides",
   description:
-    "Terms and conditions for purchasing research peptides from Bell Peptides, a trading name of BELL RED LIMITED. Research use only.",
+    "Terms and conditions for purchasing research peptides from Premio Peptides, a trading name of BELL RED LIMITED. Research use only.",
 };
 
 export default function TermsPage() {
@@ -29,13 +29,13 @@ export default function TermsPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">1. About These Terms</h2>
-              <p>These terms of service (&ldquo;Terms&rdquo;) govern your use of the Bell Peptides website (bellpeptides.co.uk) and any purchase of products from us. Bell Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, registered in England and Wales (Company Number 12841067), with its registered address at 16 Neptune Street, Tipton, England, DY4 8JF.</p>
+              <p>These terms of service (&ldquo;Terms&rdquo;) govern your use of the Premio Peptides website (premiopeptides.com) and any purchase of products from us. Premio Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, registered in England and Wales (Company Number 12841067), with its registered address at 16 Neptune Street, Tipton, England, DY4 8JF.</p>
               <p className="mt-2">By placing an order or using this website, you agree to be bound by these Terms. If you do not agree, you must not use our website or purchase our products.</p>
             </div>
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">2. Research Use Only</h2>
-              <p>All products sold by Bell Peptides are intended strictly for in vitro laboratory research, scientific study, and educational purposes only. They are <strong className="text-editorial-text">not</strong> intended for:</p>
+              <p>All products sold by Premio Peptides are intended strictly for in vitro laboratory research, scientific study, and educational purposes only. They are <strong className="text-editorial-text">not</strong> intended for:</p>
               <ul className="mt-2 list-disc pl-5 space-y-1">
                 <li>Human or veterinary administration</li>
                 <li>Clinical trials (unless separately authorised)</li>
@@ -43,12 +43,12 @@ export default function TermsPage() {
                 <li>Food, cosmetic, or household use</li>
                 <li>Any form of self-administration</li>
               </ul>
-              <p className="mt-2">By placing an order, you confirm that all products will be used solely for lawful research purposes. Bell Peptides reserves the right to refuse or cancel any order where there is reasonable doubt about the intended research use.</p>
+              <p className="mt-2">By placing an order, you confirm that all products will be used solely for lawful research purposes. Premio Peptides reserves the right to refuse or cancel any order where there is reasonable doubt about the intended research use.</p>
             </div>
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">3. Eligibility</h2>
-              <p>You must be at least 18 years of age to purchase from Bell Peptides. Orders are accepted from researchers, scientists, academics, and institutions conducting legitimate laboratory or scientific research. We may request verification of institutional affiliation or research purpose before processing an order.</p>
+              <p>You must be at least 18 years of age to purchase from Premio Peptides. Orders are accepted from researchers, scientists, academics, and institutions conducting legitimate laboratory or scientific research. We may request verification of institutional affiliation or research purpose before processing an order.</p>
             </div>
 
             <div>
@@ -75,12 +75,12 @@ export default function TermsPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">8. Returns and Refunds</h2>
-              <p>Due to the nature of research compounds and the requirement to maintain chain of custody, we cannot accept returns of opened or used products. If you receive a product that is damaged, incorrect, or does not match its certificate of analysis, contact us within 7 days of delivery at <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent">research@bellpeptides.co.uk</a> with your order reference and a description of the issue. We will investigate and, where appropriate, offer a replacement or refund.</p>
+              <p>Due to the nature of research compounds and the requirement to maintain chain of custody, we cannot accept returns of opened or used products. If you receive a product that is damaged, incorrect, or does not match its certificate of analysis, contact us within 7 days of delivery at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a> with your order reference and a description of the issue. We will investigate and, where appropriate, offer a replacement or refund.</p>
             </div>
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">9. Limitation of Liability</h2>
-              <p>Bell Peptides (BELL RED LIMITED) shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our products. Our total liability in respect of any order shall not exceed the value of that order. Products are supplied for research use only, and we accept no responsibility for use outside this scope.</p>
+              <p>Premio Peptides (BELL RED LIMITED) shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our products. Our total liability in respect of any order shall not exceed the value of that order. Products are supplied for research use only, and we accept no responsibility for use outside this scope.</p>
             </div>
 
             <div>
@@ -96,10 +96,10 @@ export default function TermsPage() {
             <div className="rounded-xl border border-editorial-border bg-editorial-surface p-6">
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">12. Contact</h2>
               <div className="space-y-1 text-sm">
-                <p><strong className="text-editorial-text">BELL RED LIMITED</strong> (trading as Bell Peptides)</p>
+                <p><strong className="text-editorial-text">BELL RED LIMITED</strong> (trading as Premio Peptides)</p>
                 <p>16 Neptune Street, Tipton, England, DY4 8JF</p>
                 <p>Company Number: 12841067</p>
-                <p>Email: <a href="mailto:research@bellpeptides.co.uk" className="text-editorial-accent">research@bellpeptides.co.uk</a></p>
+                <p>Email: <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a></p>
               </div>
             </div>
 

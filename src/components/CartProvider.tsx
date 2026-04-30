@@ -36,7 +36,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
   // Load from localStorage on mount
   useEffect(() => {
     try {
-      const stored = localStorage.getItem("bio-peptides-cart");
+      const stored = localStorage.getItem("premio-peptides-cart");
       if (stored) setItems(JSON.parse(stored));
     } catch {}
     setLoaded(true);
@@ -45,7 +45,7 @@ export default function CartProvider({ children }: { children: React.ReactNode }
   // Save to localStorage on change
   useEffect(() => {
     if (loaded) {
-      localStorage.setItem("bio-peptides-cart", JSON.stringify(items));
+      localStorage.setItem("premio-peptides-cart", JSON.stringify(items));
     }
   }, [items, loaded]);
 

@@ -3,7 +3,7 @@ import { getCompounds } from "@/data/compounds";
 import { getBlogPosts } from "@/data/blog";
 import { getPressReleases } from "@/data/press";
 
-const SITE_URL = "https://shab-peptides-site.vercel.app";
+const SITE_URL = "https://premiopeptides.com";
 
 const STATIC_PATHS = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" as const },

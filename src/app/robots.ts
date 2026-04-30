@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://shab-peptides-site.vercel.app";
+const SITE_URL = "https://premiopeptides.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {

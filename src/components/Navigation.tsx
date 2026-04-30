@@ -89,7 +89,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
               <line x1="10" y1="20" x2="22" y2="20" stroke="currentColor" strokeWidth="1.5" />
             </svg>
             <span className={`text-lg tracking-tight ${isSerif ? "font-serif font-semibold" : "font-semibold"}`}>
-              Bell <span className={s.logo}>Peptides</span>
+              Premio <span className={s.logo}>Peptides</span>
             </span>
           </Link>
 
@@ -113,7 +113,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             ))}
             <CartIcon />
             <a
-              href="https://wa.me/447000000000?text=Hi%20Bell%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+              href="https://wa.me/447000000000?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -133,7 +133,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
 
           <div className="md:hidden flex items-center gap-2">
             <a
-              href="https://wa.me/447000000000?text=Hi%20Bell%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+              href="https://wa.me/447000000000?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -187,7 +187,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </Link>
           ))}
           <a
-            href="https://wa.me/447000000000?text=Hi%20Bell%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+            href="https://wa.me/447000000000?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-medium text-white hover:bg-[#20BD5A] transition-colors"

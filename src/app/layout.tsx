@@ -19,10 +19,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shab-peptides-site.vercel.app"),
+  metadataBase: new URL("https://premiopeptides.com"),
   title: {
-    default: "Best Peptide Supplier UK | Research Grade | Bell Peptides",
-    template: "%s | Bell Peptides",
+    default: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
+    template: "%s | Premio Peptides",
   },
   description:
     "UK's fastest research peptide supplier. Order by 2pm, ships today. Third-party tested compounds with certificates of analysis. 99%+ purity verified.",
@@ -35,20 +35,20 @@ export const metadata: Metadata = {
     "GHK-Cu UK",
     "metabolic research compounds",
     "high purity peptides",
-    "Bell Peptides",
+    "Premio Peptides",
   ],
   openGraph: {
-    title: "Best Peptide Supplier UK | Research Grade | Bell Peptides",
+    title: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
     description:
       "UK's fastest research peptide supplier. Third-party tested compounds with certificates of analysis and same-day dispatch.",
     type: "website",
     locale: "en_GB",
     url: "/",
-    siteName: "Bell Peptides",
+    siteName: "Premio Peptides",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Peptide Supplier UK | Research Grade | Bell Peptides",
+    title: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
     description: "UK's fastest research peptide supplier. 99%+ purity. Same-day dispatch.",
   },
   robots: { index: true, follow: true },
