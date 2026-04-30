@@ -57,7 +57,7 @@ const faqCategories = [
     faqs: [
       { question: "What is your returns policy?", answer: "Due to the nature of research compounds and chain-of-custody requirements, we cannot accept returns of opened products. We will replace or refund products that arrive damaged, are incorrectly dispatched, or do not match their CoA. Contact us within 7 days of delivery." },
       { question: "How quickly do you respond to enquiries?", answer: "Within 2 to 4 business hours during working hours (Monday to Friday, 9am to 5pm). Enquiries sent outside these hours are handled the next working day." },
-      { question: "How do I contact you about an existing order?", answer: "Email info@premiopeptides.com with your order reference number. For same-day dispatch issues, contact us before 1:30pm to allow time before the 2pm cut-off." },
+      { question: "How do I contact you about an existing order?", answer: "Email info@premiopeptides.co.uk with your order reference number. For same-day dispatch issues, contact us before 1:30pm to allow time before the 2pm cut-off." },
       { question: "Can you help with technical questions?", answer: "Yes. Our team can advise on purity grades, sequence confirmation, reconstitution, storage, and CoA documentation. Include the product name or code and what you need when you get in touch." },
     ],
   },

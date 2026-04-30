@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://premiopeptides.com"),
+  metadataBase: new URL("https://premiopeptides.co.uk"),
   title: {
     default: "Best Peptide Supplier UK | Research Grade | Premio Peptides",
     template: "%s | Premio Peptides",

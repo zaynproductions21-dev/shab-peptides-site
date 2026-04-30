@@ -18,7 +18,7 @@ const faqs = [
   {
     question: "I've placed an order — who do I contact for support?",
     answer:
-      "Email info@premiopeptides.com with your order reference number and a brief description of the issue. If it's related to same-day dispatch, get in touch before 1:30pm — that gives us time to sort it before the 2pm cut-off.",
+      "Email info@premiopeptides.co.uk with your order reference number and a brief description of the issue. If it's related to same-day dispatch, get in touch before 1:30pm — that gives us time to sort it before the 2pm cut-off.",
   },
   {
     question: "Can you help with technical questions about peptide specs or CoAs?",
@@ -70,8 +70,8 @@ export default function ContactPage() {
                 <h3 className="font-serif text-base font-bold text-editorial-text mb-3">Email and Response Times</h3>
                 <p className="text-sm text-editorial-muted leading-relaxed">
                   <span className="font-semibold text-editorial-text">Email:</span>{" "}
-                  <a href="mailto:info@premiopeptides.com" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">
-                    info@premiopeptides.com
+                  <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">
+                    info@premiopeptides.co.uk
                   </a>
                 </p>
                 <p className="mt-2 text-sm text-editorial-muted leading-relaxed">

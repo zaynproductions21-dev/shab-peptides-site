@@ -96,7 +96,7 @@ export default function DeliveryPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">Order Tracking</h2>
-              <p>A tracking number is provided via email once your order has been dispatched. You can use this to monitor delivery progress directly with the courier. If you have not received a tracking notification within 24 hours of placing your order (during working days), contact us at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a> with your order reference.</p>
+              <p>A tracking number is provided via email once your order has been dispatched. You can use this to monitor delivery progress directly with the courier. If you have not received a tracking notification within 24 hours of placing your order (during working days), contact us at <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent">info@premiopeptides.co.uk</a> with your order reference.</p>
             </div>
 
             <div>
@@ -109,7 +109,7 @@ export default function DeliveryPage() {
                 <li>The product does not match its accompanying certificate of analysis</li>
                 <li>The product was not delivered</li>
               </ul>
-              <p className="mt-2">Contact us within 7 days of delivery at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a> with your order reference number and a description of the issue. Include photographs where relevant. We aim to resolve all delivery issues within 2 working days.</p>
+              <p className="mt-2">Contact us within 7 days of delivery at <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent">info@premiopeptides.co.uk</a> with your order reference number and a description of the issue. Include photographs where relevant. We aim to resolve all delivery issues within 2 working days.</p>
             </div>
 
             <div>

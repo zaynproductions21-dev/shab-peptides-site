@@ -95,8 +95,8 @@ export default function Footer({ variant = "light" }: FooterProps) {
             <ul className="mt-4 space-y-3">
               <li className={`text-sm ${s.text}`}>United Kingdom</li>
               <li>
-                <a href="mailto:info@premiopeptides.com" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
-                  info@premiopeptides.com
+                <a href="mailto:info@premiopeptides.co.uk" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
+                  info@premiopeptides.co.uk
                 </a>
               </li>
               <li>

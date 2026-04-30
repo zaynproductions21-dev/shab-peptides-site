@@ -43,10 +43,10 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Premio Peptides",
-  url: "https://www.premiopeptides.com",
+  url: "https://www.premiopeptides.co.uk",
   description: "UK's leading research peptide supplier with 99%+ purity guarantee and same-day dispatch.",
   address: { "@type": "PostalAddress", addressCountry: "GB" },
-  contactPoint: { "@type": "ContactPoint", email: "info@premiopeptides.com", contactType: "customer service", availableLanguage: "English" },
+  contactPoint: { "@type": "ContactPoint", email: "info@premiopeptides.co.uk", contactType: "customer service", availableLanguage: "English" },
 };
 
 export default async function V1Editorial() {
@@ -417,7 +417,7 @@ export default async function V1Editorial() {
               </p>
               <div className="mt-8 space-y-3">
                 {[
-                  { label: "info@premiopeptides.com", detail: "Email us anytime" },
+                  { label: "info@premiopeptides.co.uk", detail: "Email us anytime" },
                   { label: "1 working day response", detail: "Guaranteed turnaround" },
                   { label: "United Kingdom", detail: "Ships from UK lab" },
                 ].map((item) => (

@@ -3,7 +3,7 @@ import { getCompounds } from "@/data/compounds";
 import { getBlogPosts } from "@/data/blog";
 import { getPressReleases } from "@/data/press";
 
-const SITE_URL = "https://premiopeptides.com";
+const SITE_URL = "https://premiopeptides.co.uk";
 
 const STATIC_PATHS = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" as const },

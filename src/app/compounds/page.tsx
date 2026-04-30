@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const SITE_URL = "https://premiopeptides.com";
+const SITE_URL = "https://premiopeptides.co.uk";
 
 export default async function CompoundsPage() {
   const compounds = await getCompounds();

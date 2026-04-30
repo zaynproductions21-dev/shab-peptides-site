@@ -29,7 +29,7 @@ export default function TermsPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">1. About These Terms</h2>
-              <p>These terms of service (&ldquo;Terms&rdquo;) govern your use of the Premio Peptides website (premiopeptides.com) and any purchase of products from us. Premio Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, registered in England and Wales (Company Number 12841067), with its registered address at 16 Neptune Street, Tipton, England, DY4 8JF.</p>
+              <p>These terms of service (&ldquo;Terms&rdquo;) govern your use of the Premio Peptides website (premiopeptides.co.uk) and any purchase of products from us. Premio Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong>, registered in England and Wales (Company Number 12841067), with its registered address at 16 Neptune Street, Tipton, England, DY4 8JF.</p>
               <p className="mt-2">By placing an order or using this website, you agree to be bound by these Terms. If you do not agree, you must not use our website or purchase our products.</p>
             </div>
 
@@ -75,7 +75,7 @@ export default function TermsPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">8. Returns and Refunds</h2>
-              <p>Due to the nature of research compounds and the requirement to maintain chain of custody, we cannot accept returns of opened or used products. If you receive a product that is damaged, incorrect, or does not match its certificate of analysis, contact us within 7 days of delivery at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a> with your order reference and a description of the issue. We will investigate and, where appropriate, offer a replacement or refund.</p>
+              <p>Due to the nature of research compounds and the requirement to maintain chain of custody, we cannot accept returns of opened or used products. If you receive a product that is damaged, incorrect, or does not match its certificate of analysis, contact us within 7 days of delivery at <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent">info@premiopeptides.co.uk</a> with your order reference and a description of the issue. We will investigate and, where appropriate, offer a replacement or refund.</p>
             </div>
 
             <div>
@@ -99,7 +99,7 @@ export default function TermsPage() {
                 <p><strong className="text-editorial-text">BELL RED LIMITED</strong> (trading as Premio Peptides)</p>
                 <p>16 Neptune Street, Tipton, England, DY4 8JF</p>
                 <p>Company Number: 12841067</p>
-                <p>Email: <a href="mailto:info@premiopeptides.com" className="text-editorial-accent">info@premiopeptides.com</a></p>
+                <p>Email: <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent">info@premiopeptides.co.uk</a></p>
               </div>
             </div>
 

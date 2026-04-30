@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Cookie Policy | Premio Peptides",
   description:
-    "Cookie policy for Premio Peptides. How we use cookies and similar technologies on premiopeptides.com, and how to manage your preferences.",
+    "Cookie policy for Premio Peptides. How we use cookies and similar technologies on premiopeptides.co.uk, and how to manage your preferences.",
 };
 
 export default function CookiesPage() {
@@ -29,7 +29,7 @@ export default function CookiesPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">What Are Cookies</h2>
-              <p>Cookies are small text files stored on your device when you visit a website. They are widely used to make websites work efficiently, provide information to site owners, and improve the user experience. This policy explains what cookies Premio Peptides (premiopeptides.com) uses and why.</p>
+              <p>Cookies are small text files stored on your device when you visit a website. They are widely used to make websites work efficiently, provide information to site owners, and improve the user experience. This policy explains what cookies Premio Peptides (premiopeptides.co.uk) uses and why.</p>
               <p className="mt-2">Premio Peptides is a trading name of <strong className="text-editorial-text">BELL RED LIMITED</strong> (Company Number 12841067), 16 Neptune Street, Tipton, England, DY4 8JF.</p>
             </div>
 
@@ -97,7 +97,7 @@ export default function CookiesPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">More Information</h2>
-              <p>For more information about cookies and how to manage them, visit <a href="https://www.allaboutcookies.org" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors" target="_blank" rel="noopener noreferrer">allaboutcookies.org</a>. For questions about our use of cookies, contact us at <a href="mailto:info@premiopeptides.com" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">info@premiopeptides.com</a>.</p>
+              <p>For more information about cookies and how to manage them, visit <a href="https://www.allaboutcookies.org" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors" target="_blank" rel="noopener noreferrer">allaboutcookies.org</a>. For questions about our use of cookies, contact us at <a href="mailto:info@premiopeptides.co.uk" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">info@premiopeptides.co.uk</a>.</p>
             </div>
 
           </div>

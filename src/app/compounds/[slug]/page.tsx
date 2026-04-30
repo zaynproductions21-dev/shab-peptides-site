@@ -70,9 +70,9 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://premiopeptides.com/" },
-      { "@type": "ListItem", position: 2, name: "Compounds", item: "https://premiopeptides.com/compounds" },
-      { "@type": "ListItem", position: 3, name: compound.name, item: `https://premiopeptides.com/compounds/${compound.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://premiopeptides.co.uk/" },
+      { "@type": "ListItem", position: 2, name: "Compounds", item: "https://premiopeptides.co.uk/compounds" },
+      { "@type": "ListItem", position: 3, name: compound.name, item: `https://premiopeptides.co.uk/compounds/${compound.slug}` },
     ],
   };
 

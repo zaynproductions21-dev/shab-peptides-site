@@ -34,7 +34,7 @@ async function sendBrevoEmail(to: string, subject: string, htmlContent: string) 
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      sender: { name: "Premio Peptides", email: "info@premiopeptides.com" },
+      sender: { name: "Premio Peptides", email: "info@premiopeptides.co.uk" },
       to: [{ email: to }],
       subject,
       htmlContent,
@@ -148,7 +148,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.com";
+    const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
     const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+447000000000"
 
     // Send emails and SMS in parallel
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
       order.customer.phone && process.env.TWILIO_ACCOUNT_SID
         ? sendTwilioSms(
             order.customer.phone,
-            `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.com`
+            `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.co.uk`
           )
         : Promise.resolve(),
     ]);

@@ -122,7 +122,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <p className="text-editorial-muted">Email</p>
-                <p className="font-semibold text-editorial-accent">info@premiopeptides.com</p>
+                <p className="font-semibold text-editorial-accent">info@premiopeptides.co.uk</p>
               </div>
             </div>
           </div>
