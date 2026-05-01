@@ -126,6 +126,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
                         size={compound.sizes[0]?.size || ""}
                         price={compound.sizes[0]?.price || ""}
                         image={compound.image}
+                        inStock={compound.availability === "In Stock"}
                       />
                     </div>
                   </div>

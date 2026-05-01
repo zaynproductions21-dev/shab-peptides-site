@@ -153,7 +153,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
 
               {/* Sizes & Add to Basket */}
               <div className="mt-6">
-                <AddToBasket slug={compound.slug} name={compound.name} sizes={compound.sizes} image={compound.image} />
+                <AddToBasket slug={compound.slug} name={compound.name} sizes={compound.sizes} image={compound.image} inStock={compound.availability === "In Stock"} />
               </div>
 
               {/* Research disclaimer */}
