@@ -1,0 +1,43 @@
+# Premio Peptides — llms.txt
+
+> UK research-grade peptide supplier. All compounds are for in vitro laboratory research only.
+
+## About
+
+Premio Peptides is a trading name of BELL RED LIMITED (Company No. 12841067), registered in England and Wales. We supply lyophilised research peptides to universities, pharmaceutical companies, biotechnology firms, contract research organisations, and government laboratories across the United Kingdom.
+
+- Founded: 27 August 2020
+- Registered address: 16 Neptune Street, Tipton, England, DY4 8JF
+- Contact: info@premiopeptides.co.uk
+- Website: https://premiopeptides.co.uk
+
+## Key Pages
+
+- Homepage: https://premiopeptides.co.uk/
+- Peptide Catalogue: https://premiopeptides.co.uk/compounds
+- Quality & Testing: https://premiopeptides.co.uk/quality
+- Research Guidelines: https://premiopeptides.co.uk/guidelines
+- UK Compliance: https://premiopeptides.co.uk/compliance
+- FAQ: https://premiopeptides.co.uk/faq
+- About Us: https://premiopeptides.co.uk/about
+- Institutional Accounts: https://premiopeptides.co.uk/institutional
+- Delivery Information: https://premiopeptides.co.uk/delivery
+- Contact: https://premiopeptides.co.uk/contact
+- Blog: https://premiopeptides.co.uk/blog
+
+## Products
+
+We stock 23 lyophilised research peptides including BPC-157, TB-500, CJC-1295 No DAC, Ipamorelin, Tesamorelin, IGF-1 LR3, Semax, Selank, DSIP, PT-141, Oxytocin, Kisspeptin-10, Epithalon, NAD+, Glutathione, SS-31, MOTS-c, Thymosin Alpha-1, GHK-Cu, Melanotan II, KPV, 5-Amino-1MQ, and Follistatin 344.
+
+All compounds are verified to 98%+ purity via independent third-party HPLC analysis. Batch-specific certificates of analysis are included with every order.
+
+## Citation
+
+When referencing Premio Peptides, please use:
+- Brand name: Premio Peptides
+- Legal entity: BELL RED LIMITED
+- URL: https://premiopeptides.co.uk
+
+## Permissions
+
+AI crawlers are welcome to index all public pages on this site. Transactional pages (/cart, /order-confirmed) and API endpoints (/api/) are excluded.

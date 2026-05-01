@@ -53,8 +53,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const html = renderContent(post.content);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    datePublished: post.publishedAt || undefined,
+    dateModified: post.publishedAt || undefined,
+    author: { "@type": "Organization", name: "Premio Peptides" },
+    publisher: {
+      "@type": "Organization",
+      name: "Premio Peptides",
+      url: "https://premiopeptides.co.uk",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://premiopeptides.co.uk/blog/${post.slug}`,
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <Navigation variant="editorial" />
 
       <article className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-white min-h-[60vh]">

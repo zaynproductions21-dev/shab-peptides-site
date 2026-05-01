@@ -43,10 +43,27 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Premio Peptides",
-  url: "https://www.premiopeptides.co.uk",
-  description: "UK's leading research peptide supplier with 99%+ purity guarantee and same-day dispatch.",
-  address: { "@type": "PostalAddress", addressCountry: "GB" },
-  contactPoint: { "@type": "ContactPoint", email: "info@premiopeptides.co.uk", contactType: "customer service", availableLanguage: "English" },
+  legalName: "BELL RED LIMITED",
+  url: "https://premiopeptides.co.uk",
+  description: "UK research-grade peptide supplier with 99%+ purity guarantee and same-day dispatch.",
+  foundingDate: "2020-08-27",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "16 Neptune Street",
+    addressLocality: "Tipton",
+    postalCode: "DY4 8JF",
+    addressCountry: "GB",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "info@premiopeptides.co.uk",
+    contactType: "customer service",
+    availableLanguage: "English",
+    areaServed: "GB",
+  },
+  sameAs: [
+    "https://find-and-update.company-information.service.gov.uk/company/12841067",
+  ],
 };
 
 export default async function V1Editorial() {

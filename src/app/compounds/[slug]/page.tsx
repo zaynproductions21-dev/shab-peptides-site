@@ -43,17 +43,26 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
     "@type": "Product",
     name: compound.name,
     description: compound.shortDescription,
-    image: compound.image,
+    image: compound.image.startsWith("http")
+      ? compound.image
+      : `https://premiopeptides.co.uk${compound.image}`,
     brand: { "@type": "Brand", name: "Premio Peptides" },
-    offers: compound.sizes.map((s) => ({
-      "@type": "Offer",
-      price: s.price.replace("£", "").replace("From ", ""),
-      priceCurrency: "GBP",
-      availability: compound.availability === "In Stock"
-        ? "https://schema.org/InStock"
-        : "https://schema.org/PreOrder",
-      seller: { "@type": "Organization", name: "Premio Peptides" },
-    })),
+    mpn: compound.cas || undefined,
+    offers: compound.sizes.map((s) => {
+      const rawPrice = s.price.replace(/[£,]/g, "").replace("From ", "").trim();
+      const numericPrice = parseFloat(rawPrice);
+      return {
+        "@type": "Offer",
+        url: `https://premiopeptides.co.uk/compounds/${compound.slug}`,
+        price: isNaN(numericPrice) ? rawPrice : numericPrice.toFixed(2),
+        priceCurrency: "GBP",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: compound.availability === "In Stock"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/BackOrder",
+        seller: { "@type": "Organization", name: "Premio Peptides" },
+      };
+    }),
   };
 
   const faqSchema = {
@@ -79,7 +88,9 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {compound.faqs.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <Navigation variant="editorial" />

@@ -45,6 +45,13 @@ export default async function CompoundsPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://premiopeptides.co.uk/" },
+          { "@type": "ListItem", position: 2, name: "Compounds", item: "https://premiopeptides.co.uk/compounds" },
+        ],
+      }) }} />
       <Navigation variant="editorial" />
 
       <section className="pt-24 pb-8 lg:pt-32 lg:pb-12 bg-editorial-surface">

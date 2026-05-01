@@ -12,6 +12,13 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://premiopeptides.co.uk/" },
+          { "@type": "ListItem", position: 2, name: "About", item: "https://premiopeptides.co.uk/about" },
+        ],
+      }) }} />
       <Navigation variant="editorial" />
 
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-editorial-surface">
