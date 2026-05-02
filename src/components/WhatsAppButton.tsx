@@ -1,7 +1,7 @@
 "use client";
 
 // Replace with your actual WhatsApp number (international format, no +)
-const WHATSAPP_NUMBER = "447000000000";
+const WHATSAPP_NUMBER = "971585742670";
 
 export default function WhatsAppButton() {
   const message = encodeURIComponent(

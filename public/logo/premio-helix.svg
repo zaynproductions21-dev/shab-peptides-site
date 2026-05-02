@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 70" fill="none">
+  <!-- Double helix icon -->
+  <path d="M10 20 Q20 10 30 20 Q40 30 50 20 Q60 10 70 20" stroke="#C5A04A" stroke-width="2" fill="none"/>
+  <path d="M10 45 Q20 55 30 45 Q40 35 50 45 Q60 55 70 45" stroke="#C5A04A" stroke-width="2" fill="none"/>
+  <!-- Cross rungs -->
+  <line x1="20" y1="22" x2="20" y2="43" stroke="#C5A04A" stroke-width="1" opacity="0.5"/>
+  <line x1="40" y1="28" x2="40" y2="37" stroke="#C5A04A" stroke-width="1" opacity="0.5"/>
+  <line x1="60" y1="22" x2="60" y2="43" stroke="#C5A04A" stroke-width="1" opacity="0.5"/>
+  <!-- Wordmark -->
+  <text x="90" y="30" font-family="'Playfair Display', 'Georgia', serif" font-size="28" font-weight="700" fill="#2D2926" letter-spacing="4">PREMIO</text>
+  <line x1="90" y1="38" x2="240" y2="38" stroke="#C5A04A" stroke-width="0.75"/>
+  <text x="90" y="55" font-family="'Playfair Display', 'Georgia', serif" font-size="16" font-weight="400" fill="#8A8580" letter-spacing="8">PEPTIDES</text>
+</svg>

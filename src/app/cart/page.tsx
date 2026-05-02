@@ -8,7 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useCart } from "@/components/CartProvider";
 
-const WHATSAPP_NUMBER = "447000000000";
+const WHATSAPP_NUMBER = "971585742670";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
@@ -31,12 +31,17 @@ export default function CartPage() {
     if (!form.name || !form.email || !form.phone) return;
     setSubmitting(true);
     try {
-      await fetch("/api/order", {
+      const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ customer: form, items, total: totalPrice }),
       });
+      const data = await res.json();
       clearCart();
+      // Open WhatsApp conversation with order details pre-filled
+      if (data.whatsappUrl) {
+        window.open(data.whatsappUrl, "_blank");
+      }
       router.push("/order-confirmed");
     } catch {
       alert("Something went wrong. Please try again or order via WhatsApp.");

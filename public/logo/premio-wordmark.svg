@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" fill="none">
+  <text x="0" y="52" font-family="'Playfair Display', 'Georgia', serif" font-size="42" font-weight="700" fill="#2D2926" letter-spacing="3">PREMIO</text>
+  <text x="225" y="52" font-family="'Playfair Display', 'Georgia', serif" font-size="42" font-weight="400" fill="#2D2926" letter-spacing="5">PEPTIDES</text>
+  <line x1="0" y1="62" x2="400" y2="62" stroke="#C5A04A" stroke-width="1.5"/>
+</svg>

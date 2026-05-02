@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import QuoteForm from "@/components/QuoteForm";
-import QuickAddButton from "@/components/QuickAddButton";
+
 import { getFeaturedCompounds } from "@/data/compounds";
 
 export const metadata: Metadata = {
@@ -184,93 +184,95 @@ export default async function V1Editorial() {
         </div>
       </section>
 
-      {/* Product Grid — E-commerce Cards */}
+      {/* Featured Stacks — The 3 Premium Research Stacks */}
       <section id="compounds" className="py-16 lg:py-24 bg-editorial-surface">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div>
-              <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Shop Peptides</p>
-              <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
-                Research Compounds
-              </h2>
-            </div>
-            <p className="text-sm text-editorial-muted">
-              All prices include CoA &middot; Free delivery over £75
+          <div className="text-center mb-12">
+            <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-2">Research Stacks</p>
+            <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
+              Three Precision-Formulated Stacks
+            </h2>
+            <p className="mt-3 text-editorial-muted max-w-2xl mx-auto">
+              Preloaded pens. No reconstitution required. Temperature-controlled UK dispatch. Certificate of Analysis included.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <Link
-                key={product.slug}
-                href={`/compounds/${product.slug}`}
-                className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-xl hover:border-editorial-accent/20 transition-all flex flex-col"
-              >
-                {/* Product Image */}
-                <div className="relative h-52 w-full overflow-hidden">
-                  {product.image && (
-                    <Image
-                      src={product.image}
-                      alt={product.imageAlt}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  )}
-                  {/* Function labels — primary benefits */}
-                  <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5 max-w-[80%]">
-                    {(product.tags.length > 0 ? product.tags.slice(0, 2) : [product.category]).map((t) => (
-                      <span key={t} className="rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-editorial-accent shadow-sm">
-                        {t}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {products.map((product) => {
+              const nicknames: Record<string, { nickname: string; color: string; icon: string }> = {
+                "retatrutide": { nickname: "The Triple G", color: "bg-blue-500", icon: "⚡" },
+                "ghk-cu-glow-stack": { nickname: "The Glow", color: "bg-amber-500", icon: "✨" },
+                "bpc-157-tb-500-wolverine": { nickname: "The Wolverine", color: "bg-emerald-600", icon: "🔬" },
+              };
+              const meta = nicknames[product.slug] || { nickname: product.category, color: "bg-editorial-accent", icon: "🧬" };
+              return (
+                <Link
+                  key={product.slug}
+                  href={`/compounds/${product.slug}`}
+                  className="group relative rounded-2xl border border-editorial-border bg-white overflow-hidden hover:shadow-2xl hover:border-editorial-accent/30 transition-all flex flex-col"
+                >
+                  {/* Stack badge */}
+                  <div className={`${meta.color} text-white px-5 py-3 flex items-center justify-between`}>
+                    <span className="text-sm font-bold uppercase tracking-wider">{meta.nickname}</span>
+                    <span className="text-lg">{meta.icon}</span>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="font-serif text-2xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-editorial-muted leading-relaxed">
+                      {product.shortDescription}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {product.tags.slice(0, 3).map((t) => (
+                        <span key={t} className="rounded-full bg-editorial-accent/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-editorial-accent">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Format info */}
+                    <div className="mt-5 rounded-lg border border-editorial-border bg-editorial-surface p-3 space-y-1.5">
+                      <div className="flex items-center gap-2 text-xs text-editorial-muted">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent shrink-0"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
+                        {product.sizes[0]?.size} — Preloaded Pen
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-editorial-muted">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent shrink-0"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
+                        {product.purity} Purity Verified
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-editorial-muted">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent shrink-0"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
+                        No Reconstitution Required
+                      </div>
+                    </div>
+
+                    {/* Price + CTA */}
+                    <div className="mt-auto pt-5 border-t border-editorial-border flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-3xl font-bold text-editorial-accent">{product.sizes[0]?.price}</p>
+                        <p className="text-[10px] text-editorial-muted">CoA included &middot; Free UK delivery</p>
+                      </div>
+                      <span className="inline-flex items-center gap-1.5 rounded-lg bg-editorial-accent px-4 py-2.5 text-sm font-semibold text-white group-hover:bg-editorial-accent-dark transition-colors shadow-md">
+                        View Stack
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                       </span>
-                    ))}
+                    </div>
                   </div>
-                  {product.badge && (
-                    <span className={`absolute top-3 left-3 rounded-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm ${
-                      product.badge === "Best Seller" ? "bg-editorial-accent" :
-                      product.badge === "Popular" ? "bg-editorial-green" :
-                      "bg-editorial-warm"
-                    }`}>
-                      {product.badge}
-                    </span>
-                  )}
-                  <span className={`absolute top-3 right-3 rounded-md px-2 py-0.5 text-[10px] font-semibold ${
-                    product.availability === "In Stock"
-                      ? "bg-editorial-green/90 text-white"
-                      : product.availability === "Made to Order"
-                        ? "bg-editorial-warm/90 text-white"
-                        : "bg-editorial-accent/90 text-white"
-                  }`}>
-                    {product.availability}
-                  </span>
-                </div>
+                </Link>
+              );
+            })}
+          </div>
 
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-serif text-xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">{product.name}</h3>
-                  <p className="mt-2 text-sm text-editorial-muted leading-relaxed line-clamp-2">{product.shortDescription}</p>
-
-                  {/* Purity & CAS */}
-                  <div className="mt-3 flex items-center gap-3 text-xs">
-                    <span className="inline-flex items-center gap-1 rounded bg-editorial-accent/10 px-2 py-0.5 font-semibold text-editorial-accent">
-                      {product.purity} Pure
-                    </span>
-                    {product.cas && <span className="font-mono text-editorial-muted truncate">CAS: {product.cas}</span>}
-                  </div>
-
-                  {/* Pricing + Quick Add */}
-                  <div className="mt-auto pt-4 border-t border-editorial-border flex items-center justify-between gap-3">
-                    <p className="text-2xl font-bold text-editorial-accent">{product.sizes[0]?.price}</p>
-                    <QuickAddButton
-                      slug={product.slug}
-                      name={product.name}
-                      size={product.sizes[0]?.size || ""}
-                      price={product.sizes[0]?.price || ""}
-                      image={product.image}
-                    />
-                  </div>
-                </div>
-              </Link>
-            ))}
+          {/* Browse all link */}
+          <div className="mt-10 text-center">
+            <Link href="/compounds" className="inline-flex items-center gap-2 text-sm font-semibold text-editorial-accent hover:text-editorial-accent-dark transition-colors">
+              Browse All 26 Research Peptides
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
           </div>
         </div>
       </section>

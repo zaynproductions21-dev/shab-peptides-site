@@ -149,7 +149,7 @@ export async function POST(request: Request) {
     }
 
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
-    const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+447000000000"
+    const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+971585742670"
 
     // Send emails and SMS in parallel
     await Promise.allSettled([
@@ -184,7 +184,22 @@ export async function POST(request: Request) {
         : Promise.resolve(),
     ]);
 
-    return NextResponse.json({ success: true });
+    // Build WhatsApp deep link for customer → business conversation
+    const orderRef = Date.now().toString(36).toUpperCase();
+    const itemsSummary = order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ");
+    const whatsappMessage = encodeURIComponent(
+      `Hi Premio Peptides, I've just placed an order.\n\n` +
+      `Order Ref: ${orderRef}\n` +
+      `Name: ${order.customer.name}\n` +
+      `Email: ${order.customer.email}\n` +
+      `Organisation: ${order.customer.organisation || "N/A"}\n` +
+      `Items: ${itemsSummary}\n` +
+      `Total: £${order.total}\n\n` +
+      `I'm ready for research verification.`
+    );
+    const whatsappUrl = `https://wa.me/971585742670?text=${whatsappMessage}`;
+
+    return NextResponse.json({ success: true, orderRef, whatsappUrl });
   } catch (error) {
     console.error("Order API error:", error);
     return NextResponse.json({ error: "Failed to process order" }, { status: 500 });

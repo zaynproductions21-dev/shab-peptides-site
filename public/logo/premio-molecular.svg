@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 80" fill="none">
+  <!-- Molecular chain icon -->
+  <circle cx="16" cy="40" r="5" fill="#C5A04A"/>
+  <line x1="21" y1="40" x2="33" y2="28" stroke="#C5A04A" stroke-width="1.5"/>
+  <circle cx="36" cy="26" r="4" fill="#C5A04A"/>
+  <line x1="40" y1="26" x2="52" y2="40" stroke="#C5A04A" stroke-width="1.5"/>
+  <circle cx="55" cy="42" r="5" fill="#C5A04A"/>
+  <line x1="60" y1="42" x2="72" y2="30" stroke="#C5A04A" stroke-width="1.5"/>
+  <circle cx="75" cy="28" r="4" fill="#C5A04A"/>
+  <!-- Wordmark -->
+  <text x="100" y="52" font-family="'Playfair Display', 'Georgia', serif" font-size="42" font-weight="700" fill="#2D2926" letter-spacing="3">PREMIO</text>
+  <text x="100" y="72" font-family="'Playfair Display', 'Georgia', serif" font-size="16" font-weight="400" fill="#8A8580" letter-spacing="8">PEPTIDES</text>
+</svg>
