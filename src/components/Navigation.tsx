@@ -132,6 +132,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
           </div>
 
           <div className="md:hidden flex items-center gap-2">
+            <CartIcon />
             <a
               href="https://wa.me/971585742670?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
               target="_blank"
