@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { invoiceStore } from "@/app/api/invoice/[ref]/route";
 
 interface OrderItem {
   name: string;
@@ -184,22 +185,32 @@ export async function POST(request: Request) {
         : Promise.resolve(),
     ]);
 
-    // Build WhatsApp deep link for customer → business conversation
+    // Build invoice and WhatsApp deep link
     const orderRef = Date.now().toString(36).toUpperCase();
+    const invoiceUrl = `https://premiopeptides.co.uk/api/invoice/${orderRef}`;
+
+    // Store invoice data for the invoice endpoint
+    invoiceStore.set(orderRef, {
+      ref: orderRef,
+      date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
+      customer: order.customer,
+      items: order.items,
+      total: order.total,
+    });
+
     const itemsSummary = order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ");
     const whatsappMessage = encodeURIComponent(
       `Hi Premio Peptides, I've just placed an order.\n\n` +
       `Order Ref: ${orderRef}\n` +
       `Name: ${order.customer.name}\n` +
-      `Email: ${order.customer.email}\n` +
-      `Organisation: ${order.customer.organisation || "N/A"}\n` +
       `Items: ${itemsSummary}\n` +
       `Total: £${order.total}\n\n` +
+      `Invoice: ${invoiceUrl}\n\n` +
       `I'm ready for research verification.`
     );
     const whatsappUrl = `https://wa.me/971585742670?text=${whatsappMessage}`;
 
-    return NextResponse.json({ success: true, orderRef, whatsappUrl });
+    return NextResponse.json({ success: true, orderRef, whatsappUrl, invoiceUrl });
   } catch (error) {
     console.error("Order API error:", error);
     return NextResponse.json({ error: "Failed to process order" }, { status: 500 });
