@@ -88,7 +88,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
               <line x1="16" y1="13" x2="22" y2="17" stroke="currentColor" strokeWidth="1.5" />
               <line x1="10" y1="20" x2="22" y2="20" stroke="currentColor" strokeWidth="1.5" />
             </svg>
-            <span className={`text-lg tracking-tight ${isSerif ? "font-serif font-semibold" : "font-semibold"}`}>
+            <span className={`text-sm md:text-lg tracking-tight whitespace-nowrap ${isSerif ? "font-serif font-semibold" : "font-semibold"}`}>
               Premio <span className={s.logo}>Peptides</span>
             </span>
           </Link>
