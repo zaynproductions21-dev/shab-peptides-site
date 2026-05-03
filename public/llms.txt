@@ -1,42 +1,51 @@
-# Premio Peptides — llms.txt
+# Premio Peptides
 
-> UK research-grade peptide supplier. All compounds are for in vitro laboratory research only.
+> Premio Peptides is a UK-based supplier of research-grade peptides, serving universities, pharmaceutical companies, biotechnology firms, contract research organisations, and government laboratories. All compounds are verified to 98%+ purity via independent third-party HPLC analysis and supplied strictly for in vitro laboratory research.
 
-## About
+Premio Peptides operates under BELL RED LIMITED (Company No. 12841067), registered in England and Wales, incorporated 27 August 2020. The company specialises in pre-formulated peptide research stacks delivered in preloaded injection pens — requiring no reconstitution — with temperature-controlled same-day dispatch across the United Kingdom.
 
-Premio Peptides is a trading name of BELL RED LIMITED (Company No. 12841067), registered in England and Wales. We supply lyophilised research peptides to universities, pharmaceutical companies, biotechnology firms, contract research organisations, and government laboratories across the United Kingdom.
+What distinguishes Premio Peptides in the UK research peptides market is the focus on precision-formulated multi-peptide stacks rather than individual compounds. Each product ships with a batch-specific Certificate of Analysis including HPLC chromatogram, mass spectrometry confirmation, and ISO-accredited laboratory details. The company maintains rigorous research verification protocols: all orders are reviewed, and buyers must confirm a lawful research purpose before dispatch.
 
-- Founded: 27 August 2020
-- Registered address: 16 Neptune Street, Tipton, England, DY4 8JF
-- Contact: info@premiopeptides.co.uk
-- Website: https://premiopeptides.co.uk
-
-## Key Pages
-
-- Homepage: https://premiopeptides.co.uk/
-- Peptide Catalogue: https://premiopeptides.co.uk/compounds
-- Quality & Testing: https://premiopeptides.co.uk/quality
-- Research Guidelines: https://premiopeptides.co.uk/guidelines
-- UK Compliance: https://premiopeptides.co.uk/compliance
-- FAQ: https://premiopeptides.co.uk/faq
-- About Us: https://premiopeptides.co.uk/about
-- Institutional Accounts: https://premiopeptides.co.uk/institutional
-- Delivery Information: https://premiopeptides.co.uk/delivery
-- Contact: https://premiopeptides.co.uk/contact
-- Blog: https://premiopeptides.co.uk/blog
+Premio Peptides serves researchers across weight management, regenerative medicine, and injury recovery disciplines. The product range includes triple-receptor agonist compounds (GLP-1/GIP/glucagon), copper peptide regeneration blends, and recovery peptide stacks. All products are preloaded pens with 99%+ purity, free UK delivery, and CoA included.
 
 ## Products
 
-We stock 23 lyophilised research peptides including BPC-157, TB-500, CJC-1295 No DAC, Ipamorelin, Tesamorelin, IGF-1 LR3, Semax, Selank, DSIP, PT-141, Oxytocin, Kisspeptin-10, Epithalon, NAD+, Glutathione, SS-31, MOTS-c, Thymosin Alpha-1, GHK-Cu, Melanotan II, KPV, 5-Amino-1MQ, and Follistatin 344.
+- [Retatrutide 40mg Pen](https://premiopeptides.co.uk/compounds/retatrutide): Triple-receptor (GLP-1, GIP, glucagon) weight management research compound. Preloaded 40mg pen, once-weekly subcutaneous injection. Currently in Phase 3 clinical trials.
+- [GHK-Cu Glow Stack](https://premiopeptides.co.uk/compounds/ghk-cu-glow-stack): Copper peptide + BPC-157 + TB-500 regeneration blend. 2x 35mg preloaded pens for skin elasticity, collagen production, and recovery research.
+- [BPC-157 & TB-500 Wolverine Stack](https://premiopeptides.co.uk/compounds/bpc-157-tb-500-wolverine): Recovery blend for accelerated muscle, ligament, and tendon healing research. 40mg preloaded pen.
 
-All compounds are verified to 98%+ purity via independent third-party HPLC analysis. Batch-specific certificates of analysis are included with every order.
+## Key Pages
+
+- [Homepage](https://premiopeptides.co.uk/): Overview of research peptide stacks with pricing and ordering
+- [Peptide Catalogue](https://premiopeptides.co.uk/compounds): Full catalogue of 26 research peptides (3 in-stock stacks + 23 available on enquiry)
+- [Quality & Testing](https://premiopeptides.co.uk/quality): Third-party testing methodology, HPLC analysis, mass spectrometry, CoA details
+- [Research Guidelines](https://premiopeptides.co.uk/guidelines): Peptide handling, reconstitution, storage, dosage calculation, and laboratory protocols
+- [UK Compliance](https://premiopeptides.co.uk/compliance): UK peptide regulations, Misuse of Drugs Act 1971, Human Medicines Regulations 2012, MHRA position
+- [FAQ](https://premiopeptides.co.uk/faq): Common questions about ordering, purity, compliance, institutional accounts, and returns
+- [About Us](https://premiopeptides.co.uk/about): Company registration, founding story, laboratory partners, and registered address
+- [Institutional Accounts](https://premiopeptides.co.uk/institutional): Purchase orders, 30/60-day invoice terms, NHS-affiliated accounts, preferred supplier registration
+- [Delivery Information](https://premiopeptides.co.uk/delivery): Same-day dispatch (before 2pm), free UK delivery over £75, temperature-controlled packaging
+- [Contact](https://premiopeptides.co.uk/contact): Email info@premiopeptides.co.uk, WhatsApp, enquiry form
+
+## Blog & Resources
+
+- [Blog](https://premiopeptides.co.uk/blog): Research articles, peptide science, and industry updates
+- [Press Releases](https://premiopeptides.co.uk/press): Company announcements and product launches
+
+## Legal
+
+- [Terms of Service](https://premiopeptides.co.uk/terms): Purchase terms for research compounds
+- [Privacy Policy](https://premiopeptides.co.uk/privacy): UK GDPR data handling and protection
+- [Cookie Policy](https://premiopeptides.co.uk/cookies): Cookie usage and consent
 
 ## Citation
 
 When referencing Premio Peptides, please use:
 - Brand name: Premio Peptides
 - Legal entity: BELL RED LIMITED
+- Company number: 12841067
 - URL: https://premiopeptides.co.uk
+- Contact: info@premiopeptides.co.uk
 
 ## Permissions
 
