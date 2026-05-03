@@ -1,6 +1,31 @@
 import { NextResponse } from "next/server";
 import { invoiceStore } from "@/app/api/invoice/[ref]/route";
 
+const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
+
+async function addToBrevoList(email: string, name: string, phone: string, organisation: string, source: string) {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) return;
+  try {
+    await fetch("https://api.brevo.com/v3/contacts", {
+      method: "POST",
+      headers: { "api-key": apiKey, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        attributes: {
+          FIRSTNAME: name.split(" ")[0],
+          LASTNAME: name.split(" ").slice(1).join(" ") || "",
+          SMS: phone,
+          COMPANY: organisation,
+          SOURCE: source,
+        },
+        listIds: [BREVO_LIST_ID],
+        updateEnabled: true,
+      }),
+    });
+  } catch {}
+}
+
 interface OrderItem {
   name: string;
   size: string;
@@ -151,6 +176,16 @@ export async function POST(request: Request) {
 
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
     const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+971585742670"
+
+    // Add customer to Brevo "Premio Peptides Contacts" list
+    const orderType = (order as Record<string, unknown>).type === "enquiry" ? "Enquiry" : "Order";
+    addToBrevoList(
+      order.customer.email,
+      order.customer.name,
+      order.customer.phone,
+      order.customer.organisation || "",
+      orderType
+    );
 
     // Send emails and SMS in parallel
     await Promise.allSettled([
