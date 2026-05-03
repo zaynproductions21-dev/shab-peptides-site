@@ -271,7 +271,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
               <h3 className="font-serif text-lg font-bold text-editorial-text">Certificate of Analysis</h3>
               <p className="mt-1 text-sm text-editorial-muted">Every order of {compound.name} includes a batch-specific CoA with HPLC chromatogram, mass spectrometry data, and laboratory accreditation details.</p>
             </div>
-            <a href="/quality" className="inline-flex items-center rounded-lg bg-editorial-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shrink-0">
+            <a href="/certificates-of-analysis" className="inline-flex items-center rounded-lg bg-editorial-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shrink-0">
               View Sample CoA
             </a>
           </div>

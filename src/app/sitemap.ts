@@ -11,6 +11,7 @@ const STATIC_PATHS = [
   { path: "/blog", lastModified: "2026-05-01" },
   { path: "/press", lastModified: "2026-05-01" },
   { path: "/quality", lastModified: "2026-04-25" },
+  { path: "/certificates-of-analysis", lastModified: "2026-05-03" },
   { path: "/guidelines", lastModified: "2026-04-25" },
   { path: "/about", lastModified: "2026-04-25" },
   { path: "/contact", lastModified: "2026-04-25" },
