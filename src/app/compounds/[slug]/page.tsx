@@ -61,6 +61,31 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
           ? "https://schema.org/InStock"
           : "https://schema.org/BackOrder",
         seller: { "@type": "Organization", name: "Premio Peptides" },
+        shippingDetails: {
+          "@type": "OfferShippingDetails",
+          shippingRate: {
+            "@type": "MonetaryAmount",
+            value: "0",
+            currency: "GBP",
+          },
+          shippingDestination: {
+            "@type": "DefinedRegion",
+            addressCountry: "GB",
+          },
+          deliveryTime: {
+            "@type": "ShippingDeliveryTime",
+            handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+            transitTime: { "@type": "QuantitativeValue", minValue: 1, maxValue: 2, unitCode: "DAY" },
+          },
+        },
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "GB",
+          returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+          merchantReturnDays: 7,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/FreeReturn",
+        },
       };
     }),
   };
