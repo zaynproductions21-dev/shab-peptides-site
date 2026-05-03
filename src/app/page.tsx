@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ImageLightbox from "@/components/ImageLightbox";
 import QuoteForm from "@/components/QuoteForm";
 
 import { getFeaturedCompounds } from "@/data/compounds";
@@ -217,7 +218,17 @@ export default async function V1Editorial() {
                     <span className="text-lg">{meta.icon}</span>
                   </div>
 
-                  <div className="p-6 flex flex-col flex-1">
+                  {/* Product image — click to expand */}
+                  {product.image && (
+                    <div className="px-5 pt-5">
+                      <ImageLightbox
+                        src={product.image}
+                        alt={`${product.name} — preloaded research peptide pen by Premio Peptides`}
+                      />
+                    </div>
+                  )}
+
+                  <div className="p-6 pt-4 flex flex-col flex-1">
                     <h3 className="font-serif text-2xl font-bold text-editorial-text group-hover:text-editorial-accent transition-colors">
                       {product.name}
                     </h3>
