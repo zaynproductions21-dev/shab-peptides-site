@@ -293,6 +293,25 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
+      {/* Internal links — trust & documentation */}
+      <section className="py-10 bg-white">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { href: "/certificates-of-analysis", label: "Certificates of Analysis", icon: "📊" },
+              { href: "/quality", label: "Quality & Testing", icon: "🔬" },
+              { href: "/guidelines", label: "Research Guidelines", icon: "📋" },
+              { href: "/compliance", label: "UK Compliance", icon: "⚖️" },
+            ].map((link) => (
+              <Link key={link.href} href={link.href} className="flex flex-col items-center gap-2 rounded-xl border border-editorial-border bg-editorial-surface p-4 text-center hover:border-editorial-accent/30 hover:shadow-sm transition-all">
+                <span className="text-xl">{link.icon}</span>
+                <span className="text-xs font-semibold text-editorial-text">{link.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Research Use Disclaimer */}
       <section className="py-8 bg-white border-y border-editorial-border">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
