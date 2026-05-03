@@ -178,7 +178,7 @@ export async function POST(request: Request) {
     const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+971585742670"
 
     // Add customer to Brevo "Premio Peptides Contacts" list
-    const orderType = (order as Record<string, unknown>).type === "enquiry" ? "Enquiry" : "Order";
+    const orderType = (order as unknown as Record<string, unknown>).type === "enquiry" ? "Enquiry" : "Order";
     addToBrevoList(
       order.customer.email,
       order.customer.name,
