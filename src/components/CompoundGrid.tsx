@@ -30,7 +30,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
     <>
       {/* Search + Filters */}
       <section className="py-6 bg-editorial-surface border-b border-editorial-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
             <div className="relative w-full sm:max-w-xs">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="absolute left-3 top-1/2 -translate-y-1/2 text-editorial-muted">
@@ -65,7 +65,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
 
       {/* Grid */}
       <section className="py-12 lg:py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           {filtered.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-editorial-muted">No peptides match your search. Try a different term or category.</p>

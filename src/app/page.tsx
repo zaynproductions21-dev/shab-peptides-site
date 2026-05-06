@@ -89,7 +89,7 @@ export default async function V1Editorial() {
 
       {/* Hero — MediCenter-inspired clean medical with product showcase */}
       <section className="relative bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <div className="flex items-center gap-2 mb-5">
@@ -168,7 +168,7 @@ export default async function V1Editorial() {
 
       {/* Trust credentials strip — MediCenter style */}
       <section className="border-y border-editorial-border bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { icon: "🔬", title: "HPLC & MS Tested", sub: "Every single batch" },
@@ -190,7 +190,7 @@ export default async function V1Editorial() {
 
       {/* Featured Stacks — The 3 Premium Research Stacks */}
       <section id="compounds" className="py-16 lg:py-24 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-2">Research Stacks</p>
             <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
@@ -293,7 +293,7 @@ export default async function V1Editorial() {
 
       {/* Quality Assurance — Lab-focused */}
       <section id="quality" className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Laboratory Quality</p>
@@ -348,7 +348,7 @@ export default async function V1Editorial() {
 
       {/* For Research Purposes — Trust Section */}
       <section className="py-16 lg:py-24 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl bg-white border border-editorial-border p-8 lg:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
               <div className="lg:col-span-2">
@@ -391,7 +391,7 @@ export default async function V1Editorial() {
 
       {/* Why Choose Us — MediCenter-style icon boxes */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="font-serif text-3xl lg:text-4xl font-bold tracking-tight text-editorial-text">
               Why 500+ UK Researchers Choose Us
@@ -437,7 +437,7 @@ export default async function V1Editorial() {
 
       {/* Contact */}
       <section id="contact" className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-1">Get in Touch</p>

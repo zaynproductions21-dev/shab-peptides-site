@@ -215,7 +215,7 @@ export default function InstitutionalPage() {
 
       {/* Apply CTA + Form */}
       <section id="apply" className="py-16 lg:py-20 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <h2 className="font-serif text-2xl font-bold text-editorial-text mb-4">Apply for an Institutional Account</h2>

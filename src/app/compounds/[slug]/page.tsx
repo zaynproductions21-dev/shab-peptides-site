@@ -124,7 +124,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
 
       {/* Breadcrumb */}
       <div className="pt-20 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-3">
           <nav className="flex text-xs text-editorial-muted">
             <Link href="/" className="hover:text-editorial-accent transition-colors">Home</Link>
             <span className="mx-2">/</span>
@@ -137,7 +137,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
 
       {/* Product Hero */}
       <section className="pb-12 lg:pb-16 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
@@ -327,7 +327,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
 
       {/* Related Compounds */}
       <section className="py-12 lg:py-16 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Related Compounds</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {related.map((r) => (

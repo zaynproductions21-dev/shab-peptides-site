@@ -55,7 +55,7 @@ export default async function CompoundsPage() {
       <Navigation variant="editorial" />
 
       <section className="pt-24 pb-8 lg:pt-32 lg:pb-12 bg-editorial-surface">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Catalogue</p>
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-editorial-text leading-[1.15]">
             Research Peptides
