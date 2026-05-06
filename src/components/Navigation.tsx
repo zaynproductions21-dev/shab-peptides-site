@@ -93,7 +93,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6 ml-8">
             {[
               { label: "Home", href: "/" },
               { label: "Peptides", href: "/compounds" },
@@ -125,7 +125,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </a>
             <Link
               href="/contact"
-              className={`inline-flex items-center rounded-lg px-4 py-2 text-sm font-medium transition-colors ${s.cta}`}
+              className={`hidden xl:inline-flex items-center rounded-lg px-4 py-2 text-sm font-medium transition-colors whitespace-nowrap ${s.cta}`}
             >
               Request Quote
             </Link>
