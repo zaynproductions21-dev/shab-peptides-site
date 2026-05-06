@@ -1,59 +1,9 @@
 // Server-rendered mechanism-of-action infographic. Inline SVG so Google
 // can read every word and the SVG icons scale crisply at any size.
-// Per-product mechanism data lives in `mechanisms` below; new entries
-// can be added here or migrated to the CMS later.
+// Mechanism data lives on each product in the CMS — see ProductMechanism
+// in @/data/compounds.
 
-interface MechanismStage {
-  title: string;
-  body: string;
-  bullets: string[];
-}
-
-export interface ProductMechanism {
-  sequence?: string;
-  origin?: string;
-  stages: [MechanismStage, MechanismStage, MechanismStage];
-}
-
-const mechanisms: Record<string, ProductMechanism> = {
-  "bpc-157": {
-    sequence: "Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val",
-    origin: "Synthetic 15-residue fragment derived from a human gastric protective protein.",
-    stages: [
-      {
-        title: "Molecular target",
-        body: "A pentadecapeptide investigated for its interaction with growth-factor receptors and intracellular signalling complexes in research models.",
-        bullets: [
-          "VEGFR2 (vascular endothelial growth factor receptor 2)",
-          "FAK–paxillin focal-adhesion complex",
-          "Endothelial nitric-oxide synthase (eNOS)",
-        ],
-      },
-      {
-        title: "Investigated pathways",
-        body: "Preclinical studies have explored downstream effects on the nitric-oxide system, growth-factor signalling, and angiogenesis-related responses in vitro.",
-        bullets: [
-          "Nitric-oxide release modulation",
-          "Endothelial tube-formation assays",
-          "Fibroblast migration and proliferation",
-        ],
-      },
-      {
-        title: "Preclinical research applications",
-        body: "Used as a research tool in laboratory models exploring tissue-repair biology and gut-mucosa science. Not approved for human use.",
-        bullets: [
-          "Tendon and ligament fibroblast research",
-          "Gastric and intestinal mucosa models",
-          "Bone-defect healing studies",
-        ],
-      },
-    ],
-  },
-};
-
-export function getMechanism(slug: string): ProductMechanism | undefined {
-  return mechanisms[slug];
-}
+import type { ProductMechanism } from "@/data/compounds";
 
 interface Props {
   productName: string;

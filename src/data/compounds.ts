@@ -9,6 +9,18 @@ export interface CompoundFaq {
   answer: string;
 }
 
+export interface MechanismStage {
+  title: string;
+  body: string;
+  bullets: string[];
+}
+
+export interface ProductMechanism {
+  sequence?: string;
+  origin?: string;
+  stages: MechanismStage[];
+}
+
 export interface Compound {
   slug: string;
   name: string;
@@ -32,6 +44,7 @@ export interface Compound {
   metaTitle: string;
   metaDescription: string;
   faqs: CompoundFaq[];
+  mechanism?: ProductMechanism;
 }
 
 // ── PublishOS API ──────────────────────────────────
@@ -72,6 +85,7 @@ function mapApiProduct(p: Record<string, unknown>): Compound {
     metaTitle: (p.metaTitle as string) || `${p.name} UK | Premio Peptides`,
     metaDescription: (p.metaDescription as string) || `Buy ${p.name} research peptide. ${p.purity || "99%+"} purity. Third-party CoA. Same-day UK dispatch.`,
     faqs: Array.isArray(p.faqs) ? p.faqs as CompoundFaq[] : Array.isArray(p.faq) ? p.faq as CompoundFaq[] : [],
+    mechanism: (p.mechanism as ProductMechanism | undefined) || undefined,
   };
 }
 
