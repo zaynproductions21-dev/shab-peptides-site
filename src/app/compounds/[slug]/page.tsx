@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AddToBasket from "@/components/AddToBasket";
+import MechanismDiagram, { getMechanism } from "@/components/MechanismDiagram";
 import { getCompounds, getCompoundBySlug } from "@/data/compounds";
 
 export async function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
   const compound = await getCompoundBySlug(slug);
   if (!compound) notFound();
 
+  const mechanism = getMechanism(compound.slug);
   const allCompounds = await getCompounds();
   const related = allCompounds.filter((c) => c.slug !== compound.slug).slice(0, 3);
 
@@ -227,6 +229,8 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
           </ul>
         </div>
       </section>
+
+      {mechanism && <MechanismDiagram productName={compound.name} mechanism={mechanism} />}
 
       {/* Technical Specifications */}
       <section className="py-12 lg:py-16 bg-editorial-surface">

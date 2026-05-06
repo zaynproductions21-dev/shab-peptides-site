@@ -71,7 +71,7 @@ const orgSchema = {
 };
 
 export default async function V1Editorial() {
-  const products = await getFeaturedCompounds(6);
+  const products = await getFeaturedCompounds(12);
   const heroProduct = products[0];
   const heroNames = products.slice(0, 3).map((p) => p.name).join(", ");
   return (
