@@ -93,7 +93,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-7">
             {[
               { label: "Home", href: "/" },
               { label: "Peptides", href: "/compounds" },
@@ -131,7 +131,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </Link>
           </div>
 
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             <CartIcon />
             <a
               href="https://wa.me/971585742670?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
@@ -168,7 +168,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
       </div>
 
       {mobileMenuOpen && (
-        <div className={`md:hidden ${s.mobileBg} border-t px-4 py-4 space-y-3`}>
+        <div className={`lg:hidden ${s.mobileBg} border-t px-4 py-4 space-y-3`}>
           {[
             { label: "Home", href: "/" },
             { label: "Peptides", href: "/compounds" },
