@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 type Variant = "light" | "dark" | "minimal" | "editorial" | "bold" | "warm";
 
@@ -8,8 +8,35 @@ interface QuoteFormProps {
   variant?: Variant;
 }
 
+const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
+
 export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+
+  const renderTurnstile = useCallback(() => {
+    if (!turnstileRef.current || !(window as unknown as Record<string, unknown>).turnstile) return;
+    turnstileRef.current.innerHTML = "";
+    (window as unknown as { turnstile: { render: (el: HTMLDivElement, opts: Record<string, unknown>) => void } }).turnstile.render(turnstileRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      callback: (token: string) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+    });
+  }, []);
+
+  useEffect(() => {
+    if (document.querySelector('script[src*="turnstile"]')) {
+      if ((window as unknown as Record<string, unknown>).turnstile) renderTurnstile();
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit";
+    script.async = true;
+    (window as unknown as Record<string, unknown>).onTurnstileLoad = renderTurnstile;
+    document.head.appendChild(script);
+  }, [renderTurnstile]);
 
   const styles: Record<Variant, { input: string; label: string; success: string; successHeading: string; successText: string; secondaryBtn: string }> = {
     light: {
@@ -102,7 +129,36 @@ export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
   }
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} className={`rounded-2xl p-6 sm:p-8 space-y-5 ${wrapperStyles[variant]}`}>
+    <form onSubmit={async (e) => {
+      e.preventDefault();
+      if (!turnstileToken) return;
+      setSubmitting(true);
+      try {
+        const formData = new FormData(e.currentTarget);
+        await fetch("/api/order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "enquiry",
+            customer: {
+              name: formData.get("name"),
+              email: formData.get("email"),
+              phone: "",
+              organisation: formData.get("organisation") || "",
+              researchPurpose: formData.get("message") || "",
+            },
+            items: [{ name: formData.get("compound") || "General Enquiry", size: formData.get("quantity") || "N/A", price: "N/A", quantity: 1 }],
+            total: "0",
+            "cf-turnstile-response": turnstileToken,
+          }),
+        });
+        setSubmitted(true);
+      } catch {
+        alert("Something went wrong. Please try again.");
+      } finally {
+        setSubmitting(false);
+      }
+    }} className={`rounded-2xl p-6 sm:p-8 space-y-5 ${wrapperStyles[variant]}`}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className={`block text-sm font-medium mb-1.5 ${s.label}`}>
@@ -161,12 +217,15 @@ export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
         <textarea id="message" name="message" rows={4} placeholder="Please describe your research requirements, including purity specifications, quantities, and any custom synthesis needs." className={`${inputBase} ${s.input}`} />
       </div>
 
+      <div ref={turnstileRef} className="mb-1" />
+
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           type="submit"
-          className={`inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 ${ctaStyles[variant]}`}
+          disabled={!turnstileToken || submitting}
+          className={`inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${ctaStyles[variant]}`}
         >
-          Request Research Quote
+          {submitting ? "Submitting..." : "Request Research Quote"}
         </button>
         <button
           type="button"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/components/CartProvider";
 
 const WHATSAPP_NUMBER = "971585742670";
+const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
@@ -16,6 +17,32 @@ export default function CartPage() {
   const [step, setStep] = useState<"cart" | "details">("cart");
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", organisation: "", researchPurpose: "" });
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+
+  const renderTurnstile = useCallback(() => {
+    if (!turnstileRef.current || !(window as unknown as Record<string, unknown>).turnstile) return;
+    turnstileRef.current.innerHTML = "";
+    (window as unknown as { turnstile: { render: (el: HTMLDivElement, opts: Record<string, unknown>) => void } }).turnstile.render(turnstileRef.current, {
+      sitekey: TURNSTILE_SITE_KEY,
+      callback: (token: string) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+    });
+  }, []);
+
+  useEffect(() => {
+    if (step !== "details") return;
+    const tryRender = () => {
+      if ((window as unknown as Record<string, unknown>).turnstile) { renderTurnstile(); return; }
+      if (document.querySelector('script[src*="turnstile"]')) return;
+      const script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad&render=explicit";
+      script.async = true;
+      (window as unknown as Record<string, unknown>).onTurnstileLoad = renderTurnstile;
+      document.head.appendChild(script);
+    };
+    tryRender();
+  }, [step, renderTurnstile]);
 
   function buildWhatsAppMessage() {
     if (items.length === 0) return "";
@@ -28,13 +55,13 @@ export default function CartPage() {
   }
 
   async function handleSubmitOrder() {
-    if (!form.name || !form.email || !form.phone) return;
+    if (!form.name || !form.email || !form.phone || !turnstileToken) return;
     setSubmitting(true);
     try {
       const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customer: form, items, total: totalPrice }),
+        body: JSON.stringify({ customer: form, items, total: totalPrice, "cf-turnstile-response": turnstileToken }),
       });
       const data = await res.json();
       clearCart();
@@ -250,9 +277,11 @@ export default function CartPage() {
                     </div>
                   </div>
 
+                  <div ref={turnstileRef} className="mt-4" />
+
                   <button
                     onClick={handleSubmitOrder}
-                    disabled={submitting || !form.name || !form.email || !form.phone || !form.organisation || !form.researchPurpose}
+                    disabled={submitting || !form.name || !form.email || !form.phone || !form.organisation || !form.researchPurpose || !turnstileToken}
                     className="mt-6 flex w-full items-center justify-center rounded-lg bg-editorial-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md shadow-editorial-accent/20 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Submitting..." : "Place Order"}

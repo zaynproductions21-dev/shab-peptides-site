@@ -164,13 +164,42 @@ function buildBusinessEmail(order: OrderPayload): string {
   `;
 }
 
+// ── Turnstile verification ─────────────────────────
+async function verifyTurnstileToken(token: string): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // skip in dev if not configured
+  try {
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }),
+    });
+    const data = await res.json();
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
+
 // ── API Route ──────────────────────────────────────
 export async function POST(request: Request) {
   try {
-    const order: OrderPayload = await request.json();
+    const body = await request.json();
+    const turnstileToken = body["cf-turnstile-response"];
+
+    // Validate Turnstile CAPTCHA
+    if (!turnstileToken) {
+      return NextResponse.json({ error: "CAPTCHA token missing" }, { status: 400 });
+    }
+    const turnstileValid = await verifyTurnstileToken(turnstileToken);
+    if (!turnstileValid) {
+      return NextResponse.json({ error: "CAPTCHA verification failed" }, { status: 400 });
+    }
+
+    const order: OrderPayload = body;
 
     // Validate required fields
-    if (!order.customer?.name || !order.customer?.email || !order.customer?.phone || !order.items?.length) {
+    if (!order.customer?.name || !order.customer?.email || !order.items?.length) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
