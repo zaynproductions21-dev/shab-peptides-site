@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Premio Peptides — single-colour dark logo (#1A2332). For light backgrounds. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-label="Premio Peptides">
+  <title>Premio Peptides</title>
+  <g transform="translate(20 18) scale(4.5)" fill="#1A2332" stroke="#1A2332">
+    <circle cx="16" cy="16" r="14" fill="none" stroke-width="1.5"/>
+    <line x1="16" y1="13" x2="10" y2="17" stroke-width="1.5"/>
+    <line x1="16" y1="13" x2="22" y2="17" stroke-width="1.5"/>
+    <line x1="10" y1="20" x2="22" y2="20" stroke-width="1.5"/>
+    <circle cx="16" cy="10" r="3"/>
+    <circle cx="10" cy="20" r="3"/>
+    <circle cx="22" cy="20" r="3"/>
+  </g>
+  <text
+    x="200" y="115"
+    fill="#1A2332"
+    font-family="'Playfair Display', 'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+    font-size="86"
+    font-weight="600"
+    letter-spacing="-1.5"
+  >Premio Peptides</text>
+</svg>
