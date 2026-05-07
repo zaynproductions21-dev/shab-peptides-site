@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-interface InvoiceData {
+export interface InvoiceData {
   ref: string;
   date: string;
   customer: {
@@ -13,24 +13,35 @@ interface InvoiceData {
   total: string;
 }
 
-// Store invoices in memory for now — in production, use KV
-const invoiceStore = new Map<string, InvoiceData>();
-
-export function storeInvoice(data: InvoiceData) {
-  invoiceStore.set(data.ref, data);
+/**
+ * Stateless invoice URL: the slug IS the invoice payload, base64url-encoded.
+ * This survives serverless cold-starts, function recycling, and instance churn —
+ * the customer's invoice link works forever without any DB.
+ */
+export function encodeInvoiceRef(data: InvoiceData): string {
+  return Buffer.from(JSON.stringify(data), "utf-8").toString("base64url");
 }
 
-export { invoiceStore };
+function decodeInvoiceRef(slug: string): InvoiceData | null {
+  try {
+    const json = Buffer.from(slug, "base64url").toString("utf-8");
+    const obj = JSON.parse(json) as InvoiceData;
+    if (!obj?.ref || !obj.customer || !Array.isArray(obj.items)) return null;
+    return obj;
+  } catch {
+    return null;
+  }
+}
 
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ ref: string }> }
 ) {
   const { ref } = await params;
-  const invoice = invoiceStore.get(ref);
+  const decoded = decodeInvoiceRef(ref);
 
-  // If no stored invoice, show a generic template with the ref
-  const data = invoice || {
+  // If the slug doesn't decode (legacy / invalid), render a generic placeholder
+  const data = decoded || {
     ref,
     date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
     customer: { name: "—", email: "—", phone: "—", organisation: "—" },
@@ -144,20 +155,15 @@ export async function GET(
         </div>
       </div>
 
-      <!-- Bank details -->
-      <div style="background:#faf8f5;border-top:1px solid #e8ecf0;padding:32px">
-        <p style="font-size:11px;font-weight:600;color:#8A8580;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Payment Details — Bank Transfer (BACS)</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 32px;max-width:400px">
-          <p style="font-size:13px;color:#8A8580">Account Name</p>
-          <p style="font-size:13px;color:#2D2926;font-weight:600">BELL RED LIMITED</p>
-          <p style="font-size:13px;color:#8A8580">Sort Code</p>
-          <p style="font-size:13px;color:#2D2926;font-weight:600">00-00-00</p>
-          <p style="font-size:13px;color:#8A8580">Account Number</p>
-          <p style="font-size:13px;color:#2D2926;font-weight:600">00000000</p>
-          <p style="font-size:13px;color:#8A8580">Reference</p>
-          <p style="font-size:13px;color:#C5A04A;font-weight:600">${data.ref}</p>
-        </div>
-        <p style="font-size:12px;color:#8A8580;margin-top:16px">Please use your invoice reference <strong>${data.ref}</strong> as the payment reference so we can match your payment.</p>
+      <!-- Payment instructions (no bank details on the public invoice) -->
+      <div style="background:#FFF8E1;border-top:1px solid #F5C842;padding:32px">
+        <p style="font-size:11px;font-weight:700;color:#7A6300;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">Payment Instructions</p>
+        <p style="font-size:14px;color:#2D2926;line-height:1.6;margin:0">
+          For your security, our BACS bank details are <strong>not printed on this invoice</strong>. Once we&rsquo;ve verified your research purpose by phone or WhatsApp (within 60 minutes of order), our team will send you the sort code, account number and a unique payment reference in a separate, direct message.
+        </p>
+        <p style="font-size:12px;color:#5a5550;margin-top:12px">
+          Please quote invoice reference <strong style="color:#2D2926">${data.ref}</strong> when you receive the payment instructions, so we can match your transfer to this order.
+        </p>
       </div>
 
       <!-- Footer -->

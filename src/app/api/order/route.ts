@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { invoiceStore } from "@/app/api/invoice/[ref]/route";
+import { encodeInvoiceRef } from "@/app/api/invoice/[ref]/route";
 
 const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
 
@@ -91,7 +91,7 @@ async function sendTwilioSms(to: string, body: string) {
 }
 
 // ── Build emails ───────────────────────────────────
-function buildCustomerEmail(order: OrderPayload): string {
+function buildCustomerEmail(order: OrderPayload, orderRef: string, invoiceUrl: string): string {
   const itemsHtml = order.items
     .map(
       (item) =>
@@ -107,6 +107,20 @@ function buildCustomerEmail(order: OrderPayload): string {
       <div style="padding:24px">
         <h2 style="color:#0097A7;margin-top:0">Thank you for your order, ${order.customer.name}!</h2>
         <p>We've received your order and it's now being reviewed by our team.</p>
+        <p style="font-size:13px;color:#555;margin-top:8px"><strong>Order reference:</strong> <span style="font-family:ui-monospace,monospace;color:#2D2926">#${orderRef}</span></p>
+
+        <!-- Invoice CTA -->
+        <div style="margin:20px 0;text-align:center">
+          <a href="${invoiceUrl}" style="display:inline-block;background:#0097A7;color:#fff;text-decoration:none;font-weight:600;padding:12px 24px;border-radius:8px;font-size:14px">View / Download Invoice</a>
+          <p style="font-size:11px;color:#999;margin:8px 0 0">Or paste this link into any browser: <span style="word-break:break-all">${invoiceUrl}</span></p>
+        </div>
+
+        <!-- Payment notice -->
+        <div style="background:#FFF8E1;border:1px solid #F5C842;border-radius:8px;padding:14px 16px;margin:16px 0">
+          <p style="margin:0;font-weight:600;color:#7A6300;font-size:13px">Bank details follow verification</p>
+          <p style="margin:6px 0 0;font-size:12px;color:#666;line-height:1.5">For your security, our BACS payment details are <strong>only sent after the verification call</strong> — never on the invoice or this email. You&rsquo;ll receive a separate message from our team with the sort code, account number and your unique payment reference.</p>
+        </div>
+
         <div style="background:#f0f9fa;border:1px solid #d0e8ec;border-radius:8px;padding:16px;margin:16px 0">
           <p style="margin:0;font-weight:bold;color:#0097A7">What happens next?</p>
           <ul style="margin:8px 0 0;padding-left:20px;color:#555">
@@ -206,6 +220,17 @@ export async function POST(request: Request) {
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
     const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+971585742670"
 
+    // Build orderRef + invoice link FIRST so the email + WhatsApp share the same ref
+    const orderRef = Date.now().toString(36).toUpperCase();
+    const invoiceSlug = encodeInvoiceRef({
+      ref: orderRef,
+      date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
+      customer: order.customer,
+      items: order.items,
+      total: order.total,
+    });
+    const invoiceUrl = `https://premiopeptides.co.uk/api/invoice/${invoiceSlug}`;
+
     // Add customer to Brevo "Premio Peptides Contacts" list
     const orderType = (order as unknown as Record<string, unknown>).type === "enquiry" ? "Enquiry" : "Order";
     addToBrevoList(
@@ -218,11 +243,11 @@ export async function POST(request: Request) {
 
     // Send emails and SMS in parallel
     await Promise.allSettled([
-      // Customer confirmation email
+      // Customer confirmation email — includes invoice download CTA
       sendBrevoEmail(
         order.customer.email,
-        `Order Received — Premio Peptides #${Date.now().toString(36).toUpperCase()}`,
-        buildCustomerEmail(order)
+        `Order Received — Premio Peptides #${orderRef}`,
+        buildCustomerEmail(order, orderRef, invoiceUrl)
       ),
 
       // Business notification email
@@ -244,23 +269,10 @@ export async function POST(request: Request) {
       order.customer.phone && process.env.TWILIO_ACCOUNT_SID
         ? sendTwilioSms(
             order.customer.phone,
-            `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.co.uk`
+            `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}, ref #${orderRef}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.co.uk`
           )
         : Promise.resolve(),
     ]);
-
-    // Build invoice and WhatsApp deep link
-    const orderRef = Date.now().toString(36).toUpperCase();
-    const invoiceUrl = `https://premiopeptides.co.uk/api/invoice/${orderRef}`;
-
-    // Store invoice data for the invoice endpoint
-    invoiceStore.set(orderRef, {
-      ref: orderRef,
-      date: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }),
-      customer: order.customer,
-      items: order.items,
-      total: order.total,
-    });
 
     const itemsSummary = order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ");
     const whatsappMessage = encodeURIComponent(
