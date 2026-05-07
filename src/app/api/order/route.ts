@@ -102,7 +102,7 @@ function buildCustomerEmail(order: OrderPayload): string {
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333">
       <div style="background:#0097A7;padding:24px;text-align:center">
-        <h1 style="color:#fff;margin:0;font-size:22px">Premio Peptides</h1>
+        <img src="https://premiopeptides.co.uk/logo/png/premio-logo-full-mono-white.png" alt="Premio Peptides" width="220" height="55" style="display:inline-block;height:auto;max-width:220px;border:0" />
       </div>
       <div style="padding:24px">
         <h2 style="color:#0097A7;margin-top:0">Thank you for your order, ${order.customer.name}!</h2>

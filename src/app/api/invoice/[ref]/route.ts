@@ -81,8 +81,8 @@ export async function GET(
       <!-- Header -->
       <div style="background:#2D2926;padding:32px;display:flex;justify-content:space-between;align-items:flex-start">
         <div>
-          <h1 style="font-family:'Playfair Display',serif;font-size:28px;color:white;margin-bottom:4px">Premio Peptides</h1>
-          <p style="color:#C5A04A;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase">Research-Grade Compounds</p>
+          <img src="https://premiopeptides.co.uk/logo/png/premio-logo-full-mono-white.png" alt="Premio Peptides" width="240" height="60" style="display:block;height:auto;max-width:240px;margin-bottom:6px" />
+          <p style="color:#C5A04A;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0">Research-Grade Compounds</p>
         </div>
         <div style="text-align:right">
           <p style="color:white;font-size:22px;font-weight:700">INVOICE</p>
