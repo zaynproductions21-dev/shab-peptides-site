@@ -83,8 +83,8 @@ export default async function V1Editorial() {
 
       {/* Shipping Banner */}
       <div className="bg-editorial-accent text-white text-center py-2.5 text-sm font-medium tracking-wide pt-[4.5rem]">
-        <span className="hidden sm:inline">🚚 </span>
-        Free UK Delivery on Orders Over £75 &nbsp;·&nbsp; Order Before 14:00 for Same-Day Dispatch &nbsp;·&nbsp; Certificate of Analysis Included
+        <span className="hidden sm:inline">✅ </span>
+        <strong>All Peptides In Stock</strong> &nbsp;·&nbsp; Order Before 14:00 for Same-Day Dispatch &nbsp;·&nbsp; Free UK Delivery Over £75 &nbsp;·&nbsp; CoA Included
       </div>
 
       {/* Hero — MediCenter-inspired clean medical with product showcase */}

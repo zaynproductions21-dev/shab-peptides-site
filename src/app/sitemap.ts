@@ -18,6 +18,8 @@ const STATIC_PATHS = [
   { path: "/faq", lastModified: "2026-05-01" },
   { path: "/delivery", lastModified: "2026-04-25" },
   { path: "/institutional", lastModified: "2026-04-25" },
+  { path: "/reconstitution-calculator", lastModified: "2026-05-07" },
+  { path: "/why-premio", lastModified: "2026-05-07" },
   { path: "/compliance", lastModified: "2026-04-25" },
   { path: "/terms", lastModified: "2026-04-25" },
   { path: "/privacy", lastModified: "2026-04-25" },

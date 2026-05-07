@@ -98,8 +98,9 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
               { label: "Home", href: "/" },
               { label: "Peptides", href: "/compounds" },
               { label: "Quality", href: "/quality" },
+              { label: "Why Premio", href: "/why-premio" },
+              { label: "Calculator", href: "/reconstitution-calculator" },
               { label: "Blog", href: "/blog" },
-              { label: "Press", href: "/press" },
               { label: "About", href: "/about" },
               { label: "Contact", href: "/contact" },
             ].map((item) => (
@@ -173,8 +174,9 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             { label: "Home", href: "/" },
             { label: "Peptides", href: "/compounds" },
             { label: "Quality", href: "/quality" },
+            { label: "Why Premio", href: "/why-premio" },
+            { label: "Calculator", href: "/reconstitution-calculator" },
             { label: "Blog", href: "/blog" },
-            { label: "Press", href: "/press" },
             { label: "About", href: "/about" },
             { label: "Contact", href: "/contact" },
           ].map((item) => (

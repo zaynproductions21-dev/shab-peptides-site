@@ -56,6 +56,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
                 { label: "Shop Peptides", href: "/compounds" },
                 { label: "Quality & Testing", href: "/quality" },
                 { label: "Research Guidelines", href: "/guidelines" },
+                { label: "Reconstitution Calculator", href: "/reconstitution-calculator" },
                 { label: "Institutional Accounts", href: "/institutional" },
                 { label: "About Us", href: "/about" },
               ].map((item) => (
