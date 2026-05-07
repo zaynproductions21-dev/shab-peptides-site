@@ -64,6 +64,20 @@ export default function CartPage() {
         body: JSON.stringify({ customer: form, items, total: totalPrice, "cf-turnstile-response": turnstileToken }),
       });
       const data = await res.json();
+      // Stash order details so /order-confirmed can render the "Save your invoice" card
+      try {
+        sessionStorage.setItem(
+          "premio:lastOrder",
+          JSON.stringify({
+            orderRef: data.orderRef,
+            invoiceUrl: data.invoiceUrl,
+            whatsappUrl: data.whatsappUrl,
+            total: totalPrice,
+            customerName: form.name,
+            savedAt: new Date().toISOString(),
+          })
+        );
+      } catch { /* ignore quota errors */ }
       clearCart();
       // Open WhatsApp conversation with order details pre-filled
       if (data.whatsappUrl) {
