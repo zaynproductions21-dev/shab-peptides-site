@@ -54,6 +54,7 @@ export default function Footer({ variant = "light" }: FooterProps) {
             <ul className="mt-4 space-y-3">
               {[
                 { label: "Shop Peptides", href: "/compounds" },
+                { label: "Why Premio", href: "/why-premio" },
                 { label: "Quality & Testing", href: "/quality" },
                 { label: "Research Guidelines", href: "/guidelines" },
                 { label: "Reconstitution Calculator", href: "/reconstitution-calculator" },
