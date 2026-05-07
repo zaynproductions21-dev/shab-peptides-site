@@ -36,7 +36,7 @@ function ComparisonSection() {
     <section id="comparison" className="py-16 lg:py-20 bg-editorial-surface">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Concept A · Side by Side</p>
+          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Side by Side</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-editorial-text leading-tight">
             Premio Peptides <span className="text-editorial-muted font-normal">vs</span> Typical Grey-Market Vendor
           </h2>
@@ -91,7 +91,7 @@ function JourneySection() {
     <section id="journey" className="py-16 lg:py-20 bg-white">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Concept B · The Journey</p>
+          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">The Journey</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-editorial-text leading-tight">
             From order to researcher&rsquo;s bench <span className="text-editorial-accent">in 24 hours</span>
           </h2>
@@ -143,7 +143,7 @@ function PipelineSection() {
     <section id="pipeline" className="py-16 lg:py-20 bg-editorial-text text-white">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">Concept C · The Quality Pipeline</p>
+          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">The Quality Pipeline</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight leading-tight">
             8 stages every batch passes <span className="text-editorial-accent">before it reaches a bench</span>
           </h2>
@@ -235,13 +235,13 @@ export default function WhyPremioPage() {
 
           <nav aria-label="Sections" className="mt-8 flex flex-wrap gap-3">
             <a href="#comparison" className="inline-flex items-center rounded-full border border-editorial-border bg-white px-4 py-2 text-sm font-medium text-editorial-text hover:border-editorial-accent/40 hover:text-editorial-accent transition-colors">
-              <span className="mr-2 text-editorial-accent font-bold">A</span> Comparison
+              Comparison
             </a>
             <a href="#journey" className="inline-flex items-center rounded-full border border-editorial-border bg-white px-4 py-2 text-sm font-medium text-editorial-text hover:border-editorial-accent/40 hover:text-editorial-accent transition-colors">
-              <span className="mr-2 text-editorial-accent font-bold">B</span> Customer Journey
+              Customer Journey
             </a>
             <a href="#pipeline" className="inline-flex items-center rounded-full border border-editorial-border bg-white px-4 py-2 text-sm font-medium text-editorial-text hover:border-editorial-accent/40 hover:text-editorial-accent transition-colors">
-              <span className="mr-2 text-editorial-accent font-bold">C</span> Quality Pipeline
+              Quality Pipeline
             </a>
           </nav>
         </div>
