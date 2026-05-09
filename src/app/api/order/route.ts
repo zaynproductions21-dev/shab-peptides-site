@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { encodeInvoiceRef } from "@/app/api/invoice/[ref]/route";
 import { WHATSAPP_NUMBER, normalisePhone } from "@/lib/config";
+import { kvSet } from "@/lib/kv";
 
 const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
 
@@ -263,6 +264,12 @@ export async function POST(request: Request) {
       total: order.total,
     });
     const invoiceUrl = `https://premiopeptides.co.uk/api/invoice/${invoiceSlug}`;
+    // Branded short URL for sharing (WhatsApp, SMS) — resolves via /i/[ref]
+    const shortInvoiceUrl = `https://premiopeptides.co.uk/i/${orderRef}`;
+    // Persist the orderRef → encoded-slug mapping so /i/{orderRef} can redirect.
+    // No TTL — invoice links should work forever. Failure here doesn't break
+    // the order: the long invoiceUrl in email/page still works regardless.
+    kvSet(`premio-invoice:${orderRef}`, invoiceSlug).catch(() => undefined);
 
     // Add customer to Brevo "Premio Peptides Contacts" list
     const orderType = (order as unknown as Record<string, unknown>).type === "enquiry" ? "Enquiry" : "Order";
@@ -334,6 +341,7 @@ export async function POST(request: Request) {
       `Name: ${order.customer.name}\n` +
       `Items: ${itemsSummary}\n` +
       `Total: £${order.total}\n\n` +
+      `Invoice: ${shortInvoiceUrl}\n\n` +
       `I'm ready for research verification.`
     );
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
