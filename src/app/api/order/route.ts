@@ -307,6 +307,24 @@ export async function POST(request: Request) {
             `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}, ref #${orderRef}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.co.uk`
           )
         : Promise.resolve(),
+
+      // Push order into PublishOS dashboard so it appears in the Orders tab.
+      // Non-blocking: failure here doesn't fail the customer's order.
+      fetch("https://publishos-eosin.vercel.app/api/premio-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orderId: orderRef,
+          customerName: order.customer.name,
+          customerEmail: order.customer.email,
+          customerPhone: order.customer.phone,
+          organisation: order.customer.organisation || "",
+          researchPurpose: order.customer.researchPurpose || "",
+          items: order.items,
+          total: order.total,
+          invoiceUrl,
+        }),
+      }).catch(() => undefined),
     ]);
 
     const itemsSummary = order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ");
