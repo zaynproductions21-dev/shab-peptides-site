@@ -150,29 +150,55 @@ function buildCustomerEmail(order: OrderPayload, orderRef: string, invoiceUrl: s
   `;
 }
 
-function buildBusinessEmail(order: OrderPayload): string {
+function buildCustomerWhatsAppUrl(order: OrderPayload, orderRef: string): string {
+  // E.164 → wa.me wants the number without the leading "+"
+  const phone = order.customer.phone.replace(/^\+/, "");
+  const message = encodeURIComponent(
+    `Hi ${order.customer.name}, this is Premio Peptides regarding your order #${orderRef}. ` +
+    `Could you confirm the research purpose so we can dispatch?`
+  );
+  return `https://wa.me/${phone}?text=${message}`;
+}
+
+function buildBusinessEmail(order: OrderPayload, orderRef: string, invoiceUrl: string): string {
   const itemsList = order.items
     .map((item) => `• ${item.name} (${item.size}) × ${item.quantity} — ${item.price}`)
     .join("\n");
 
+  const customerWaUrl = buildCustomerWhatsAppUrl(order, orderRef);
+
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#333">
-      <div style="background:#0097A7;padding:24px;text-align:center">
-        <h1 style="color:#fff;margin:0;font-size:22px">New Order Received</h1>
+      <div style="background:#ffffff;padding:24px;text-align:center;border-bottom:3px solid #C5A04A">
+        <h1 style="color:#2D2926;margin:0;font-size:22px">New Order Received</h1>
+        <p style="color:#8A8580;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin:4px 0 0">Order #${orderRef}</p>
       </div>
       <div style="padding:24px">
-        <h2 style="color:#0097A7;margin-top:0">Order from ${order.customer.name}</h2>
-        <div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;padding:16px;margin:16px 0">
+        <div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;padding:16px;margin:0 0 16px">
           <p style="margin:0;font-weight:bold;color:#e65100">ACTION REQUIRED: Contact within 60 minutes</p>
-          <p style="margin:8px 0 0;font-size:14px">Phone: <strong>${order.customer.phone}</strong></p>
+          <p style="margin:8px 0 0;font-size:14px">Customer: <strong>${order.customer.name}</strong> · ${order.customer.phone}</p>
         </div>
-        <h3>Customer Details</h3>
+
+        <!-- One-tap action buttons -->
+        <div style="margin:0 0 20px;text-align:center">
+          <a href="${customerWaUrl}" style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:8px;font-size:13px;margin:4px">
+            💬 WhatsApp ${order.customer.name.split(" ")[0]}
+          </a>
+          <a href="tel:${order.customer.phone}" style="display:inline-block;background:#2D2926;color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:8px;font-size:13px;margin:4px">
+            📞 Call
+          </a>
+          <a href="${invoiceUrl}" style="display:inline-block;background:#C5A04A;color:#fff;text-decoration:none;font-weight:600;padding:11px 20px;border-radius:8px;font-size:13px;margin:4px">
+            📄 Invoice
+          </a>
+        </div>
+
+        <h3 style="color:#2D2926;margin:0 0 8px">Customer Details</h3>
         <p style="margin:4px 0"><strong>Name:</strong> ${order.customer.name}</p>
         <p style="margin:4px 0"><strong>Email:</strong> ${order.customer.email}</p>
         <p style="margin:4px 0"><strong>Phone:</strong> ${order.customer.phone}</p>
         <p style="margin:4px 0"><strong>Organisation:</strong> ${order.customer.organisation}</p>
         <p style="margin:4px 0"><strong>Research Purpose:</strong> ${order.customer.researchPurpose}</p>
-        <h3>Order Items</h3>
+        <h3 style="color:#2D2926;margin:16px 0 8px">Order Items</h3>
         <pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px">${itemsList}\n\nTotal: £${order.total}</pre>
       </div>
     </div>
@@ -261,14 +287,16 @@ export async function POST(request: Request) {
       sendBrevoEmail(
         businessEmail,
         `NEW ORDER: ${order.customer.name} — £${order.total}`,
-        buildBusinessEmail(order)
+        buildBusinessEmail(order, orderRef, invoiceUrl)
       ),
 
-      // SMS to business
+      // SMS to business — includes one-tap WhatsApp link to the customer so
+      // we can initiate verification immediately even if their browser never
+      // opened wa.me (common on desktop).
       businessPhone
         ? sendTwilioSms(
             businessPhone,
-            `NEW ORDER: ${order.customer.name} (${order.customer.organisation}) — £${order.total}. Items: ${order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ")}. Phone: ${order.customer.phone}. VERIFY WITHIN 60 MINS.`
+            `NEW ORDER #${orderRef}: ${order.customer.name} (${order.customer.organisation}) — £${order.total}. Items: ${order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ")}. WhatsApp: ${buildCustomerWhatsAppUrl(order, orderRef)} · Phone: ${order.customer.phone}. VERIFY WITHIN 60 MINS.`
           )
         : Promise.resolve(),
 
@@ -288,7 +316,6 @@ export async function POST(request: Request) {
       `Name: ${order.customer.name}\n` +
       `Items: ${itemsSummary}\n` +
       `Total: £${order.total}\n\n` +
-      `Invoice: ${invoiceUrl}\n\n` +
       `I'm ready for research verification.`
     );
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
