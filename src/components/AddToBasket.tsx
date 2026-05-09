@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useCart } from "./CartProvider";
 
 interface AddToBasketProps {
@@ -13,13 +14,14 @@ interface AddToBasketProps {
 
 export default function AddToBasket({ slug, name, sizes, image, inStock = true }: AddToBasketProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [added, setAdded] = useState(false);
   const [enquirySent, setEnquirySent] = useState(false);
   const [enquiryForm, setEnquiryForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
-  const { addItem } = useCart();
+  const { items, addItem, updateQuantity } = useCart();
 
   const selected = sizes[selectedIndex];
+  const currentQty =
+    items.find((i) => i.slug === slug && i.size === selected.size)?.quantity ?? 0;
 
   function handleAdd() {
     addItem({
@@ -29,8 +31,6 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
       price: selected.price,
       image,
     });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
   }
 
   async function handleEnquiry(e: React.FormEvent) {
@@ -162,33 +162,59 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
         ))}
       </div>
 
-      {/* Price + Add button */}
-      <div className="flex items-center gap-4">
+      {/* Price + Add button (or View Basket + Qty stepper if already added) */}
+      <div className="flex items-center gap-4 flex-wrap">
         <p className="text-3xl font-bold text-editorial-accent">{selected.price}</p>
-        <button
-          onClick={handleAdd}
-          className={`inline-flex items-center rounded-lg px-6 py-3.5 text-sm font-semibold text-white transition-all shadow-md ${
-            added
-              ? "bg-editorial-green shadow-editorial-green/20"
-              : "bg-editorial-accent hover:bg-editorial-accent-dark shadow-editorial-accent/20"
-          }`}
-        >
-          {added ? (
-            <>
+
+        {currentQty === 0 ? (
+          <button
+            onClick={handleAdd}
+            className="inline-flex items-center rounded-lg px-6 py-3.5 text-sm font-semibold text-white bg-editorial-accent hover:bg-editorial-accent-dark transition-all shadow-md shadow-editorial-accent/20"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mr-2">
+              <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+            </svg>
+            Add to Basket
+          </button>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link
+              href="/cart"
+              className="inline-flex items-center rounded-lg px-5 py-3.5 text-sm font-semibold text-white bg-editorial-green hover:bg-editorial-green/90 transition-all shadow-md shadow-editorial-green/20"
+            >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="mr-2">
                 <path d="M5 13l4 4L19 7" />
               </svg>
-              Added!
-            </>
-          ) : (
-            <>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mr-2">
-                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-              </svg>
-              Add to Basket
-            </>
-          )}
-        </button>
+              View Basket
+            </Link>
+            <div className="inline-flex items-center rounded-lg border border-editorial-green/30 bg-editorial-green/5 overflow-hidden">
+              <button
+                type="button"
+                onClick={() => updateQuantity(slug, selected.size, currentQty - 1)}
+                aria-label="Decrease quantity"
+                className="px-3 py-3 text-editorial-green hover:bg-editorial-green/10 transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+              <span className="min-w-[2rem] text-center text-sm font-bold text-editorial-green tabular-nums">
+                {currentQty}
+              </span>
+              <button
+                type="button"
+                onClick={handleAdd}
+                aria-label="Increase quantity"
+                className="px-3 py-3 text-editorial-green hover:bg-editorial-green/10 transition-colors"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
