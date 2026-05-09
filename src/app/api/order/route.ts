@@ -304,7 +304,7 @@ export async function POST(request: Request) {
       order.customer.phone && process.env.TWILIO_ACCOUNT_SID
         ? sendTwilioSms(
             order.customer.phone,
-            `Hi ${order.customer.name}, thanks for your Premio Peptides order (£${order.total}, ref #${orderRef}). We're reviewing it now — expect a call or WhatsApp within 60 minutes to verify your research purpose. For queries: info@premiopeptides.co.uk`
+            `Hi ${order.customer.name}, thanks for your Premio Peptides order #${orderRef} (£${order.total}). We'll WhatsApp/call within 60 mins to verify research purpose. Queries: info@premiopeptides.co.uk. Email STOP to opt out.`
           )
         : Promise.resolve(),
 
