@@ -1,16 +1,11 @@
 "use client";
 
-// Replace with your actual WhatsApp number (international format, no +)
-const WHATSAPP_NUMBER = "971585742670";
+import { WHATSAPP_ORDER_URL } from "@/lib/config";
 
 export default function WhatsAppButton() {
-  const message = encodeURIComponent(
-    "Hi Premio Peptides, I'd like to place an order. Can you help?"
-  );
-
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`}
+      href={WHATSAPP_ORDER_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20BD5A] transition-colors hover:scale-105"

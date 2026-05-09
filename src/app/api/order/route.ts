@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { encodeInvoiceRef } from "@/app/api/invoice/[ref]/route";
+import { WHATSAPP_NUMBER } from "@/lib/config";
 
 const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
 
@@ -218,7 +219,7 @@ export async function POST(request: Request) {
     }
 
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
-    const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+971585742670"
+    const businessPhone = process.env.BUSINESS_PHONE; // e.g. "+447466402766"
 
     // Build orderRef + invoice link FIRST so the email + WhatsApp share the same ref
     const orderRef = Date.now().toString(36).toUpperCase();
@@ -284,7 +285,7 @@ export async function POST(request: Request) {
       `Invoice: ${invoiceUrl}\n\n` +
       `I'm ready for research verification.`
     );
-    const whatsappUrl = `https://wa.me/971585742670?text=${whatsappMessage}`;
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
 
     return NextResponse.json({ success: true, orderRef, whatsappUrl, invoiceUrl });
   } catch (error) {

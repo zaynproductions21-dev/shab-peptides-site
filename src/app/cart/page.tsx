@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useCart } from "@/components/CartProvider";
+import { WHATSAPP_NUMBER } from "@/lib/config";
 
-const WHATSAPP_NUMBER = "971585742670";
 const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
 
 export default function CartPage() {

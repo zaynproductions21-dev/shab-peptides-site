@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import CartIcon from "./CartIcon";
+import { WHATSAPP_ORDER_URL } from "@/lib/config";
 
 type Variant = "light" | "dark" | "minimal" | "editorial" | "bold" | "warm";
 
@@ -114,7 +115,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             ))}
             <CartIcon />
             <a
-              href="https://wa.me/971585742670?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+              href={WHATSAPP_ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -135,7 +136,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
           <div className="lg:hidden flex items-center gap-2">
             <CartIcon />
             <a
-              href="https://wa.me/971585742670?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+              href={WHATSAPP_ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -190,7 +191,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
             </Link>
           ))}
           <a
-            href="https://wa.me/971585742670?text=Hi%20Premio%20Peptides%2C%20I%27d%20like%20to%20place%20an%20order.%20Can%20you%20help%3F"
+            href={WHATSAPP_ORDER_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-sm font-medium text-white hover:bg-[#20BD5A] transition-colors"
