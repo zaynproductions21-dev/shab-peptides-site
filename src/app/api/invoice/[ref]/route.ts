@@ -90,13 +90,13 @@ export async function GET(
     <div class="invoice-card" style="background:white;border-radius:16px;border:1px solid #e8ecf0;box-shadow:0 4px 24px rgba(0,0,0,0.06);overflow:hidden">
 
       <!-- Header -->
-      <div style="background:#2D2926;padding:32px;display:flex;justify-content:space-between;align-items:flex-start">
+      <div style="background:#ffffff;padding:32px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #C5A04A">
         <div>
-          <img src="https://premiopeptides.co.uk/logo/png/premio-logo-full-mono-white.png" alt="Premio Peptides" width="240" height="60" style="display:block;height:auto;max-width:240px;margin-bottom:6px" />
-          <p style="color:#C5A04A;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0">Research-Grade Compounds</p>
+          <img src="https://premiopeptides.co.uk/logo/png/premio-logo-full-mono-dark.png" alt="Premio Peptides" width="240" height="60" style="display:block;height:auto;max-width:240px;margin-bottom:6px" />
+          <p style="color:#8A8580;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0">Research-Grade Compounds</p>
         </div>
         <div style="text-align:right">
-          <p style="color:white;font-size:22px;font-weight:700">INVOICE</p>
+          <p style="color:#2D2926;font-size:22px;font-weight:700">INVOICE</p>
           <p style="color:#C5A04A;font-size:14px;font-weight:600;margin-top:4px">#${data.ref}</p>
         </div>
       </div>
