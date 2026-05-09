@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { encodeInvoiceRef } from "@/app/api/invoice/[ref]/route";
-import { WHATSAPP_NUMBER } from "@/lib/config";
+import { WHATSAPP_NUMBER, normalisePhone } from "@/lib/config";
 
 const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
 
@@ -216,6 +216,12 @@ export async function POST(request: Request) {
     // Validate required fields
     if (!order.customer?.name || !order.customer?.email || !order.items?.length) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    // Normalise the customer phone to E.164 so Twilio + business notifications
+    // get a consistent format regardless of how the customer typed it.
+    if (order.customer.phone) {
+      order.customer.phone = normalisePhone(order.customer.phone);
     }
 
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
