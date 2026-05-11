@@ -8,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useCart } from "@/components/CartProvider";
 import { WHATSAPP_NUMBER } from "@/lib/config";
+import AddressSearch, { type DeliveryAddress } from "@/components/AddressSearch";
 
 const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
 
@@ -17,6 +18,7 @@ export default function CartPage() {
   const [step, setStep] = useState<"cart" | "details">("cart");
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", organisation: "", researchPurpose: "" });
+  const [address, setAddress] = useState<DeliveryAddress | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
   const turnstileRef = useRef<HTMLDivElement>(null);
 
@@ -61,7 +63,7 @@ export default function CartPage() {
       const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customer: form, items, total: totalPrice, "cf-turnstile-response": turnstileToken }),
+        body: JSON.stringify({ customer: form, items, total: totalPrice, deliveryAddress: address, "cf-turnstile-response": turnstileToken }),
       });
       const data = await res.json();
       // Stash order details so /order-confirmed can render the "Save your invoice" card
@@ -246,6 +248,17 @@ export default function CartPage() {
                       <textarea rows={3} required placeholder="Briefly describe your research application and intended use for these compounds." value={form.researchPurpose} onChange={(e) => setForm({ ...form, researchPurpose: e.target.value })} className={inputClass} />
                     </div>
 
+                    {/* Delivery address — required */}
+                    <div>
+                      <label className="block text-sm font-medium text-editorial-text mb-1.5">
+                        Delivery Address <span className="text-red-500">*</span>
+                      </label>
+                      <p className="text-xs text-editorial-muted mb-2">
+                        Pick your country, then start typing your postcode or street to find your address. Edit any field after picking.
+                      </p>
+                      <AddressSearch value={address} onChange={setAddress} />
+                    </div>
+
                     {/* Research verification notice */}
                     <div className="rounded-lg bg-editorial-accent/5 border border-editorial-accent/15 p-4">
                       <p className="text-sm text-editorial-accent leading-relaxed">
@@ -295,7 +308,7 @@ export default function CartPage() {
 
                   <button
                     onClick={handleSubmitOrder}
-                    disabled={submitting || !form.name || !form.email || !form.phone || !form.organisation || !form.researchPurpose || !turnstileToken}
+                    disabled={submitting || !form.name || !form.email || !form.phone || !form.organisation || !form.researchPurpose || !address || !turnstileToken}
                     className="mt-6 flex w-full items-center justify-center rounded-lg bg-editorial-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md shadow-editorial-accent/20 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Submitting..." : "Place Order"}

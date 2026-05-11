@@ -35,6 +35,16 @@ interface OrderItem {
   quantity: number;
 }
 
+interface DeliveryAddress {
+  line1: string;
+  line2?: string;
+  city: string;
+  region?: string;
+  postcode: string;
+  country: string;
+  countryName: string;
+}
+
 interface OrderPayload {
   customer: {
     name: string;
@@ -45,6 +55,7 @@ interface OrderPayload {
   };
   items: OrderItem[];
   total: string;
+  deliveryAddress?: DeliveryAddress;
 }
 
 // ── Brevo (email) ──────────────────────────────────
@@ -199,6 +210,16 @@ function buildBusinessEmail(order: OrderPayload, orderRef: string, invoiceUrl: s
         <p style="margin:4px 0"><strong>Phone:</strong> ${order.customer.phone}</p>
         <p style="margin:4px 0"><strong>Organisation:</strong> ${order.customer.organisation}</p>
         <p style="margin:4px 0"><strong>Research Purpose:</strong> ${order.customer.researchPurpose}</p>
+        ${order.deliveryAddress ? `
+          <h3 style="color:#2D2926;margin:14px 0 8px">Delivery Address</h3>
+          <p style="margin:4px 0;line-height:1.5">
+            ${order.deliveryAddress.line1}<br>
+            ${order.deliveryAddress.line2 ? `${order.deliveryAddress.line2}<br>` : ''}
+            ${order.deliveryAddress.city}${order.deliveryAddress.region ? `, ${order.deliveryAddress.region}` : ''}<br>
+            <strong>${order.deliveryAddress.postcode}</strong><br>
+            ${order.deliveryAddress.countryName}
+          </p>
+        ` : ''}
         <h3 style="color:#2D2926;margin:16px 0 8px">Order Items</h3>
         <pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px">${itemsList}\n\nTotal: £${order.total}</pre>
       </div>
@@ -330,6 +351,7 @@ export async function POST(request: Request) {
           items: order.items,
           total: order.total,
           invoiceUrl,
+          deliveryAddress: order.deliveryAddress,
         }),
       }).catch(() => undefined),
     ]);
