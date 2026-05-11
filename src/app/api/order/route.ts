@@ -357,12 +357,23 @@ export async function POST(request: Request) {
     ]);
 
     const itemsSummary = order.items.map((i) => `${i.name} ${i.size} x${i.quantity}`).join(", ");
+    const addressLines = order.deliveryAddress
+      ? [
+          `Delivery to:`,
+          order.deliveryAddress.line1,
+          order.deliveryAddress.line2,
+          `${order.deliveryAddress.city}${order.deliveryAddress.region ? ', ' + order.deliveryAddress.region : ''}`,
+          order.deliveryAddress.postcode,
+          order.deliveryAddress.countryName,
+        ].filter(Boolean).join('\n')
+      : '';
     const whatsappMessage = encodeURIComponent(
       `Hi Premio Peptides, I've just placed an order.\n\n` +
       `Order Ref: ${orderRef}\n` +
       `Name: ${order.customer.name}\n` +
       `Items: ${itemsSummary}\n` +
       `Total: £${order.total}\n\n` +
+      (addressLines ? `${addressLines}\n\n` : '') +
       `Invoice: ${shortInvoiceUrl}\n\n` +
       `I'm ready for research verification.`
     );
