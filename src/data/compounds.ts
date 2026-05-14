@@ -50,6 +50,27 @@ export interface Compound {
 // ── PublishOS API ──────────────────────────────────
 const API_URL = "https://publishos.co.uk/api/products?clientId=cl_mo71hxje";
 
+/**
+ * Temporarily hide compounds from listings, slug pages, and sitemap until
+ * the ISO timestamp passes. After that date the entry is ignored automatically
+ * — no follow-up code change required.
+ *
+ * Add a slug here when a compound needs to disappear briefly (stock issue,
+ * compliance review, image refresh, etc). Remove the entry sooner if you
+ * want to bring it back early. Stale entries (past their date) are safe to
+ * delete on sight.
+ */
+const HIDDEN_UNTIL: Record<string, string> = {
+  // Hidden 2026-05-14, auto-unhides 2026-05-17 (Saturday).
+  retatrutide: "2026-05-17T00:00:00Z",
+};
+
+function isHiddenNow(slug: string): boolean {
+  const until = HIDDEN_UNTIL[slug];
+  if (!until) return false;
+  return Date.now() < Date.parse(until);
+}
+
 function mapApiProduct(p: Record<string, unknown>): Compound {
   const specs = (p.specs || {}) as Record<string, string>;
   const formatPrice = (v: unknown): string => {
@@ -96,12 +117,12 @@ export async function getCompounds(): Promise<Compound[]> {
     if (!res.ok) throw new Error(`API ${res.status}`);
     const data = await res.json();
     if (data.products && data.products.length > 0) {
-      return data.products.map(mapApiProduct);
+      return data.products.map(mapApiProduct).filter((c: Compound) => !isHiddenNow(c.slug));
     }
   } catch (e) {
     console.warn("PublishOS API unavailable, using static data:", e);
   }
-  return staticCompounds;
+  return staticCompounds.filter((c) => !isHiddenNow(c.slug));
 }
 
 export async function getFeaturedCompounds(limit = 6): Promise<Compound[]> {
@@ -110,7 +131,10 @@ export async function getFeaturedCompounds(limit = 6): Promise<Compound[]> {
     if (res.ok) {
       const data = await res.json();
       if (data.products && data.products.length > 0) {
-        return data.products.slice(0, limit).map(mapApiProduct);
+        return data.products
+          .map(mapApiProduct)
+          .filter((c: Compound) => !isHiddenNow(c.slug))
+          .slice(0, limit);
       }
     }
   } catch {}
@@ -120,6 +144,8 @@ export async function getFeaturedCompounds(limit = 6): Promise<Compound[]> {
 }
 
 export async function getCompoundBySlug(slug: string): Promise<Compound | undefined> {
+  // Short-circuit: hidden compounds yield undefined so [slug]/page.tsx returns 404
+  if (isHiddenNow(slug)) return undefined;
   // Try API single-product endpoint first
   try {
     const res = await fetch(`${API_URL}&slug=${slug}`, { next: { revalidate: 300 } });
