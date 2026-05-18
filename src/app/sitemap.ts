@@ -5,20 +5,24 @@ import { getPressReleases } from "@/data/press";
 
 const SITE_URL = "https://premiopeptides.co.uk";
 
+// Last-modified dates reflect genuine content updates — not bulk-stamped.
+// Update individual entries when that page's content actually changes.
 const STATIC_PATHS = [
-  { path: "/", lastModified: "2026-05-01" },
-  { path: "/compounds", lastModified: "2026-05-01" },
-  { path: "/blog", lastModified: "2026-05-01" },
+  { path: "/", lastModified: "2026-05-14" },
+  { path: "/compounds", lastModified: "2026-05-14" },
+  { path: "/blog", lastModified: "2026-05-14" },
   { path: "/press", lastModified: "2026-05-01" },
-  { path: "/quality", lastModified: "2026-04-25" },
+  { path: "/quality", lastModified: "2026-05-14" },
   { path: "/certificates-of-analysis", lastModified: "2026-05-03" },
   { path: "/guidelines", lastModified: "2026-04-25" },
-  { path: "/about", lastModified: "2026-04-25" },
+  { path: "/about", lastModified: "2026-05-14" },
   { path: "/contact", lastModified: "2026-04-25" },
-  { path: "/faq", lastModified: "2026-05-01" },
+  { path: "/faq", lastModified: "2026-05-14" },
   { path: "/delivery", lastModified: "2026-04-25" },
   { path: "/institutional", lastModified: "2026-04-25" },
   { path: "/reconstitution-calculator", lastModified: "2026-05-07" },
+  { path: "/batch-verifier", lastModified: "2026-05-18" },
+  { path: "/goal-matcher", lastModified: "2026-05-18" },
   { path: "/why-premio", lastModified: "2026-05-07" },
   { path: "/compliance", lastModified: "2026-04-25" },
   { path: "/terms", lastModified: "2026-04-25" },

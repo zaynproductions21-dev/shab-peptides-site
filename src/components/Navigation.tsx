@@ -15,11 +15,11 @@ interface NavigationProps {
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Peptides", href: "/compounds" },
+  { label: "Find Match", href: "/goal-matcher" },
+  { label: "Verify Batch", href: "/batch-verifier" },
   { label: "Quality", href: "/quality" },
-  { label: "Why Premio", href: "/why-premio" },
   { label: "Calculator", href: "/reconstitution-calculator" },
   { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
