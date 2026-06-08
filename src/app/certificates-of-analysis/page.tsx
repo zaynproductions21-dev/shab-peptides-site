@@ -7,11 +7,11 @@ import { getCompounds } from "@/data/compounds";
 export const metadata: Metadata = {
   title: "Certificates of Analysis | Third-Party Testing | Premio Peptides",
   description:
-    "Every Premio Peptides order includes a batch-specific Certificate of Analysis with HPLC chromatograms, mass spectrometry data, and ISO-accredited laboratory details. View our testing methodology.",
+    "Every Premio Peptides order includes a batch-specific Certificate of Analysis. Certificates are available on request. View our testing methodology.",
   alternates: { canonical: "/certificates-of-analysis" },
   openGraph: {
     title: "Certificates of Analysis | Third-Party Testing | Premio Peptides",
-    description: "Batch-specific CoAs with HPLC, MS, and ISO-accredited lab details included with every order.",
+    description: "Batch-specific CoAs from a third-party laboratory, available on request.",
     url: "/certificates-of-analysis",
     type: "website",
   },
@@ -55,7 +55,7 @@ const coaContents = [
   "Mass spectrometry molecular weight confirmation",
   "Amino acid analysis composition data",
   "Endotoxin testing result (LAL assay)",
-  "Testing laboratory name and ISO accreditation details",
+  "Testing laboratory name and accreditation details (where applicable)",
   "Date of analysis and analyst reference",
   "Storage and handling recommendations",
 ];
@@ -87,10 +87,13 @@ export default async function CertificatesPage() {
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-editorial-text leading-[1.15]">
             Certificates of Analysis
           </h1>
+          {/* TODO(client): confirm the testing laboratory and any accreditation
+              (e.g. ISO number) before restating it. Neutral "third-party / independent"
+              wording used until the lab name and accreditation are verified. */}
           <p className="mt-4 text-editorial-muted max-w-2xl">
             Every order ships with a batch-specific Certificate of Analysis. We do not issue self-certified CoAs
-            or rely on manufacturer-supplied data — every certificate is produced by an independent, ISO-accredited
-            third-party laboratory.
+            or rely on manufacturer-supplied data — certificates are produced by an independent third-party
+            laboratory and are available on request.
           </p>
         </div>
       </section>
@@ -157,8 +160,8 @@ export default async function CertificatesPage() {
               the compound is also the party certifying its quality.
             </p>
             <p className="text-editorial-muted leading-relaxed mt-4">
-              Premio Peptides takes a different approach. Every batch we stock is submitted to an independent,
-              ISO-accredited analytical laboratory with no commercial interest in the result. The laboratory performs
+              Premio Peptides takes a different approach. Every batch we stock is submitted to an independent
+              third-party analytical laboratory with no commercial interest in the result. The laboratory performs
               the full testing protocol described above and issues the certificate directly. We cannot influence,
               edit, or selectively publish results — if a batch fails any stage, it is rejected outright and never
               enters our supply chain.

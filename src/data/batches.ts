@@ -31,34 +31,17 @@ export interface BatchRecord {
 }
 
 /**
- * Sample batches — replace with real data as orders ship.
- * Keep at least one entry per compound family so the verifier always has
- * something to demo against during onboarding.
+ * No verified batches are published yet. The previous entries were placeholder
+ * demo data (named lab, exact purity figures and CoA PDF links that 404) and
+ * were removed for compliance — fabricated/unverifiable claims must never render
+ * on a health/YMYL site. The Batch Verifier shows a "no verified batches
+ * published yet" empty state while this list is empty.
+ *
+ * TODO(client): load real CoA batch data (lab name, ISO number, purity, signed
+ * PDF) before re-enabling. Add the signed CoA PDFs under /public/coa/ and only
+ * then repopulate this array with verified records.
  */
-export const BATCHES: BatchRecord[] = [
-  {
-    code: "PRM-2510-027",
-    compoundSlug: "wolverine-stack",
-    compoundName: "Wolverine Stack (BPC-157 + TB-500)",
-    purity: "99.4%",
-    testedDate: "2026-05-03",
-    dispatchedDate: "2026-05-09",
-    lab: "Janoshik Analytical (independent)",
-    coaUrl: "/coa/PRM-2510-027.pdf",
-    storage: "Stored at −20°C in temperature-controlled UK warehouse.",
-  },
-  {
-    code: "PRM-2510-031",
-    compoundSlug: "pt-141-pen",
-    compoundName: "PT-141 (Bremelanotide) Pen",
-    purity: "99.2%",
-    testedDate: "2026-05-05",
-    dispatchedDate: "2026-05-11",
-    lab: "Janoshik Analytical (independent)",
-    coaUrl: "/coa/PRM-2510-031.pdf",
-    storage: "Stored at −20°C in temperature-controlled UK warehouse.",
-  },
-];
+export const BATCHES: BatchRecord[] = [];
 
 export function findBatch(code: string): BatchRecord | undefined {
   const normalised = (code || "").trim().toUpperCase().replace(/\s+/g, "");
