@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import CartProvider from "@/components/CartProvider";
+import Analytics2 from "@/components/Analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -110,6 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           {children}
         </CartProvider>
         <Analytics />
+        <Analytics2 />
       </body>
     </html>
   );
