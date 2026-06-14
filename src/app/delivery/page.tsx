@@ -8,9 +8,56 @@ export const metadata: Metadata = {
     "Same-day dispatch before 2pm. Next-day tracked UK delivery. Temperature-controlled packaging. Free delivery over £75. Returns policy for Premio Peptides.",
 };
 
+const faqs = [
+  {
+    question: "How quickly are orders dispatched and delivered?",
+    answer:
+      "Orders placed before 2pm on working days (Monday to Friday, excluding UK public holidays) are dispatched the same day. Orders after 2pm, or on weekends and bank holidays, are dispatched the next working day. Standard UK delivery is next working day, with an express AM-guaranteed option also available. All orders are dispatched from our UK fulfilment facility, so there are no customs delays or international transit times.",
+  },
+  {
+    question: "How are research compounds packaged for transit?",
+    answer:
+      "All compounds are dispatched in packaging chosen to protect compound integrity during transit. Lyophilised products are shipped at ambient temperature with insulated packaging. Where a compound requires cold-chain handling, insulated containers with gel ice packs are used as standard at no additional cost. Packaging is intended to keep the research material stable from dispatch to arrival.",
+  },
+  {
+    question: "How should I store the compounds when they arrive?",
+    answer:
+      "General handling and storage information is included with every order and is available from our team on request. As a general principle for laboratory research materials, keep the compound in its sealed packaging until use and store it according to the handling information supplied. We provide handling and storage guidance only — not any guidance on administration or use in humans or animals, because these compounds are for laboratory research use only.",
+  },
+  {
+    question: "How do I track my order?",
+    answer:
+      "A tracking number is sent by email once your order has been dispatched, and you can use it to monitor delivery progress directly with the courier. If you have not received a tracking notification within 24 hours of placing your order during working days, contact us at info@premiopeptides.co.uk with your order reference.",
+  },
+  {
+    question: "Do you ship internationally?",
+    answer:
+      "We currently ship to addresses within the United Kingdom only (England, Scotland, Wales, and Northern Ireland). We do not offer international shipping at this time. For bulk or institutional orders requiring bespoke logistics, contact us before placing your order.",
+  },
+  {
+    question: "What is your returns policy?",
+    answer:
+      "Because of the nature of research compounds and our obligation to maintain chain of custody and compound integrity, we cannot accept returns of products that have been opened or used. We will accept returns or issue replacements or refunds where a product is damaged in transit, the wrong product was dispatched, the product does not match its certificate of analysis, or the product was not delivered. Contact us within 7 days of delivery with your order reference and a description of the issue.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
 export default function DeliveryPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navigation variant="editorial" />
 
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-editorial-surface">
@@ -19,6 +66,10 @@ export default function DeliveryPage() {
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-editorial-text leading-[1.15]">
             Delivery &amp; Returns
           </h1>
+          <p className="mt-4 text-xs text-editorial-muted max-w-2xl">
+            All compounds are supplied for laboratory research use only — they
+            are not a licensed medicine, and not for human or veterinary use.
+          </p>
         </div>
       </section>
 
@@ -121,8 +172,32 @@ export default function DeliveryPage() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-16 lg:py-20 bg-editorial-surface">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-2xl font-bold text-editorial-text mb-8 text-center">
+            Delivery &amp; Returns FAQs
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="rounded-xl border border-editorial-border bg-white p-6"
+              >
+                <h3 className="font-serif text-base font-bold text-editorial-text">
+                  {faq.question}
+                </h3>
+                <p className="mt-3 text-sm text-editorial-muted leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
-      <section className="py-12 bg-editorial-surface">
+      <section className="py-12 bg-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-editorial-muted mb-4">Order before 2pm for same-day dispatch. Every order fully tracked.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

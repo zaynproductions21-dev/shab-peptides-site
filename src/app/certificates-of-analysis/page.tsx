@@ -60,6 +60,49 @@ const coaContents = [
   "Storage and handling recommendations",
 ];
 
+const faqs = [
+  {
+    question: "What is a certificate of analysis (CoA)?",
+    answer:
+      "A certificate of analysis is a document that records the analytical testing carried out on a specific batch of a compound. For research peptides it typically states the compound name and reference, the batch the document relates to, the analytical methods used, and the results of those tests. Its purpose is to let a research buyer confirm what a material is and that it has been independently checked, rather than relying on a supplier's description alone.",
+  },
+  {
+    question: "What does the testing generally cover?",
+    answer:
+      "In general terms, analytical testing for research peptides addresses two main questions: identity (is the compound what it claims to be) and composition (how pure it is and whether expected impurities are present). Methods such as chromatography and mass spectrometry are commonly used for this. Results are recorded against the specific batch tested. We describe our methodology in general terms here and provide the underlying figures on the batch-specific certificate, available on request.",
+  },
+  {
+    question: "How do I request a CoA for a specific batch?",
+    answer:
+      "Contact our team with the compound name and, if you have it, your order or batch reference. We will provide the relevant batch-specific certificate of analysis where available. If you need documentation before ordering — for example to satisfy an institutional review or procurement process — request it for a compound currently in stock and we will respond with the document.",
+  },
+  {
+    question: "Is the testing carried out independently?",
+    answer:
+      "Certificates are produced through independent third-party testing rather than self-certification using only manufacturer-supplied data. The intention is to remove the conflict of interest that arises when the party selling a compound is also the only party vouching for it. Certificates of analysis are available on request.",
+  },
+  {
+    question: "Can I match a certificate to the stock I received?",
+    answer:
+      "Yes. Each order carries a batch reference on its accompanying documentation, and that reference corresponds to the certificate of analysis for that batch. If you need to retrieve a certificate after dispatch, contact our team with your order or batch reference and we will provide the relevant document where available.",
+  },
+  {
+    question: "What does “research use only” mean for these compounds?",
+    answer:
+      "It means the compounds are supplied for laboratory research use only — they are not a licensed medicine, and not for human or veterinary use. They must not be administered to humans or animals or used outside a controlled research environment. A certificate of analysis documents the laboratory testing of a research material; it is not an approval for any clinical, therapeutic, or in-life use. Researchers are responsible for ensuring their use complies with applicable institutional, ethical, and regulatory requirements.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
 export default async function CertificatesPage() {
   const compounds = await getCompounds();
   const inStockCompounds = compounds.filter((c) => c.availability === "In Stock");
@@ -77,6 +120,7 @@ export default async function CertificatesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <Navigation variant="editorial" />
 
@@ -94,6 +138,13 @@ export default async function CertificatesPage() {
             Every order ships with a batch-specific Certificate of Analysis. We do not issue self-certified CoAs
             or rely on manufacturer-supplied data — certificates are produced by an independent third-party
             laboratory and are available on request.
+          </p>
+          <p className="mt-4 text-xs text-editorial-muted max-w-2xl">
+            All compounds are supplied for laboratory research use only — they
+            are not a licensed medicine, and not for human or veterinary use. A
+            certificate of analysis documents the laboratory testing of a
+            research material and is not an approval for any clinical,
+            therapeutic, or in-life use.
           </p>
         </div>
       </section>
@@ -224,6 +275,30 @@ export default async function CertificatesPage() {
               </div>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-2xl font-bold text-editorial-text mb-8 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="rounded-xl border border-editorial-border bg-editorial-surface p-6"
+              >
+                <h3 className="font-serif text-base font-bold text-editorial-text">
+                  {faq.question}
+                </h3>
+                <p className="mt-3 text-sm text-editorial-muted leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

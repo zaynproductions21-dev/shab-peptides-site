@@ -16,6 +16,92 @@ export const metadata: Metadata = {
   },
 };
 
+// ───────────────────────── FAQ ─────────────────────────
+
+const faqs = [
+  {
+    question: "What does Premio Peptides supply, and what is it for?",
+    answer:
+      "Premio Peptides supplies research-grade peptide compounds for laboratory research use only. Every compound is intended strictly for in-vitro and in-vivo laboratory research carried out by qualified professionals. Products are not a licensed medicine and are not for human or veterinary use. We supply research institutions, universities, biotechnology companies, and qualified research professionals — not members of the public for personal use.",
+  },
+  {
+    question: "How is Premio Peptides different from a typical grey-market supplier?",
+    answer:
+      "The core difference is verifiability. Premio operates as a registered UK company with a public address, real phone and messaging support, and a documented quality process. Each batch is independently tested before it is listed, and a batch-specific certificate of analysis is available on request. Many grey-market vendors offer anonymous contact details, manufacturer-supplied data only, and no traceability. Our model is built so an institutional buyer can audit provenance and documentation before committing to an order.",
+  },
+  {
+    question: "How are your compounds sourced and tested?",
+    answer:
+      "Compounds are sourced through a documented supply chain and submitted for independent third-party analytical testing before they are listed in the catalogue. Testing covers purity and molecular identity, and the results are recorded against a specific production batch rather than a generic product line. Certificates of analysis are available on request. We do not rely solely on manufacturer-supplied documentation.",
+  },
+  {
+    question: "Can I see testing documentation before I order?",
+    answer:
+      "Yes. Certificates of analysis are available on request. If you need documentation for a specific compound currently in stock before ordering — for example, to satisfy an institutional review or procurement process — contact our team with the compound name and we will provide the relevant document where available.",
+  },
+  {
+    question: "How should research compounds be handled and stored on arrival?",
+    answer:
+      "General handling and storage guidance is provided with each order and is available from our team on request. As a general principle for laboratory research materials, compounds should be received by a competent researcher, kept in their sealed packaging until use, and stored according to the handling information supplied. We provide handling and storage information only — we do not provide any guidance on administration, dosing, or use in humans or animals, because these compounds are for laboratory research use only.",
+  },
+  {
+    question: "How do I place an order, and who can order?",
+    answer:
+      "Browse the catalogue, add items to your basket, and complete the checkout with your research-purpose details. Orders are confirmed through a manual verification step before dispatch. Ordering is restricted to research institutions, universities, biotechnology companies, and qualified research professionals. Compounds are supplied for laboratory research use only and are not sold to the public for personal use.",
+  },
+  {
+    question: "Are Premio Peptides products safe to use in humans or animals?",
+    answer:
+      "No. All compounds are for laboratory research use only — they are not a licensed medicine, and not for human or veterinary use. They must not be administered to humans or animals or used outside a controlled research environment. Researchers are responsible for ensuring their use of any compound complies with applicable institutional, ethical, and regulatory requirements in their jurisdiction.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+
+function ResearchUseDisclaimer() {
+  return (
+    <p className="mt-4 text-xs text-editorial-muted">
+      All compounds are supplied for laboratory research use only — they are not
+      a licensed medicine, and not for human or veterinary use.
+    </p>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section id="faq" className="py-16 lg:py-20 bg-white">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-editorial-text mb-8 text-center">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              className="rounded-xl border border-editorial-border bg-editorial-surface p-6"
+            >
+              <h3 className="font-serif text-base font-bold text-editorial-text">
+                {faq.question}
+              </h3>
+              <p className="mt-3 text-sm text-editorial-muted leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ───────────────────────── Concept A — Comparison Table ─────────────────────────
 
 const COMPARISON_ROWS: { label: string; premio: string; generic: string; premioOK: boolean; genericOK: boolean }[] = [
@@ -28,7 +114,7 @@ const COMPARISON_ROWS: { label: string; premio: string; generic: string; premioO
   { label: "Same-day dispatch (orders by 2pm)", premio: "Tracked next-day UK delivery", generic: "5–10 day shipping", premioOK: true, genericOK: false },
   { label: "Manual research-purpose verification", premio: "60-minute phone confirmation", generic: "No verification step", premioOK: true, genericOK: false },
   { label: "BACS payment with paper trail", premio: "Bank transfer, audit-friendly", generic: "Crypto-only / unverified rails", premioOK: true, genericOK: false },
-  { label: "Reconstitution + dosing calculators", premio: "Free on-site research tools", generic: "None", premioOK: true, genericOK: false },
+  { label: "Reconstitution research calculators", premio: "Free on-site research tools", generic: "None", premioOK: true, genericOK: false },
 ];
 
 function ComparisonSection() {
@@ -219,6 +305,10 @@ function JourneyIcon({ name }: { name: string }) {
 export default function WhyPremioPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navigation variant="editorial" />
 
       {/* Hero + section nav */}
@@ -232,6 +322,7 @@ export default function WhyPremioPage() {
             A side-by-side comparison, the customer journey, and the quality pipeline that runs behind every order.
             Each section is designed to be read on its own and shared.
           </p>
+          <ResearchUseDisclaimer />
 
           <nav aria-label="Sections" className="mt-8 flex flex-wrap gap-3">
             <a href="#comparison" className="inline-flex items-center rounded-full border border-editorial-border bg-white px-4 py-2 text-sm font-medium text-editorial-text hover:border-editorial-accent/40 hover:text-editorial-accent transition-colors">
@@ -247,9 +338,127 @@ export default function WhyPremioPage() {
         </div>
       </section>
 
+      {/* Research quality — long-form context */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold text-editorial-accent uppercase tracking-wider mb-3">
+            Built for research buyers
+          </p>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-editorial-text mb-6 leading-tight">
+            What &ldquo;research quality&rdquo; actually means here
+          </h2>
+          <div className="text-editorial-muted leading-relaxed space-y-4">
+            <p>
+              Premio Peptides supplies research-grade peptide compounds for
+              laboratory research use only. That single constraint shapes
+              everything below: how compounds are sourced, how they are tested,
+              how they are documented, and how they reach a researcher&rsquo;s
+              bench. None of it concerns therapeutic use, because these compounds
+              are not a licensed medicine and are not intended for human or
+              veterinary use.
+            </p>
+            <p>
+              For a research team, &ldquo;quality&rdquo; is not a marketing word
+              — it is a set of things you should be able to verify. Where did the
+              compound come from? Has it been independently tested? Can the
+              documentation be matched to the physical stock you received? A
+              supplier that cannot answer those questions in writing is asking
+              you to take provenance on trust, which is rarely acceptable in a
+              controlled research setting.
+            </p>
+          </div>
+
+          <h3 className="font-serif text-xl font-bold text-editorial-text mt-10 mb-3">
+            Sourcing and provenance
+          </h3>
+          <div className="text-editorial-muted leading-relaxed space-y-4">
+            <p>
+              Every compound we list is sourced through a documented supply
+              chain rather than anonymous, untraceable channels. Provenance
+              matters for research because experimental reproducibility depends
+              on knowing what a material is and where it originated. We log
+              incoming stock against a unique batch reference so that every unit
+              dispatched can be traced back to a specific production run.
+            </p>
+            <p>
+              We do not accept manufacturer-supplied claims as the end of the
+              process. Sourcing is the start of the quality pipeline, not the
+              whole of it — what a compound is described as on paper still has to
+              be confirmed independently before it is offered for research use.
+            </p>
+          </div>
+
+          <h3 className="font-serif text-xl font-bold text-editorial-text mt-10 mb-3">
+            Testing transparency
+          </h3>
+          <div className="text-editorial-muted leading-relaxed space-y-4">
+            <p>
+              Compounds are submitted for independent third-party analytical
+              testing before they are listed. Testing focuses on two questions
+              that matter for laboratory work: is the compound what it claims to
+              be (identity), and how pure is it (composition)? Results are
+              recorded against the specific batch, and a batch-specific
+              certificate of analysis is available on request.
+            </p>
+            <p>
+              Independent testing removes the conflict of interest inherent in
+              self-certification, where the party selling a compound is also the
+              party vouching for it. We publish testing methodology in general
+              terms on our quality pages and provide the underlying
+              documentation on request rather than asking researchers to take
+              purity on trust.
+            </p>
+          </div>
+
+          <h3 className="font-serif text-xl font-bold text-editorial-text mt-10 mb-3">
+            Handling and storage
+          </h3>
+          <div className="text-editorial-muted leading-relaxed space-y-4">
+            <p>
+              Research materials are only as good as the conditions they are kept
+              in. Stock is held in a controlled UK facility and dispatched with
+              packaging appropriate to the compound, including insulated,
+              temperature-controlled packaging where required. General handling
+              and storage information accompanies every order so that a competent
+              researcher can store the material correctly on arrival.
+            </p>
+            <p>
+              We provide handling and storage information only. We do not provide
+              guidance on administration, dosing, or any form of use in humans or
+              animals, because these compounds are supplied strictly for
+              laboratory research use.
+            </p>
+          </div>
+
+          <h3 className="font-serif text-xl font-bold text-editorial-text mt-10 mb-3">
+            Ordering and verification
+          </h3>
+          <div className="text-editorial-muted leading-relaxed space-y-4">
+            <p>
+              Ordering is restricted to research institutions, universities,
+              biotechnology companies, and qualified research professionals.
+              Orders are confirmed through a manual verification step before
+              dispatch, which lets us confirm the research context and provide
+              payment details with a clear paper trail. It is a deliberate
+              friction point — the right one for a research-only product.
+            </p>
+            <p>
+              Documentation travels with the order. Each dispatch carries a batch
+              reference that ties the physical stock to its certificate of
+              analysis, so research teams can match what they received to the
+              records they hold. Certificates remain available on request after
+              dispatch as well.
+            </p>
+          </div>
+
+          <ResearchUseDisclaimer />
+        </div>
+      </section>
+
       <ComparisonSection />
       <JourneySection />
       <PipelineSection />
+      <FaqSection />
 
       {/* CTA */}
       <section className="py-16 lg:py-20 bg-editorial-surface">
