@@ -8,7 +8,9 @@ import { useEffect, useState } from 'react'
 // identified users. Key and host come from env — nothing fires until
 // NEXT_PUBLIC_POSTHOG_KEY is set.
 const PH_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || ''
-const PH_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com'
+// First-party reverse proxy: analytics load from this site's own /ingest path
+// (rewritten to PostHog in next.config) so no third party sits in the data path.
+const PH_HOST = '/ingest'
 const CONSENT_KEY = 'pp_cookie_consent'
 
 declare global {
@@ -19,15 +21,15 @@ declare global {
 function loadPostHog() {
   if (!PH_KEY || typeof window === 'undefined' || window.__ppPhLoaded) return
   window.__ppPhLoaded = true
-  const assets = PH_HOST.replace('.i.posthog.com', '-assets.i.posthog.com')
   const s = document.createElement('script')
   s.async = true
-  s.src = `${assets}/static/array.js`
+  s.src = `${PH_HOST}/static/array.js`
   document.head.appendChild(s)
   s.onload = () => {
     try {
       window.posthog!.init(PH_KEY, {
         api_host: PH_HOST,
+        ui_host: 'https://eu.posthog.com',
         capture_pageview: true,
         capture_pageleave: true,
         autocapture: true,
