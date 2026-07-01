@@ -12,6 +12,12 @@ import AddressSearch, { type DeliveryAddress } from "@/components/AddressSearch"
 
 const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
 
+type DeliverySpeed = "standard" | "next_day";
+const DELIVERY_OPTIONS: Record<DeliverySpeed, { label: string; sub: string; price: number }> = {
+  standard: { label: "2-3 day delivery", sub: "UK tracked", price: 6.95 },
+  next_day: { label: "Next day delivery", sub: "Order by 3pm", price: 10.95 },
+};
+
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
   const router = useRouter();
@@ -20,7 +26,11 @@ export default function CartPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", organisation: "", researchPurpose: "" });
   const [address, setAddress] = useState<DeliveryAddress | null>(null);
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [deliverySpeed, setDeliverySpeed] = useState<DeliverySpeed>("standard");
   const turnstileRef = useRef<HTMLDivElement>(null);
+
+  const deliveryFee = DELIVERY_OPTIONS[deliverySpeed].price;
+  const grandTotal = (parseFloat(totalPrice) + deliveryFee).toFixed(2);
 
   const renderTurnstile = useCallback(() => {
     if (!turnstileRef.current || !(window as unknown as Record<string, unknown>).turnstile) return;
@@ -52,7 +62,8 @@ export default function CartPage() {
     items.forEach((item, i) => {
       msg += `${i + 1}. ${item.name} (${item.size}) × ${item.quantity} — ${item.price}\n`;
     });
-    msg += `\nTotal: £${totalPrice}\n\nPlease confirm availability and payment details.`;
+    msg += `\nDelivery: ${DELIVERY_OPTIONS[deliverySpeed].label} — £${deliveryFee.toFixed(2)}`;
+    msg += `\nTotal: £${grandTotal}\n\nPlease confirm availability and payment details.`;
     return encodeURIComponent(msg);
   }
 
@@ -63,7 +74,17 @@ export default function CartPage() {
       const res = await fetch("/api/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customer: form, items, total: totalPrice, deliveryAddress: address, "cf-turnstile-response": turnstileToken }),
+        body: JSON.stringify({
+          customer: form,
+          items,
+          subtotal: totalPrice,
+          deliverySpeed,
+          deliveryFee: deliveryFee.toFixed(2),
+          deliveryLabel: DELIVERY_OPTIONS[deliverySpeed].label,
+          total: grandTotal,
+          deliveryAddress: address,
+          "cf-turnstile-response": turnstileToken,
+        }),
       });
       const data = await res.json();
       // Stash order details so /order-confirmed can render the "Save your invoice" card
@@ -74,7 +95,7 @@ export default function CartPage() {
             orderRef: data.orderRef,
             invoiceUrl: data.invoiceUrl,
             whatsappUrl: data.whatsappUrl,
-            total: totalPrice,
+            total: grandTotal,
             customerName: form.name,
             savedAt: new Date().toISOString(),
           })
@@ -172,14 +193,40 @@ export default function CartPage() {
                       </div>
                     ))}
                     <div className="pt-3 mt-3 border-t border-editorial-border">
-                      <div className="flex justify-between">
-                        <span className="text-editorial-muted">Delivery</span>
-                        <span className="font-medium text-editorial-text">{parseFloat(totalPrice) >= 75 ? "Free" : "£4.99"}</span>
+                      <p className="text-xs font-semibold text-editorial-text uppercase tracking-wider mb-2">Delivery</p>
+                      <div className="space-y-2">
+                        {(Object.entries(DELIVERY_OPTIONS) as [DeliverySpeed, typeof DELIVERY_OPTIONS[DeliverySpeed]][]).map(([key, opt]) => {
+                          const active = deliverySpeed === key;
+                          return (
+                            <label
+                              key={key}
+                              className={`flex items-center gap-3 rounded-lg border p-3 cursor-pointer transition-colors ${
+                                active
+                                  ? "border-editorial-accent bg-editorial-accent/5"
+                                  : "border-editorial-border bg-white hover:border-editorial-accent/30"
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="delivery-speed"
+                                value={key}
+                                checked={active}
+                                onChange={() => setDeliverySpeed(key)}
+                                className="h-4 w-4 accent-editorial-accent"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <div className="text-sm font-semibold text-editorial-text">{opt.label}</div>
+                                <div className="text-xs text-editorial-muted">{opt.sub}</div>
+                              </div>
+                              <div className="text-sm font-bold text-editorial-text">£{opt.price.toFixed(2)}</div>
+                            </label>
+                          );
+                        })}
                       </div>
                     </div>
                     <div className="pt-3 mt-1 border-t border-editorial-border flex justify-between">
                       <span className="font-semibold text-editorial-text">Total</span>
-                      <span className="text-xl font-bold text-editorial-accent">£{totalPrice}</span>
+                      <span className="text-xl font-bold text-editorial-accent">£{grandTotal}</span>
                     </div>
                   </div>
 
@@ -298,9 +345,13 @@ export default function CartPage() {
                         <span className="shrink-0">£{(parseFloat(item.price.replace("£", "").replace("From ", "")) * item.quantity).toFixed(2)}</span>
                       </div>
                     ))}
-                    <div className="pt-3 mt-3 border-t border-editorial-border flex justify-between">
+                    <div className="pt-3 mt-3 border-t border-editorial-border flex justify-between text-editorial-muted">
+                      <span>{DELIVERY_OPTIONS[deliverySpeed].label}</span>
+                      <span className="shrink-0">£{deliveryFee.toFixed(2)}</span>
+                    </div>
+                    <div className="pt-3 mt-1 border-t border-editorial-border flex justify-between">
                       <span className="font-semibold text-editorial-text">Total</span>
-                      <span className="text-xl font-bold text-editorial-accent">£{totalPrice}</span>
+                      <span className="text-xl font-bold text-editorial-accent">£{grandTotal}</span>
                     </div>
                   </div>
 
