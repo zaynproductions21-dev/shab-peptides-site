@@ -54,6 +54,10 @@ interface OrderPayload {
     researchPurpose: string;
   };
   items: OrderItem[];
+  subtotal?: string;
+  deliverySpeed?: "standard" | "next_day";
+  deliveryFee?: string;
+  deliveryLabel?: string;
   total: string;
   deliveryAddress?: DeliveryAddress;
 }
@@ -147,7 +151,10 @@ function buildCustomerEmail(order: OrderPayload, orderRef: string, invoiceUrl: s
         <table style="width:100%;border-collapse:collapse;font-size:14px">
           <thead><tr style="background:#f5f5f5"><th style="padding:8px;text-align:left">Item</th><th style="padding:8px;text-align:center">Qty</th><th style="padding:8px;text-align:right">Price</th></tr></thead>
           <tbody>${itemsHtml}</tbody>
-          <tfoot><tr><td colspan="2" style="padding:8px;font-weight:bold">Total</td><td style="padding:8px;text-align:right;font-weight:bold;color:#0097A7;font-size:18px">£${order.total}</td></tr></tfoot>
+          <tfoot>
+            ${order.deliveryLabel && order.deliveryFee ? `<tr><td colspan="2" style="padding:8px;color:#555">${order.deliveryLabel}</td><td style="padding:8px;text-align:right;color:#555">£${order.deliveryFee}</td></tr>` : ''}
+            <tr><td colspan="2" style="padding:8px;font-weight:bold">Total</td><td style="padding:8px;text-align:right;font-weight:bold;color:#0097A7;font-size:18px">£${order.total}</td></tr>
+          </tfoot>
         </table>
         <h3 style="color:#333;margin-top:24px">Your Details</h3>
         <p style="margin:4px 0;font-size:14px"><strong>Name:</strong> ${order.customer.name}</p>
@@ -221,7 +228,7 @@ function buildBusinessEmail(order: OrderPayload, orderRef: string, invoiceUrl: s
           </p>
         ` : ''}
         <h3 style="color:#2D2926;margin:16px 0 8px">Order Items</h3>
-        <pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px">${itemsList}\n\nTotal: £${order.total}</pre>
+        <pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:13px">${itemsList}${order.deliveryLabel && order.deliveryFee ? `\n\n${order.deliveryLabel}: £${order.deliveryFee}` : ''}\n\nTotal: £${order.total}</pre>
       </div>
     </div>
   `;
