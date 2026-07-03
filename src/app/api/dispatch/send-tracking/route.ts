@@ -31,7 +31,7 @@ interface Order {
   };
 }
 
-function buildEmail(order: Order, tracking: string, brandedTrackUrl: string): string {
+function buildEmail(order: Order, tracking: string, brandedTrackUrl: string, royalMailUrl: string): string {
   const itemsHtml = order.items
     .map((i) => `<tr><td style="padding:6px 0;color:#2D2926">${i.name} <span style="color:#6B655E">(${i.size})</span></td><td style="padding:6px 0;text-align:right;color:#2D2926">×${i.quantity}</td></tr>`)
     .join("");
@@ -54,7 +54,10 @@ function buildEmail(order: Order, tracking: string, brandedTrackUrl: string): st
     <div style="background:#F0F9FA;border:1px solid #D0E8EC;border-radius:10px;padding:20px;margin:12px 0">
       <p style="margin:0 0 6px;font-size:12px;font-weight:600;color:#0F7B84;text-transform:uppercase;letter-spacing:.06em">Royal Mail tracking number</p>
       <p style="margin:0 0 14px;font-family:ui-monospace,monospace;font-size:20px;font-weight:700;color:#0F7B84;letter-spacing:.02em">${tracking}</p>
-      <a href="${brandedTrackUrl}" style="display:inline-block;background:#0F7B84;color:#FFFFFF;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;font-size:14px">Track your order →</a>
+      <a href="${royalMailUrl}" style="display:inline-block;background:#0F7B84;color:#FFFFFF;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:8px;font-size:14px">Track on Royal Mail →</a>
+      <p style="margin:12px 0 0;font-size:12px;color:#4C6167">
+        Or <a href="${brandedTrackUrl}" style="color:#0F7B84;text-decoration:underline">view your Premio order details</a>
+      </p>
     </div>
 
     ${addr ? `
@@ -122,6 +125,7 @@ export async function POST(req: NextRequest) {
 
     const now = new Date().toISOString();
     const brandedUrl = `${SITE_ORIGIN}/track/${encodeURIComponent(order.orderId)}`;
+    const royalMailUrl = `https://www.royalmail.com/track-your-item#/tracking-results/${encodeURIComponent(trk)}`;
 
     // 1. Persist tracking to PublishOS (status → shipped)
     const patched = await patchOrder(order.orderId, {
@@ -150,6 +154,7 @@ export async function POST(req: NextRequest) {
           },
           trk,
           brandedUrl,
+          royalMailUrl,
         ),
       );
       await patchOrder(order.orderId, { trackingEmailSentAt: now });
