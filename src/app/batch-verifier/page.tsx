@@ -7,12 +7,12 @@ import { BatchVerifierForm } from "./BatchVerifierForm";
 export const metadata: Metadata = {
   title: "Batch Verifier — Premio Peptides",
   description:
-    "Enter the batch code from your Premio Peptides pen sticker to view the third-party HPLC Certificate of Analysis, purity score and dispatch date for that exact batch.",
+    "Enter the batch code from your Premio Peptides pen sticker to look up its Certificate of Analysis once published. Certificates of Analysis are available on request.",
   alternates: { canonical: "https://www.premiopeptides.co.uk/batch-verifier" },
   openGraph: {
     title: "Verify your Premio Peptides batch",
     description:
-      "Paste your batch code, see the third-party HPLC CoA and purity for that exact pen.",
+      "Look up the Certificate of Analysis for your batch once published. CoAs available on request.",
     url: "https://www.premiopeptides.co.uk/batch-verifier",
     type: "website",
   },
@@ -35,10 +35,25 @@ export default function BatchVerifierPage() {
             Verify your batch
           </h1>
           <p className="mt-4 text-base lg:text-lg text-editorial-muted leading-relaxed max-w-2xl">
-            Every pen ships with a batch code printed on the sticker. Paste it
-            below to view the third-party HPLC Certificate of Analysis for that
-            exact pen — including purity, test date, lab and dispatch record.
+            Every pen ships with a batch code printed on the sticker. Once a
+            batch&rsquo;s Certificate of Analysis is published here, you&rsquo;ll
+            be able to paste the code below to view its purity, test date and
+            dispatch record for that exact pen.
           </p>
+
+          {/* Empty-state notice: no verified batches are published yet.
+              TODO(client): remove this notice once real CoA batch data
+              (lab name, ISO number, purity, signed PDF) is supplied. */}
+          <div className="mt-8 rounded-2xl border border-editorial-border bg-white p-5 sm:p-6">
+            <p className="font-semibold text-editorial-text">
+              No verified batches published yet
+            </p>
+            <p className="mt-1 text-sm text-editorial-muted leading-relaxed">
+              We haven&rsquo;t published any batch Certificates of Analysis to
+              this verifier yet. To request the CoA for your order, contact us
+              and we&rsquo;ll send it directly.
+            </p>
+          </div>
 
           <BatchVerifierForm />
 
@@ -50,10 +65,12 @@ export default function BatchVerifierPage() {
               <li className="grid grid-cols-[auto_1fr] gap-3">
                 <span className="text-editorial-accent font-bold">·</span>
                 <span>
-                  <strong>Independent testing.</strong> All Certificates of
-                  Analysis are issued by third-party laboratories — never
-                  self-certified. Reports include HPLC purity and mass spec
-                  identity confirmation.
+                  {/* TODO(client): restore specific lab/method claims (e.g.
+                      named third-party lab, HPLC + mass spec) only once the
+                      corresponding signed CoAs are published. */}
+                  <strong>Third-party tested.</strong> Where available,
+                  Certificates of Analysis are provided on request. Contact us
+                  for the CoA covering your order.
                 </span>
               </li>
               <li className="grid grid-cols-[auto_1fr] gap-3">
