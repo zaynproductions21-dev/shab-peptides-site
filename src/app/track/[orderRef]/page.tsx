@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import CopyTrackingButton from "@/components/CopyTrackingButton";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -46,9 +47,9 @@ export default async function TrackPage({ params }: { params: Promise<{ orderRef
   if (!order) notFound();
 
   const dispatched = !!order.royalMailTracking;
-  const rmUrl = dispatched
-    ? `https://www.royalmail.com/track-your-item#/tracking-results/${encodeURIComponent(order.royalMailTracking!)}`
-    : null;
+  // Royal Mail's tracker is a client-side SPA with no working URL deep-link — this drops
+  // the customer on the tracker home so they paste the pre-copied number into the search box.
+  const rmUrl = dispatched ? "https://www.royalmail.com/track-your-item" : null;
 
   return (
     <>
@@ -75,7 +76,7 @@ export default async function TrackPage({ params }: { params: Promise<{ orderRef
               <p className="text-xs font-semibold uppercase tracking-wider text-editorial-accent">
                 Royal Mail tracking number
               </p>
-              <p className="mt-2 font-mono text-2xl sm:text-3xl font-bold text-editorial-accent tracking-wide">
+              <p className="mt-2 font-mono text-2xl sm:text-3xl font-bold text-editorial-accent tracking-wide break-all">
                 {order.royalMailTracking}
               </p>
               {order.dispatchedAt && (
@@ -83,16 +84,19 @@ export default async function TrackPage({ params }: { params: Promise<{ orderRef
                   Dispatched {new Date(order.dispatchedAt).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
                 </p>
               )}
-              <a
-                href={rmUrl!}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-lg bg-editorial-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md"
-              >
-                Track on Royal Mail →
-              </a>
+              <div className="mt-5 flex flex-wrap gap-3 items-center">
+                <CopyTrackingButton value={order.royalMailTracking!} />
+                <a
+                  href={rmUrl!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg bg-editorial-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md"
+                >
+                  Open Royal Mail tracker →
+                </a>
+              </div>
               <p className="mt-3 text-xs text-editorial-muted">
-                It can take up to 48 hours for a new tracking number to become live on Royal Mail's system.
+                Tap <strong>Copy tracking number</strong>, then <strong>Open Royal Mail tracker</strong> and paste it into their search box. It can take up to 48 hours for a new number to become live on their system.
               </p>
             </div>
           ) : (
