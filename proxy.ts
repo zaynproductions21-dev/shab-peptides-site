@@ -21,7 +21,7 @@ function verifyCookie(raw: string | undefined, secret: string): boolean {
   }
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Public dispatch entry: the /dispatch page itself renders the PIN screen when not authed.
