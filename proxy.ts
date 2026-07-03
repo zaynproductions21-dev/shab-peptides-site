@@ -31,7 +31,7 @@ export function proxy(req: NextRequest) {
   const gated = pathname.startsWith("/api/dispatch");
   if (!gated) return NextResponse.next();
 
-  const secret = process.env.DISPATCH_SESSION_SECRET;
+  const secret = process.env.DISPATCH_SESSION_SECRET?.trim();
   if (!secret) {
     return NextResponse.json({ error: "Server misconfigured" }, { status: 500 });
   }

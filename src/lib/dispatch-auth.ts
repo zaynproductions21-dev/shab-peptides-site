@@ -5,13 +5,13 @@ const COOKIE_NAME = "premio_dispatch";
 const SESSION_HOURS = 12;
 
 function secret(): string {
-  const s = process.env.DISPATCH_SESSION_SECRET;
+  const s = process.env.DISPATCH_SESSION_SECRET?.trim();
   if (!s) throw new Error("DISPATCH_SESSION_SECRET not set");
   return s;
 }
 
 function pin(): string {
-  const p = process.env.DISPATCH_PIN;
+  const p = process.env.DISPATCH_PIN?.trim();
   if (!p) throw new Error("DISPATCH_PIN not set");
   return p;
 }
