@@ -17,6 +17,8 @@ const DELIVERY_OPTIONS: Record<DeliverySpeed, { label: string; sub: string; pric
   standard: { label: "2-3 day delivery", sub: "UK tracked", price: 6.95 },
   next_day: { label: "Next day delivery", sub: "Order by 3pm", price: 10.95 },
 };
+// Free standard delivery once the basket subtotal reaches this (GBP).
+const FREE_DELIVERY_THRESHOLD = 175;
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
@@ -29,8 +31,13 @@ export default function CartPage() {
   const [deliverySpeed, setDeliverySpeed] = useState<DeliverySpeed>("standard");
   const turnstileRef = useRef<HTMLDivElement>(null);
 
-  const deliveryFee = DELIVERY_OPTIONS[deliverySpeed].price;
-  const grandTotal = (parseFloat(totalPrice) + deliveryFee).toFixed(2);
+  const subtotalNum = parseFloat(totalPrice) || 0;
+  // Free delivery applies to the standard option only, once over the threshold.
+  const qualifiesFreeStandard = subtotalNum >= FREE_DELIVERY_THRESHOLD;
+  const freeThisOrder = qualifiesFreeStandard && deliverySpeed === "standard";
+  const deliveryFee = freeThisOrder ? 0 : DELIVERY_OPTIONS[deliverySpeed].price;
+  const amountToFreeDelivery = Math.max(0, FREE_DELIVERY_THRESHOLD - subtotalNum);
+  const grandTotal = (subtotalNum + deliveryFee).toFixed(2);
 
   const renderTurnstile = useCallback(() => {
     if (!turnstileRef.current || !(window as unknown as Record<string, unknown>).turnstile) return;
@@ -62,7 +69,7 @@ export default function CartPage() {
     items.forEach((item, i) => {
       msg += `${i + 1}. ${item.name} (${item.size}) × ${item.quantity} — ${item.price}\n`;
     });
-    msg += `\nDelivery: ${DELIVERY_OPTIONS[deliverySpeed].label} — £${deliveryFee.toFixed(2)}`;
+    msg += `\nDelivery: ${DELIVERY_OPTIONS[deliverySpeed].label} — ${deliveryFee === 0 ? "FREE" : `£${deliveryFee.toFixed(2)}`}`;
     msg += `\nTotal: £${grandTotal}\n\nPlease confirm availability and payment details.`;
     return encodeURIComponent(msg);
   }
@@ -197,6 +204,7 @@ export default function CartPage() {
                       <div className="space-y-2">
                         {(Object.entries(DELIVERY_OPTIONS) as [DeliverySpeed, typeof DELIVERY_OPTIONS[DeliverySpeed]][]).map(([key, opt]) => {
                           const active = deliverySpeed === key;
+                          const isFree = key === "standard" && qualifiesFreeStandard;
                           return (
                             <label
                               key={key}
@@ -218,11 +226,23 @@ export default function CartPage() {
                                 <div className="text-sm font-semibold text-editorial-text">{opt.label}</div>
                                 <div className="text-xs text-editorial-muted">{opt.sub}</div>
                               </div>
-                              <div className="text-sm font-bold text-editorial-text">£{opt.price.toFixed(2)}</div>
+                              {isFree ? (
+                                <div className="flex items-center gap-1.5">
+                                  <span className="text-xs text-editorial-muted line-through">£{opt.price.toFixed(2)}</span>
+                                  <span className="text-sm font-bold text-editorial-green">FREE</span>
+                                </div>
+                              ) : (
+                                <div className="text-sm font-bold text-editorial-text">£{opt.price.toFixed(2)}</div>
+                              )}
                             </label>
                           );
                         })}
                       </div>
+                      {amountToFreeDelivery > 0 && (
+                        <p className="mt-2 text-xs text-editorial-muted">
+                          Add <span className="font-semibold text-editorial-accent">£{amountToFreeDelivery.toFixed(2)}</span> more for free standard delivery.
+                        </p>
+                      )}
                     </div>
                     <div className="pt-3 mt-1 border-t border-editorial-border flex justify-between">
                       <span className="font-semibold text-editorial-text">Total</span>
@@ -347,7 +367,9 @@ export default function CartPage() {
                     ))}
                     <div className="pt-3 mt-3 border-t border-editorial-border flex justify-between text-editorial-muted">
                       <span>{DELIVERY_OPTIONS[deliverySpeed].label}</span>
-                      <span className="shrink-0">£{deliveryFee.toFixed(2)}</span>
+                      <span className="shrink-0">
+                        {deliveryFee === 0 ? <span className="font-semibold text-editorial-green">FREE</span> : `£${deliveryFee.toFixed(2)}`}
+                      </span>
                     </div>
                     <div className="pt-3 mt-1 border-t border-editorial-border flex justify-between">
                       <span className="font-semibold text-editorial-text">Total</span>

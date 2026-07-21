@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Delivery & Returns | Premio Peptides UK",
   description:
-    "Same-day dispatch before 2pm. Next-day tracked UK delivery. Temperature-controlled packaging. Free delivery over £75. Returns policy for Premio Peptides.",
+    "Same-day dispatch before 2pm. Tracked UK delivery. Temperature-controlled packaging. Free standard delivery over £175. Returns policy for Premio Peptides.",
 };
 
 export default function DeliveryPage() {
@@ -30,7 +30,7 @@ export default function DeliveryPage() {
             {[
               { value: "2pm", label: "Same-Day Cut-Off" },
               { value: "Next Day", label: "UK Delivery" },
-              { value: "£75+", label: "Free Delivery" },
+              { value: "£175+", label: "Free Delivery" },
               { value: "Tracked", label: "Every Order" },
             ].map((s) => (
               <div key={s.label} className="text-center rounded-xl border border-editorial-border bg-editorial-surface p-4">
@@ -63,14 +63,14 @@ export default function DeliveryPage() {
                   <tbody className="text-editorial-muted">
                     <tr className="border-b border-editorial-border/50">
                       <td className="py-3 pr-4 font-medium text-editorial-text">Standard UK Delivery</td>
-                      <td className="py-3 pr-4">Next working day</td>
-                      <td className="py-3 pr-4">£4.99 (free over £75)</td>
+                      <td className="py-3 pr-4">2–3 working days</td>
+                      <td className="py-3 pr-4">£6.95 (free over £175)</td>
                       <td className="py-3">Full tracking</td>
                     </tr>
                     <tr className="border-b border-editorial-border/50">
-                      <td className="py-3 pr-4 font-medium text-editorial-text">Express UK Delivery</td>
-                      <td className="py-3 pr-4">Next working day (AM guaranteed)</td>
-                      <td className="py-3 pr-4">£9.99</td>
+                      <td className="py-3 pr-4 font-medium text-editorial-text">Next Day UK Delivery</td>
+                      <td className="py-3 pr-4">Next working day (order by 3pm)</td>
+                      <td className="py-3 pr-4">£10.95</td>
                       <td className="py-3">Full tracking</td>
                     </tr>
                     <tr>

@@ -61,7 +61,7 @@ export default async function CompoundsPage() {
             Research Peptides
           </h1>
           <p className="mt-4 text-editorial-muted max-w-2xl">
-            Every peptide ships with a third-party certificate of analysis, same-day dispatch on orders before 2pm, and free UK delivery over £75. For research use only.
+            Every peptide ships with a third-party certificate of analysis, same-day dispatch on orders before 2pm, and free UK delivery over £175. For research use only.
           </p>
         </div>
       </section>

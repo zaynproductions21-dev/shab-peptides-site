@@ -30,7 +30,7 @@ const faqs = [
   { question: "Are your peptides suitable for research purposes?", answer: "All Premio Peptides products are supplied strictly for research purposes only and are not intended for human consumption. We supply to university research laboratories, pharmaceutical R&D departments, biotechnology firms, clinical research organisations, and government laboratories across the UK." },
   { question: "Is it legal to buy research peptides in the UK?", answer: "Most synthetic peptides are not controlled substances under UK law and are not classified as licensed medicines, provided they are not marketed or used for medicinal purposes. Premio Peptides compounds are supplied strictly for in vitro laboratory research under the Misuse of Drugs Act 1971 and Human Medicines Regulations 2012. Buyers must confirm a lawful research purpose before dispatch. For full regulatory context, see our UK Compliance page." },
   { question: "Which UK peptide supplier provides certificates of analysis?", answer: "Premio Peptides includes a batch-specific Certificate of Analysis with every order. Each CoA features HPLC chromatograms confirming 99%+ purity, mass spectrometry molecular weight verification, and the name and accreditation details of the independent third-party laboratory. We never issue self-certified CoAs or rely on manufacturer-supplied data. Sample certificates are available on our Certificates of Analysis page before purchase." },
-  { question: "What is the fastest UK peptide delivery?", answer: "Premio Peptides offers same-day dispatch for all orders placed before 14:00 GMT on working days. Orders are shipped in temperature-controlled packaging via tracked UK courier, with next-day delivery available across England, Scotland, Wales, and Northern Ireland. Free standard delivery on orders over £75." },
+  { question: "What is the fastest UK peptide delivery?", answer: "Premio Peptides offers same-day dispatch for all orders placed before 14:00 GMT on working days. Orders are shipped in temperature-controlled packaging via tracked UK courier, with next-day delivery available across England, Scotland, Wales, and Northern Ireland. Free standard delivery on orders over £175." },
 ];
 
 const faqSchema = {
@@ -84,7 +84,7 @@ export default async function V1Editorial() {
       {/* Shipping Banner */}
       <div className="bg-editorial-accent text-white text-center py-2.5 text-sm font-medium tracking-wide pt-[4.5rem]">
         <span className="hidden sm:inline">✅ </span>
-        <strong>All Peptides In Stock</strong> &nbsp;·&nbsp; Order Before 14:00 for Same-Day Dispatch &nbsp;·&nbsp; Free UK Delivery Over £75 &nbsp;·&nbsp; CoA Included
+        <strong>All Peptides In Stock</strong> &nbsp;·&nbsp; Order Before 14:00 for Same-Day Dispatch &nbsp;·&nbsp; Free UK Delivery Over £175 &nbsp;·&nbsp; CoA Included
       </div>
 
       {/* Hero — MediCenter-inspired clean medical with product showcase */}

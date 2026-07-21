@@ -103,7 +103,8 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
           "@type": "OfferShippingDetails",
           shippingRate: {
             "@type": "MonetaryAmount",
-            value: "0",
+            // Free standard delivery over £175; otherwise £6.95 tracked.
+            value: !isNaN(numericPrice) && numericPrice >= 175 ? "0" : "6.95",
             currency: "GBP",
           },
           shippingDestination: {
@@ -240,7 +241,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
               {/* Trust strip */}
               <div className="mt-5 flex flex-wrap gap-3 text-xs text-editorial-muted">
                 <span className="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg> Third-Party CoA Included</span>
-                <span className="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg> Free Delivery Over £75</span>
+                <span className="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg> Free Delivery Over £175</span>
                 <span className="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg> Research Use Only</span>
               </div>
             </div>
