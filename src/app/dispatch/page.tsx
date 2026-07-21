@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import DispatchReviews from "@/components/DispatchReviews";
 
 interface Order {
   orderId: string;
@@ -34,6 +35,7 @@ export default function DispatchPage() {
   const [tracking, setTracking] = useState("");
   const [sendResult, setSendResult] = useState<SendResult>({ kind: "idle" });
   const [hideDispatched, setHideDispatched] = useState(true);
+  const [view, setView] = useState<"orders" | "reviews">("orders");
 
   const loadOrders = useCallback(async () => {
     setLoadErr(null);
@@ -165,11 +167,31 @@ export default function DispatchPage() {
       <header style={styles.head}>
         <div>
           <div style={styles.brand}>Premio Peptides · Dispatch</div>
-          <h1 style={styles.title}>Royal Mail tracking</h1>
+          <h1 style={styles.title}>{view === "orders" ? "Royal Mail tracking" : "Product reviews"}</h1>
         </div>
         <button onClick={logout} style={styles.ghost}>Sign out</button>
       </header>
 
+      {/* View tabs */}
+      <div style={{ display: "flex", gap: 8, margin: "4px 0 16px" }}>
+        <button
+          onClick={() => setView("orders")}
+          style={view === "orders" ? { ...styles.secondary, background: "#0F7B84", color: "#FFFFFF", borderColor: "#0F7B84" } : styles.secondary}
+        >
+          Orders
+        </button>
+        <button
+          onClick={() => setView("reviews")}
+          style={view === "reviews" ? { ...styles.secondary, background: "#0F7B84", color: "#FFFFFF", borderColor: "#0F7B84" } : styles.secondary}
+        >
+          Reviews
+        </button>
+      </div>
+
+      {view === "reviews" ? (
+        <DispatchReviews />
+      ) : (
+      <>
       <div style={styles.controls}>
         <input
           value={q}
@@ -310,6 +332,8 @@ export default function DispatchPage() {
           )}
         </section>
       </div>
+      </>
+      )}
     </div>
   );
 }

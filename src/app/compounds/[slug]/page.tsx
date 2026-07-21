@@ -6,7 +6,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AddToBasket from "@/components/AddToBasket";
 import MechanismDiagram from "@/components/MechanismDiagram";
+import ProductReviews from "@/components/ProductReviews";
 import { getCompounds, getCompoundBySlug } from "@/data/compounds";
+import { getProductReviews } from "@/lib/publishos-reviews";
 
 export async function generateStaticParams() {
   const compounds = await getCompounds();
@@ -40,6 +42,39 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
   const allCompounds = await getCompounds();
   const related = allCompounds.filter((c) => c.slug !== compound.slug).slice(0, 3);
 
+  // Real, approved, verified-buyer reviews (empty until customers leave them).
+  const { reviews, aggregate } = await getProductReviews(compound.slug);
+
+  // Only emit review markup backed by REAL approved reviews. Google penalises
+  // fabricated/self-serving ratings, so when there are no reviews we omit the
+  // review + aggregateRating fields entirely (the non-critical Search Console
+  // suggestion stays until genuine reviews exist — that is the honest state).
+  const reviewSchema =
+    aggregate && reviews.length > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: aggregate.ratingValue,
+            reviewCount: aggregate.reviewCount,
+            bestRating: aggregate.bestRating,
+            worstRating: 1,
+          },
+          review: reviews.slice(0, 20).map((r) => ({
+            "@type": "Review",
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: r.rating,
+              bestRating: 5,
+              worstRating: 1,
+            },
+            author: { "@type": "Person", name: r.author },
+            datePublished: r.createdAt.slice(0, 10),
+            ...(r.title ? { name: r.title } : {}),
+            reviewBody: r.body,
+          })),
+        }
+      : {};
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -50,6 +85,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
       : `https://premiopeptides.co.uk${compound.image}`,
     brand: { "@type": "Brand", name: "Premio Peptides" },
     mpn: compound.cas || undefined,
+    ...reviewSchema,
     offers: compound.sizes.map((s) => {
       const rawPrice = s.price.replace(/[£,]/g, "").replace("From ", "").trim();
       const numericPrice = parseFloat(rawPrice);
@@ -296,6 +332,15 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
           </div>
         </div>
       </section>
+
+      {/* Customer reviews — only rendered when real approved reviews exist */}
+      {reviews.length > 0 && aggregate && (
+        <section className="py-12 lg:py-16 bg-white border-t border-editorial-border">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <ProductReviews productName={compound.name} reviews={reviews} aggregate={aggregate} />
+          </div>
+        </section>
+      )}
 
       {/* Internal links — trust & documentation */}
       <section className="py-10 bg-white">

@@ -38,6 +38,7 @@ function buildEmail(order: Order, tracking: string, brandedTrackUrl: string): st
   const addr = order.deliveryAddress
     ? `${order.deliveryAddress.line1}${order.deliveryAddress.line2 ? `, ${order.deliveryAddress.line2}` : ""}, ${order.deliveryAddress.city}, ${order.deliveryAddress.postcode}, ${order.deliveryAddress.countryName}`
     : "";
+  const reviewUrl = `${SITE_ORIGIN}/review/${encodeURIComponent(order.orderId)}`;
 
   return `<!doctype html>
 <html><body style="margin:0;font-family:'Helvetica Neue',Arial,sans-serif;background:#F7F5F1;color:#2D2926;line-height:1.55">
@@ -64,6 +65,14 @@ function buildEmail(order: Order, tracking: string, brandedTrackUrl: string): st
 
     <h2 style="font-size:14px;font-weight:700;margin:22px 0 6px;color:#2D2926">In this parcel</h2>
     <table style="width:100%;border-collapse:collapse;font-size:14px">${itemsHtml}</table>
+
+    <hr style="border:none;border-top:1px solid #EFEAE0;margin:26px 0" />
+
+    <div style="text-align:center;margin:0 0 8px">
+      <p style="font-size:13px;color:#2D2926;font-weight:600;margin:0 0 10px">Once it arrives, how did we do?</p>
+      <a href="${reviewUrl}" style="display:inline-block;background:#FFFFFF;color:#0F7B84;text-decoration:none;font-weight:700;padding:11px 20px;border-radius:8px;font-size:13px;border:1px solid #0F7B84">Leave a review →</a>
+      <p style="font-size:11px;color:#8A8580;margin:10px 0 0">Verified-buyer reviews help other researchers choose with confidence.</p>
+    </div>
 
     <hr style="border:none;border-top:1px solid #EFEAE0;margin:26px 0" />
 
