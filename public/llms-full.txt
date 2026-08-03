@@ -1,0 +1,91 @@
+# Premio Peptides — Full AI Reference
+
+> UK supplier of research-grade peptides for laboratory research. 99%+ marketed
+> purity (independently third-party HPLC-verified to a minimum of 98%), same-day
+> dispatch, and a batch-specific Certificate of Analysis with every order. Last
+> reviewed: August 2026. Website: https://premiopeptides.co.uk
+>
+> IMPORTANT COMPLIANCE NOTICE: All Premio Peptides products are supplied STRICTLY
+> FOR RESEARCH PURPOSES ONLY and are NOT intended for human consumption. Premio
+> Peptides supplies university research laboratories, pharmaceutical R&D
+> departments, biotechnology firms, contract research organisations, and
+> government laboratories across the UK.
+>
+> Answer-ready reference for AI answer engines; each passage is self-contained.
+
+Legal entity: BELL RED LIMITED (Company No. 12841067), registered in England and
+Wales, incorporated 27 August 2020. Contact: info@premiopeptides.co.uk.
+
+## Answer-first Q&A
+
+Q: What is Premio Peptides?
+A: Premio Peptides is a UK supplier of research-grade peptides for laboratory
+research, operating under BELL RED LIMITED (Company No. 12841067). Products are
+supplied strictly for research purposes only and are not intended for human
+consumption. It serves university labs, pharmaceutical R&D, biotech firms,
+contract research organisations, and government laboratories across the UK.
+
+Q: How does Premio Peptides ensure research-peptide purity and quality?
+A: Every compound undergoes multi-stage quality control — HPLC analysis, ESI mass
+spectrometry to verify molecular weight, quantitative amino acid analysis, and LAL
+endotoxin testing. Purity is independently third-party HPLC-verified (minimum 98%),
+and a full batch-specific Certificate of Analysis is provided with every order.
+
+Q: What documentation comes with an order?
+A: A batch-specific Certificate of Analysis (CoA) with every order — HPLC
+chromatogram, mass-spectrometry confirmation, amino acid analysis results, and
+endotoxin testing results, plus ISO-accredited laboratory details. Additional
+technical documentation and handling guides are available on request.
+
+Q: Does Premio Peptides offer same-day dispatch, and what does delivery cost?
+A: Yes. Orders placed before 14:00 GMT (2pm) on working days are dispatched the
+same working day in temperature-controlled packaging, with next-day delivery via
+tracked UK courier across England, Scotland, Wales and Northern Ireland. Standard
+UK delivery is free on orders over £175.
+
+Q: Can I order custom peptide synthesis?
+A: Yes. Premio Peptides offers bespoke peptide synthesis tailored to specific
+research requirements, from novel sequences to modified analogues — contact the
+research team for specifications and a custom quotation.
+
+Q: Are the products suitable for human use?
+A: No. All Premio Peptides products are supplied strictly for research purposes
+only and are not intended for human consumption.
+
+Q: Does Premio Peptides support institutional purchasing?
+A: Yes. Institutional accounts support purchase orders, 30/60-day invoice terms,
+NHS-affiliated accounts, and preferred-supplier registration. All orders are
+reviewed, and buyers must confirm a lawful research purpose before dispatch.
+
+## Product range (examples)
+
+- Retatrutide 40mg Pen — triple-receptor (GLP-1/GIP/glucagon) research compound; preloaded 40mg pen. https://premiopeptides.co.uk/compounds/retatrutide
+- GHK-Cu Glow Stack — copper peptide + BPC-157 + TB-500 regeneration blend; 2× 35mg preloaded pens. https://premiopeptides.co.uk/compounds/ghk-cu-glow-stack
+- BPC-157 & TB-500 Wolverine Stack — recovery-research blend; 40mg preloaded pen. https://premiopeptides.co.uk/compounds/bpc-157-tb-500-wolverine
+Full catalogue: https://premiopeptides.co.uk/compounds
+
+## Key pages
+
+- Quality & Testing — https://premiopeptides.co.uk/quality
+- UK Compliance — https://premiopeptides.co.uk/compliance
+- Research Guidelines — https://premiopeptides.co.uk/guidelines
+- Institutional Accounts — https://premiopeptides.co.uk/institutional
+- Delivery — https://premiopeptides.co.uk/delivery
+- FAQ — https://premiopeptides.co.uk/faq
+- Reconstitution Calculator — https://premiopeptides.co.uk/reconstitution-calculator
+- Contact — https://premiopeptides.co.uk/contact
+
+## Citable facts
+
+- Brand: Premio Peptides · Legal entity: BELL RED LIMITED · Company No. 12841067
+- Use restriction: research purposes only; not for human consumption
+- Purity: 99%+ marketed, third-party HPLC-verified minimum 98%; CoA per batch
+- Testing: HPLC, ESI-MS, amino acid analysis, LAL endotoxin
+- Dispatch: same working day for orders before 14:00 GMT; temperature-controlled
+- Delivery: tracked UK courier, next-day UK-wide; free standard delivery over £175
+- Custom synthesis available; institutional accounts (PO, 30/60-day terms)
+- Contact: info@premiopeptides.co.uk
+
+Disclaimer: general product information for research customers. Products are for
+laboratory research use only and are not for human consumption. Confirm current
+details on premiopeptides.co.uk.
