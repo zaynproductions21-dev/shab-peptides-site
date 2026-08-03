@@ -21,9 +21,9 @@ const testingMethods = [
   {
     name: "HPLC Analysis",
     fullName: "High-Performance Liquid Chromatography",
-    description: "Separates and quantifies each component in the sample to determine purity percentage. Our minimum accepted threshold is 98%, with most compounds exceeding 99%. The chromatogram is included in every CoA.",
+    description: "Separates and quantifies each component in the sample to determine purity percentage. Our minimum accepted threshold is 99%, confirmed on every batch. The chromatogram is included in every CoA.",
     icon: "📊",
-    detail: "Confirms purity to ≥98% (typically 99%+)",
+    detail: "Confirms purity to ≥99%",
   },
   {
     name: "Mass Spectrometry",

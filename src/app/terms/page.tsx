@@ -70,7 +70,7 @@ export default function TermsPage() {
 
             <div>
               <h2 className="font-serif text-xl font-bold text-editorial-text mb-3">7. Quality and Certificates of Analysis</h2>
-              <p>All products are supplied with a batch-specific certificate of analysis (CoA) produced by an independent, accredited third-party laboratory. CoAs confirm compound identity and purity via HPLC and mass spectrometry analysis. Our minimum accepted purity threshold is 98%.</p>
+              <p>All products are supplied with a batch-specific certificate of analysis (CoA) produced by an independent, accredited third-party laboratory. CoAs confirm compound identity and purity via HPLC and mass spectrometry analysis. Our minimum accepted purity threshold is 99%.</p>
             </div>
 
             <div>

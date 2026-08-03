@@ -27,7 +27,7 @@ const faqs = [
   {
     question: "How do I calculate the molar concentration of my reconstituted peptide?",
     answer:
-      "Divide the peptide mass in milligrams by its molecular weight in g/mol to get millimoles, then divide by the reconstitution volume in millilitres to get millimolar (mM) concentration. Molecular weight is on the Premio Peptides Certificate of Analysis. If purity is below 98%, adjust the effective mass to get a corrected figure.",
+      "Divide the peptide mass in milligrams by its molecular weight in g/mol to get millimoles, then divide by the reconstitution volume in millilitres to get millimolar (mM) concentration. Molecular weight is on the Premio Peptides Certificate of Analysis. If purity is below 99%, adjust the effective mass to get a corrected figure.",
   },
   {
     question: "How long is a reconstituted peptide solution stable at -20\u00B0C?",

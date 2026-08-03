@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "What is the minimum purity level for peptides you supply?",
     answer:
-      "98%, confirmed by third-party HPLC analysis. Compounds that do not meet this standard following independent testing are not listed in our catalogue or made available for order. Where purity exceeds 98%, the exact figure reported by the laboratory is stated on the CoA — not a generalised minimum claim.",
+      "99%, confirmed by third-party HPLC analysis. Compounds that do not meet this standard following independent testing are not listed in our catalogue or made available for order. Where purity exceeds 99%, the exact figure reported by the laboratory is stated on the CoA — not a generalised minimum claim.",
   },
   {
     question: "Are your certificates of analysis produced by independent laboratories?",
@@ -92,7 +92,7 @@ export default function QualityPage() {
               Every compound we stock is independently analysed before it reaches a researcher&rsquo;s bench. We do not accept manufacturer-provided data as sufficient. Each batch is tested by a third-party UK-based analytical laboratory using high-performance liquid chromatography (HPLC) and mass spectrometry (MS), producing documentation traceable to a specific production batch.
             </p>
             <p>
-              Our minimum accepted purity threshold is 98%. Any compound that falls below this standard is not listed for supply. No exceptions, across the entire catalogue.
+              Our minimum accepted purity threshold is 99%. Any compound that falls below this standard is not listed for supply. No exceptions, across the entire catalogue.
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function QualityPage() {
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Purity Guarantee and Research-Use Commitment</h2>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              All compounds supplied by Premio Peptides carry a minimum documented purity of 98%, confirmed by third-party HPLC analysis. Where analytical data shows purity above this threshold, the exact figure is reported on the certificate — not a rounded or minimum-quoted value.
+              All compounds supplied by Premio Peptides carry a minimum documented purity of 99%, confirmed by third-party HPLC analysis. Where analytical data shows purity above this threshold, the exact figure is reported on the certificate — not a rounded or minimum-quoted value.
             </p>
             <p>
               All compounds are supplied strictly for in vitro and laboratory research purposes only. They are not intended for human or veterinary administration, clinical use, or any application outside a controlled research setting. Premio Peptides does not supply to members of the public for personal use. Orders are accepted from research institutions, universities, biotechnology companies, and qualified research professionals.
@@ -204,7 +204,7 @@ export default function QualityPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-4 gap-6">
             {[
-              { value: "98%+", label: "Minimum Purity" },
+              { value: "99%+", label: "Minimum Purity" },
               { value: "100%", label: "Batch Tested" },
               { value: "ISO", label: "Accredited Labs" },
               { value: "24h", label: "CoA Turnaround" },
