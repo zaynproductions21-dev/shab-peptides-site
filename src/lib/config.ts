@@ -16,3 +16,11 @@ export function normalisePhone(input: string): string {
   if (cleaned.startsWith("0")) return "+44" + cleaned.slice(1);
   return cleaned;
 }
+
+// We are a UK-only store, so we NEVER pay to SMS a foreign number. Any
+// non-UK destination is treated as SMS-pumping / toll-fraud and the outbound
+// SMS is skipped (the email flow still runs). Expects an E.164 string from
+// normalisePhone: "+44" followed by 9–10 national digits.
+export function isUkPhone(e164: string): boolean {
+  return /^\+44\d{9,10}$/.test(e164);
+}

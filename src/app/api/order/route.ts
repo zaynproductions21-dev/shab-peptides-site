@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { encodeInvoiceRef } from "@/app/api/invoice/[ref]/route";
-import { WHATSAPP_NUMBER, normalisePhone } from "@/lib/config";
-import { kvSet } from "@/lib/kv";
+import { WHATSAPP_NUMBER, normalisePhone, isUkPhone } from "@/lib/config";
+import { kvSet, rateLimit } from "@/lib/kv";
 
 const BREVO_LIST_ID = 13; // "Premio Peptides Contacts"
 
@@ -237,7 +237,15 @@ function buildBusinessEmail(order: OrderPayload, orderRef: string, invoiceUrl: s
 // ── Turnstile verification ─────────────────────────
 async function verifyTurnstileToken(token: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true; // skip in dev if not configured
+  if (!secret) {
+    // Fail OPEN in dev for local testing, but CLOSED in production: a missing
+    // or rotated key must never leave the endpoint wide open to SMS-pumping.
+    if (process.env.NODE_ENV === "production") {
+      console.error("TURNSTILE_SECRET_KEY not set in production — rejecting request");
+      return false;
+    }
+    return true;
+  }
   try {
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
@@ -266,6 +274,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "CAPTCHA verification failed" }, { status: 400 });
     }
 
+    // Per-IP rate limit: caps how fast any single client can submit orders,
+    // so a bot with valid CAPTCHA tokens still can't hammer the SMS path.
+    const ip = (
+      request.headers.get("x-forwarded-for")?.split(",")[0] ||
+      request.headers.get("x-real-ip") ||
+      "unknown"
+    ).trim();
+    if (!(await rateLimit(`order:ip:${ip}`, 5, 600))) {
+      return NextResponse.json({ error: "Too many requests. Please try again shortly." }, { status: 429 });
+    }
+
     const order: OrderPayload = body;
 
     // Validate required fields
@@ -277,6 +296,12 @@ export async function POST(request: Request) {
     // get a consistent format regardless of how the customer typed it.
     if (order.customer.phone) {
       order.customer.phone = normalisePhone(order.customer.phone);
+
+      // Per-number rate limit: no single destination number can be targeted
+      // more than 3× per hour — a second line of defence against SMS-pumping.
+      if (!(await rateLimit(`order:phone:${order.customer.phone}`, 3, 3600))) {
+        return NextResponse.json({ error: "Too many requests for this number." }, { status: 429 });
+      }
     }
 
     const businessEmail = process.env.BUSINESS_EMAIL || "info@premiopeptides.co.uk";
@@ -335,8 +360,11 @@ export async function POST(request: Request) {
           )
         : Promise.resolve(),
 
-      // SMS to customer
-      order.customer.phone && process.env.TWILIO_ACCOUNT_SID
+      // SMS to customer — UK numbers ONLY. We are a UK-only store, so any
+      // non-+44 destination is treated as SMS-pumping / toll-fraud and skipped
+      // (the confirmation email still goes out). This is the primary defence
+      // that keeps the attacker-controlled `To` off our Twilio bill.
+      order.customer.phone && isUkPhone(order.customer.phone) && process.env.TWILIO_ACCOUNT_SID
         ? sendTwilioSms(
             order.customer.phone,
             `Hi ${order.customer.name}, thanks for your Premio Peptides order #${orderRef} (£${order.total}). We'll WhatsApp/call within 60 mins to verify research purpose. Queries: info@premiopeptides.co.uk. Email STOP to opt out.`
