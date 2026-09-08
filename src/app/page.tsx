@@ -7,6 +7,15 @@ import ImageLightbox from "@/components/ImageLightbox";
 import QuoteForm from "@/components/QuoteForm";
 
 import { getFeaturedCompounds } from "@/data/compounds";
+import {
+  COMPANY,
+  COA_CONTENTS,
+  PURITY_THRESHOLD,
+  REVIEWED,
+  TEST_BATTERY,
+  verificationMethodSchema,
+  verifiedOrganization,
+} from "./verification";
 
 export const metadata: Metadata = {
   title: "Premio Peptides | UK Research Peptide Supplier — Same-Day Dispatch, COA Included",
@@ -78,6 +87,15 @@ export default async function V1Editorial() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [verifiedOrganization, verificationMethodSchema],
+          }),
+        }}
+      />
 
       <Navigation variant="editorial" />
 
@@ -469,6 +487,67 @@ export default async function V1Editorial() {
             <div>
               <QuoteForm variant="editorial" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= HOW EVERY BATCH IS VERIFIED =================
+          Premio's authority signal is documentary, not personal. Every other
+          brand in the portfolio carries a named reviewer; a research-chemical
+          supplier is trusted on what can be independently checked instead —
+          the batch record, the method, the accreditation, the legal entity.
+          Rendered here because schema must reflect what a reader can see. */}
+      <section className="border-t border-neutral-200 bg-white py-16">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="font-serif text-3xl text-neutral-900">How every batch is verified</h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-neutral-700">
+            Every Premio Peptides batch passes four independent analytical tests at a third-party
+            ISO-accredited laboratory before it is released for sale. The minimum accepted purity
+            threshold is {PURITY_THRESHOLD}, confirmed on each batch rather than assumed from the
+            previous one. Nothing ships without passing all four.
+          </p>
+
+          <dl className="mt-8 space-y-6">
+            {TEST_BATTERY.map((t) => (
+              <div key={t.name} className="border-t border-neutral-200 pt-5">
+                <dt className="text-[15px] font-semibold text-neutral-900">{t.name}</dt>
+                <dd className="mt-2 text-[15px] leading-relaxed text-neutral-700">{t.what}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <h3 className="mt-10 text-[15px] font-semibold text-neutral-900">
+            What appears on the Certificate of Analysis
+          </h3>
+          <ul className="mt-3 space-y-2 text-[15px] leading-relaxed text-neutral-700">
+            {COA_CONTENTS.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+
+          <div className="mt-8 border-t border-neutral-200 pt-5 text-[14px] leading-relaxed text-neutral-600">
+            <p>
+              Premio Peptides is the trading name of {COMPANY.legalName}, registered in England and
+              Wales under company number {COMPANY.companyNumber}. The registration is a public record
+              and can be checked directly at{" "}
+              <a
+                href={COMPANY.companiesHouse}
+                rel="noopener"
+                target="_blank"
+                className="underline"
+              >
+                Companies House
+              </a>
+              .
+            </p>
+            <p className="mt-3">
+              All compounds are supplied for laboratory research use only. Testing methodology last
+              reviewed: {REVIEWED}.{" "}
+              <Link href="/certificates-of-analysis" className="underline">
+                See the full testing methodology
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
