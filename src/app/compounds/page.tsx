@@ -24,27 +24,27 @@ const faqs = [
   {
     question: "What are research peptides?",
     answer:
-      "Research peptides are short chains of amino acids supplied as reference materials for laboratory research. In a research context they are used as test compounds in in-vitro and in-vivo laboratory work carried out by qualified professionals. They are supplied for laboratory research use only — they are not a licensed medicine, and not for human or veterinary use.",
+      "Research peptides are short chains of amino acids, supplied as reference materials for laboratory work. In a research setting, they're used as test compounds in in-vitro and in-vivo studies carried out by qualified professionals. They are supplied for laboratory research use only — they are not a licensed medicine, and not for human or veterinary use.",
   },
   {
     question: "How are the compounds in this catalogue tested?",
     answer:
-      "Every compound listed is submitted for independent third-party analytical testing before it is offered, covering identity and composition. Results are recorded against the specific production batch, and a batch-specific certificate of analysis is available on request. We do not rely solely on manufacturer-supplied documentation.",
+      "Every compound we list goes through independent, third-party analytical testing before it's made available — covering identity and composition. Results are tied to the specific production batch, and a batch-specific certificate of analysis is available on request. We don't just take the manufacturer's word for it.",
   },
   {
     question: "Who can order, and what are these for?",
     answer:
-      "Ordering is restricted to research institutions, universities, biotechnology companies, and qualified research professionals. Compounds are supplied strictly for laboratory research use and are not sold to the public for personal use. We provide handling and storage information with each order but no guidance on administration or use in humans or animals.",
+      "Ordering is open to research institutions, universities, biotech companies, and qualified research professionals only. All compounds are supplied strictly for laboratory research — they're not sold to the public for personal use. We include handling and storage information with every order, but we don't offer guidance on administration or use in humans or animals.",
   },
   {
     question: "How do I place an order?",
     answer:
-      "Browse the catalogue, add items to your basket, and complete the checkout with your research-purpose details. Orders are confirmed through a manual verification step before dispatch. Same-day dispatch is available on orders placed before 2pm, with tracked UK delivery and free UK delivery over £75.",
+      "Browse the catalogue, pick what you need, and head to checkout with your research details. There's a manual verification step before anything gets dispatched — so don't worry if it's not instant. Order before 2pm for same-day dispatch, with tracked UK delivery throughout and free UK delivery on orders over £75.",
   },
   {
     question: "Can I get a certificate of analysis before ordering?",
     answer:
-      "Yes. Certificates of analysis are available on request. If you need documentation for a compound currently in stock before ordering — for example to satisfy an institutional review or procurement process — contact our team with the compound name and we will provide the relevant document where available.",
+      "Yes. Certificates of analysis are available on request. If you need documentation for a compound you're looking at before placing an order — say, to satisfy an institutional review or procurement process — just get in touch with our team, let us know the compound name, and we'll send over the relevant document where we have it available.",
   },
 ];
 
@@ -101,11 +101,11 @@ export default async function CompoundsPage() {
           </h1>
           <p className="mt-4 text-editorial-muted max-w-2xl">
             Browse our full catalogue of research-grade peptide compounds, supplied
-            for laboratory research use only. Each compound is submitted for
-            independent third-party testing before it is listed, with a
-            batch-specific certificate of analysis available on request. Every
-            order ships with same-day dispatch on orders placed before 2pm, tracked
-            UK delivery, and free UK delivery over £75.
+            for laboratory research use only. Every compound goes through
+            independent third-party testing before it&rsquo;s listed — and a
+            batch-specific certificate of analysis is available on request. Orders
+            placed before 2pm ship the same day, with tracked UK delivery as
+            standard and free UK delivery on orders over £75.
           </p>
           <p className="mt-3 text-xs text-editorial-muted max-w-2xl">
             All compounds are supplied for laboratory research use only — they are

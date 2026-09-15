@@ -64,27 +64,27 @@ const faqs = [
   {
     question: "What is a certificate of analysis (CoA)?",
     answer:
-      "A certificate of analysis is a document that records the analytical testing carried out on a specific batch of a compound. For research peptides it typically states the compound name and reference, the batch the document relates to, the analytical methods used, and the results of those tests. Its purpose is to let a research buyer confirm what a material is and that it has been independently checked, rather than relying on a supplier's description alone.",
+      "A certificate of analysis is a document that records the analytical testing carried out on a specific batch of a compound. For research peptides, it typically includes the compound name and reference, the batch it relates to, the analytical methods used, and the results of those tests. The point of it is simple — it lets a research buyer confirm what a material actually is and that it's been independently checked, rather than just taking a supplier's word for it.",
   },
   {
     question: "What does the testing generally cover?",
     answer:
-      "In general terms, analytical testing for research peptides addresses two main questions: identity (is the compound what it claims to be) and composition (how pure it is and whether expected impurities are present). Methods such as chromatography and mass spectrometry are commonly used for this. Results are recorded against the specific batch tested. We describe our methodology in general terms here and provide the underlying figures on the batch-specific certificate, available on request.",
+      "Analytical testing for research peptides really comes down to two questions: is the compound actually what it claims to be, and what's in it — how pure is it, and are there any expected impurities present? To answer those questions, we use methods like chromatography and mass spectrometry, with results recorded against the specific batch tested. We've outlined our general methodology here, and the underlying figures are on the batch-specific certificate, which is available on request.",
   },
   {
     question: "How do I request a CoA for a specific batch?",
     answer:
-      "Contact our team with the compound name and, if you have it, your order or batch reference. We will provide the relevant batch-specific certificate of analysis where available. If you need documentation before ordering — for example to satisfy an institutional review or procurement process — request it for a compound currently in stock and we will respond with the document.",
+      "Got the compound name? Drop us a message with that, plus your order or batch reference if you have it, and we'll send over the relevant batch-specific certificate of analysis. Need documentation before you place an order — say, for an institutional review or procurement process? No problem. Just request it for a compound we currently have in stock and we'll get the document over to you.",
   },
   {
     question: "Is the testing carried out independently?",
     answer:
-      "Certificates are produced through independent third-party testing rather than self-certification using only manufacturer-supplied data. The intention is to remove the conflict of interest that arises when the party selling a compound is also the only party vouching for it. Certificates of analysis are available on request.",
+      "Testing is carried out by independent third-party labs — not self-certified using data supplied by the manufacturer. That distinction matters. When the company selling a compound is also the only one vouching for it, there's an obvious conflict of interest. We remove that entirely. Certificates of analysis are available on request.",
   },
   {
     question: "Can I match a certificate to the stock I received?",
     answer:
-      "Yes. Each order carries a batch reference on its accompanying documentation, and that reference corresponds to the certificate of analysis for that batch. If you need to retrieve a certificate after dispatch, contact our team with your order or batch reference and we will provide the relevant document where available.",
+      "Yes. Every order includes a batch reference on its accompanying documentation, and that reference links directly to the certificate of analysis for that batch. If you need to retrieve a certificate after your order's been dispatched, just get in touch with our team — give us your order or batch reference and we'll send over the relevant document where available.",
   },
   {
     question: "What does “research use only” mean for these compounds?",

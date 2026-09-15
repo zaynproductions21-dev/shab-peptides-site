@@ -12,32 +12,32 @@ const faqs = [
   {
     question: "How quickly are orders dispatched and delivered?",
     answer:
-      "Orders placed before 2pm on working days (Monday to Friday, excluding UK public holidays) are dispatched the same day. Orders after 2pm, or on weekends and bank holidays, are dispatched the next working day. Standard UK delivery is next working day, with an express AM-guaranteed option also available. All orders are dispatched from our UK fulfilment facility, so there are no customs delays or international transit times.",
+      "Orders placed before 2pm on any working day (Monday to Friday, excluding bank holidays) go out the same day. Miss that cut-off, or order over the weekend? We'll dispatch it the next working day. Standard UK delivery is next working day, and if you need it before noon we've got an express AM-guaranteed option too. Everything ships from our UK fulfilment facility, so you won't run into customs delays or lengthy international transit times.",
   },
   {
     question: "How are research compounds packaged for transit?",
     answer:
-      "All compounds are dispatched in packaging chosen to protect compound integrity during transit. Lyophilised products are shipped at ambient temperature with insulated packaging. Where a compound requires cold-chain handling, insulated containers with gel ice packs are used as standard at no additional cost. Packaging is intended to keep the research material stable from dispatch to arrival.",
+      "Packaging is chosen with one goal in mind: keeping your compounds intact from the moment they leave us to the moment they arrive with you. Lyophilised products travel at ambient temperature in insulated packaging, and anything that needs cold-chain handling goes out in insulated containers with gel ice packs — no extra charge, no need to ask. It's all standard. The whole setup is designed to protect the integrity of your research material throughout transit.",
   },
   {
     question: "How should I store the compounds when they arrive?",
     answer:
-      "General handling and storage information is included with every order and is available from our team on request. As a general principle for laboratory research materials, keep the compound in its sealed packaging until use and store it according to the handling information supplied. We provide handling and storage guidance only — not any guidance on administration or use in humans or animals, because these compounds are for laboratory research use only.",
+      "Keep the compound in its sealed packaging until you're ready to use it, and store it according to the handling information we supply. General handling and storage information comes with every order — and if you need it sooner, just get in touch with our team. One thing worth being clear about: we provide handling and storage guidance only. We don't offer any guidance on administration or use in humans or animals. These compounds are for laboratory research use only.",
   },
   {
     question: "How do I track my order?",
     answer:
-      "A tracking number is sent by email once your order has been dispatched, and you can use it to monitor delivery progress directly with the courier. If you have not received a tracking notification within 24 hours of placing your order during working days, contact us at info@premiopeptides.co.uk with your order reference.",
+      "Once your order has been dispatched, you'll receive a tracking number by email — use it to follow your delivery progress directly with the courier. Haven't received a tracking notification within 24 hours of placing your order (during working days)? Drop us a message at info@premiopeptides.co.uk with your order reference and we'll look into it.",
   },
   {
     question: "Do you ship internationally?",
     answer:
-      "We currently ship to addresses within the United Kingdom only (England, Scotland, Wales, and Northern Ireland). We do not offer international shipping at this time. For bulk or institutional orders requiring bespoke logistics, contact us before placing your order.",
+      "We ship to UK addresses only — that's England, Scotland, Wales, and Northern Ireland. International shipping isn't something we offer right now. If you're placing a bulk or institutional order and need bespoke logistics, get in touch with us before you order.",
   },
   {
     question: "What is your returns policy?",
     answer:
-      "Because of the nature of research compounds and our obligation to maintain chain of custody and compound integrity, we cannot accept returns of products that have been opened or used. We will accept returns or issue replacements or refunds where a product is damaged in transit, the wrong product was dispatched, the product does not match its certificate of analysis, or the product was not delivered. Contact us within 7 days of delivery with your order reference and a description of the issue.",
+      "Because we're dealing with research compounds, we have to maintain chain of custody and compound integrity at all times — so we can't accept returns on anything that's been opened or used. That said, we'll absolutely accept returns, offer replacements, or issue refunds if a product arrives damaged, the wrong item was sent out, the product doesn't match its certificate of analysis, or your order wasn't delivered at all. If any of these apply to you, get in touch within 7 days of delivery. Just have your order reference ready and give us a brief description of the issue.",
   },
 ];
 

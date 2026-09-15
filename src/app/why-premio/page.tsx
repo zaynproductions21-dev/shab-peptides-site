@@ -22,32 +22,32 @@ const faqs = [
   {
     question: "What does Premio Peptides supply, and what is it for?",
     answer:
-      "Premio Peptides supplies research-grade peptide compounds for laboratory research use only. Every compound is intended strictly for in-vitro and in-vivo laboratory research carried out by qualified professionals. Products are not a licensed medicine and are not for human or veterinary use. We supply research institutions, universities, biotechnology companies, and qualified research professionals — not members of the public for personal use.",
+      "Premio Peptides supplies research-grade peptide compounds for laboratory research use only. Every compound is strictly intended for in-vitro and in-vivo research carried out by qualified professionals. Our products are not a licensed medicine and are not for human or veterinary use. We supply research institutions, universities, biotechnology companies, and qualified research professionals — not members of the public for personal use.",
   },
   {
     question: "How is Premio Peptides different from a typical grey-market supplier?",
     answer:
-      "The core difference is verifiability. Premio operates as a registered UK company with a public address, real phone and messaging support, and a documented quality process. Each batch is independently tested before it is listed, and a batch-specific certificate of analysis is available on request. Many grey-market vendors offer anonymous contact details, manufacturer-supplied data only, and no traceability. Our model is built so an institutional buyer can audit provenance and documentation before committing to an order.",
+      "Verifiability is what it comes down to. Premio operates as a registered UK company — public address, real phone and messaging support, and a documented quality process. Every batch is independently tested before it goes live, and batch-specific certificates of analysis are available on request. Compare that to the typical grey-market vendor: anonymous contact details, manufacturer-supplied data only, and zero traceability. Our model is built so that an institutional buyer can properly audit provenance and documentation before committing to an order. No guesswork. No chasing shadows.",
   },
   {
     question: "How are your compounds sourced and tested?",
     answer:
-      "Compounds are sourced through a documented supply chain and submitted for independent third-party analytical testing before they are listed in the catalogue. Testing covers purity and molecular identity, and the results are recorded against a specific production batch rather than a generic product line. Certificates of analysis are available on request. We do not rely solely on manufacturer-supplied documentation.",
+      "Every compound goes through a documented supply chain and is submitted for independent, third-party analytical testing before it ever appears in our catalogue. We test for purity and molecular identity — and crucially, results are recorded against a specific production batch, not just a generic product line. Certificates of analysis are available on request. And no, we don't rely solely on what the manufacturer tells us.",
   },
   {
     question: "Can I see testing documentation before I order?",
     answer:
-      "Yes. Certificates of analysis are available on request. If you need documentation for a specific compound currently in stock before ordering — for example, to satisfy an institutional review or procurement process — contact our team with the compound name and we will provide the relevant document where available.",
+      "Yes. Certificates of analysis are available on request. If you need documentation for a specific compound before you order — say, to satisfy an institutional review or procurement process — just get in touch with our team, let us know which compound you're looking at, and we'll send over the relevant document where we have it available.",
   },
   {
     question: "How should research compounds be handled and stored on arrival?",
     answer:
-      "General handling and storage guidance is provided with each order and is available from our team on request. As a general principle for laboratory research materials, compounds should be received by a competent researcher, kept in their sealed packaging until use, and stored according to the handling information supplied. We provide handling and storage information only — we do not provide any guidance on administration, dosing, or use in humans or animals, because these compounds are for laboratory research use only.",
+      "Handling and storage guidance comes with every order, and you can always request it directly from our team. As a general rule with laboratory research materials, compounds should be received by a competent researcher, kept in their original sealed packaging until needed, and stored in line with the information we supply. To be clear: we provide handling and storage information only. We don't offer any guidance on administration, dosing, or use in humans or animals — because these compounds are strictly for laboratory research use.",
   },
   {
     question: "How do I place an order, and who can order?",
     answer:
-      "Browse the catalogue, add items to your basket, and complete the checkout with your research-purpose details. Orders are confirmed through a manual verification step before dispatch. Ordering is restricted to research institutions, universities, biotechnology companies, and qualified research professionals. Compounds are supplied for laboratory research use only and are not sold to the public for personal use.",
+      "Browse the catalogue, add what you need to your basket, and complete the checkout with your research-purpose details. There's a manual verification step before any order goes to dispatch — so don't worry if it's not instant. Ordering is restricted to research institutions, universities, biotech companies, and qualified research professionals. All compounds are supplied strictly for laboratory research use and aren't sold to the public for personal use.",
   },
   {
     question: "Are Premio Peptides products safe to use in humans or animals?",
@@ -351,20 +351,19 @@ export default function WhyPremioPage() {
             <p>
               Premio Peptides supplies research-grade peptide compounds for
               laboratory research use only. That single constraint shapes
-              everything below: how compounds are sourced, how they are tested,
-              how they are documented, and how they reach a researcher&rsquo;s
-              bench. None of it concerns therapeutic use, because these compounds
-              are not a licensed medicine and are not intended for human or
-              veterinary use.
+              everything that follows — how compounds are sourced, tested,
+              documented, and how they reach a researcher&rsquo;s bench. None of
+              this concerns therapeutic use. These compounds are not a licensed
+              medicine and are not intended for human or veterinary use.
             </p>
             <p>
-              For a research team, &ldquo;quality&rdquo; is not a marketing word
-              — it is a set of things you should be able to verify. Where did the
-              compound come from? Has it been independently tested? Can the
-              documentation be matched to the physical stock you received? A
-              supplier that cannot answer those questions in writing is asking
-              you to take provenance on trust, which is rarely acceptable in a
-              controlled research setting.
+              For a research team, &ldquo;quality&rdquo; isn&rsquo;t a marketing
+              word. It&rsquo;s a set of things you should be able to verify. Where
+              did the compound come from? Has it been independently tested? Can
+              the documentation be matched to the physical stock you received? A
+              supplier that can&rsquo;t answer those questions in writing is
+              asking you to take provenance on trust — and that&rsquo;s rarely
+              acceptable in a controlled research setting.
             </p>
           </div>
 
@@ -373,18 +372,18 @@ export default function WhyPremioPage() {
           </h3>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              Every compound we list is sourced through a documented supply
-              chain rather than anonymous, untraceable channels. Provenance
-              matters for research because experimental reproducibility depends
-              on knowing what a material is and where it originated. We log
-              incoming stock against a unique batch reference so that every unit
-              dispatched can be traced back to a specific production run.
+              Every compound we list comes through a documented supply chain —
+              not anonymous, untraceable channels. Provenance matters in
+              research. Experimental reproducibility depends on knowing exactly
+              what a material is and where it came from. We log incoming stock
+              against a unique batch reference, so every unit we dispatch can be
+              traced back to a specific production run.
             </p>
             <p>
-              We do not accept manufacturer-supplied claims as the end of the
-              process. Sourcing is the start of the quality pipeline, not the
-              whole of it — what a compound is described as on paper still has to
-              be confirmed independently before it is offered for research use.
+              And we don&rsquo;t just take manufacturer-supplied claims at face
+              value. Sourcing is the start of the quality pipeline, not the whole
+              of it. What a compound is described as on paper still has to be
+              confirmed independently before it&rsquo;s offered for research use.
             </p>
           </div>
 
@@ -393,20 +392,21 @@ export default function WhyPremioPage() {
           </h3>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              Compounds are submitted for independent third-party analytical
-              testing before they are listed. Testing focuses on two questions
-              that matter for laboratory work: is the compound what it claims to
-              be (identity), and how pure is it (composition)? Results are
-              recorded against the specific batch, and a batch-specific
-              certificate of analysis is available on request.
+              Before any compound gets listed on the site, it goes through
+              independent third-party analytical testing. Two questions drive
+              that process: is this actually what it claims to be (identity), and
+              how pure is it (composition)? Results are tied to the specific
+              batch, and a batch-specific certificate of analysis is available on
+              request.
             </p>
             <p>
-              Independent testing removes the conflict of interest inherent in
-              self-certification, where the party selling a compound is also the
-              party vouching for it. We publish testing methodology in general
-              terms on our quality pages and provide the underlying
-              documentation on request rather than asking researchers to take
-              purity on trust.
+              Here&rsquo;s the thing about self-certification — when the party
+              selling a compound is also the party vouching for it, there&rsquo;s
+              an obvious conflict of interest. Independent testing removes that
+              problem entirely. We publish our testing methodology in general
+              terms on our quality pages, and the underlying documentation is
+              available on request. Researchers shouldn&rsquo;t have to take
+              purity on trust, and with us, they don&rsquo;t.
             </p>
           </div>
 
@@ -415,18 +415,19 @@ export default function WhyPremioPage() {
           </h3>
           <div className="text-editorial-muted leading-relaxed space-y-4">
             <p>
-              Research materials are only as good as the conditions they are kept
-              in. Stock is held in a controlled UK facility and dispatched with
-              packaging appropriate to the compound, including insulated,
-              temperature-controlled packaging where required. General handling
-              and storage information accompanies every order so that a competent
-              researcher can store the material correctly on arrival.
+              Research materials are only as good as the conditions they&rsquo;re
+              kept in. Our stock is held in a controlled UK facility and
+              dispatched with packaging appropriate to the compound — including
+              insulated, temperature-controlled packaging where it&rsquo;s
+              needed. Every order comes with general handling and storage
+              information, so you can store the material correctly from the
+              moment it arrives.
             </p>
             <p>
-              We provide handling and storage information only. We do not provide
-              guidance on administration, dosing, or any form of use in humans or
-              animals, because these compounds are supplied strictly for
-              laboratory research use.
+              That&rsquo;s where our guidance ends, though. We don&rsquo;t provide
+              advice on administration, dosing, or any form of use in humans or
+              animals. These compounds are supplied strictly for laboratory
+              research use, and we keep things that way.
             </p>
           </div>
 
@@ -437,17 +438,18 @@ export default function WhyPremioPage() {
             <p>
               Ordering is restricted to research institutions, universities,
               biotechnology companies, and qualified research professionals.
-              Orders are confirmed through a manual verification step before
-              dispatch, which lets us confirm the research context and provide
-              payment details with a clear paper trail. It is a deliberate
-              friction point — the right one for a research-only product.
+              Every order goes through a manual verification step before we
+              dispatch anything — this lets us confirm the research context,
+              share payment details, and keep a clear paper trail. Yes,
+              it&rsquo;s a deliberate friction point. But for a research-only
+              product, it&rsquo;s the right one.
             </p>
             <p>
-              Documentation travels with the order. Each dispatch carries a batch
-              reference that ties the physical stock to its certificate of
-              analysis, so research teams can match what they received to the
-              records they hold. Certificates remain available on request after
-              dispatch as well.
+              Documentation travels with every order. Each dispatch carries a
+              batch reference that ties the physical stock directly to its
+              certificate of analysis, so research teams can match what
+              they&rsquo;ve received against the records they hold. Certificates
+              are also available on request after dispatch, should you need them.
             </p>
           </div>
 
