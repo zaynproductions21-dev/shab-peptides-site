@@ -94,22 +94,22 @@ export async function POST(req: NextRequest) {
     const apiKey = process.env.BREVO_API_KEY;
     if (apiKey) {
       const esc = (s: string) => s.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      const notifyHtml = `<p>New bespoke-protocol request from <strong>${esc(body.name!)}</strong> (${esc(body.email!)}) at <strong>${esc(body.organisation!)}</strong>.</p>
+      const notifyHtml = `<p>New bulk / bespoke enquiry from <strong>${esc(body.name!)}</strong> (${esc(body.email!)}) at <strong>${esc(body.organisation!)}</strong>.</p>
 <p><strong>Model system:</strong> ${esc(body.modelSystem!)}</p>
 <p><strong>Cadence:</strong> ${esc(body.cadence!)}</p>
 <p><strong>Budget:</strong> ${esc(body.budgetRange!)}</p>
 <p><strong>Research question:</strong></p>
 <p style="white-space:pre-wrap;background:#f6f6f6;padding:10px;border-radius:6px">${esc(body.researchQuestion!)}</p>
 ${body.compoundsAlreadyEvaluating ? `<p><strong>Already evaluating:</strong><br/>${esc(body.compoundsAlreadyEvaluating)}</p>` : ""}
-<p>Review and reply: <a href="https://publishos-eosin.vercel.app/custom-protocols">PublishOS → Premio Protocols</a> (reference <code>${esc(forwardData.requestId || "")}</code>)</p>
-<p style="color:#999;font-size:12px">SLA: reply within 24 business hours.</p>`;
+<p>Review and reply: <a href="https://publishos-eosin.vercel.app/custom-protocols">PublishOS → Premio Enquiries</a> (reference <code>${esc(forwardData.requestId || "")}</code>)</p>
+<p style="color:#999;font-size:12px">SLA: named-specialist reply within 24 business hours.</p>`;
       fetch("https://api.brevo.com/v3/smtp/email", {
         method: "POST",
         headers: { "api-key": apiKey, "Content-Type": "application/json", accept: "application/json" },
         body: JSON.stringify({
-          sender: { name: "Premio Protocols", email: "orders@premiopeptides.co.uk" },
+          sender: { name: "Premio Enquiries", email: "orders@premiopeptides.co.uk" },
           to: [{ email: "orders@premiopeptides.co.uk" }],
-          subject: `🧪 New research protocol request #${forwardData.requestId}`,
+          subject: `📬 New bulk / bespoke enquiry #${forwardData.requestId}`,
           htmlContent: notifyHtml,
         }),
       }).catch(() => undefined);

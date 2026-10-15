@@ -245,10 +245,14 @@ export function scoreQuiz(answers: Partial<QuizAnswers>): QuizResult {
 }
 
 /**
- * Discount model:
- *   - 15% off bundle total for any pathway recommendation
- *   - +5% extra for standing orders (so 20% total)
+ * Discount model (council 2026-10-15):
+ *   - NO quiz-triggered discount. The 15–20% off that was previously coupled to
+ *     the pathway bundle recommendation was flagged as MHRA inducement framing.
+ *   - Discounts now live at /institutional as a verified-researcher account rate,
+ *     surfaced from the quiz result as "Apply for an institutional account" CTA.
+ *   - This function stays in the API as 0 so no caller breaks, but every bundle
+ *     is shown at list price.
  */
-export function bundleDiscountPct(result: QuizResult): number {
-  return result.isStandingOrder ? 20 : 15;
+export function bundleDiscountPct(_result: QuizResult): number {
+  return 0;
 }

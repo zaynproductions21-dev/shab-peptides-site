@@ -15,7 +15,7 @@ interface NavigationProps {
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Peptides", href: "/compounds" },
-  { label: "Find Match", href: "/goal-matcher" },
+  { label: "Research Pathway", href: "/research-pathway" },
   { label: "Verify Batch", href: "/batch-verifier" },
   { label: "Quality", href: "/quality" },
   { label: "Calculator", href: "/reconstitution-calculator" },

@@ -215,7 +215,7 @@ export default function CartPage() {
                       </p>
                       <button
                         type="button"
-                        onClick={() => { if (confirm("Switch this order to one-off? Standing-order discount drops from 20% to 15%.")) resetMeta(); }}
+                        onClick={() => { if (confirm("Switch this order to a one-off purchase? You can set up a standing order again any time.")) resetMeta(); }}
                         className="mt-2 text-xs font-semibold text-editorial-accent hover:underline"
                       >
                         Make this a one-off order instead →
@@ -227,7 +227,7 @@ export default function CartPage() {
                       <p className="text-xs font-semibold text-editorial-text">
                         🧪 {meta.bundleLabel} protocol bundle
                       </p>
-                      <p className="text-xs text-editorial-muted">15% bundle discount applied.</p>
+                      <p className="text-xs text-editorial-muted">Bundle built from the Research Pathway quiz.</p>
                     </div>
                   )}
 

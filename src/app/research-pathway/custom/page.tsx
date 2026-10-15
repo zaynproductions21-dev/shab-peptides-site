@@ -113,12 +113,12 @@ export default function CustomProtocolPage() {
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-editorial-green/15">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F7B33" strokeWidth="3"><path d="M5 13l4 4L19 7" /></svg>
               </div>
-              <h1 className="font-serif text-2xl font-bold text-editorial-text">Request received</h1>
+              <h1 className="font-serif text-2xl font-bold text-editorial-text">Enquiry received</h1>
               <p className="mt-2 text-editorial-muted">
                 Reference <span className="font-mono text-editorial-text">#{submit.requestId}</span>
               </p>
               <p className="mt-4 text-sm text-editorial-text leading-relaxed">
-                Our research team reviews every request by hand. We'll email you a tailored protocol within <strong>24 business hours</strong> — including recommended compounds, batch-level CoAs, and the price for the full bundle.
+                A named specialist reviews every enquiry by hand. You'll get a reply within <strong>24 business hours</strong> — recommended compounds, batch-level CoAs, and a quote for the full bundle.
               </p>
               <div className="mt-6 flex gap-3 justify-center flex-wrap">
                 <Link href="/compounds" className="rounded-lg border border-editorial-border bg-white px-5 py-3 text-sm font-semibold text-editorial-text hover:border-editorial-accent/30 transition-colors">
@@ -144,12 +144,12 @@ export default function CustomProtocolPage() {
 
       <section className="pt-24 pb-6 lg:pt-32 bg-editorial-surface">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-editorial-accent">Bespoke protocol</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-editorial-accent">Bulk / Bespoke Enquiry</p>
           <h1 className="mt-2 font-serif text-3xl sm:text-4xl font-bold tracking-tight text-editorial-text">
-            Request a tailored research protocol
+            Submit a bulk or bespoke enquiry
           </h1>
           <p className="mt-2 text-editorial-muted leading-relaxed">
-            Describe your research in your own words. Our team reviews every submission by hand and emails back a protocol recommendation — compounds, batch CoAs, and bundle price — within <strong>24 business hours</strong>. For research use only.
+            Describe your research in your own words. A named specialist reviews every submission by hand and replies with recommended compounds, batch CoAs, and a quote — within <strong>24 business hours</strong>. For research use only.
           </p>
         </div>
       </section>
@@ -261,7 +261,7 @@ export default function CustomProtocolPage() {
               disabled={submit.kind === "sending" || !form.consentToResearchVerification || !turnstileToken}
               className="w-full rounded-lg bg-editorial-accent px-6 py-4 text-base font-bold text-white hover:bg-editorial-accent-dark transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {submit.kind === "sending" ? "Sending…" : "Submit protocol request"}
+              {submit.kind === "sending" ? "Sending…" : "Submit enquiry — 24h named-specialist reply"}
             </button>
 
             <p className="text-xs text-editorial-muted text-center">

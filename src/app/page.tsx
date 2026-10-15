@@ -206,6 +206,35 @@ export default async function V1Editorial() {
         </div>
       </section>
 
+      {/* Research Pathway band — council-approved placement 2026-10-15 */}
+      <section className="py-10 lg:py-14 bg-white border-y border-editorial-border">
+        <div className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-10">
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-widest text-editorial-accent">Research Pathway</p>
+            <h2 className="mt-1 font-serif text-2xl lg:text-3xl font-bold tracking-tight text-editorial-text">
+              Not sure which compound fits your protocol?
+            </h2>
+            <p className="mt-2 text-editorial-muted">
+              Five receptor-based questions — we match you to a bundle of compounds and the model systems they've been studied in. 90 seconds, no account.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+            <Link
+              href="/research-pathway"
+              className="inline-flex items-center justify-center rounded-lg bg-editorial-accent px-6 py-3.5 text-sm font-semibold text-white hover:bg-editorial-accent-dark transition-colors shadow-md whitespace-nowrap"
+            >
+              Start Research Pathway →
+            </Link>
+            <Link
+              href="/research-pathway/custom"
+              className="inline-flex items-center justify-center rounded-lg border border-editorial-border bg-white px-6 py-3.5 text-sm font-semibold text-editorial-text hover:border-editorial-accent/30 transition-colors whitespace-nowrap"
+            >
+              Or describe your work
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Stacks — The 3 Premium Research Stacks */}
       <section id="compounds" className="py-16 lg:py-24 bg-editorial-surface">
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">

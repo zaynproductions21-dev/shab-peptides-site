@@ -246,21 +246,19 @@ export default function ResearchPathwayPage() {
 
                   {bundleCompounds.length > 0 && (
                     <>
-                      <div style={styles.pricingRow}>
-                        <span>Bundle subtotal</span>
+                      <div style={{ ...styles.pricingRow, ...styles.pricingTotal }}>
+                        <span>Bundle total</span>
                         <span>£{bundleTotalRaw.toFixed(2)}</span>
                       </div>
-                      <div style={styles.pricingRow}>
-                        <span style={{ color: "#0F7B33", fontWeight: 600 }}>
-                          Protocol discount ({discountPct}%)
-                        </span>
-                        <span style={{ color: "#0F7B33", fontWeight: 600 }}>
-                          − £{(bundleTotalRaw - parseFloat(discountedTotal)).toFixed(2)}
-                        </span>
-                      </div>
-                      <div style={{ ...styles.pricingRow, ...styles.pricingTotal }}>
-                        <span>Total</span>
-                        <span>£{discountedTotal}</span>
+
+                      {/* Institutional-account CTA — replaces the previous quiz-triggered discount */}
+                      <div style={styles.institutionalBadge}>
+                        <strong>🏛 Running this at scale?</strong> Verified-researcher accounts get locked
+                        pricing, consolidated invoicing and priority dispatch.
+                        <br />
+                        <Link href="/institutional" style={styles.institutionalLink}>
+                          Apply for an institutional account →
+                        </Link>
                       </div>
 
                       {result.isStandingOrder && (
@@ -269,8 +267,8 @@ export default function ResearchPathwayPage() {
                           You can pause or cancel from any email we send.
                           <br />
                           <span style={styles.standingBadgeSmall}>
-                            Payment collection via Fena open-banking standing payment once your approval lands.
-                            Until then, we invoice monthly by BACS.
+                            Payment via BACS invoice monthly, or Fena open-banking standing payment once that
+                            approval lands. Same list price every month — no quiz-triggered pricing.
                           </span>
                         </div>
                       )}
@@ -287,8 +285,8 @@ export default function ResearchPathwayPage() {
                         {addedToCart
                           ? "✓ Added to basket — opening cart…"
                           : result.isStandingOrder
-                            ? `Set up standing order — £${discountedTotal}/month`
-                            : `Add bundle to basket — £${discountedTotal}`}
+                            ? "Set up standing order →"
+                            : "Add bundle to basket →"}
                       </button>
                     </>
                   )}
@@ -380,6 +378,8 @@ const styles = {
   pricingTotal: { paddingTop: 12, marginTop: 4, borderTop: "1px solid #D9D4C9", fontSize: 18, fontWeight: 800, color: "#2D2926" } as const,
   standingBadge: { marginTop: 16, padding: 14, background: "#F0F9FA", border: "1px solid #D0E8EC", borderRadius: 10, fontSize: 13, color: "#2D2926", lineHeight: 1.55 } as const,
   standingBadgeSmall: { fontSize: 11, color: "#6B655E" },
+  institutionalBadge: { marginTop: 16, padding: 14, background: "#F7F5F1", border: "1px dashed #C9BBA3", borderRadius: 10, fontSize: 13, color: "#2D2926", lineHeight: 1.55 } as const,
+  institutionalLink: { display: "inline-block", marginTop: 6, color: "#0F7B84", fontWeight: 700, textDecoration: "none" } as const,
   cta: {
     marginTop: 18, width: "100%", padding: "16px 20px", background: "#0F7B84", color: "#FFFFFF",
     border: "none", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer" as const,

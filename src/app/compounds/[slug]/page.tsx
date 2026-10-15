@@ -238,6 +238,21 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
                 </p>
               </div>
 
+              {/* Research Pathway cross-sell — council-approved placement 2026-10-15 */}
+              <div className="mt-4 rounded-xl border border-editorial-border bg-white p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-editorial-accent">Research Pathway</p>
+                <p className="mt-1 text-sm font-semibold text-editorial-text">Researching a different endpoint? Build a bundle.</p>
+                <p className="mt-1 text-xs text-editorial-muted">Five receptor-based questions, no account needed.</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a href="/research-pathway" className="inline-flex items-center rounded-lg bg-editorial-accent px-4 py-2 text-xs font-semibold text-white hover:bg-editorial-accent-dark transition-colors">
+                    Match my protocol →
+                  </a>
+                  <a href="/research-pathway/custom" className="inline-flex items-center rounded-lg border border-editorial-border bg-white px-4 py-2 text-xs font-semibold text-editorial-text hover:border-editorial-accent/30 transition-colors">
+                    Or send a bulk / bespoke enquiry
+                  </a>
+                </div>
+              </div>
+
               {/* Trust strip */}
               <div className="mt-5 flex flex-wrap gap-3 text-xs text-editorial-muted">
                 <span className="flex items-center gap-1"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-editorial-accent"><path d="M5 13l4 4L19 7" /></svg> Third-Party CoA Included</span>
