@@ -46,7 +46,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Metabolic Pathway",
     tagline: "Incretin-receptor pharmacology & energy metabolism",
     receptorFamily: "GLP-1 / GIP / Glucagon triagonism",
-    compoundSlugs: ["retatrutide", "tesamorelin"],
+    compoundSlugs: ["retatrutide", "tesamorelin-pen-20mg"],
     researchFocus: [
       "Convergent Gs / cAMP / PKA signalling across three incretin receptors",
       "Hepatic glucagon-driven lipolysis + FGF21 induction",
@@ -60,7 +60,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Regenerative Pathway",
     tagline: "Tissue-repair peptides for connective & GI research",
     receptorFamily: "VEGF / FGF-R / nitric oxide synthase",
-    compoundSlugs: ["bpc-157", "tb-500", "bpc-157-tb-500-wolverine-stack"],
+    compoundSlugs: ["bpc-157", "tb-500", "bpc-157-tb-500-wolverine"],
     researchFocus: [
       "Tendon & ligament fibroblast migration + proliferation",
       "GI mucosal re-epithelialisation + angiogenic signalling",
@@ -74,7 +74,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Mitochondrial / Longevity Pathway",
     tagline: "Energy-sensing & oxidative-stress research",
     receptorFamily: "NAD+-dependent sirtuins / AMPK / mTOR crosstalk",
-    compoundSlugs: ["nad-pen-500mg", "mots-c-pen-40mg"],
+    compoundSlugs: ["nad-plus-pen-500mg", "mots-c-pen-40mg", "ss-31", "epithalon"],
     researchFocus: [
       "SIRT1/SIRT3 activity assays in aged mitochondria",
       "AMPK-driven glucose homeostasis in muscle",
@@ -88,7 +88,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Dermal Pathway",
     tagline: "Fibroblast + extracellular-matrix research",
     receptorFamily: "Copper-tripeptide / collagen & elastin synthesis",
-    compoundSlugs: ["ghk-cu-glow-stack"],
+    compoundSlugs: ["ghk-cu-glow-stack", "ghk-cu"],
     researchFocus: [
       "Type-I and -III collagen expression in primary fibroblasts",
       "Hyaluronic-acid & decorin matrix remodelling",
@@ -102,7 +102,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Behavioural / Neuro Pathway",
     tagline: "Melanocortin & central-nervous-system signalling",
     receptorFamily: "Mel-4R (central) + Mel-3R",
-    compoundSlugs: ["pt-141-pen"],
+    compoundSlugs: ["pt-141-pen", "pt-141"],
     researchFocus: [
       "cAMP / PKA signalling at hypothalamic Mel-4R",
       "Rodent behavioural assays — social, exploratory, consummatory",
@@ -116,7 +116,7 @@ export const PATHWAYS: Record<PathwayKey, Pathway> = {
     label: "Growth / Pituitary Pathway",
     tagline: "GHRH-receptor pharmacology & pulsatile hormone research",
     receptorFamily: "GHRH-R / somatotroph signalling",
-    compoundSlugs: ["tesamorelin-pen-20mg"],
+    compoundSlugs: ["tesamorelin-pen-20mg", "tesamorelin", "cjc-1295-no-dac", "ipamorelin"],
     researchFocus: [
       "GH-release dynamics in primary pituitary culture",
       "IGF-1 feedback in juvenile vs aged rodents",
