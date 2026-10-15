@@ -21,7 +21,7 @@ const DELIVERY_OPTIONS: Record<DeliverySpeed, { label: string; sub: string; pric
 const FREE_DELIVERY_THRESHOLD = 175;
 
 export default function CartPage() {
-  const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
+  const { items, meta, removeItem, updateQuantity, clearCart, resetMeta, totalItems, totalPrice } = useCart();
   const router = useRouter();
   const [step, setStep] = useState<"cart" | "details">("cart");
   const [submitting, setSubmitting] = useState(false);
@@ -32,12 +32,15 @@ export default function CartPage() {
   const turnstileRef = useRef<HTMLDivElement>(null);
 
   const subtotalNum = parseFloat(totalPrice) || 0;
-  // Free delivery applies to the standard option only, once over the threshold.
+  // Free standard delivery once the basket subtotal reaches the threshold
+  // (merch subtotal — before bundle discount).
   const qualifiesFreeStandard = subtotalNum >= FREE_DELIVERY_THRESHOLD;
   const freeThisOrder = qualifiesFreeStandard && deliverySpeed === "standard";
   const deliveryFee = freeThisOrder ? 0 : DELIVERY_OPTIONS[deliverySpeed].price;
   const amountToFreeDelivery = Math.max(0, FREE_DELIVERY_THRESHOLD - subtotalNum);
-  const grandTotal = (subtotalNum + deliveryFee).toFixed(2);
+  const bundleDiscountPct = meta.bundleDiscountPct || 0;
+  const bundleDiscountAmount = +(subtotalNum * (bundleDiscountPct / 100)).toFixed(2);
+  const grandTotal = (subtotalNum - bundleDiscountAmount + deliveryFee).toFixed(2);
 
   const renderTurnstile = useCallback(() => {
     if (!turnstileRef.current || !(window as unknown as Record<string, unknown>).turnstile) return;
@@ -88,6 +91,12 @@ export default function CartPage() {
           deliverySpeed,
           deliveryFee: deliveryFee.toFixed(2),
           deliveryLabel: DELIVERY_OPTIONS[deliverySpeed].label,
+          bundleKey: meta.bundleKey,
+          bundleLabel: meta.bundleLabel,
+          bundleDiscountPct: meta.bundleDiscountPct,
+          bundleDiscountAmount: bundleDiscountAmount.toFixed(2),
+          standingOrder: meta.standingOrder,
+          standingOrderInterval: meta.standingOrderInterval,
           total: grandTotal,
           deliveryAddress: address,
           "cf-turnstile-response": turnstileToken,
@@ -192,6 +201,36 @@ export default function CartPage() {
               <div>
                 <div className="rounded-xl border border-editorial-border bg-editorial-surface p-6 sticky top-24">
                   <h2 className="font-serif text-lg font-bold text-editorial-text mb-4">Order Summary</h2>
+
+                  {meta.standingOrder && meta.bundleLabel && (
+                    <div className="mb-4 rounded-xl border border-editorial-accent/30 bg-editorial-accent/5 p-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-editorial-accent">
+                        📅 Standing research order
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-editorial-text">
+                        {meta.bundleLabel} — resupplied every 30 days
+                      </p>
+                      <p className="mt-1 text-xs text-editorial-muted leading-relaxed">
+                        Payment via Fena open-banking standing payment (once your approval lands) or monthly BACS invoice until then. Pause or cancel from any email.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => { if (confirm("Switch this order to one-off? Standing-order discount drops from 20% to 15%.")) resetMeta(); }}
+                        className="mt-2 text-xs font-semibold text-editorial-accent hover:underline"
+                      >
+                        Make this a one-off order instead →
+                      </button>
+                    </div>
+                  )}
+                  {!meta.standingOrder && meta.bundleLabel && (
+                    <div className="mb-4 rounded-xl border border-editorial-border bg-editorial-surface p-3">
+                      <p className="text-xs font-semibold text-editorial-text">
+                        🧪 {meta.bundleLabel} protocol bundle
+                      </p>
+                      <p className="text-xs text-editorial-muted">15% bundle discount applied.</p>
+                    </div>
+                  )}
+
                   <div className="space-y-2 text-sm">
                     {items.map((item) => (
                       <div key={`${item.slug}-${item.size}`} className="flex justify-between text-editorial-muted">
@@ -199,6 +238,14 @@ export default function CartPage() {
                         <span className="shrink-0">£{(parseFloat(item.price.replace("£", "").replace("From ", "")) * item.quantity).toFixed(2)}</span>
                       </div>
                     ))}
+
+                    {bundleDiscountPct > 0 && (
+                      <div className="pt-3 mt-3 border-t border-editorial-border flex justify-between text-sm" style={{ color: "#0F7B33", fontWeight: 600 }}>
+                        <span>Protocol discount ({bundleDiscountPct}%)</span>
+                        <span>− £{bundleDiscountAmount.toFixed(2)}</span>
+                      </div>
+                    )}
+
                     <div className="pt-3 mt-3 border-t border-editorial-border">
                       <p className="text-xs font-semibold text-editorial-text uppercase tracking-wider mb-2">Delivery</p>
                       <div className="space-y-2">

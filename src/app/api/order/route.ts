@@ -58,6 +58,12 @@ interface OrderPayload {
   deliverySpeed?: "standard" | "next_day";
   deliveryFee?: string;
   deliveryLabel?: string;
+  bundleKey?: string;
+  bundleLabel?: string;
+  bundleDiscountPct?: number;
+  bundleDiscountAmount?: string;
+  standingOrder?: boolean;
+  standingOrderInterval?: "30d" | "90d";
   total: string;
   deliveryAddress?: DeliveryAddress;
 }
@@ -387,6 +393,15 @@ export async function POST(request: Request) {
           total: order.total,
           invoiceUrl,
           deliveryAddress: order.deliveryAddress,
+          bundleKey: order.bundleKey,
+          bundleLabel: order.bundleLabel,
+          bundleDiscountPct: order.bundleDiscountPct,
+          bundleDiscountAmount: order.bundleDiscountAmount,
+          isStandingOrder: !!order.standingOrder,
+          standingOrderInterval: order.standingOrderInterval,
+          nextReorderAt: order.standingOrder
+            ? new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString()
+            : undefined,
         }),
       }).catch(() => undefined),
     ]);
