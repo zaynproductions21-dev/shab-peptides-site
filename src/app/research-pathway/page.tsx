@@ -68,7 +68,19 @@ export default function ResearchPathwayPage() {
   const discountedTotal = (bundleTotalRaw * (1 - discountPct / 100)).toFixed(2);
 
   function pick(questionId: string, optionId: string) {
-    setAnswers((a) => ({ ...a, [questionId]: optionId }));
+    const nextAnswers = { ...answers, [questionId]: optionId };
+    setAnswers(nextAnswers);
+    // Count "not_sure" picks so far — if 2+ fire the custom-form escalation.
+    const notSureCount = Object.values(nextAnswers).filter((v) => v === "not_sure").length;
+    if (notSureCount >= 2) {
+      // Preserve any genuine answers in a short-lived sessionStorage hint so
+      // the custom form can prefill or at least show them to the operator.
+      try {
+        sessionStorage.setItem("premio:quizEscalation", JSON.stringify(nextAnswers));
+      } catch {}
+      setTimeout(() => router.push("/research-pathway/custom?src=quiz"), 220);
+      return;
+    }
     // auto-advance after a tiny delay so the user sees their selection highlight
     setTimeout(() => {
       setStepIdx((s) => Math.min(s + 1, QUESTIONS.length));
@@ -169,6 +181,9 @@ export default function ResearchPathwayPage() {
                     ← Back
                   </button>
                 )}
+                <Link href="/research-pathway/custom?src=quiz" style={styles.escapeLink}>
+                  Prefer to describe your work in prose? →
+                </Link>
               </div>
             </div>
           )}
@@ -340,8 +355,9 @@ const styles = {
     fontFamily: "inherit",
   },
   chipActive: { borderColor: "#0F7B84", background: "#F0F9FA", color: "#0F7B84", boxShadow: "0 0 0 3px rgba(15,123,132,0.08)" },
-  navRow: { display: "flex", justifyContent: "flex-start", marginTop: 22 } as const,
+  navRow: { display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 22, gap: 12, flexWrap: "wrap" as const } as const,
   ghost: { background: "transparent", border: "1px solid #EFEAE0", padding: "9px 16px", borderRadius: 8, fontSize: 13, color: "#6B655E", cursor: "pointer" as const, fontWeight: 600, fontFamily: "inherit" },
+  escapeLink: { fontSize: 12, color: "#0F7B84", textDecoration: "none", fontWeight: 600 },
   ghostLink: { fontSize: 13, color: "#6B655E", textDecoration: "none", fontWeight: 600 },
   // Result styles
   resultCard: { padding: "32px 28px" } as const,

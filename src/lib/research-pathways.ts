@@ -139,6 +139,7 @@ export const QUESTIONS: PathwayQuestion[] = [
       { id: "dermal",       label: "Dermal / fibroblast / wound",      scores: { dermal: 3 } },
       { id: "behavioural",  label: "Behavioural / neuro-pharmacology", scores: { behavioural: 3 } },
       { id: "growth",       label: "Growth hormone / pituitary",       scores: { growth: 3 } },
+      { id: "not_sure",     label: "Not sure — I'll describe it in prose", scores: {} },
     ],
   },
   {
@@ -152,6 +153,7 @@ export const QUESTIONS: PathwayQuestion[] = [
       { id: "copper",       label: "Copper-tripeptide / ECM synthesis",            scores: { dermal: 2 } },
       { id: "melanocortin", label: "Melanocortin (Mel-3R / Mel-4R)",               scores: { behavioural: 2 } },
       { id: "ghrh",         label: "GHRH-R / somatotroph signalling",              scores: { growth: 2 } },
+      { id: "not_sure",     label: "Not sure — I'll describe it in prose",         scores: {} },
     ],
   },
   {
@@ -165,6 +167,7 @@ export const QUESTIONS: PathwayQuestion[] = [
       { id: "equine",   label: "Equine / veterinary",     scores: { regenerative: 1 } },
       { id: "explant",  label: "Tissue explants / slice", scores: {} },
       { id: "human",    label: "Human cell lines",        scores: { dermal: 1 } },
+      { id: "not_sure", label: "Not sure — I'll describe it in prose", scores: {} },
     ],
   },
   {
@@ -176,6 +179,7 @@ export const QUESTIONS: PathwayQuestion[] = [
       { id: "quarterly",label: "Every 3 months (grant-cycle)",          scores: {} },
       { id: "monthly",  label: "Monthly standing programme",            scores: {} },
       { id: "variable", label: "Variable — depends on study timing",    scores: {} },
+      { id: "not_sure", label: "Not sure — I'll describe it in prose",  scores: {} },
     ],
   },
   {
@@ -189,6 +193,7 @@ export const QUESTIONS: PathwayQuestion[] = [
       { id: "pharma",      label: "Pharma / biotech R&D",          scores: {} },
       { id: "vet",         label: "Veterinary research",           scores: { regenerative: 1 } },
       { id: "startup",     label: "Biotech startup",               scores: {} },
+      { id: "not_sure",    label: "Not sure — I'll describe it in prose", scores: {} },
     ],
   },
 ];
