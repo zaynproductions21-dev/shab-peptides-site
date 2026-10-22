@@ -143,6 +143,11 @@ export default function Footer({ variant = "light" }: FooterProps) {
             <ul className="mt-4 space-y-3">
               <li className={`text-sm ${s.text}`}>United Kingdom</li>
               <li>
+                <a href="https://what3words.com/pretty.needed.chill" target="_blank" rel="noopener noreferrer" title="Our location on what3words" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
+                  📍 <span className={s.disclaimer}>Find us:</span> ///pretty.needed.chill
+                </a>
+              </li>
+              <li>
                 <a href="mailto:info@premiopeptides.co.uk" className={`text-sm ${s.text} ${s.hover} transition-colors`}>
                   info@premiopeptides.co.uk
                 </a>

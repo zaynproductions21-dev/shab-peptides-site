@@ -119,6 +119,12 @@ export default function ContactPage() {
                 <p className="text-sm text-editorial-muted leading-relaxed">
                   Premio Peptides operates from the UK and ships exclusively within the UK. All orders leave our UK fulfilment facility, which keeps lead times short and delivery reliable via tracked courier. We don&rsquo;t currently ship internationally. For bulk or institutional orders that need bespoke logistics, contact us before placing your order so we can talk through the options.
                 </p>
+                <p className="mt-2 text-sm text-editorial-muted leading-relaxed">
+                  <span className="font-semibold text-editorial-text">Find us:</span>{" "}
+                  <a href="https://what3words.com/pretty.needed.chill" target="_blank" rel="noopener noreferrer" title="Our location on what3words" className="text-editorial-accent hover:text-editorial-accent-dark transition-colors">
+                    📍 ///pretty.needed.chill
+                  </a>
+                </p>
               </div>
             </div>
 
