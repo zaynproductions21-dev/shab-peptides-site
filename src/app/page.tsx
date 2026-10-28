@@ -158,7 +158,7 @@ export default async function V1Editorial() {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl relative border border-editorial-border">
                 <Image
                   src="/generated/hero-0.webp"
-                  alt="Research-grade peptide vials held in UK stock by Premio Peptides"
+                  alt="Laboratory glassware on a white bench — a conical flask, a labelled bottle and three beakers — with microscopes behind"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
