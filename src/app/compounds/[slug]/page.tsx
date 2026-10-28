@@ -368,7 +368,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
               { href: "/guidelines", label: "Research Guidelines", icon: "📋" },
               { href: "/compliance", label: "UK Compliance", icon: "⚖️" },
             ].map((link) => (
-              <Link key={link.href} href={link.href} className="flex flex-col items-center gap-2 rounded-xl border border-editorial-border bg-editorial-surface p-4 text-center hover:border-editorial-accent/30 hover:shadow-sm transition-all">
+              <Link key={link.href} href={link.href} className="flex flex-col items-center gap-2 rounded-xl border border-editorial-border bg-editorial-surface p-4 text-center hover:border-editorial-accent/30 hover:shadow-sm transition-[border-color,box-shadow,transform] duration-200">
                 <span className="text-xl">{link.icon}</span>
                 <span className="text-xs font-semibold text-editorial-text">{link.label}</span>
               </Link>
@@ -392,7 +392,7 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Related Compounds</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {related.map((r) => (
-              <Link key={r.slug} href={`/compounds/${r.slug}`} className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-lg hover:border-editorial-accent/20 transition-all">
+              <Link key={r.slug} href={`/compounds/${r.slug}`} className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-lg hover:border-editorial-accent/20 transition-[border-color,box-shadow,transform] duration-200">
                 <div className="relative h-36 w-full overflow-hidden">
                   <Image src={r.image} alt={r.imageAlt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="33vw" />
                 </div>

@@ -30,7 +30,7 @@ export default function QuickAddButton({ slug, name, size, price, image, inStock
       <Link
         href={`/compounds/${slug}`}
         onClick={(e) => e.stopPropagation()}
-        className="inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold transition-all shadow-sm bg-editorial-warm/10 text-editorial-warm border border-editorial-warm/20 hover:bg-editorial-warm/20 active:scale-[0.97]"
+        className="inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors duration-150 shadow-sm bg-editorial-warm/10 text-editorial-warm border border-editorial-warm/20 hover:bg-editorial-warm/20 active:scale-[0.97]"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
           <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
@@ -45,7 +45,7 @@ export default function QuickAddButton({ slug, name, size, price, image, inStock
       type="button"
       onClick={handleClick}
       aria-label={added ? `${name} added to basket` : `Add ${name} ${size} to basket`}
-      className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-editorial-accent/40 ${
+      className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold transition-[background-color,box-shadow] duration-150 shadow-sm focus:outline-none focus:ring-2 focus:ring-editorial-accent/40 ${
         added
           ? "bg-editorial-green text-white"
           : "bg-editorial-accent text-white hover:bg-editorial-accent-dark hover:shadow-md active:scale-[0.97]"

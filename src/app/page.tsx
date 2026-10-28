@@ -260,7 +260,7 @@ export default async function V1Editorial() {
                 <Link
                   key={product.slug}
                   href={`/compounds/${product.slug}`}
-                  className="group relative rounded-2xl border border-editorial-border bg-white overflow-hidden hover:shadow-2xl hover:border-editorial-accent/30 transition-all flex flex-col"
+                  className="group relative rounded-2xl border border-editorial-border bg-white overflow-hidden hover:shadow-2xl hover:border-editorial-accent/30 transition-[border-color,box-shadow] duration-200 flex flex-col"
                 >
                   {/* Stack badge */}
                   <div className={`${meta.color} text-white px-5 py-3 flex items-center justify-between`}>
@@ -453,7 +453,7 @@ export default async function V1Editorial() {
               { title: "Technical Support", description: "Direct access to our research scientists for compound selection and experimental guidance.", icon: "👩‍🔬" },
               { title: "Secure Checkout", description: "Encrypted payments. Discreet packaging. Full order tracking from lab to your door.", icon: "🔒" },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-editorial-border p-6 hover:shadow-md hover:border-editorial-accent/20 transition-all">
+              <div key={item.title} className="rounded-xl border border-editorial-border p-6 hover:shadow-md hover:border-editorial-accent/20 transition-[border-color,box-shadow] duration-200">
                 <span className="text-2xl">{item.icon}</span>
                 <h3 className="mt-3 text-base font-bold text-editorial-text">{item.title}</h3>
                 <p className="mt-2 text-sm text-editorial-muted leading-relaxed">{item.description}</p>

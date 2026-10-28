@@ -49,7 +49,7 @@ export default async function PressIndexPage() {
                 <Link
                   key={rel.id}
                   href={`/press/${rel.slug}`}
-                  className="group block rounded-xl border border-editorial-border bg-white p-6 hover:shadow-lg hover:border-editorial-accent/20 transition-all"
+                  className="group block rounded-xl border border-editorial-border bg-white p-6 hover:shadow-lg hover:border-editorial-accent/20 transition-[border-color,box-shadow] duration-200"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="inline-block rounded-full bg-editorial-accent/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-editorial-accent">

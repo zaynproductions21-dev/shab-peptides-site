@@ -76,7 +76,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
                 <Link
                   key={compound.slug}
                   href={`/compounds/${compound.slug}`}
-                  className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-xl hover:border-editorial-accent/20 transition-all"
+                  className="group rounded-xl border border-editorial-border bg-white overflow-hidden hover:shadow-xl hover:border-editorial-accent/20 transition-[border-color,box-shadow] duration-200"
                 >
                   <div className="relative h-52 w-full overflow-hidden">
                     {compound.image && (

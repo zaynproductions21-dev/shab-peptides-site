@@ -169,7 +169,7 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
         {currentQty === 0 ? (
           <button
             onClick={handleAdd}
-            className="inline-flex items-center rounded-lg px-6 py-3.5 text-sm font-semibold text-white bg-editorial-accent hover:bg-editorial-accent-dark transition-all shadow-md shadow-editorial-accent/20"
+            className="inline-flex items-center rounded-lg px-6 py-3.5 text-sm font-semibold text-white bg-editorial-accent hover:bg-editorial-accent-dark transition-colors duration-150 shadow-md shadow-editorial-accent/20"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="mr-2">
               <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
@@ -180,7 +180,7 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
           <div className="flex items-center gap-2">
             <Link
               href="/cart"
-              className="inline-flex items-center rounded-lg px-5 py-3.5 text-sm font-semibold text-white bg-editorial-green hover:bg-editorial-green/90 transition-all shadow-md shadow-editorial-green/20"
+              className="inline-flex items-center rounded-lg px-5 py-3.5 text-sm font-semibold text-white bg-editorial-green hover:bg-editorial-green/90 transition-colors duration-150 shadow-md shadow-editorial-green/20"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="mr-2">
                 <path d="M5 13l4 4L19 7" />

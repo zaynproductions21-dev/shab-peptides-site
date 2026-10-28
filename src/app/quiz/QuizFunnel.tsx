@@ -101,8 +101,8 @@ export function QuizFunnel() {
           </div>
           <div className="h-1.5 bg-editorial-border rounded-full overflow-hidden">
             <div
-              className="h-full bg-editorial-accent transition-all duration-300"
-              style={{ width: `${((step + 1) / TOTAL_QUESTIONS) * 100}%` }}
+              className="h-full w-full bg-editorial-accent origin-left transition-transform duration-300 ease-out"
+              style={{ transform: `scaleX(${(step + 1) / TOTAL_QUESTIONS})` }}
             />
           </div>
         </div>

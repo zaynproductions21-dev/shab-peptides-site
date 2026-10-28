@@ -23,7 +23,7 @@ export default function ImageLightbox({ src, alt }: ImageLightboxProps) {
           e.stopPropagation();
           setOpen(true);
         }}
-        className="relative w-full aspect-[3/2] rounded-xl overflow-hidden border border-editorial-border bg-editorial-surface hover:border-editorial-accent/30 transition-all group/img cursor-zoom-in"
+        className="relative w-full aspect-[3/2] rounded-xl overflow-hidden border border-editorial-border bg-editorial-surface hover:border-editorial-accent/30 transition-colors duration-150 group/img cursor-zoom-in"
       >
         <Image
           src={src}
