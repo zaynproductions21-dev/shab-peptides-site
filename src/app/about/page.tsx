@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -32,8 +31,8 @@ export default function AboutPage() {
 
       {/* Who We Are */}
       <section className="py-16 lg:py-20 bg-white">
-        <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div>
             <div>
               <h2 className="font-serif text-2xl font-bold text-editorial-text mb-6">Who We Are</h2>
               <div className="text-editorial-muted leading-relaxed space-y-4">
@@ -47,15 +46,6 @@ export default function AboutPage() {
                   All compounds are supplied strictly for in vitro laboratory research. We do not sell to the general public for personal use, and we do not make therapeutic or medicinal claims about any of our products.
                 </p>
               </div>
-            </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
-              <Image
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80"
-                alt="Premio Peptides laboratory facility"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
             </div>
           </div>
         </div>

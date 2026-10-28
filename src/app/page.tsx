@@ -274,7 +274,7 @@ export default async function V1Editorial() {
                     <div className="px-5 pt-5">
                       <ImageLightbox
                         src={product.image}
-                        alt={`${product.name} — preloaded research peptide pen by Premio Peptides`}
+                        alt={`${product.name} — preloaded research peptide pen, shown in its manufacturer’s carton`}
                       />
                     </div>
                   )}
