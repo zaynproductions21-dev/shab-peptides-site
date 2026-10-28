@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ChromatogramFigure from "@/components/ChromatogramFigure";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -116,15 +116,7 @@ export default function QualityPage() {
                 </p>
               </div>
             </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
-              <Image
-                src="/generated/section-3.webp"
-                alt="HPLC and mass spectrometry equipment in Premio Peptides quality control laboratory"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <ChromatogramFigure className="shadow-lg" />
           </div>
         </div>
       </section>

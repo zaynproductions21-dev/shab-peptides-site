@@ -98,6 +98,12 @@ html.pm-reveal section.pm-in > div > *:nth-child(n+5) { animation-delay: 280ms; 
 .pm-trace { stroke-dasharray: var(--pm-len, 1200); stroke-dashoffset: var(--pm-len, 1200); }
 html.pm-reveal section.pm-in .pm-trace { animation: pmDraw 1400ms cubic-bezier(0.23, 1, 0.32, 1) 160ms both; }
 html:not(.pm-reveal) .pm-trace { stroke-dashoffset: 0; }
+
+/* the tint under the curve arrives after the line has drawn most of the way */
+.pm-trace-fill { opacity: 0; }
+html.pm-reveal section.pm-in .pm-trace-fill { animation: pmFill 600ms ease-out 900ms both; }
+html:not(.pm-reveal) .pm-trace-fill { opacity: 0.08; }
+@keyframes pmFill { from { opacity: 0; } to { opacity: 0.08; } }
 @keyframes pmDraw { to { stroke-dashoffset: 0; } }
 
 /* ── REDUCED MOTION ───────────────────────────────────────────────
@@ -107,6 +113,7 @@ html:not(.pm-reveal) .pm-trace { stroke-dashoffset: 0; }
   html { scroll-behavior: auto; }
   html.pm-reveal section > div > * { opacity: 1 !important; animation: none !important; transform: none !important; }
   .pm-trace { stroke-dashoffset: 0 !important; animation: none !important; }
+  .pm-trace-fill { opacity: 0.08 !important; animation: none !important; }
   *, *::before, *::after {
     transition-property: color, background-color, border-color, box-shadow, opacity !important;
     animation-duration: 0.01ms !important;

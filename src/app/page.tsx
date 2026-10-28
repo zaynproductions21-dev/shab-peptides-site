@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ChromatogramFigure from "@/components/ChromatogramFigure";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -372,9 +373,7 @@ export default async function V1Editorial() {
               </p>
             </div>
             <div className="space-y-5">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-editorial-border">
-                <Image src="/generated/section-3.webp" alt="HPLC equipment used by the third-party laboratory that tests Premio Peptides stock" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-              </div>
+              <ChromatogramFigure className="shadow-lg" />
               <div className="grid grid-cols-4 gap-3">
                 {[
                   { value: "99%+", label: "Min Purity" },
