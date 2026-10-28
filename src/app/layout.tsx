@@ -68,6 +68,35 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+            <Script
+        id="pm-reveal"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(){try{
+if(!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.documentElement.classList.add('pm-reveal');
+function start(){
+var secs=[].slice.call(document.querySelectorAll('section')).slice(1);
+if(!secs.length){document.documentElement.classList.remove('pm-reveal');return}
+var io=new IntersectionObserver(function(es){
+for(var k=0;k<es.length;k++){if(es[k].isIntersecting){es[k].target.classList.add('pm-in');io.unobserve(es[k].target)}}
+},{rootMargin:'0px 0px -10% 0px',threshold:0.01});
+for(var m=0;m<secs.length;m++)io.observe(secs[m]);
+function fs(){if(document.hidden)return;
+var broken=false;
+for(var q=0;q<secs.length;q++){var el=secs[q];
+if(el.classList.contains('pm-in'))continue;
+var r=el.getBoundingClientRect();
+if(r.top<window.innerHeight&&r.bottom>0){broken=true;break}}
+if(broken)document.documentElement.classList.remove('pm-reveal')}
+setTimeout(fs,2500);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)setTimeout(fs,1200)});
+}
+if(document.readyState==='complete')start();else window.addEventListener('load',start);
+}catch(e){}})();`,
+        }}
+      />
         <Script
           id="gtm"
           strategy="afterInteractive"
