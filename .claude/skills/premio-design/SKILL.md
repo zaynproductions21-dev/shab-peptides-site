@@ -156,7 +156,15 @@ className="rounded-lg bg-editorial-accent/5 border border-editorial-accent/15 p-
 
 ## 6. Motion tokens
 
-**The codebase currently has no motion system.** 168 `transition-*` declarations, zero explicit easings, 5 explicit durations, zero `@keyframes`. Everything runs Tailwind's default curve at 150ms. The tokens below are the house standard going forward.
+**The motion system is live** (shipped 2026-10-28). `src/app/globals.css` carries the reveal, draw and reduced-motion blocks; `src/app/layout.tsx` carries the `pm-reveal` script. The tokens below are implemented, not aspirational — match them rather than inventing new values.
+
+### Section reveals
+A single `beforeInteractive` script in `layout.tsx` adds `pm-reveal` to `<html>`, then on `load` an IntersectionObserver adds `.pm-in` to each `<section>` except the first (the hero — never animate it, it is the LCP element). CSS staggers the section's direct children ~70ms apart, capped at the 5th.
+
+Three properties are **not optional**, each of them load-bearing:
+- The hidden state exists only behind `html.pm-reveal`, added after confirming `IntersectionObserver` exists and reduced motion is not requested. If the script never runs, nothing is ever hidden.
+- A failsafe independent of the observer drops `pm-reveal` if a section is **in view and still hidden** after 2.5s. Testing "has anything revealed yet?" instead is wrong — that is false at the top of every page.
+- React discards DOM mutations made before hydration, so the script must tag `<html>` only and let CSS select content structurally. Per-element `data-` attributes written pre-hydration are wiped.
 
 ### Duration scale
 | Token | Use |
@@ -180,7 +188,7 @@ Nothing over 500ms. Nothing under 100ms (reads as a glitch, not a transition).
 
 ### Property rules
 - Animate `opacity` and `transform` only. Both are composite-only — free on the GPU.
-- **Never `transition-all`.** There are 13 instances in this repo; they are a known defect, not a pattern to copy. Name the property: `transition-colors`, `transition-transform`, `transition-opacity`.
+- **Never `transition-all`.** All 13 instances were removed on 2026-10-28; the count is now zero and must stay there. Name the property: `transition-colors`, `transition-transform`, `transition-opacity`, or a bracketed list such as `transition-[border-color,box-shadow]`.
 - Never animate `height`, `width`, `top`, `left`, `margin` or `padding`. Use `transform` or `grid-template-rows`/`max-height` with care.
 - Never animate from `scale(0)` — start at `scale(0.95)`–`scale(0.98)`.
 - Respect `prefers-reduced-motion`: wrap non-essential motion in `motion-safe:` or a media query.
@@ -195,11 +203,43 @@ Do **not** animate: price figures, stock counts, compliance text, COA values, th
 
 ---
 
+### The chromatogram figure
+
+`src/components/ChromatogramFigure.tsx` is the quality graphic on the homepage and
+`/quality`. It replaced `/generated/section-3.webp`, an AI-generated photo captioned as
+the third-party laboratory's own HPLC equipment — a claim the quality page itself
+contradicts, since the whole argument is that Premio has no in-house lab.
+
+**It must stay labelled illustrative.** It is drawn from a peak list, not measured. Never
+caption it with a compound, a batch, a purity percentage or a retention time, and never
+present it as a real result; real figures belong on the batch CoA. If a genuine CoA
+chromatogram ever becomes available, that is strictly better — use it instead.
+
+It draws itself with `stroke-dashoffset`, using `pathLength={1000}` so the dash length
+needs no JavaScript measurement. Under `prefers-reduced-motion` the completed trace
+renders immediately.
+
+### Verifying motion — read this before concluding it is broken
+
+Scroll animation on this site has produced false negatives three different ways:
+1. **The Claude preview pane reports `document.hidden`**, which starves
+   IntersectionObserver, makes `window.scrollTo` inert and can report
+   `innerHeight: 0`. The failsafe then correctly skips too. Verify in real headless
+   Chrome over CDP instead, where `visibilityState` is `visible`.
+2. **A stale dev server serves pre-edit CSS.** `curl` the `/_next/static/.../*.css` the
+   page actually links and grep it before blaming the code.
+3. **`getComputedStyle` returns a live object.** Copy values out with `String(...)`
+   before changing state, or the "before" sample mutates under you.
+
+Never run `npm run build` while `next dev` is running — both write `.next`.
+
+---
+
 ## 7. Known defects — fix when touching these files, don't let them spread
 
 1. **`ImageLightbox.tsx`** — hand-rolled `fixed inset-0` overlay with no `aria-modal`, no focus trap, no Escape handler, no enter/exit animation.
 2. **`QuickAddButton.tsx:25`** — `setTimeout(1800)` fake toast. Should be a real toast (see `ask-sonner`).
-3. **13 × `transition-all`** — replace with named properties as you encounter them.
+3. ~~13 × `transition-all`~~ — **fixed 2026-10-28**, count is zero. The quiz progress bar also stopped animating `width` and now uses `origin-left` + `scaleX()`.
 4. **Dead variant branches** in `Navigation`/`Footer`/`QuoteForm`.
 5. **Dead token blocks** V2/V3 in `globals.css`.
 
