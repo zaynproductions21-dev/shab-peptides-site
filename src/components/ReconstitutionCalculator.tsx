@@ -18,6 +18,15 @@ export default function ReconstitutionCalculator() {
   const volumePerDoseMl = concentrationMcgPerMl > 0 ? desired / concentrationMcgPerMl : 0;
   const penClicks = volumePerDoseMl * unitsPerMl;
 
+  // Rendered forms, derived during render. The .pm-value animation is keyed on
+  // these strings so a figure only flashes when what the reader sees actually
+  // changes — not on every keystroke that leaves the rounded value identical.
+  const concentrationText = concentrationMcgPerMl.toFixed(1);
+  const volumeText = volumePerDoseMl < 0.01 ? volumePerDoseMl.toFixed(4) : volumePerDoseMl.toFixed(3);
+  const clicksText = penClicks < 1 ? penClicks.toFixed(2) : penClicks.toFixed(1);
+  const hasInputs = peptide > 0 && solvent > 0;
+  const hasTarget = desired > 0;
+
   if (!accepted) {
     return (
       <div className="rounded-2xl border border-editorial-border bg-editorial-surface p-8 text-center">
@@ -115,25 +124,25 @@ export default function ReconstitutionCalculator() {
       </div>
 
       {/* Results */}
-      {peptide > 0 && solvent > 0 && (
-        <div className="rounded-2xl border-2 border-editorial-accent/20 bg-editorial-accent/5 p-6 sm:p-8">
+      {hasInputs ? (
+        <div className="pm-result-in rounded-2xl border-2 border-editorial-accent/20 bg-editorial-accent/5 p-6 sm:p-8">
           <h3 className="font-serif text-lg font-bold text-editorial-accent mb-6">Results</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="rounded-xl bg-white border border-editorial-border p-5 text-center">
               <p className="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2">Concentration</p>
               <p className="text-2xl font-bold text-editorial-accent">
-                {concentrationMcgPerMl.toFixed(1)}
+                <span key={concentrationText} className="pm-value inline-block">{concentrationText}</span>
               </p>
               <p className="text-xs text-editorial-muted mt-1">mcg per mL</p>
             </div>
 
-            {desired > 0 && (
+            {hasTarget ? (
               <>
                 <div className="rounded-xl bg-white border border-editorial-border p-5 text-center">
                   <p className="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2">Volume per Administration</p>
                   <p className="text-2xl font-bold text-editorial-accent">
-                    {volumePerDoseMl < 0.01 ? volumePerDoseMl.toFixed(4) : volumePerDoseMl.toFixed(3)}
+                    <span key={volumeText} className="pm-value inline-block">{volumeText}</span>
                   </p>
                   <p className="text-xs text-editorial-muted mt-1">mL</p>
                 </div>
@@ -141,29 +150,31 @@ export default function ReconstitutionCalculator() {
                 <div className="rounded-xl bg-white border border-editorial-border p-5 text-center">
                   <p className="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2">Pen Clicks / Units</p>
                   <p className="text-2xl font-bold text-editorial-accent">
-                    {penClicks < 1 ? penClicks.toFixed(2) : penClicks.toFixed(1)}
+                    <span key={clicksText} className="pm-value inline-block">{clicksText}</span>
                   </p>
                   <p className="text-xs text-editorial-muted mt-1">units on {unitsPerMl} U/mL scale</p>
                 </div>
               </>
-            )}
+            ) : null}
           </div>
 
-          {desired > 0 && solvent > 0 && (
-            <div className="mt-6 rounded-xl bg-white border border-editorial-border p-5">
-              <p className="text-sm text-editorial-text leading-relaxed">
+          {hasTarget ? (
+            <div className="pm-result-in mt-6 rounded-xl bg-white border border-editorial-border p-5">
+              {/* The figures above are read individually; this sentence is the
+                  one announcement worth making when the result changes. */}
+              <p role="status" aria-live="polite" className="text-sm text-editorial-text leading-relaxed">
                 <strong>Summary:</strong> Adding{" "}
                 <strong>{solvent} mL</strong> of bacteriostatic water to{" "}
                 <strong>{peptide} mg</strong> of peptide gives a concentration of{" "}
-                <strong>{concentrationMcgPerMl.toFixed(1)} mcg/mL</strong>.
+                <strong>{concentrationText} mcg/mL</strong>.
                 To administer <strong>{desired} mcg</strong>, draw{" "}
-                <strong>{volumePerDoseMl < 0.01 ? volumePerDoseMl.toFixed(4) : volumePerDoseMl.toFixed(3)} mL</strong>{" "}
-                ({penClicks < 1 ? penClicks.toFixed(2) : penClicks.toFixed(1)} units on a {unitsPerMl} U/mL syringe).
+                <strong>{volumeText} mL</strong>{" "}
+                ({clicksText} units on a {unitsPerMl} U/mL syringe).
               </p>
             </div>
-          )}
+          ) : null}
         </div>
-      )}
+      ) : null}
 
       {/* Disclaimer */}
       <p className="text-[10px] text-editorial-muted text-center leading-relaxed">

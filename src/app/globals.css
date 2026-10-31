@@ -104,6 +104,33 @@ html:not(.pm-reveal) .pm-trace { stroke-dashoffset: 0; }
 html.pm-reveal section.pm-in .pm-trace-fill { animation: pmFill 600ms ease-out 900ms both; }
 html:not(.pm-reveal) .pm-trace-fill { opacity: 0.08; }
 @keyframes pmFill { from { opacity: 0; } to { opacity: 0.08; } }
+
+/* ── INTERACTION MOTION ───────────────────────────────────────────
+   Enter curves only (ease-out), per the duration scale in the
+   premio-design skill. Nothing here loops and nothing moves more than
+   a few pixels — this is a regulated product, not a storefront. */
+
+/* add-to-basket confirmation swapping in */
+.pm-confirm { animation: pmConfirm 200ms ease-out both; }
+@keyframes pmConfirm {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* calculator results panel arriving once the inputs are valid */
+.pm-result-in { animation: pmResultIn 300ms ease-out both; }
+@keyframes pmResultIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* a recomputed figure. Keyed on the rendered string, so it fires when the
+   displayed value actually changes — not on every keystroke. */
+.pm-value { animation: pmValue 180ms ease-out both; }
+@keyframes pmValue {
+  from { opacity: 0.35; transform: translateY(-2px); }
+  to   { opacity: 1; transform: none; }
+}
 @keyframes pmDraw { to { stroke-dashoffset: 0; } }
 
 /* ── REDUCED MOTION ───────────────────────────────────────────────
