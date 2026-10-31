@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import RevealController from "@/components/RevealController";
 import { Analytics } from "@vercel/analytics/next";
 import CartProvider from "@/components/CartProvider";
 import Analytics2 from "@/components/Analytics";
@@ -68,7 +69,13 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-            <Script
+            {/* Reveal gate. Adds the class that the hidden-state CSS keys on,
+            but only after confirming IntersectionObserver exists and reduced
+            motion is not requested — if this never runs, nothing is ever
+            hidden. It must execute before first paint, hence an inline script
+            rather than anything deferred. The observer itself lives in
+            <RevealController /> so it re-arms on client-side navigation. */}
+      <Script
         id="pm-reveal"
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
@@ -76,27 +83,10 @@ export default function RootLayout({
 if(!('IntersectionObserver' in window))return;
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 document.documentElement.classList.add('pm-reveal');
-function start(){
-var secs=[].slice.call(document.querySelectorAll('section')).slice(1);
-if(!secs.length){document.documentElement.classList.remove('pm-reveal');return}
-var io=new IntersectionObserver(function(es){
-for(var k=0;k<es.length;k++){if(es[k].isIntersecting){es[k].target.classList.add('pm-in');io.unobserve(es[k].target)}}
-},{rootMargin:'0px 0px -10% 0px',threshold:0.01});
-for(var m=0;m<secs.length;m++)io.observe(secs[m]);
-function fs(){if(document.hidden)return;
-var broken=false;
-for(var q=0;q<secs.length;q++){var el=secs[q];
-if(el.classList.contains('pm-in'))continue;
-var r=el.getBoundingClientRect();
-if(r.top<window.innerHeight&&r.bottom>0){broken=true;break}}
-if(broken)document.documentElement.classList.remove('pm-reveal')}
-setTimeout(fs,2500);
-document.addEventListener('visibilitychange',function(){if(!document.hidden)setTimeout(fs,1200)});
-}
-if(document.readyState==='complete')start();else window.addEventListener('load',start);
 }catch(e){}})();`,
         }}
       />
+      <RevealController />
         <Script
           id="gtm"
           strategy="afterInteractive"
