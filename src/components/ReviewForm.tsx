@@ -156,7 +156,7 @@ export default function ReviewForm({
           onChange={(e) => setAuthor(e.target.value)}
           placeholder="e.g. Dr. M. Khan, or leave blank for “Verified Researcher”"
           maxLength={80}
-          className="mt-2 w-full rounded-lg border border-editorial-border px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
+          className="mt-2 w-full rounded-lg border border-editorial-field px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
         />
         <p className="mt-1.5 text-xs text-editorial-muted">
           Shown publicly next to your review. Don&rsquo;t include personal contact details.
@@ -192,7 +192,7 @@ export default function ReviewForm({
                   placeholder="Headline (optional)"
                   maxLength={120}
                   disabled={st.submitting}
-                  className="w-full rounded-lg border border-editorial-border px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
+                  className="w-full rounded-lg border border-editorial-field px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
                 />
                 <textarea
                   value={st.body}
@@ -201,7 +201,7 @@ export default function ReviewForm({
                   rows={4}
                   maxLength={2000}
                   disabled={st.submitting}
-                  className="w-full rounded-lg border border-editorial-border px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
+                  className="w-full rounded-lg border border-editorial-field px-3 py-2 text-sm text-editorial-text focus:border-editorial-accent focus:outline-none"
                 />
                 {st.error && <p className="text-sm text-red-600">{st.error}</p>}
                 <button

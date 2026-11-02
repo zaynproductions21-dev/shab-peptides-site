@@ -130,7 +130,7 @@ export default function CartPage() {
     }
   }
 
-  const inputClass = "w-full rounded-lg border border-editorial-border bg-white px-4 py-3 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent transition-colors";
+  const inputClass = "w-full rounded-lg border border-editorial-field bg-white px-4 py-3 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent transition-colors";
 
   return (
     <>

@@ -298,7 +298,7 @@ export function QuizFunnel() {
                 }}
                 placeholder="you@institution.ac.uk"
                 className={`mt-2 w-full px-4 py-3 rounded-lg border text-sm bg-white text-editorial-text placeholder:text-editorial-muted/60 focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 ${
-                  emailValid ? "border-editorial-border focus:border-editorial-accent" : "border-red-400 focus:border-red-500"
+                  emailValid ? "border-editorial-field focus:border-editorial-accent" : "border-red-400 focus:border-red-500"
                 }`}
               />
               {!emailValid && (

@@ -41,7 +41,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
                 placeholder="Search peptides by name, CAS, or category..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-lg border border-editorial-border bg-white pl-9 pr-4 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent transition-colors"
+                className="w-full rounded-lg border border-editorial-field bg-white pl-9 pr-4 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent transition-colors"
               />
             </div>
             <div className="flex flex-wrap gap-2">

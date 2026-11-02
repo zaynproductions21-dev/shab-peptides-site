@@ -190,7 +190,7 @@ export default function AddressSearch({ value, onChange }: Props) {
   }
 
   const inputCls =
-    "w-full rounded-lg border border-editorial-border bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent";
+    "w-full rounded-lg border border-editorial-field bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent";
 
   return (
     <div className="space-y-3">

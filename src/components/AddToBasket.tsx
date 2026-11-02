@@ -109,7 +109,7 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
               required
               value={enquiryForm.name}
               onChange={(e) => setEnquiryForm((f) => ({ ...f, name: e.target.value }))}
-              className="w-full rounded-lg border border-editorial-border bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-lg border border-editorial-field bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             />
             <input
               type="email"
@@ -117,14 +117,14 @@ export default function AddToBasket({ slug, name, sizes, image, inStock = true }
               required
               value={enquiryForm.email}
               onChange={(e) => setEnquiryForm((f) => ({ ...f, email: e.target.value }))}
-              className="w-full rounded-lg border border-editorial-border bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-lg border border-editorial-field bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             />
             <textarea
               placeholder={`Message (optional) — e.g. "Interested in ${selected.size}, please notify me when available"`}
               rows={2}
               value={enquiryForm.message}
               onChange={(e) => setEnquiryForm((f) => ({ ...f, message: e.target.value }))}
-              className="w-full rounded-lg border border-editorial-border bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent resize-none"
+              className="w-full rounded-lg border border-editorial-field bg-white px-3.5 py-2.5 text-sm text-editorial-text placeholder-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent resize-none"
             />
             <button
               type="submit"

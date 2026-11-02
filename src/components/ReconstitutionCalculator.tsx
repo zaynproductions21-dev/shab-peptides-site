@@ -68,7 +68,7 @@ export default function ReconstitutionCalculator() {
               placeholder="e.g. 5"
               min="0"
               step="0.1"
-              className="w-full rounded-xl border border-editorial-border bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-xl border border-editorial-field bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             />
             <p className="mt-1 text-xs text-editorial-muted">Total peptide mass in the vial</p>
           </div>
@@ -84,7 +84,7 @@ export default function ReconstitutionCalculator() {
               placeholder="e.g. 2"
               min="0"
               step="0.1"
-              className="w-full rounded-xl border border-editorial-border bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-xl border border-editorial-field bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             />
             <p className="mt-1 text-xs text-editorial-muted">Bacteriostatic water to add</p>
           </div>
@@ -100,7 +100,7 @@ export default function ReconstitutionCalculator() {
               placeholder="e.g. 250"
               min="0"
               step="1"
-              className="w-full rounded-xl border border-editorial-border bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-xl border border-editorial-field bg-editorial-surface px-4 py-3 text-sm text-editorial-text placeholder:text-editorial-muted focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             />
             <p className="mt-1 text-xs text-editorial-muted">Target amount per research administration</p>
           </div>
@@ -112,7 +112,7 @@ export default function ReconstitutionCalculator() {
             <select
               value={penUnitsPerMl}
               onChange={(e) => setPenUnitsPerMl(e.target.value)}
-              className="w-full rounded-xl border border-editorial-border bg-editorial-surface px-4 py-3 text-sm text-editorial-text focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
+              className="w-full rounded-xl border border-editorial-field bg-editorial-surface px-4 py-3 text-sm text-editorial-text focus:outline-none focus:ring-2 focus:ring-editorial-accent/30 focus:border-editorial-accent"
             >
               <option value="100">100 units/mL (standard insulin syringe)</option>
               <option value="50">50 units/mL</option>

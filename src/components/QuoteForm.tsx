@@ -64,7 +64,7 @@ export default function QuoteForm({ variant = "light" }: QuoteFormProps) {
       secondaryBtn: "border-gray-300 text-charcoal hover:bg-gray-50",
     },
     editorial: {
-      input: "bg-cream border-editorial-border text-editorial-text placeholder-editorial-muted focus:border-editorial-accent",
+      input: "bg-cream border-editorial-field text-editorial-text placeholder-editorial-muted focus:border-editorial-accent",
       label: "text-editorial-text",
       success: "bg-cream border-editorial-border",
       successHeading: "text-editorial-text",

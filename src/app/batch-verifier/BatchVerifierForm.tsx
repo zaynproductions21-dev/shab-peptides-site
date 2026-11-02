@@ -67,7 +67,7 @@ export function BatchVerifierForm() {
             autoCapitalize="characters"
             spellCheck={false}
             required
-            className="flex-1 px-4 py-3 rounded-lg border border-editorial-border text-base text-editorial-text placeholder:text-editorial-muted/60 font-mono tracking-wide focus:outline-none focus:border-editorial-accent focus:ring-2 focus:ring-editorial-accent/20 transition-colors"
+            className="flex-1 px-4 py-3 rounded-lg border border-editorial-field text-base text-editorial-text placeholder:text-editorial-muted/60 font-mono tracking-wide focus:outline-none focus:border-editorial-accent focus:ring-2 focus:ring-editorial-accent/20 transition-colors"
           />
           <button
             type="submit"
