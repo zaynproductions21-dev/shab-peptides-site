@@ -47,11 +47,38 @@ Use the Tailwind class, never a raw hex, never an arbitrary value.
 | Body text | `text-editorial-text` | `#1A2332` | All headings and body copy. Near-black navy, never `#000`. |
 | Secondary text | `text-editorial-muted` | `#6B7A8D` | Captions, labels, metadata, placeholders. |
 | Hairline | `border-editorial-border` | `#E2E8F0` | **Every** border. One border colour, site-wide. |
-| Accent | `bg-/text-editorial-accent` | `#0097A7` | Primary actions, links, eyebrows, active states. |
+| Accent | `bg-/text-editorial-accent` | `#0097A7` | Primary actions, links, eyebrows, active states. **Not for small text — see the contrast rule below.** |
 | Accent hover | `bg-editorial-accent-dark` | `#00838F` | Hover on accent fills only. |
 | Accent tint | `bg-editorial-accent/5` … `/10` | — | Informational panels, badge grounds. |
 | Success | `text-editorial-green` | `#43A047` | In-stock, verified, passed COA. |
 | Warning / attention | `text-editorial-warm` | `#FF8A65` | Low stock, caution notes. Not for errors. |
+
+### The accent fails AA at small sizes — in both directions
+
+Measured on the live site (Hallmark audit, 2026-11-02), confirmed by calculation:
+
+| Pair | Ratio | AA normal text (4.5:1) |
+|---|---|---|
+| White on `--color-editorial-accent` `#0097A7` | **3.51:1** | ✗ |
+| `#0097A7` as text on white | **3.51:1** | ✗ |
+| White on `--color-editorial-accent-dark` `#00838F` | **4.52:1** | ✓ |
+| `#00838F` as text on white | **4.52:1** | ✓ |
+
+`bg-editorial-accent` appears **134 times**. Large text is fine — AA large is 3:1, and
+headings clear it. The failures are everything small:
+
+- the announcement bar: white **14px bold** on accent — 14px bold is *not* large text
+  (large-bold starts at 18.66px), so it needs 4.5:1 and gets 3.51:1
+- `UK'S #1 SUPPLIER` — accent as text at 12px on a 10% accent tint
+- `BEST SELLER` badges at 10px, nav links, `Request Quote`, `Shop All Peptides`
+
+**Rule: anything under 18.66px bold or 24px regular uses `accent-dark`, not `accent`.**
+Accent stays correct for large display text, icons, rules, fills and tints — it is the
+brand colour and it is not changing. This is a size rule, not a palette change.
+
+Note the canonical primary button below carries `text-white` on `bg-editorial-accent` at
+`text-sm` — that combination is one of the failures. Fix it to `bg-editorial-accent-dark`
+when you next touch it, keeping `hover:bg-editorial-accent` for the lift.
 
 ### Colour rules
 - **One accent.** Teal carries every interactive affordance. Do not add a second brand colour to create hierarchy — use weight, size and space instead.
