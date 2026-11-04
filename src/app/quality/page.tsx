@@ -194,7 +194,7 @@ export default function QualityPage() {
       {/* Stats */}
       <section className="py-12 bg-white border-y border-editorial-border">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
               { value: "99%+", label: "Minimum Purity" },
               { value: "100%", label: "Batch Tested" },

@@ -374,7 +374,7 @@ export default async function V1Editorial() {
             </div>
             <div className="space-y-5">
               <ChromatogramFigure className="shadow-lg" />
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
                   { value: "99%+", label: "Min Purity" },
                   { value: "100%", label: "Batch Tested" },

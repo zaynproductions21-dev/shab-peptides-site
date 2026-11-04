@@ -128,6 +128,7 @@ Gutter           px-4 sm:px-6
 ```
 
 - `max-w-4xl mx-auto px-4 sm:px-6` is the standard container. Use it unless there's a reason.
+- **Every multi-column grid needs a mobile breakpoint.** `grid-cols-4` on its own is a bug: at 320px four cards share a 288px container, leaving a ~37px content box, and a single word like "Turnaround" needs 55px — the text spills out past its own card border. It does not widen the page (so a `scrollWidth` check will not catch it) and no element's bounding box exceeds the viewport, so it is invisible to the usual overflow sweep. Catch it by comparing `el.scrollWidth` to `el.clientWidth` on leaf text nodes. Write `grid-cols-2 sm:grid-cols-4` for stat rows, and `grid-cols-1 sm:grid-cols-3` for three cards, where two columns would leave an orphan.
 - Sections alternate `bg-cream` → `bg-white` or `bg-editorial-surface` to separate. **Never two adjacent sections with the same background and no border.**
 - Radii: `rounded-lg` for controls (125 usages), `rounded-xl` for cards (63), `rounded-2xl` for feature cards (33), `rounded-full` for pills and avatars. **No other radius.**
 - Shadows: `shadow-sm` on raised controls, `shadow-md` on hover lift. `shadow-lg`/`2xl` for overlays only. Prefer a border over a shadow for flat surfaces.

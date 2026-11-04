@@ -105,7 +105,7 @@ export default function InstitutionalPage() {
             </p>
           </div>
           {/* Pricing tiers */}
-          <div className="mt-8 grid grid-cols-3 gap-4">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { tier: "5g+", label: "Standard Bulk", detail: "Automatic volume discount" },
               { tier: "25g+", label: "Research Programme", detail: "Enhanced discount band" },
