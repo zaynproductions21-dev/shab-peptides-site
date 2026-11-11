@@ -74,6 +74,12 @@ export default function Footer({ variant = "light" }: FooterProps) {
               The UK&rsquo;s trusted supplier of high-purity research peptides for academic
               and pharmaceutical institutions.
             </p>
+            <p className={`mt-3 text-xs ${s.text}`}>
+              Prefer raw lyophilised powders? See{" "}
+              <a href="https://premiopeptidesuk.co.uk" target="_blank" rel="noopener noreferrer" className={`underline ${s.hover}`}>
+                premiopeptidesuk.co.uk →
+              </a>
+            </p>
             <p className={`mt-4 text-xs font-mono ${s.disclaimer}`}>
               For research use only. Not for human consumption.
             </p>
