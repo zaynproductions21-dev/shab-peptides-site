@@ -139,6 +139,35 @@ html:not(.pm-reveal) .pm-trace-fill { opacity: 0.08; }
 }
 @keyframes pmDraw { to { stroke-dashoffset: 0; } }
 
+/* ── DESKTOP NAV UNDERLINE ────────────────────────────────────────
+   Wipes in from the left on hover, out to the right on leave: the
+   transform-origin flips between the two states, so the line keeps one
+   direction of travel rather than rubber-banding back the way it came.
+   Desktop only (lg) — the mobile menu renders its own link list, where a
+   hover underline has no meaning.
+   Transform only, so it stays on the compositor; reduced motion needs no
+   rule here because the whitelist below already excludes transform, which
+   makes the line snap instead of slide. */
+@media (min-width: 1024px) {
+  .pm-navlink { position: relative; }
+  .pm-navlink::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -5px;
+    height: 1px;
+    background: var(--color-editorial-accent);
+    transform: scaleX(0);
+    transform-origin: 100% 50%;
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .pm-navlink:hover::after,
+  .pm-navlink:focus-visible::after {
+    transform-origin: 0 50%;
+    transform: scaleX(1);
+  }
+}
+
 /* ── REDUCED MOTION ───────────────────────────────────────────────
    Fewer and gentler, not zero: colour and opacity transitions survive so
    state changes stay legible; everything that moves is removed. */

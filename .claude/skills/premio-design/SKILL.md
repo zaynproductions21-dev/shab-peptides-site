@@ -227,6 +227,8 @@ Premio sells a regulated research product. Motion must read as **precision, not 
 ### Where motion belongs here
 Add it to: cart drawer open/close, `ImageLightbox` enter/exit, `QuickAddButton` confirmation, accordion/FAQ panels, `CompoundGrid` card hover lift, form validation reveals, `ReconstitutionCalculator` result updates.
 
+The desktop nav links carry `.pm-navlink` (defined in `globals.css`): a 1px accent underline that wipes in from the left on hover and out to the right on leave, because the `transform-origin` flips between the two states. Portfolio-wide pattern — the same gesture, 400ms and `cubic-bezier(.22,1,.36,1)`, is on Jefferson Clarke, Kingsgate, CallTrace and DocsCheck. Desktop only; the mobile menu renders its own list and must not get it.
+
 Do **not** animate: price figures, stock counts, compliance text, COA values, the nav on scroll.
 
 ---

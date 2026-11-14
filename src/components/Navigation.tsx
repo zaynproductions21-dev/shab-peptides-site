@@ -111,7 +111,7 @@ export default function Navigation({ variant = "light" }: NavigationProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-[13px] xl:text-sm font-medium whitespace-nowrap ${s.link} ${isSerif ? "tracking-wide" : ""}`}
+                className={`pm-navlink text-[13px] xl:text-sm font-medium whitespace-nowrap ${s.link} ${isSerif ? "tracking-wide" : ""}`}
               >
                 {item.label}
               </Link>
