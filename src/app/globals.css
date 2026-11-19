@@ -117,15 +117,29 @@ html.pm-reveal section.pm-in > div > *:nth-child(n+5) { animation-delay: 280ms; 
    each would be a 2.1s tail, so everything from the 5th card on starts
    together at 280ms. That reads as a wave without becoming a queue. */
 html.pm-reveal section:not(:first-of-type) > div > .pm-stagger { opacity: 1; }
-html.pm-reveal section:not(:first-of-type) > div > .pm-stagger > * { opacity: 0; }
 html.pm-reveal section.pm-in > div > .pm-stagger { animation: none; }
-html.pm-reveal section.pm-in > div > .pm-stagger > * {
-  animation: pmRise 520ms cubic-bezier(0.23, 1, 0.32, 1) both;
+
+/* The cards are observed INDIVIDUALLY, not inherited from the section.
+   Tying them to the section looked right and did nothing: /compounds is one
+   section wrapping a 4,809px grid (14,419px on a phone), so it fires the
+   moment its top edge appears — with 27 of 30 cards still below the fold.
+   All thirty animated in the first 800ms of page load, almost all of it off
+   screen, and the reader then scrolled 4,800px past cards that had finished
+   long before. Timing you cannot see is not motion.
+
+   pm-card is added by RevealController at runtime and ONLY to cards that are
+   currently off screen. Two things follow, both deliberate:
+     - no flash. You can only flash what someone can see, and nothing on
+       screen is ever touched.
+     - fail open by construction. A card the script never armed — one filtered
+       in later, or any card at all if the script dies — carries no pm-card
+       and is simply visible. The hidden state cannot outlive the thing that
+       created it. It is also gated on html.pm-reveal, so the existing failsafe
+       un-hides every card by dropping that one class. */
+html.pm-reveal .pm-card { opacity: 0; }
+html.pm-reveal .pm-card.pm-card-in {
+  animation: pmRise 520ms cubic-bezier(0.23, 1, 0.32, 1) var(--pm-delay, 0ms) both;
 }
-html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(2) { animation-delay: 70ms; }
-html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(3) { animation-delay: 140ms; }
-html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(4) { animation-delay: 210ms; }
-html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(n+5) { animation-delay: 280ms; }
 
 /* ── CHROMATOGRAM TRACE ───────────────────────────────────────────
    The figure draws itself once its section reveals. Pure CSS — no JS
@@ -203,11 +217,11 @@ html:not(.pm-reveal) .pm-trace-fill { opacity: 0.08; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.pm-reveal section > div > * { opacity: 1 !important; animation: none !important; transform: none !important; }
-  /* One level deeper for pm-stagger grids. The rule above stops at the
-     section's direct children, so without this a reader who switches Reduce
-     Motion ON mid-session leaves every staggered card at opacity 0 — the gate
-     class is already on <html> and no longer re-evaluated. */
-  html.pm-reveal section > div > .pm-stagger > * { opacity: 1 !important; animation: none !important; transform: none !important; }
+  /* Individually-armed cards. The rule above stops at a section's direct
+     children, so without this a reader who switches Reduce Motion ON
+     mid-session leaves every armed card at opacity 0 — the gate class is
+     already on <html> and no longer re-evaluated. */
+  html.pm-reveal .pm-card { opacity: 1 !important; animation: none !important; transform: none !important; }
   .pm-trace { stroke-dashoffset: 0 !important; animation: none !important; }
   .pm-trace-fill { opacity: 0.08 !important; animation: none !important; }
   *, *::before, *::after {
