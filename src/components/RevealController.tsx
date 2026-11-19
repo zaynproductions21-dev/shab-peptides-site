@@ -84,9 +84,35 @@ export default function RevealController() {
     };
     document.addEventListener("visibilitychange", onVisible);
 
+    // A section that has not revealed yet is invisible but NOT inert. Its
+    // children keep their place in the tab order and stay hit-testable, and on
+    // /compounds that is thirty product <Link> cards sitting at opacity 0. A
+    // keyboard reader tabbing down does scroll the next one into view, which
+    // trips the observer — but asynchronously, so for a frame or two focus
+    // rests on something that cannot be seen. A pointer can reach the same
+    // thing: a section whose top edge is creeping in below the trigger line is
+    // tappable while still hidden. Reveal synchronously in both cases.
+    //
+    // `focusin` rather than `focus`, because focus does not bubble and the node
+    // taking focus is always a descendant of the section, never the section.
+    // `pointerdown` rather than `click`, because it fires at the start of the
+    // gesture — the card is visible before the tap completes. Passive: this
+    // never calls preventDefault and must not delay the reader's own tap.
+    const revealOnInteract = (event: Event) => {
+      const section = (event.target as Element | null)?.closest?.("section");
+      if (section && !section.classList.contains(IN_CLASS)) {
+        section.classList.add(IN_CLASS);
+        io.unobserve(section);
+      }
+    };
+    document.addEventListener("focusin", revealOnInteract);
+    document.addEventListener("pointerdown", revealOnInteract, { passive: true });
+
     return () => {
       io.disconnect();
       document.removeEventListener("visibilitychange", onVisible);
+      document.removeEventListener("focusin", revealOnInteract);
+      document.removeEventListener("pointerdown", revealOnInteract);
       for (const t of timers) clearTimeout(t);
     };
   }, [pathname]);

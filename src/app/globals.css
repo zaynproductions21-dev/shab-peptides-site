@@ -98,6 +98,35 @@ html.pm-reveal section.pm-in > div > *:nth-child(n+5) { animation-delay: 280ms; 
   to   { opacity: 1; transform: none; }
 }
 
+/* ── ONE LEVEL DEEPER, FOR CARD GRIDS ONLY ────────────────────────
+   The rules above animate a section's direct children. When one of those
+   children is a GRID, that collapses the whole grid into a single fading
+   block — on /compounds that was all 30 product cards arriving at once,
+   which reads as the page simply appearing rather than as anything
+   arriving. What a reader notices is cards in sequence.
+
+   Opt in by putting pm-stagger on the grid wrapper. The wrapper then stops
+   animating itself (both declarations below have one more class than the
+   `> div > *` rules, so they win) and its children animate instead.
+
+   NOT for prose. A stack of paragraphs or long-form sections must arrive as
+   one block — body copy appearing a piece at a time is unreadable, not
+   elegant. This is for repeated, self-contained cards.
+
+   The delay cap is the same as above and matters more here: 30 cards at 70ms
+   each would be a 2.1s tail, so everything from the 5th card on starts
+   together at 280ms. That reads as a wave without becoming a queue. */
+html.pm-reveal section:not(:first-of-type) > div > .pm-stagger { opacity: 1; }
+html.pm-reveal section:not(:first-of-type) > div > .pm-stagger > * { opacity: 0; }
+html.pm-reveal section.pm-in > div > .pm-stagger { animation: none; }
+html.pm-reveal section.pm-in > div > .pm-stagger > * {
+  animation: pmRise 520ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(2) { animation-delay: 70ms; }
+html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(3) { animation-delay: 140ms; }
+html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(4) { animation-delay: 210ms; }
+html.pm-reveal section.pm-in > div > .pm-stagger > *:nth-child(n+5) { animation-delay: 280ms; }
+
 /* ── CHROMATOGRAM TRACE ───────────────────────────────────────────
    The figure draws itself once its section reveals. Pure CSS — no JS
    drives the drawing. */
@@ -174,6 +203,11 @@ html:not(.pm-reveal) .pm-trace-fill { opacity: 0.08; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.pm-reveal section > div > * { opacity: 1 !important; animation: none !important; transform: none !important; }
+  /* One level deeper for pm-stagger grids. The rule above stops at the
+     section's direct children, so without this a reader who switches Reduce
+     Motion ON mid-session leaves every staggered card at opacity 0 — the gate
+     class is already on <html> and no longer re-evaluated. */
+  html.pm-reveal section > div > .pm-stagger > * { opacity: 1 !important; animation: none !important; transform: none !important; }
   .pm-trace { stroke-dashoffset: 0 !important; animation: none !important; }
   .pm-trace-fill { opacity: 0.08 !important; animation: none !important; }
   *, *::before, *::after {

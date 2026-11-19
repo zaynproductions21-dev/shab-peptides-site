@@ -55,7 +55,7 @@ export default function AboutPage() {
       <section className="py-16 lg:py-20 bg-editorial-surface">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-serif text-2xl font-bold text-editorial-text mb-8">What Sets Us Apart</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="pm-stagger grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               { title: "Third-Party Tested", description: "Every batch is independently analysed by an ISO-accredited laboratory. We do not rely on manufacturer-supplied data or self-certified results." },
               { title: "UK-Stocked, Same-Day Dispatch", description: "All products ship from our UK fulfilment facility. Orders placed before 2pm go out the same working day. No customs, no import delays." },

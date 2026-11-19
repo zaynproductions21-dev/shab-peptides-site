@@ -71,7 +71,7 @@ export default function CompoundGrid({ compounds }: CompoundGridProps) {
               <p className="text-editorial-muted">No peptides match your search. Try a different term or category.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="pm-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((compound) => (
                 <Link
                   key={compound.slug}

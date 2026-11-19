@@ -26,7 +26,7 @@ export default function DeliveryPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
 
           {/* Delivery highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="pm-stagger grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {[
               { value: "2pm", label: "Same-Day Cut-Off" },
               { value: "Next Day", label: "UK Delivery" },
