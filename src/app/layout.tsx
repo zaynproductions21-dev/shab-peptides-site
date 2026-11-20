@@ -86,6 +86,18 @@ document.documentElement.classList.add('pm-reveal');
 }catch(e){}})();`,
         }}
       />
+      {/* First-touch attribution — captures referrer + UTMs + AI-engine on the
+          very first page view of a session (sessionStorage, no cookie, no PECR
+          consent needed) so the order record can later say where it came from.
+          Matches src/lib/attribution.ts; kept as its own inline script so it
+          runs before any React hydration can navigate away. */}
+      <Script
+        id="pp-attribution"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `!function(){try{var K="pp_attribution_v1";if(sessionStorage.getItem(K))return;var p=new URLSearchParams(location.search),r=document.referrer||"",H=[[/(^|\\.)chatgpt\\.com$/i,"ChatGPT"],[/(^|\\.)chat\\.openai\\.com$/i,"ChatGPT"],[/(^|\\.)openai\\.com$/i,"ChatGPT"],[/(^|\\.)perplexity\\.ai$/i,"Perplexity"],[/(^|\\.)gemini\\.google\\.com$/i,"Gemini"],[/(^|\\.)copilot\\.microsoft\\.com$/i,"Copilot"],[/(^|\\.)claude\\.ai$/i,"Claude"],[/(^|\\.)meta\\.ai$/i,"Meta AI"],[/(^|\\.)you\\.com$/i,"You.com"],[/(^|\\.)grok\\.com$/i,"Grok"]],P=[[/chatgpt|openai/i,"ChatGPT"],[/perplexity/i,"Perplexity"],[/gemini|bard/i,"Gemini"],[/copilot/i,"Copilot"],[/claude|anthropic/i,"Claude"],[/grok/i,"Grok"]],e=null,i;for(i=0;i<3&&!e;i++){var k=["utm_source","ref","source"][i],v=p.get(k);if(v){for(var j=0;j<P.length;j++)if(P[j][0].test(v)){e=P[j][1];break}}}if(!e&&r){try{var h=new URL(r).hostname;for(var n=0;n<H.length;n++)if(H[n][0].test(h)){e=H[n][1];break}}catch(x){}}sessionStorage.setItem(K,JSON.stringify({referrer:r||void 0,utmSource:p.get("utm_source")||void 0,utmMedium:p.get("utm_medium")||void 0,utmCampaign:p.get("utm_campaign")||void 0,utmTerm:p.get("utm_term")||void 0,utmContent:p.get("utm_content")||void 0,landingPath:location.pathname+(location.search||""),landingAt:new Date().toISOString(),aiEngine:e}));}catch(x){}}();`,
+        }}
+      />
       <RevealController />
         <Script
           id="gtm"

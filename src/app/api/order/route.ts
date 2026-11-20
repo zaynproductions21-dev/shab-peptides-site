@@ -66,6 +66,17 @@ interface OrderPayload {
   standingOrderInterval?: "30d" | "90d";
   total: string;
   deliveryAddress?: DeliveryAddress;
+  attribution?: {
+    referrer?: string;
+    utmSource?: string;
+    utmMedium?: string;
+    utmCampaign?: string;
+    utmTerm?: string;
+    utmContent?: string;
+    landingPath?: string;
+    landingAt?: string;
+    aiEngine?: string | null;
+  };
 }
 
 // ── Brevo (email) ──────────────────────────────────
@@ -402,6 +413,7 @@ export async function POST(request: Request) {
           nextReorderAt: order.standingOrder
             ? new Date(Date.now() + 30 * 24 * 3600 * 1000).toISOString()
             : undefined,
+          attribution: order.attribution,
         }),
       }).catch(() => undefined),
     ]);

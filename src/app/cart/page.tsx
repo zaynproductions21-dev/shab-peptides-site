@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useCart } from "@/components/CartProvider";
 import { WHATSAPP_NUMBER } from "@/lib/config";
 import AddressSearch, { type DeliveryAddress } from "@/components/AddressSearch";
+import { getAttribution } from "@/lib/attribution";
 
 const TURNSTILE_SITE_KEY = "0x4AAAAAADKI5BaseSCYFE9P";
 
@@ -99,6 +100,10 @@ export default function CartPage() {
           standingOrderInterval: meta.standingOrderInterval,
           total: grandTotal,
           deliveryAddress: address,
+          // First-touch attribution (sessionStorage; see src/lib/attribution.ts).
+          // Undefined if the inline capture script in layout.tsx never ran
+          // (private browsing, storage disabled) — order still goes through.
+          attribution: getAttribution() || undefined,
           "cf-turnstile-response": turnstileToken,
         }),
       });
