@@ -176,7 +176,7 @@ export default async function V1Editorial() {
                 </Link>
               )}
               {/* Floating purity badge */}
-              <div className="absolute -top-3 -right-3 rounded-lg bg-editorial-accent text-white px-4 py-2 shadow-lg">
+              <div className="absolute -top-3 right-0 sm:-right-3 rounded-lg bg-editorial-accent text-white px-4 py-2 shadow-lg">
                 <p className="text-xs font-semibold">99%+ Purity</p>
                 <p className="text-[10px] opacity-80">Third-Party Tested</p>
               </div>
