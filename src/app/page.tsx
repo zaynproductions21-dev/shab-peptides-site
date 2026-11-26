@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { orgSchema, faqPageSchema } from "@/lib/schema";
 import Image from "next/image";
 import ChromatogramFigure from "@/components/ChromatogramFigure";
 import Link from "next/link";
@@ -43,42 +44,12 @@ const faqs = [
   { question: "What is the fastest UK peptide delivery?", answer: "Premio Peptides offers same-day dispatch for all orders placed before 14:00 GMT on working days. Orders are shipped in temperature-controlled packaging via tracked UK courier, with next-day delivery available across England, Scotland, Wales, and Northern Ireland. Free standard delivery on orders over £175." },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+const faqSchema = faqPageSchema(faqs);
 
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Premio Peptides",
-  legalName: "BELL RED LIMITED",
-  url: "https://premiopeptides.co.uk",
-  description: "UK research-grade peptide supplier with 99%+ purity guarantee and same-day dispatch.",
-  foundingDate: "2020-08-27",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "16 Neptune Street",
-    addressLocality: "Tipton",
-    postalCode: "DY4 8JF",
-    addressCountry: "GB",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "info@premiopeptides.co.uk",
-    contactType: "customer service",
-    availableLanguage: "English",
-    areaServed: "GB",
-  },
-  sameAs: [
-    "https://find-and-update.company-information.service.gov.uk/company/12841067",
-  ],
-};
+// The Organization now lives in src/lib/schema.ts, shared with the eight other
+// pages that emit FAQPage. It is the same entity this page already declared,
+// plus an @id so the FAQ answers can be attributed to it and an explicit
+// identifier alongside the Companies House sameAs that was already here.
 
 export default async function V1Editorial() {
   const products = await getFeaturedCompounds(12);
