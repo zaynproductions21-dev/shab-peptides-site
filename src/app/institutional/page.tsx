@@ -144,7 +144,7 @@ export default function InstitutionalPage() {
               Every institutional account gets a named account manager — one contact for procurement, technical and logistics queries. They keep a working knowledge of your research requirements and can advise on catalogue selection, purity grades, storage specs and reformulation as your projects develop.
             </p>
             <p>
-              For time-sensitive programmes, account managers can expedite dispatch and coordinate bespoke synthesis timelines directly with our production team. Dedicated account management is included at no extra cost for all institutional customers above a minimum annual spend, confirmed during onboarding.
+              For time-sensitive programmes, account managers can expedite dispatch and coordinate bespoke synthesis timelines directly with the manufacturer. Dedicated account management is included at no extra cost for all institutional customers above a minimum annual spend, confirmed during onboarding.
             </p>
           </div>
         </div>
