@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { orgSchema, faqPageSchema } from "@/lib/schema";
 import ChromatogramFigure from "@/components/ChromatogramFigure";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -49,19 +50,17 @@ const faqs = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+// Attributed to the firm via the shared helper — see src/lib/schema.ts.
+// Premio is deliberately excluded from the named-author byline, so authority is
+// the checkable legal entity (BELL RED LIMITED, company 12841067) rather than a
+// person. The Organization node is emitted alongside, because an author @id that
+// is defined nowhere in the document is worse than no author at all.
+const faqSchema = faqPageSchema(faqs);
 
 export default function QualityPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "BreadcrumbList",

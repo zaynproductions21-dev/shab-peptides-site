@@ -15,6 +15,7 @@ const STATIC_PATHS = [
   { path: "/quality", lastModified: "2026-05-14" },
   { path: "/certificates-of-analysis", lastModified: "2026-05-03" },
   { path: "/guidelines", lastModified: "2026-04-25" },
+  { path: "/what-are-peptides", lastModified: "2026-11-26" },
   { path: "/about", lastModified: "2026-05-14" },
   { path: "/contact", lastModified: "2026-04-25" },
   { path: "/faq", lastModified: "2026-05-14" },

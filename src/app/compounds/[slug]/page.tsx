@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { orgSchema, faqPageSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -129,15 +130,10 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
     }),
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: compound.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+  // Attributed to the firm via the shared helper — see src/lib/schema.ts. The
+  // Offer's `seller` is a bare Organization with no @id, so it cannot carry the
+  // author reference; the real Organization node is emitted below.
+  const faqSchema = faqPageSchema(compound.faqs);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -152,6 +148,10 @@ export default async function CompoundPage({ params }: { params: Promise<{ slug:
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      {/* The Organization is emitted unconditionally: it is the author reference
+          the FAQ schema points at, and it is worth having on a product page
+          whether or not that compound happens to carry FAQs. */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       {compound.faqs.length > 0 && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
