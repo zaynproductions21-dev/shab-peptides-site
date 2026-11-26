@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { orgSchema, faqPageSchema } from "@/lib/schema";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -36,15 +37,12 @@ const hubFaqs: FAQItem[] = [
   { question: "Where can I buy research peptides in the UK?", answer: "Research peptides in the UK are available from specialised biotechnology suppliers who focus exclusively on laboratory-grade compounds for scientific use. These suppliers must provide proper documentation, maintain quality standards, and serve qualified research institutions. Premio Peptides is a premier UK supplier offering comprehensive catalogues of neuropeptides, growth hormone compounds, and longevity research peptides. We provide same-day dispatch for orders placed before 2pm, complete certificates of analysis, and institutional account services. Our facility maintains optimal storage conditions and rigorous quality control procedures. When selecting suppliers, ensure they offer third-party testing, transparent business practices, and genuine research focus. Avoid suppliers making therapeutic claims or targeting non-research markets. Contact Premio Peptides to discuss your specific research requirements and institutional account options.", keyword: "buy research peptides uk", internalLink: "/compounds" },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: hubFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+// Attributed to the firm via the shared helper. This page carries 16 Q&As and
+// 30,000+ characters and said nothing about who stands behind the answers, so
+// the GEO gate reported no authority signal on it. Premio is deliberately
+// excluded from the named-author byline, so authority here is the legal entity
+// — BELL RED LIMITED, company 12841067 — which a reader can actually check.
+const faqSchema = faqPageSchema(hubFaqs);
 
 export default async function FAQPage() {
   // Also fetch CMS FAQs for any additional questions
@@ -61,6 +59,7 @@ export default async function FAQPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
